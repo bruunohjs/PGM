@@ -15,5 +15,4 @@
     <string name="presenter_login_invalid_password">Password must be at least 6 characters.</string>
     <string name="presenter_login_successful">Login successful.</string>
 
-
 </resources>

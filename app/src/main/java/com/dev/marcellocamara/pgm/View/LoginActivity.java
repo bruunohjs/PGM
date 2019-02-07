@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View;
 
+import android.app.ProgressDialog;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.dev.marcellocamara.pgm.Interfaces.ILoginAuth;
+import com.dev.marcellocamara.pgm.Interfaces.ILogin;
 import com.dev.marcellocamara.pgm.Presenter.LoginPresenter;
 import com.dev.marcellocamara.pgm.R;
 
@@ -17,12 +18,13 @@ import com.dev.marcellocamara.pgm.R;
             2018
 ***/
 
-public class LoginActivity extends AppCompatActivity implements ILoginAuth.View, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements ILogin.View, View.OnClickListener {
 
-    private LoginPresenter loginPresenter;
+    private ILogin.Presenter loginPresenter;
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
     private TextInputEditText editTextEmail, editTextPassword;
     private Button btnLogin, btnRegister;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginAuth.View,
         setContentView(R.layout.activity_login);
 
         loginPresenter = new LoginPresenter(this, this);
+
+        progressDialog = new ProgressDialog(this);
 
         ViewBind();
     }
@@ -48,6 +52,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginAuth.View,
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
 
+        progressDialog.setTitle("Login");
+        progressDialog.setMessage("Carregando...");
+        progressDialog.setCancelable(false);
     }
 
     @Override
@@ -57,9 +64,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginAuth.View,
             case R.id.btnLogin : {
                 inputLayoutEmail.setErrorEnabled(false);
                 inputLayoutPassword.setErrorEnabled(false);
-                String email = editTextEmail.getText().toString().trim();
-                String password = editTextPassword.getText().toString().trim();
-                loginPresenter.Login(email, password);
+                loginPresenter.OnLogin(editTextEmail.getText().toString().trim(), editTextPassword.getText().toString().trim());
                 break;
             }
             case R.id.btnRegister : {
@@ -71,27 +76,25 @@ public class LoginActivity extends AppCompatActivity implements ILoginAuth.View,
     }
 
     @Override
-    public void OnEmptyEmail(String message) {
-        inputLayoutEmail.setError(message);
-        inputLayoutEmail.setErrorEnabled(true);
-    }
-
-    @Override
-    public void OnEmptyPassword(String message) {
-        inputLayoutPassword.setError(message);
-        inputLayoutPassword.setErrorEnabled(true);
-    }
-
-    @Override
     public void OnInvalidEmail(String message) {
         inputLayoutEmail.setError(message);
         inputLayoutEmail.setErrorEnabled(true);
     }
 
     @Override
-    public void OnInvalidPassword(String message){
+    public void OnInvalidPassword(String message) {
         inputLayoutPassword.setError(message);
         inputLayoutPassword.setErrorEnabled(true);
+    }
+
+    @Override
+    public void ShowProgress() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void HideProgress() {
+        progressDialog.dismiss();
     }
 
     @Override
@@ -105,4 +108,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginAuth.View,
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPresenter.OnDestroy();
+    }
 }

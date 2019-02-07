@@ -5,27 +5,43 @@ package com.dev.marcellocamara.pgm.Interfaces;
             2018
 ***/
 
-public interface ILoginAuth {
+public interface ILogin {
 
     interface Presenter{
 
-        void Login(String email, String password);
+        void OnLogin(String email, String password);
+
+        void OnDestroy();
 
     }
 
     interface View{
 
-        void OnEmptyEmail(String message);
-
-        void OnEmptyPassword(String message);
-
         void OnInvalidEmail(String message);
 
         void OnInvalidPassword(String message);
 
+        void ShowProgress();
+
+        void HideProgress();
+
         void OnLoginSuccessful(String message);
 
         void OnLoginFailure(String message);
+
+    }
+
+    interface Model{
+
+        void DoLogin(String email, String password);
+
+    }
+
+    interface TaskListener{
+
+        void OnSuccess();
+
+        void OnError(String message);
 
     }
 
