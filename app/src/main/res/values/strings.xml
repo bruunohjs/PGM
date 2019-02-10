@@ -7,13 +7,22 @@
     <string name="view_login_checkbox">Remember me</string>
     <string name="view_login_button_login">Log in</string>
     <string name="view_login_button_signup">Don\'t have an account ? Click here to register</string>
-    <string name="view_login_customAlertDialog">Login in...</string>
+    <string name="view_login_customAlertDialog">Login in…</string>
+    <string name="view_register_name">Name</string>
+    <string name="view_register_password">Confirm password</string>
+    <string name="view_register_button_register">Register</string>
+    <string name="view_register_button_back_to_login">Already have an account ? Click here to login</string>
+    <string name="view_register_customAlertDialog">Registering…</string>
 
     <!-- Presenter -->
-    <string name="presenter_login_empty_email">Fill e-mail.</string>
-    <string name="presenter_login_empty_password">Fill password.</string>
+    <string name="presenter_login_empty_email">Fill the e-mail.</string>
+    <string name="presenter_login_empty_password">Fill the password.</string>
     <string name="presenter_login_invalid_email">Fill with a valid e-mail.</string>
     <string name="presenter_login_invalid_password">Password must be at least 6 characters.</string>
     <string name="presenter_login_successful">Login successful.</string>
+    <string name="presenter_register_name">Fill with your name.</string>
+    <string name="presenter_register_passwords_not_match">Passwords do not match.</string>
+    <string name="presenter_register_successful">Register Successful.</string>
+
 
 </resources>

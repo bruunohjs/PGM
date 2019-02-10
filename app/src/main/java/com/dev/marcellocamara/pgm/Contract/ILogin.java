@@ -37,12 +37,4 @@ public interface ILogin {
 
     }
 
-    interface TaskListener{
-
-        void OnSuccess();
-
-        void OnError(String message);
-
-    }
-
 }

@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.IRegister;
+import com.dev.marcellocamara.pgm.Presenter.RegisterPresenter;
 import com.dev.marcellocamara.pgm.R;
 
 import dmax.dialog.SpotsDialog;
@@ -33,10 +35,12 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
 
         ViewBind();
 
+        registerPresenter = new RegisterPresenter(this, this);
+
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage("Registering...")
+                .setMessage(R.string.view_register_customAlertDialog)
                 .setCancelable(false)
                 .build();
     }
@@ -64,7 +68,16 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnRegister : {
-                //TODO: Do register
+                inputLayoutName.setErrorEnabled(false);
+                inputLayoutEmail.setErrorEnabled(false);
+                inputLayoutPassword1.setErrorEnabled(false);
+                inputLayoutPassword2.setErrorEnabled(false);
+                registerPresenter.OnRegister(
+                        editTextName.getText().toString().trim(),
+                        editTextEmail.getText().toString().trim(),
+                        editTextPassword1.getText().toString().trim(),
+                        editTextPassword2.getText().toString().trim()
+                );
                 break;
             }
             case R.id.btnBacktoLogin : {
@@ -87,9 +100,13 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     }
 
     @Override
-    public void OnInvalidPassword(String message) {
+    public void OnInvalidPassword1(String message) {
         inputLayoutPassword1.setError(message);
         inputLayoutPassword1.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnInvalidPassword2(String message) {
         inputLayoutPassword2.setError(message);
         inputLayoutPassword2.setErrorEnabled(true);
     }
@@ -106,17 +123,17 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
 
     @Override
     public void OnRegistrationSuccessful(String message) {
-        //TODO: OnRegistrationSuccessful
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void OnRegistrationFailure(String message) {
-        //TODO: OnRegistrationFailure
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         registerPresenter.OnDestroy();
+        super.onDestroy();
     }
 }

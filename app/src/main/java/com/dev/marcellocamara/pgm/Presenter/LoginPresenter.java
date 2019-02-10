@@ -4,7 +4,8 @@ import android.content.Context;
 import android.util.Patterns;
 
 import com.dev.marcellocamara.pgm.Contract.ILogin;
-import com.dev.marcellocamara.pgm.Model.LoginModel;
+import com.dev.marcellocamara.pgm.Contract.ITaskListener;
+import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.R;
 
 /***
@@ -12,7 +13,7 @@ import com.dev.marcellocamara.pgm.R;
             2018
 ***/
 
-public class LoginPresenter implements ILogin.Presenter, ILogin.TaskListener {
+public class LoginPresenter implements ILogin.Presenter, ITaskListener {
 
     private ILogin.View view;
     private ILogin.Model model;
@@ -20,7 +21,7 @@ public class LoginPresenter implements ILogin.Presenter, ILogin.TaskListener {
 
     public LoginPresenter(ILogin.View view, Context context) {
         this.view = view;
-        this.model = new LoginModel(this);
+        this.model = new DatabaseModel(this);
         this.context = context;
     }
 

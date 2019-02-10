@@ -68,7 +68,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
             case R.id.btnLogin : {
                 inputLayoutEmail.setErrorEnabled(false);
                 inputLayoutPassword.setErrorEnabled(false);
-                loginPresenter.OnLogin(editTextEmail.getText().toString().trim(), editTextPassword.getText().toString().trim());
+                loginPresenter.OnLogin(
+                        editTextEmail.getText().toString().trim(),
+                        editTextPassword.getText().toString().trim()
+                );
                 break;
             }
             case R.id.btnRegister : {
@@ -115,7 +118,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         loginPresenter.OnDestroy();
+        super.onDestroy();
     }
 }

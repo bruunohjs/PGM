@@ -10,31 +10,42 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        android:focusable="true">
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/leftGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/rightGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardViewLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideLine"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideLine"
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="true">
+                android:focusableInTouchMode="true"
+                android:focusable="true">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilName"
-                    android:layout_width="230dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -45,22 +56,20 @@
                         android:id="@+id/etName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_person"
                         android:drawablePadding="4dp"
-                        android:hint="Name"
-                        android:maxLength="50"
+                        android:drawableStart="@drawable/ic_person"
+                        android:hint="@string/view_register_name"
                         android:inputType="textPersonName"
+                        android:maxLength="50"
                         android:textSize="18sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilEmail"
-                    android:layout_width="230dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -71,22 +80,20 @@
                         android:id="@+id/etEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_email"
                         android:drawablePadding="4dp"
-                        android:hint="E-mail"
-                        android:maxLength="50"
+                        android:drawableStart="@drawable/ic_email"
+                        android:hint="@string/view_login_email"
                         android:inputType="textEmailAddress"
+                        android:maxLength="50"
                         android:textSize="18sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilPassword1"
-                    android:layout_width="230dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,9 +105,9 @@
                         android:id="@+id/etPassword1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_password"
                         android:drawablePadding="4dp"
-                        android:hint="Password"
+                        android:drawableStart="@drawable/ic_password"
+                        android:hint="@string/view_login_password"
                         android:inputType="textPassword"
                         android:maxLength="20"
                         android:textSize="18sp" />
@@ -109,12 +116,10 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilPassword2"
-                    android:layout_width="230dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -127,11 +132,11 @@
                         android:id="@+id/etPassword2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_password"
                         android:drawablePadding="4dp"
-                        android:hint="Confirm password"
-                        android:maxLength="20"
+                        android:drawableStart="@drawable/ic_password"
+                        android:hint="@string/view_register_password"
                         android:inputType="textPassword"
+                        android:maxLength="20"
                         android:textSize="18sp" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -146,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/white_background"
-            android:text="Register"
+            android:text="@string/view_register_button_register"
             app:layout_constraintEnd_toEndOf="@+id/cardViewLogin"
             app:layout_constraintStart_toStartOf="@+id/cardViewLogin"
             app:layout_constraintTop_toBottomOf="@+id/cardViewLogin" />
@@ -158,7 +163,7 @@
             android:layout_marginBottom="48dp"
             android:layout_marginTop="16dp"
             android:background="@null"
-            android:text="Already have an account ? Click here to login"
+            android:text="@string/view_register_button_back_to_login"
             android:textAllCaps="false"
             android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"

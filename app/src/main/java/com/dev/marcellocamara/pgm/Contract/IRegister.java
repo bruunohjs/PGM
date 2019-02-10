@@ -9,19 +9,21 @@ public interface IRegister {
 
     interface Presenter{
 
-        void OnRegister(String name, String email, String password);
+        void OnRegister(String name, String email, String password1, String password2);
 
         void OnDestroy();
 
     }
 
-    interface View{
+    interface View {
 
         void OnInvalidName(String message);
 
         void OnInvalidEmail(String message);
 
-        void OnInvalidPassword(String message);
+        void OnInvalidPassword1(String message);
+
+        void OnInvalidPassword2(String message);
 
         void ShowProgress();
 
@@ -36,14 +38,6 @@ public interface IRegister {
     interface Model{
 
         void DoRegister(String name, String email, String password);
-
-    }
-
-    interface TaskListener{
-
-        void OnSuccess();
-
-        void OnError(String message);
 
     }
 
