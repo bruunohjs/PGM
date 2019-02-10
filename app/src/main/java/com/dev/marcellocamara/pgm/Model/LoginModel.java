@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.support.annotation.NonNull;
 
-import com.dev.marcellocamara.pgm.Interfaces.ILogin;
+import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

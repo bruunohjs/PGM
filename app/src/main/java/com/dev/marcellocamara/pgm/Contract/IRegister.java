@@ -1,21 +1,23 @@
-package com.dev.marcellocamara.pgm.Interfaces;
+package com.dev.marcellocamara.pgm.Contract;
 
 /***
     marcellocamara@id.uff.br
             2018
 ***/
 
-public interface ILogin {
+public interface IRegister {
 
     interface Presenter{
 
-        void OnLogin(String email, String password);
+        void OnRegister(String name, String email, String password);
 
         void OnDestroy();
 
     }
 
     interface View{
+
+        void OnInvalidName(String message);
 
         void OnInvalidEmail(String message);
 
@@ -25,15 +27,15 @@ public interface ILogin {
 
         void HideProgress();
 
-        void OnLoginSuccessful(String message);
+        void OnRegistrationSuccessful(String message);
 
-        void OnLoginFailure(String message);
+        void OnRegistrationFailure(String message);
 
     }
 
     interface Model{
 
-        void DoLogin(String email, String password);
+        void DoRegister(String name, String email, String password);
 
     }
 

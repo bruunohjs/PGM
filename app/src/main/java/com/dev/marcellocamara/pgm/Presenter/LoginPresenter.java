@@ -3,7 +3,7 @@ package com.dev.marcellocamara.pgm.Presenter;
 import android.content.Context;
 import android.util.Patterns;
 
-import com.dev.marcellocamara.pgm.Interfaces.ILogin;
+import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Model.LoginModel;
 import com.dev.marcellocamara.pgm.R;
 

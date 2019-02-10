@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.View;
 
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.dev.marcellocamara.pgm.Interfaces.ILogin;
+import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Presenter.LoginPresenter;
 import com.dev.marcellocamara.pgm.R;
+
+import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
@@ -24,18 +27,23 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
     private TextInputEditText editTextEmail, editTextPassword;
     private Button btnLogin, btnRegister;
-    private ProgressDialog progressDialog;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ViewBind();
+
         loginPresenter = new LoginPresenter(this, this);
 
-        progressDialog = new ProgressDialog(this);
-
-        ViewBind();
+        alertDialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setTheme(R.style.CustomAlertDialog)
+                .setMessage(R.string.view_login_customAlertDialog)
+                .setCancelable(false)
+                .build();
     }
 
     private void ViewBind() {
@@ -48,13 +56,9 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
-
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
 
-        progressDialog.setTitle("Login");
-        progressDialog.setMessage("Carregando...");
-        progressDialog.setCancelable(false);
     }
 
     @Override
@@ -68,7 +72,8 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                 break;
             }
             case R.id.btnRegister : {
-                //TODO: Open new Activity - RegisterActivity
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
                 break;
             }
         }
@@ -89,12 +94,12 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     public void ShowProgress() {
-        progressDialog.show();
+        alertDialog.show();
     }
 
     @Override
     public void HideProgress() {
-        progressDialog.dismiss();
+        alertDialog.dismiss();
     }
 
     @Override
