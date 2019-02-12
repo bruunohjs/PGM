@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Contract;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public interface ILogin {
@@ -12,6 +12,8 @@ public interface ILogin {
         void OnLogin(String email, String password);
 
         void OnDestroy();
+
+        void OnAlreadyLogged();
 
     }
 
@@ -25,7 +27,7 @@ public interface ILogin {
 
         void HideProgress();
 
-        void OnLoginSuccessful(String message);
+        void OnLoginSuccessful();
 
         void OnLoginFailure(String message);
 
@@ -34,6 +36,8 @@ public interface ILogin {
     interface Model{
 
         void DoLogin(String email, String password);
+
+        boolean CheckLoggedIn();
 
     }
 

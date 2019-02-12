@@ -17,12 +17,12 @@ import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public class RegisterActivity extends AppCompatActivity implements IRegister.View, View.OnClickListener{
 
-    IRegister.Presenter registerPresenter;
+    private IRegister.Presenter registerPresenter;
     private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPassword1, inputLayoutPassword2;
     private TextInputEditText editTextName, editTextEmail, editTextPassword1, editTextPassword2;
     private Button btnRegister, btnBackToLogin;

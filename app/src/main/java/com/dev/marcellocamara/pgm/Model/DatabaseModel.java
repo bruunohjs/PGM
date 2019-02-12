@@ -22,6 +22,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
     public DatabaseModel(ITaskListener taskListener) {
@@ -36,10 +37,18 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model {
         return firebaseAuth;
     }
 
+    //Singleton FirebaseAuth
+    private FirebaseDatabase getFirebaseDatabaseInstance(){
+        if (firebaseDatabase == null){
+            firebaseDatabase = FirebaseDatabase.getInstance();
+        }
+        return firebaseDatabase;
+    }
+
     //Singleton DatabaseReference
     private DatabaseReference getDatabaseReference(){
         if (databaseReference == null){
-            databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference = getFirebaseDatabaseInstance().getReference("Users");
         }
         return databaseReference;
     }
@@ -62,11 +71,23 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model {
 
     @Override
     public void DoRegister(String name, String email, String password) {
+        final UserModel user = new UserModel(name, email);
         getFirebaseAuthInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    taskListener.OnSuccess();
+                    getDatabaseReference().child(getFirebaseAuthInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                taskListener.OnSuccess();
+                            }else{
+                                if (task.getException() != null){
+                                    taskListener.OnError(task.getException().getMessage());
+                                }
+                            }
+                        }
+                    });
                 }else {
                     if (task.getException() != null){
                         taskListener.OnError(task.getException().getMessage());
@@ -74,6 +95,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean CheckLoggedIn() {
+        return getFirebaseAuthInstance().getCurrentUser() != null;
     }
 
 }

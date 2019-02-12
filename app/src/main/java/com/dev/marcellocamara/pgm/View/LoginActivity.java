@@ -18,7 +18,7 @@ import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public class LoginActivity extends AppCompatActivity implements ILogin.View, View.OnClickListener {
@@ -106,9 +106,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
     }
 
     @Override
-    public void OnLoginSuccessful(String message) {
-        //TODO: Open new Activity - MainActivity
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void OnLoginSuccessful() {
+        Intent intent = new Intent (this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -117,8 +118,14 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        loginPresenter.OnAlreadyLogged();
+    }
+
+    @Override
     protected void onDestroy() {
-        loginPresenter.OnDestroy();
         super.onDestroy();
+        loginPresenter.OnDestroy();
     }
 }

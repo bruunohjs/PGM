@@ -10,7 +10,7 @@ import com.dev.marcellocamara.pgm.R;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public class LoginPresenter implements ILogin.Presenter, ITaskListener {
@@ -52,6 +52,13 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnAlreadyLogged() {
+        if (model.CheckLoggedIn()){
+            view.OnLoginSuccessful();
+        }
+    }
+
+    @Override
     public void OnDestroy() {
         this.view = null;
     }
@@ -60,7 +67,7 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
     public void OnSuccess() {
         if (view != null){
             view.HideProgress();
-            view.OnLoginSuccessful(context.getString(R.string.presenter_login_successful));
+            view.OnLoginSuccessful();
         }
     }
 
