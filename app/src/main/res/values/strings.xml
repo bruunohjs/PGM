@@ -13,6 +13,7 @@
     <string name="view_register_button_register">Register</string>
     <string name="view_register_button_back_to_login">Already have an account ? Click here to login</string>
     <string name="view_register_customAlertDialog">Registering…</string>
+    <string name="view_actionbar_menu_logout">Logout</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>

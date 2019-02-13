@@ -75,8 +75,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                 break;
             }
             case R.id.btnRegister : {
-                Intent intent = new Intent(this, RegisterActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
             }
         }
@@ -107,8 +106,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     public void OnLoginSuccessful() {
-        Intent intent = new Intent (this, MainActivity.class);
-        startActivity(intent);
+        startActivity(new Intent (this, HomeActivity.class));
         finish();
     }
 

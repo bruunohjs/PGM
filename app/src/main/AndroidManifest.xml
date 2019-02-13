@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".View.LoginActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,11 +19,11 @@
         </activity>
         <activity
             android:name=".View.RegisterActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:configChanges="orientation|screenSize">
         </activity>
         <activity
-            android:name=".View.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:name=".View.HomeActivity"
+            android:configChanges="orientation|screenSize">
         </activity>
     </application>
 

@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.support.annotation.NonNull;
 
+import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
@@ -18,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
@@ -102,4 +103,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model {
         return getFirebaseAuthInstance().getCurrentUser() != null;
     }
 
+    @Override
+    public void DoLogout() {
+        getFirebaseAuthInstance().signOut();
+    }
 }
