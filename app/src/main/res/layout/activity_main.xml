@@ -8,14 +8,19 @@
     android:background="@color/colorPrimary"
     tools:context=".View.MainActivity">
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <com.aniket.mutativefloatingactionbutton.MutativeFab
+        android:id="@+id/floatingAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        app:fabBackgroundColor="@color/colorAccent"
+        app:fabIcon="@drawable/ic_add"
+        app:fabText="Add spend"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:fabTextColor="@android:color/white"
+        android:layout_gravity="center_horizontal|bottom" />
 
 </android.support.design.widget.CoordinatorLayout>

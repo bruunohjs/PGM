@@ -1,11 +1,11 @@
 package com.dev.marcellocamara.pgm.View;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.R;
 
 /***
@@ -15,25 +15,25 @@ import com.dev.marcellocamara.pgm.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FloatingActionButton fab;
+    private MutativeFab mutativeFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(this);
+        mutativeFab = findViewById(R.id.floatingAB);
+        mutativeFab.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.fab : {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            case R.id.floatingAB : {
+                Snackbar.make(v,"Funcionou", Snackbar.LENGTH_LONG).show();
                 break;
             }
         }
     }
+
 }
