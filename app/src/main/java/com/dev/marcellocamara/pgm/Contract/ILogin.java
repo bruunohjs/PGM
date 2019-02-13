@@ -17,15 +17,11 @@ public interface ILogin {
 
     }
 
-    interface View{
+    interface View extends IProgressLoading {
 
         void OnInvalidEmail(String message);
 
         void OnInvalidPassword(String message);
-
-        void ShowProgress();
-
-        void HideProgress();
 
         void OnLoginSuccessful();
 

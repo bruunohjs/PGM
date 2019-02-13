@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Contract;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public interface IRegister {
@@ -15,7 +15,7 @@ public interface IRegister {
 
     }
 
-    interface View {
+    interface View extends IProgressLoading {
 
         void OnInvalidName(String message);
 
@@ -24,10 +24,6 @@ public interface IRegister {
         void OnInvalidPassword1(String message);
 
         void OnInvalidPassword2(String message);
-
-        void ShowProgress();
-
-        void HideProgress();
 
         void OnRegistrationSuccessful(String message);
 
