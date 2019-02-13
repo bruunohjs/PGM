@@ -10,7 +10,7 @@ import com.dev.marcellocamara.pgm.R;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public class RegisterPresenter implements IRegister.Presenter, ITaskListener {

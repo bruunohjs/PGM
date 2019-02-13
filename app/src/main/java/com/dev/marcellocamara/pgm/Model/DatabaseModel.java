@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /***
     marcellocamara@id.uff.br
-            2018
+            2019
 ***/
 
 public class DatabaseModel implements ILogin.Model, IRegister.Model {
