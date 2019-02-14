@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -50,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.floatingAB : {
-                Snackbar.make(v, "TODO: Nova despesa.", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(this, ExpenseActivity.class));
                 break;
             }
         }
