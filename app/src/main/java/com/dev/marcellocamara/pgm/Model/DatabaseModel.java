@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.support.annotation.NonNull;
 
+import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
@@ -19,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model, IExpense.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
@@ -106,5 +107,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     @Override
     public void DoLogout() {
         getFirebaseAuthInstance().signOut();
+    }
+
+    @Override
+    public void DoAddExpense() {
+        //TODO: Add new expense on Firebase
+        taskListener.OnSuccess();
     }
 }
