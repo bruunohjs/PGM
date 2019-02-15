@@ -36,7 +36,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private Toolbar toolbar;
     private Spinner spinner;
     private Button btnCancel, btnSave;
-    private int parcels, day, month, year;
+    private int installments, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog;
     private Calendar calendar;
 
@@ -50,10 +50,10 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         expensePresenter = new ExpensePresenter(this, this);
 
         calendar = Calendar.getInstance();
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH);
-        year = calendar.get(Calendar.YEAR);
-        textViewDate.setText(day+"/"+(month+1)+"/"+year);
+        calendarDay = calendar.get(Calendar.DAY_OF_MONTH);
+        calendarMonth = calendar.get(Calendar.MONTH);
+        calendarYear = calendar.get(Calendar.YEAR);
+        expensePresenter.OnCalculateDate(calendarDay,calendarMonth,calendarYear);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
@@ -75,7 +75,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        spinner = findViewById(R.id.spinnerParcels);
+        spinner = findViewById(R.id.spinnerInstallments);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.spinner_parcels,
@@ -105,7 +105,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                         title.getText().toString().trim(),
                         description.getText().toString().trim(),
                         price.getText().toString().trim(),
-                        parcels
+                        installments
                 );
                 break;
             }
@@ -114,9 +114,9 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                         this, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
-                            textViewDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                        }
-                },year,month,day);
+                            expensePresenter.OnCalculateDate(dayOfMonth,month,year);
+                    }
+                },calendarYear,calendarMonth,calendarDay);
                 datePickerDialog.show();
                 break;
             }
@@ -132,7 +132,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        parcels = Integer.parseInt(parent.getItemAtPosition(position).toString());
+        installments = Integer.parseInt(parent.getItemAtPosition(position).toString());
     }
 
     @Override
@@ -141,6 +141,11 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     @Override
     public void OnInvalidField(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnCalculatedDate(String day, String month, String year) {
+        textViewDate.setText(day+"/"+month+"/"+year);
     }
 
     @Override

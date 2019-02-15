@@ -120,23 +120,40 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoAddExpense(String date, String title, String description, double price, int parcels) {
-        ExpenseModel expense = new ExpenseModel(date, title, description, price, parcels);
-        getDatabaseReference()
-                .child("Expenses")
-                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                .setValue(expense)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    taskListener.OnSuccess();
-                }else{
-                    if (task.getException() != null){
-                        taskListener.OnError(task.getException().getMessage());
-                    }
-                }
+    public void DoAddExpense(String date, String title, String description, double price, int installments) {
+
+        ExpenseModel expense = new ExpenseModel(date, title, description, price, String.valueOf(installments));
+        expense.setInstallments(ValidateNumber(expense.getInstallments()));
+
+        String DateSplited[] = date.split("/");
+        String month = DateSplited[1];
+        String year = DateSplited[2];
+
+        for (int i = 1 ; i <= installments ; i++){
+            if (Integer.parseInt(month)>12){
+                month = ValidateNumber(String.valueOf(1));
+                year = String.valueOf((Integer.parseInt(year))+1);
             }
-        });
+
+            expense.setCurrentInstallment(ValidateNumber(String.valueOf(i)) + "/" + expense.getInstallments());
+
+            getDatabaseReference()
+                    .child("Expenses")
+                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                    .child((month)+year)
+                    .push()
+                    .setValue(expense);
+
+            month = ValidateNumber(String.valueOf(((Integer.parseInt(month))+1)));
+        }
+
+        taskListener.OnSuccess();
+    }
+
+    private String ValidateNumber(String number){
+        if (number.length() < 2){
+            number = "0" + number;
+        }
+        return number;
     }
 }

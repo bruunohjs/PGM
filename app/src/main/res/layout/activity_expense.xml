@@ -322,10 +322,10 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageViewParcels"
+                android:id="@+id/imageViewInstallments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/view_expense_icon_parcels"
+                android:contentDescription="@string/view_expense_icon_installments"
                 android:src="@drawable/ic_credit_card"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayoutParcels"
                 app:layout_constraintStart_toStartOf="@+id/guidelineCenterCardView"
@@ -342,7 +342,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/imageViewParcels"
+                app:layout_constraintStart_toEndOf="@+id/imageViewInstallments"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutDescription">
 
                 <TextView
@@ -351,7 +351,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/view_expense_parcels"
+                    android:text="@string/view_expense_installments"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -359,7 +359,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    android:id="@+id/spinnerParcels"
+                    android:id="@+id/spinnerInstallments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"

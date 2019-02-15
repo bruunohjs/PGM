@@ -25,7 +25,7 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnAddExpense(String date, String title, String description, String price, int parcels) {
+    public void OnAddExpense(String date, String title, String description, String price, int installments) {
 
         if (title.isEmpty() || description.isEmpty() || price.isEmpty()){
 
@@ -43,9 +43,25 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
 
         }else{
             view.ShowProgress();
-            model.DoAddExpense(date, title, description, Double.parseDouble(price), parcels);
+            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments);
         }
 
+    }
+
+    @Override
+    public void OnCalculateDate(int day, int month, int year) {
+
+        String calculateDay = String.valueOf(day);
+        String calculateMonth = String.valueOf(month+1);
+
+        if (calculateDay.length() < 2){
+            calculateDay = "0" + calculateDay;
+        }
+        if (calculateMonth.length() < 2){
+            calculateMonth = "0" + calculateMonth;
+        }
+
+        view.OnCalculatedDate(calculateDay, calculateMonth, String.valueOf(year));
     }
 
     @Override

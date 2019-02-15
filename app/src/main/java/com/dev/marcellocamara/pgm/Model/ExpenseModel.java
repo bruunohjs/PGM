@@ -7,25 +7,24 @@ package com.dev.marcellocamara.pgm.Model;
 
 public class ExpenseModel {
 
-    private String date;
-    private String title, description;
+    private String paymentDate;
+    private String title, description, currentInstallment, installments;
     private double price;
-    private int parcels;
 
-    public ExpenseModel(String date, String title, String description, double price, int parcels) {
-        this.date = date;
+    public ExpenseModel(String paymentDate, String title, String description, double price, String installments) {
+        this.paymentDate = paymentDate;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.parcels = parcels;
+        this.installments = installments;
     }
 
-    public String getDate() {
-        return date;
+    public String getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setPaymentDate(String paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     public String getTitle() {
@@ -44,19 +43,27 @@ public class ExpenseModel {
         this.description = description;
     }
 
+    public String getCurrentInstallment() {
+        return currentInstallment;
+    }
+
+    public void setCurrentInstallment(String currentInstallment) {
+        this.currentInstallment = currentInstallment;
+    }
+
+    public String getInstallments() {
+        return installments;
+    }
+
+    public void setInstallments(String installments) {
+        this.installments = installments;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getParcels() {
-        return parcels;
-    }
-
-    public void setParcels(int parcels) {
-        this.parcels = parcels;
     }
 }
