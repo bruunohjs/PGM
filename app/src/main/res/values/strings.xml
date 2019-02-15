@@ -14,17 +14,19 @@
     <string name="view_register_button_back_to_login">Already have an account ? Click here to login</string>
     <string name="view_register_customAlertDialog">Registering…</string>
     <string name="view_actionbar_menu_logout">Logout</string>
+    <string name="view_expense_date">Date</string>
     <string name="view_expense_title">Title</string>
     <string name="view_expense_description">Description</string>
     <string name="view_expense_price">Price</string>
     <string name="view_expense_parcels">Parcels</string>
+    <string name="view_expense_icon_date">Date icon</string>
     <string name="view_expense_icon_title">Title</string>
     <string name="view_expense_icon_description">Description</string>
     <string name="view_expense_icon_price">Price</string>
     <string name="view_expense_icon_parcels">Parcels</string>
-    <string name="view_expense_title_hint">Store name</string>
-    <string name="view_expense_description_hint">Item purchased</string>
-    <string name="view_expense_price_hint">1.00</string>
+    <string name="view_expense_title_hint">e.g.: Store name</string>
+    <string name="view_expense_description_hint">e.g.: Item purchased</string>
+    <string name="view_expense_price_hint">e.g.: 10.00</string>
     <string name="view_expense_button_cancel">Cancel</string>
     <string name="view_expense_button_save">Save</string>
     <string name="view_expense_customAlertDialog">Adding new expense…</string>
@@ -55,7 +57,8 @@
     <string name="presenter_register_successful">Register Successful.</string>
     <string name="presenter_expense_invalid_title">Fill with title.</string>
     <string name="presenter_expense_invalid_description">Fill with description.</string>
-    <string name="presenter_expense_invalid_price">Fill with valid price.</string>
+    <string name="presenter_expense_invalid_price">Fill with price.</string>
+
 
 
 </resources>

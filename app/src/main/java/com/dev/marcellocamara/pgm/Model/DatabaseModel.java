@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -50,14 +52,16 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     //Singleton DatabaseReference
     private DatabaseReference getDatabaseReference(){
         if (databaseReference == null){
-            databaseReference = getFirebaseDatabaseInstance().getReference("Users");
+            databaseReference = getFirebaseDatabaseInstance().getReference();
         }
         return databaseReference;
     }
 
     @Override
     public void DoLogin(String email, String password) {
-        getFirebaseAuthInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        getFirebaseAuthInstance()
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
@@ -74,11 +78,17 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     @Override
     public void DoRegister(String name, String email, String password) {
         final UserModel user = new UserModel(name, email);
-        getFirebaseAuthInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        getFirebaseAuthInstance()
+                .createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    getDatabaseReference().child(getFirebaseAuthInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    getDatabaseReference()
+                            .child("Users")
+                            .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                            .setValue(user)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
@@ -110,8 +120,23 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoAddExpense() {
-        //TODO: Add new expense on Firebase
-        taskListener.OnSuccess();
+    public void DoAddExpense(String date, String title, String description, double price, int parcels) {
+        ExpenseModel expense = new ExpenseModel(date, title, description, price, parcels);
+        getDatabaseReference()
+                .child("Expenses")
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                .setValue(expense)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    taskListener.OnSuccess();
+                }else{
+                    if (task.getException() != null){
+                        taskListener.OnError(task.getException().getMessage());
+                    }
+                }
+            }
+        });
     }
 }

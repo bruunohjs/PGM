@@ -7,6 +7,11 @@ import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.R;
 
+/***
+    marcellocamara@id.uff.br
+            2019
+***/
+
 public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
 
     private IExpense.View view;
@@ -20,7 +25,7 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnAddExpense(String title, String description, String price, int parcel) {
+    public void OnAddExpense(String date, String title, String description, String price, int parcels) {
 
         if (title.isEmpty() || description.isEmpty() || price.isEmpty()){
 
@@ -32,9 +37,14 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
                 view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_price));
             }
 
+        }else if (Double.parseDouble(price) == 0){
+
+            view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_price));
+
         }else{
-            model.DoAddExpense();
-        }//TODO : others if's and model
+            view.ShowProgress();
+            model.DoAddExpense(date, title, description, Double.parseDouble(price), parcels);
+        }
 
     }
 
@@ -46,6 +56,7 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
     @Override
     public void OnSuccess() {
         if (view != null){
+            view.HideProgress();
             view.OnAddExpenseSuccessful();
         }
     }
@@ -53,7 +64,8 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
     @Override
     public void OnError(String message) {
         if (view != null){
-            view.OnAddExpenseFailure("Failure.");
+            view.HideProgress();
+            view.OnAddExpenseFailure(message);
         }
     }
 }

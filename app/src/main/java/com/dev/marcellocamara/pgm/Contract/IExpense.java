@@ -9,7 +9,7 @@ public interface IExpense {
 
     interface Presenter {
 
-        void OnAddExpense(String title, String description, String price, int parcel);
+        void OnAddExpense(String date, String title, String description, String price, int parcel);
 
         void OnDestroy();
 
@@ -27,7 +27,7 @@ public interface IExpense {
 
     interface Model {
 
-        void DoAddExpense();
+        void DoAddExpense(String date, String title, String description, double price, int parcels);
 
     }
 

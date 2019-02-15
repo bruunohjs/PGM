@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.View;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,13 +9,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Presenter.ExpensePresenter;
 import com.dev.marcellocamara.pgm.R;
+
+import java.util.Calendar;
 
 import dmax.dialog.SpotsDialog;
 
@@ -27,11 +32,13 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     private IExpense.Presenter expensePresenter;
     private EditText title, description, price;
+    private TextView textViewDate;
     private Toolbar toolbar;
     private Spinner spinner;
     private Button btnCancel, btnSave;
-    private int parcels;
+    private int parcels, day, month, year;
     private AlertDialog alertDialog;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,12 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         ViewBind();
 
         expensePresenter = new ExpensePresenter(this, this);
+
+        calendar = Calendar.getInstance();
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+        textViewDate.setText(day+"/"+(month+1)+"/"+year);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
@@ -52,6 +65,8 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     private void ViewBind() {
 
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewDate.setOnClickListener(this);
         title = findViewById(R.id.etTitle);
         description = findViewById(R.id.etDescription);
         price = findViewById(R.id.etPrice);
@@ -86,11 +101,23 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
             }
             case R.id.buttonSave : {
                 expensePresenter.OnAddExpense(
+                        textViewDate.getText().toString().trim(),
                         title.getText().toString().trim(),
                         description.getText().toString().trim(),
                         price.getText().toString().trim(),
                         parcels
                 );
+                break;
+            }
+            case R.id.textViewDate : {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                            textViewDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        }
+                },year,month,day);
+                datePickerDialog.show();
                 break;
             }
         }
@@ -134,6 +161,6 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void HideProgress() {
-        alertDialog.show();
+        alertDialog.dismiss();
     }
 }

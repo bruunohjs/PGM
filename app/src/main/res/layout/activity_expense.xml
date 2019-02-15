@@ -94,6 +94,58 @@
                 app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
             <ImageView
+                android:id="@+id/imageViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/view_expense_icon_date"
+                android:src="@drawable/ic_today"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayoutDate"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                app:layout_constraintTop_toTopOf="@+id/linearLayoutDate" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:background="#f1f1f1"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/imageViewTitle"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/view_expense_date"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:singleLine="true"
+                    android:textSize="16sp"/>
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="@color/colorAccent" />
+
+            </LinearLayout>
+
+            <ImageView
                 android:id="@+id/imageViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,15 +159,15 @@
                 android:id="@+id/linearLayoutTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
                 android:background="#f1f1f1"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/imageViewTitle"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -138,9 +190,10 @@
                     android:layout_marginEnd="12dp"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
-                    android:hint="@string/view_expense_title_hint"
-                    android:inputType="textPersonName"
                     android:background="@null"
+                    android:hint="@string/view_expense_title_hint"
+                    android:maxLength="30"
+                    android:inputType="textPersonName"
                     android:singleLine="true"
                     android:textSize="16sp" />
 
@@ -197,6 +250,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:inputType="text"
+                    android:maxLength="30"
                     android:hint="@string/view_expense_description_hint"
                     android:background="@null"
                     android:textSize="16sp" />
@@ -256,6 +310,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@null"
                     android:singleLine="true"
+                    android:maxLength="8"
                     android:hint="@string/view_expense_price_hint"
                     android:textSize="16sp" />
 
