@@ -25,7 +25,8 @@
             android:name=".View.HomeActivity"
             android:configChanges="orientation|screenSize">
         </activity>
-        <activity android:name=".View.ExpenseActivity"
+        <activity
+            android:name=".View.ExpenseActivity"
             android:configChanges="orientation|screenSize">
         </activity>
     </application>

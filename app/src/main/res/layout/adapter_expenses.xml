@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/cardview_radius"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineLeftCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineCenterCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineRightCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+        <TextView
+            android:id="@+id/tvTitleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/view_adapter_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/layoutAlligment"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleTitle" />
+
+        <TextView
+            android:id="@+id/tvDescriptionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/view_adapter_description"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescriptionTitle" />
+
+        <TextView
+            android:id="@+id/tvCoinType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/view_adapter_coinType"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+            app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+            app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+            app:layout_constraintTop_toTopOf="@+id/tvTitleTitle" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutAlligment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPrice">
+
+            <TextView
+                android:id="@+id/tvAlligmentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_adapter_alligment"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewAlligment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAlligmentTitle" />
+
+            <ImageView
+                android:id="@+id/ivCreditCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/view_expense_icon_installments"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewAlligment"
+                app:layout_constraintEnd_toStartOf="@+id/textViewAlligment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewAlligment"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
