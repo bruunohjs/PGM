@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.View;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -38,6 +39,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private Button btnCancel, btnSave;
     private int installments, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog;
+    private AlertDialog.Builder builder ;
     private Calendar calendar;
 
     @Override
@@ -61,6 +63,10 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 .setMessage(R.string.view_expense_customAlertDialog)
                 .setCancelable(false)
                 .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_expense_title_expense);
+        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -73,6 +79,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.view_expense_title_expense);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinner = findViewById(R.id.spinnerInstallments);
@@ -150,13 +157,30 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnAddExpenseSuccessful() {
-        //TODO : AlertDialog with button to close activity
-        Toast.makeText(this, "Sucesso.", Toast.LENGTH_SHORT).show();
+        AlertDialog dialog;
+        builder.setMessage(R.string.view_expense_alertDialog_success);
+        builder.setPositiveButton(R.string.view_expenses_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
     }
 
     @Override
     public void OnAddExpenseFailure(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        AlertDialog dialog;
+        builder.setMessage(R.string.view_expense_alertDialog_error);
+        builder.setPositiveButton(R.string.view_expenses_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
     }
 
     @Override

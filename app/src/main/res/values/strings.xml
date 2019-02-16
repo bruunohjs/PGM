@@ -31,12 +31,16 @@
     <string name="view_expense_button_cancel">Cancel</string>
     <string name="view_expense_button_save">Save</string>
     <string name="view_expense_customAlertDialog">Adding new expense…</string>
+    <string name="view_expense_alertDialog_error">Oops! Something went wrong. Check your Internet connection and try again.</string>
     <string name="view_expense_alertDialog_success">Your expense is successful created.</string>
-    <string name="view_expense_alertDialog_error">Oops! Something went wrong.</string>
     <string name="view_adapter_title">Title:</string>
     <string name="view_adapter_description">Description:</string>
     <string name="view_adapter_coinType">R$</string>
-    <string name="view_adapter_alligment">Alligment:</string>
+    <string name="view_adapter_installment">Installment:</string>
+    <string name="view_home_title_month">Show all expenses for selected month</string>
+    <string name="view_home_title_total">TOTAL</string>
+    <string name="view_home_coinType">R$</string>
+    <string name="view_home_title_welcome">Welcome,</string>
 
     <string-array name="spinner_parcels">
         <item>1</item>
@@ -65,9 +69,7 @@
     <string name="presenter_expense_invalid_title">Fill with title.</string>
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
-    <string name="view_home_title_month">Show all expenses for selected month</string>
-    <string name="view_home_title_total">TOTAL</string>
-    <string name="view_home_coinType">R$</string>
-    <string name="view_home_title_welcome">Welcome,</string>
+    <string name="view_expenses_alertDialog_positive_button">OK</string>
+
 
 </resources>
