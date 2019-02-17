@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.R;
+
+import java.util.List;
 
 /***
     marcellocamara@id.uff.br
@@ -17,32 +21,42 @@ import com.dev.marcellocamara.pgm.R;
 
 public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyViewHolder> {
 
+    private List<ExpenseModel> list;
+
+    public ExpensesAdapter(List<ExpenseModel> list) {
+        this.list = list;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_expenses, parent, false);
-        return new MyViewHolder(item);
+        View viewItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_expenses, parent, false);
+        return new MyViewHolder(viewItem);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.title.setText("Magazine Luiza");
-        holder.description.setText("TV LG 4K 43UK6210");
-        holder.price.setText("500");
-        holder.layoutAlligment.setVisibility(View.VISIBLE);
-        holder.alligment.setText("03/04");
+        ExpenseModel expenseModel = list.get(position);
+
+        double value = ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
+
+        holder.title.setText(expenseModel.getTitle());
+        holder.description.setText(expenseModel.getDescription());
+        holder.price.setText(NumberHelper.GetDecimal(value));
+        if ( (Integer.parseInt(expenseModel.getInstallments())) > 1){
+            holder.layoutInstallment.setVisibility(View.VISIBLE);
+            holder.installment.setText(expenseModel.getCurrentInstallment());
+        }
     }
 
     @Override
-    public int getItemCount() {
-        return 1;
-    }
+    public int getItemCount() { return list.size(); }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, description, price, alligment;
-        private ConstraintLayout layoutAlligment;
+        private TextView title, description, price, installment;
+        private ConstraintLayout layoutInstallment;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -50,9 +64,8 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
             title = itemView.findViewById(R.id.textViewTitle);
             description = itemView.findViewById(R.id.textViewDescription);
             price = itemView.findViewById(R.id.textViewPrice);
-            alligment = itemView.findViewById(R.id.textViewAlligment);
-            layoutAlligment = itemView.findViewById(R.id.layoutAlligment);
-
+            installment = itemView.findViewById(R.id.textViewInstallment);
+            layoutInstallment = itemView.findViewById(R.id.layoutInstallment);
         }
     }
 

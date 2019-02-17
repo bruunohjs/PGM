@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -150,6 +151,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void OnCalculatedDate(String day, String month, String year) {
         textViewDate.setText(day+"/"+month+"/"+year);
@@ -159,7 +161,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     public void OnAddExpenseSuccessful() {
         AlertDialog dialog;
         builder.setMessage(R.string.view_expense_alertDialog_success);
-        builder.setPositiveButton(R.string.view_expenses_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -173,7 +175,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     public void OnAddExpenseFailure(String message) {
         AlertDialog dialog;
         builder.setMessage(R.string.view_expense_alertDialog_error);
-        builder.setPositiveButton(R.string.view_expenses_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

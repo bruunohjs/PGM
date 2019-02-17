@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +11,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true">
 
@@ -48,6 +49,7 @@
             android:textAlignment="textStart"
             android:textColor="@android:color/white"
             android:textSize="18sp"
+            android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -64,8 +66,7 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="48dp">
+                android:layout_height="wrap_content">
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guidelineLeftCardView"
@@ -85,11 +86,13 @@
                     android:id="@+id/textViewTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="48dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="48dp"
                     android:text="@string/view_home_title_total"
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,7 +111,7 @@
                     android:id="@+id/textViewPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:textSize="30sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewTotal"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
@@ -121,7 +124,9 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="92dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
             app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -130,13 +135,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:cardCornerRadius="@dimen/cardview_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp">
 
                     <TextView
                         android:id="@+id/tvTitleTitle"
@@ -160,17 +167,6 @@
                         app:mcv_showOtherDates="all"
                         app:mcv_tileSize="50dp" />
 
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/viewPagerLine"
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginStart="32dp"
-                        android:background="@android:color/darker_gray"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/materialCalendar" />
-
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerExpenses"
                         android:layout_width="0dp"
@@ -178,7 +174,7 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/viewPagerLine" />
+                        app:layout_constraintTop_toBottomOf="@+id/materialCalendar" />
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -188,4 +184,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

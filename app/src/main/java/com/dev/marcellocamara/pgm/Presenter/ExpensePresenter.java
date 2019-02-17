@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
+import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.R;
 
@@ -41,6 +42,8 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
 
             view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_price));
 
+        }else if (Double.parseDouble(price) > 99999){
+            view.OnInvalidField(context.getString(R.string.presenter_expense_big_price));
         }else{
             view.ShowProgress();
             model.DoAddExpense(date, title, description, Double.parseDouble(price), installments);
@@ -50,18 +53,7 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
 
     @Override
     public void OnCalculateDate(int day, int month, int year) {
-
-        String calculateDay = String.valueOf(day);
-        String calculateMonth = String.valueOf(month+1);
-
-        if (calculateDay.length() < 2){
-            calculateDay = "0" + calculateDay;
-        }
-        if (calculateMonth.length() < 2){
-            calculateMonth = "0" + calculateMonth;
-        }
-
-        view.OnCalculatedDate(calculateDay, calculateMonth, String.valueOf(year));
+        view.OnCalculatedDate(NumberHelper.GetMonth(day), NumberHelper.GetMonth(month+1), String.valueOf(year));
     }
 
     @Override

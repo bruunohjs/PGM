@@ -11,13 +11,7 @@ public class ExpenseModel {
     private String title, description, currentInstallment, installments;
     private double price;
 
-    public ExpenseModel(String paymentDate, String title, String description, double price, String installments) {
-        this.paymentDate = paymentDate;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.installments = installments;
-    }
+    public ExpenseModel(){}
 
     public String getPaymentDate() {
         return paymentDate;

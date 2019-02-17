@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +10,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
+import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
 import com.dev.marcellocamara.pgm.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+
+import java.util.Calendar;
+import java.util.List;
+
+import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
@@ -31,6 +40,11 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     private MutativeFab mutativeFab;
     private MaterialCalendarView calendarView;
     private Toolbar toolbar;
+    private TextView name, total;
+    private List<ExpenseModel> list;
+    private Calendar calendar;
+    private String calendarMonth, calendarYear;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +55,12 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
         homePresenter = new HomePresenter(this);
 
+        alertDialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setTheme(R.style.CustomAlertDialog)
+                .setMessage(R.string.view_home_alertDialog_loading)
+                .setCancelable(false)
+                .build();
     }
 
     private void ViewBind() {
@@ -49,6 +69,9 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
 
+        name = findViewById(R.id.textViewName);
+        total = findViewById(R.id.textViewPrice);
+
         mutativeFab = findViewById(R.id.floatingAB);
         mutativeFab.setOnClickListener(this);
 
@@ -56,12 +79,13 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        ExpensesAdapter adapter = new ExpensesAdapter();
-        recyclerView.setAdapter(adapter);
 
         calendarView = findViewById(R.id.materialCalendar);
         calendarView.setOnMonthChangedListener(this);
 
+        calendar = Calendar.getInstance();
+        calendarMonth = NumberHelper.GetMonth( (calendar.get(Calendar.MONTH)) + 1 );
+        calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
     }
 
     @Override
@@ -76,7 +100,23 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
     @Override
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-        //TODO : get values to update info
+        calendarMonth = NumberHelper.GetMonth(date.getMonth());
+        calendarYear = String.valueOf(date.getYear());
+        homePresenter.OnStop();
+        homePresenter.OnRequestExpenses( calendarMonth + calendarYear );
+    }
+
+    @Override
+    public void OnRequestExpensesResult(List<ExpenseModel> list) {
+        this.list = list;
+        ExpensesAdapter adapter = new ExpensesAdapter(this.list);
+        recyclerView.setAdapter(adapter);
+        homePresenter.OnTotalCalculate(list);
+    }
+
+    @Override
+    public void OnRequestTotalCalculateResult(String value) {
+        total.setText(value);
     }
 
     @Override
@@ -103,8 +143,31 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     }
 
     @Override
+    public void ShowProgress() {
+        alertDialog.show();
+    }
+
+    @Override
+    public void HideProgress() {
+        alertDialog.dismiss();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        homePresenter.OnRequestExpenses(calendarMonth + calendarYear);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        homePresenter.OnStop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         homePresenter.OnDestroy();
     }
+
 }

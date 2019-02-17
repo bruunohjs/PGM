@@ -8,12 +8,18 @@ import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 
+import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -28,6 +34,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private ValueEventListener valueEventListener;
 
     public DatabaseModel(ITaskListener taskListener) {
         this.taskListener = taskListener;
@@ -92,7 +99,17 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                taskListener.OnSuccess();
+                                UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
+                                getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            taskListener.OnSuccess();
+                                        }else {
+                                            taskListener.OnError(task.getException().getMessage());
+                                        }
+                                    }
+                                });
                             }else{
                                 if (task.getException() != null){
                                     taskListener.OnError(task.getException().getMessage());
@@ -115,45 +132,75 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoLogout() {
-        getFirebaseAuthInstance().signOut();
+    public void DoLogout() { getFirebaseAuthInstance().signOut(); }
+
+    @Override
+    public void DoRecoverExpenses(String monthYear) {
+
+        valueEventListener = getDatabaseReference()
+                .child("Expenses")
+                .child(getFirebaseAuthInstance().getCurrentUser().getUid())
+                .child(monthYear)
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                HomePresenter.list.clear();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
+                    HomePresenter.list.add(expenseModel);
+                }
+                taskListener.OnSuccess();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                taskListener.OnError(databaseError.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void RemoveEventListener() {
+        getDatabaseReference().removeEventListener(this.valueEventListener);
     }
 
     @Override
     public void DoAddExpense(String date, String title, String description, double price, int installments) {
 
-        ExpenseModel expense = new ExpenseModel(date, title, description, price, String.valueOf(installments));
-        expense.setInstallments(ValidateNumber(expense.getInstallments()));
+        //TODO: Missing OnCompleteListener
+
+        ExpenseModel expense = new ExpenseModel();
+        expense.setTitle(title);
+        expense.setPrice(price);
+        expense.setDescription(description);
+        expense.setPaymentDate(date);
+        expense.setInstallments(NumberHelper.GetMonth(installments));
 
         String DateSplited[] = date.split("/");
         String month = DateSplited[1];
         String year = DateSplited[2];
 
         for (int i = 1 ; i <= installments ; i++){
-            if (Integer.parseInt(month)>12){
-                month = ValidateNumber(String.valueOf(1));
-                year = String.valueOf((Integer.parseInt(year))+1);
+            if ( (Integer.parseInt(month)) > 12 ){
+                month = NumberHelper.GetMonth(1);
+                year = String.valueOf( (Integer.parseInt(year)) + 1 );
             }
 
-            expense.setCurrentInstallment(ValidateNumber(String.valueOf(i)) + "/" + expense.getInstallments());
+            expense.setCurrentInstallment( (NumberHelper.GetMonth(i)) + "/" + expense.getInstallments());
 
             getDatabaseReference()
                     .child("Expenses")
                     .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                    .child((month)+year)
+                    .child(month+year)
                     .push()
                     .setValue(expense);
 
-            month = ValidateNumber(String.valueOf(((Integer.parseInt(month))+1)));
+            month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
+
         }
 
-        taskListener.OnSuccess();
+        taskListener.OnSuccess(); //TODO : Missing OnError
+
     }
 
-    private String ValidateNumber(String number){
-        if (number.length() < 2){
-            number = "0" + number;
-        }
-        return number;
-    }
 }
