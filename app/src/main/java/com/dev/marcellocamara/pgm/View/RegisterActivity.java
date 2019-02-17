@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View;
 
+import android.content.DialogInterface;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.app.AlertDialog;
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Presenter.RegisterPresenter;
@@ -26,7 +26,8 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPassword1, inputLayoutPassword2;
     private TextInputEditText editTextName, editTextEmail, editTextPassword1, editTextPassword2;
     private Button btnRegister, btnBackToLogin;
-    private AlertDialog alertDialog;
+    private AlertDialog alertDialog, alert;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
                 .setMessage(R.string.view_register_customAlertDialog)
                 .setCancelable(false)
                 .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_register_alertDialog_title);
+        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -123,12 +128,28 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
 
     @Override
     public void OnRegistrationSuccessful(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        alert = builder.create();
+        alert.show();
     }
 
     @Override
     public void OnRegistrationFailure(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alert.dismiss();
+            }
+        });
+        alert = builder.create();
+        alert.show();
     }
 
     @Override

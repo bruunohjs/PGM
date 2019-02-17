@@ -15,6 +15,7 @@
     <string name="view_register_customAlertDialog">Registering…</string>
     <string name="view_actionbar_menu_logout">Logout</string>
     <string name="view_expense_title_expense">New expense</string>
+    <string name="view_register_alertDialog_title">Register</string>
     <string name="view_expense_date">Date</string>
     <string name="view_expense_title">Title</string>
     <string name="view_expense_description">Description</string>
@@ -72,5 +73,6 @@
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
     <string name="presenter_expense_big_price">Maximum price is 99999.99\nUse a dot "." to indicate Cents unity</string>
+    <string name="view_login_alertDialog_title">Login</string>
 
 </resources>

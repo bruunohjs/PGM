@@ -15,7 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Presenter.ExpensePresenter;
@@ -39,7 +38,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private Spinner spinner;
     private Button btnCancel, btnSave;
     private int installments, calendarDay, calendarMonth, calendarYear;
-    private AlertDialog alertDialog;
+    private AlertDialog alertDialog, alert;
     private AlertDialog.Builder builder ;
     private Calendar calendar;
 
@@ -148,7 +147,15 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnInvalidField(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alert = builder.create();
+        alert.show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -159,7 +166,6 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnAddExpenseSuccessful() {
-        AlertDialog dialog;
         builder.setMessage(R.string.view_expense_alertDialog_success);
         builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
@@ -167,13 +173,13 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 finish();
             }
         });
-        dialog = builder.create();
-        dialog.show();
+        alert = builder.create();
+        alert.show();
     }
 
     @Override
     public void OnAddExpenseFailure(String message) {
-        AlertDialog dialog;
+
         builder.setMessage(R.string.view_expense_alertDialog_error);
         builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
@@ -181,8 +187,9 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 dialog.dismiss();
             }
         });
-        dialog = builder.create();
-        dialog.show();
+
+        alert = builder.create();
+        alert.show();
     }
 
     @Override

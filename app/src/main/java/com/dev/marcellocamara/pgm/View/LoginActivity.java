@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.View;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -8,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Presenter.LoginPresenter;
@@ -27,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
     private TextInputEditText editTextEmail, editTextPassword;
     private Button btnLogin, btnRegister;
-    private AlertDialog alertDialog;
+    private AlertDialog alertDialog, alert;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                 .setMessage(R.string.view_login_customAlertDialog)
                 .setCancelable(false)
                 .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_login_alertDialog_title);
+        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -112,7 +117,15 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     public void OnLoginFailure(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alert = builder.create();
+        alert.show();
     }
 
     @Override
