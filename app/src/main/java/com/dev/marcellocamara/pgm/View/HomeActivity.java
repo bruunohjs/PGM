@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         ViewBind();
 
         homePresenter = new HomePresenter(this);
+        homePresenter.OnRequestUserName();
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
@@ -140,6 +141,11 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     public void OnLogoutSuccessful() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    @Override
+    public void OnRequestUserNameResult(String result) {
+        name.setText(result);
     }
 
     @Override

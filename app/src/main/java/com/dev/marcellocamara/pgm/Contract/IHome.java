@@ -15,6 +15,8 @@ public interface IHome {
 
         void OnLogout();
 
+        void OnRequestUserName();
+
         void OnRequestExpenses(String monthYear);
 
         void OnTotalCalculate(List<ExpenseModel> list);
@@ -29,6 +31,8 @@ public interface IHome {
 
         void OnLogoutSuccessful();
 
+        void OnRequestUserNameResult(String result);
+
         void OnRequestExpensesResult(List<ExpenseModel> list);
 
         void OnRequestTotalCalculateResult(String value);
@@ -38,6 +42,8 @@ public interface IHome {
     interface Model {
 
         void DoLogout();
+
+        String GetUserDisplayName();
 
         void DoRecoverExpenses(String monthYear);
 

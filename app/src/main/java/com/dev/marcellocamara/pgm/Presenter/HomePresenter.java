@@ -34,6 +34,11 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnRequestUserName() {
+        view.OnRequestUserNameResult(model.GetUserDisplayName());
+    }
+
+    @Override
     public void OnRequestExpenses(String monthYear) {
         view.ShowProgress();
         model.DoRecoverExpenses(monthYear);

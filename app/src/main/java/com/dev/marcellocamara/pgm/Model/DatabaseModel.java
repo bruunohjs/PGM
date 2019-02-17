@@ -135,6 +135,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     public void DoLogout() { getFirebaseAuthInstance().signOut(); }
 
     @Override
+    public String GetUserDisplayName() {
+        return getFirebaseAuthInstance().getCurrentUser().getDisplayName();
+    }
+
+    @Override
     public void DoRecoverExpenses(String monthYear) {
 
         valueEventListener = getDatabaseReference()
