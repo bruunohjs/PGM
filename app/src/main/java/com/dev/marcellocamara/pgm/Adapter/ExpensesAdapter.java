@@ -22,16 +22,18 @@ import java.util.List;
 public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyViewHolder> {
 
     private List<ExpenseModel> list;
+    private OnRecyclerViewClick onRecyclerViewClick;
 
-    public ExpensesAdapter(List<ExpenseModel> list) {
+    public ExpensesAdapter(List<ExpenseModel> list, OnRecyclerViewClick onRecyclerViewClick) {
         this.list = list;
+        this.onRecyclerViewClick = onRecyclerViewClick;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View viewItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_expenses, parent, false);
-        return new MyViewHolder(viewItem);
+        return new MyViewHolder(viewItem, onRecyclerViewClick);
     }
 
     @Override
@@ -53,20 +55,35 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
     @Override
     public int getItemCount() { return list.size(); }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private OnRecyclerViewClick onRecyclerViewClick;
         private TextView title, description, price, installment;
         private ConstraintLayout layoutInstallment;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(View itemView, OnRecyclerViewClick onRecyclerViewClick) {
             super(itemView);
 
+            this.onRecyclerViewClick = onRecyclerViewClick;
             title = itemView.findViewById(R.id.textViewTitle);
             description = itemView.findViewById(R.id.textViewDescription);
             price = itemView.findViewById(R.id.textViewPrice);
             installment = itemView.findViewById(R.id.textViewInstallment);
             layoutInstallment = itemView.findViewById(R.id.layoutInstallment);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onRecyclerViewClick.OnItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnRecyclerViewClick{
+
+        void OnItemClick(int position);
+
     }
 
 }

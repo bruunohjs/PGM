@@ -19,16 +19,16 @@
         </activity>
         <activity
             android:name=".View.RegisterActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".View.HomeActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".View.ExpenseActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".View.ItemOverviewActivity"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

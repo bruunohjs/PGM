@@ -33,7 +33,7 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class HomeActivity extends AppCompatActivity implements IHome.View, View.OnClickListener, OnMonthChangedListener {
+public class HomeActivity extends AppCompatActivity implements IHome.View, View.OnClickListener, OnMonthChangedListener, ExpensesAdapter.OnRecyclerViewClick {
 
     private IHome.Presenter homePresenter;
     private RecyclerView recyclerView;
@@ -100,6 +100,11 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     }
 
     @Override
+    public void OnItemClick(int position) {
+        startActivity(new Intent(this, ItemOverviewActivity.class).putExtra("expense", list.get(position)));
+    }
+
+    @Override
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
         calendarMonth = NumberHelper.GetMonth(date.getMonth());
         calendarYear = String.valueOf(date.getYear());
@@ -110,7 +115,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     @Override
     public void OnRequestExpensesResult(List<ExpenseModel> list) {
         this.list = list;
-        ExpensesAdapter adapter = new ExpensesAdapter(this.list);
+        ExpensesAdapter adapter = new ExpensesAdapter(this.list, this);
         recyclerView.setAdapter(adapter);
         homePresenter.OnTotalCalculate(list);
     }
@@ -175,5 +180,4 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         super.onDestroy();
         homePresenter.OnDestroy();
     }
-
 }

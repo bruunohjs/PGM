@@ -107,9 +107,9 @@
                 android:id="@+id/linearLayoutDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="48dp"
                 android:background="#f1f1f1"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
@@ -136,7 +136,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:singleLine="true"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <android.support.v4.view.ViewPager
                     android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginStart="8dp"
                 android:background="#f1f1f1"
                 android:orientation="vertical"
@@ -191,7 +191,6 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:background="@null"
-                    android:hint="@string/view_expense_title_hint"
                     android:maxLength="30"
                     android:inputType="textPersonName"
                     android:singleLine="true"
@@ -218,7 +217,7 @@
                 android:id="@+id/linearLayoutDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:background="#f1f1f1"
@@ -251,7 +250,6 @@
                     android:layout_marginTop="4dp"
                     android:inputType="text"
                     android:maxLength="30"
-                    android:hint="@string/view_expense_description_hint"
                     android:background="@null"
                     android:textSize="16sp" />
 
@@ -306,12 +304,11 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginStart="12dp"
-                    android:inputType="numberDecimal"
                     android:layout_marginTop="4dp"
                     android:background="@null"
-                    android:singleLine="true"
+                    android:inputType="numberDecimal"
                     android:maxLength="8"
-                    android:hint="@string/view_expense_price_hint"
+                    android:singleLine="true"
                     android:textSize="16sp" />
 
                 <android.support.v4.view.ViewPager
@@ -335,7 +332,7 @@
                 android:id="@+id/linearLayoutParcels"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:background="#f1f1f1"
