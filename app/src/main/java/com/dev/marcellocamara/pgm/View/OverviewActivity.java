@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IOverview;
@@ -21,11 +22,12 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class OverviewActivity extends AppCompatActivity implements IOverview.View{
+public class OverviewActivity extends AppCompatActivity implements IOverview.View, View.OnClickListener{
 
     private IOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
     private Toolbar toolbar;
+    private Button delete;
     private ConstraintLayout layoutInstallments, layoutEachInstallments;
     private TextView title, description, price, installment, date, eachInstallment;
     private AlertDialog alertDialog;
@@ -73,6 +75,19 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         layoutInstallments = findViewById(R.id.layoutInstallment);
         layoutEachInstallments = findViewById(R.id.layoutEachInstallment);
 
+        delete = findViewById(R.id.buttonDelete);
+        delete.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonDelete : {
+                //TODO : Delete
+                break;
+            }
+        }
     }
 
     @Override

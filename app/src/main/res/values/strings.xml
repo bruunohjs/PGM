@@ -27,9 +27,6 @@
     <string name="view_expense_icon_description">Description Icon</string>
     <string name="view_expense_icon_price">Price Icon</string>
     <string name="view_expense_icon_installments">Installments Icon</string>
-    <string name="view_expense_title_hint">e.g.: Store name</string>
-    <string name="view_expense_description_hint">e.g.: Item purchased</string>
-    <string name="view_expense_price_hint">e.g.: 10.00</string>
     <string name="view_expense_button_cancel">Cancel</string>
     <string name="view_expense_button_save">Save</string>
     <string name="view_expense_customAlertDialog">Adding new expense…</string>
@@ -43,24 +40,15 @@
     <string name="view_home_title_month">Show all expenses for selected month</string>
     <string name="view_home_title_total">TOTAL</string>
     <string name="view_home_coinType">R$</string>
+    <string name="view_home_price_example">0.00</string>
     <string name="view_home_title_welcome">Welcome, </string>
     <string name="view_home_alertDialog_loading">Loading expenses…</string>
     <string name="view_overview_custom_alertDialog">Deleting expense…</string>
-
-    <string-array name="spinner_parcels">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-    </string-array>
+    <string name="view_overview_installments">x</string>
+    <string name="view_overview_date">Purchased date:</string>
+    <string name="view_overview_each_installment">Price of each installment:</string>
+    <string name="view_overview_button_delete">Delete</string>
+    <string name="view_overview_actionbar_title">Expense Overview</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>
@@ -75,10 +63,20 @@
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
     <string name="presenter_expense_big_price">Maximum price is 99999.99\nUse a dot "." to indicate Cents unity</string>
-    <string name="view_overview_installments">x</string>
-    <string name="view_overview_date">Purchased in:</string>
-    <string name="view_overview_each_installment">Price of each installment:</string>
-    <string name="view_overview_button_delete">Delete</string>
-    <string name="view_overview_actionbar_title">Expense Overview</string>
+
+    <string-array name="installments">
+        <item>1x</item>
+        <item>2x</item>
+        <item>3x</item>
+        <item>4x</item>
+        <item>5x</item>
+        <item>6x</item>
+        <item>7x</item>
+        <item>8x</item>
+        <item>9x</item>
+        <item>10x</item>
+        <item>11x</item>
+        <item>12x</item>
+    </string-array>
 
 </resources>

@@ -67,6 +67,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.view_expense_title_expense);
         builder.setCancelable(false);
+
     }
 
     private void ViewBind() {
@@ -85,7 +86,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         spinner = findViewById(R.id.spinnerInstallments);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
                 this,
-                R.array.spinner_parcels,
+                R.array.installments,
                 android.R.layout.simple_spinner_item
         );
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
