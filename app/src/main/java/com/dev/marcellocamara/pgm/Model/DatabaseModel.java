@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
+import com.dev.marcellocamara.pgm.Contract.IOverview;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 
@@ -28,7 +29,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model, IExpense.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model, IExpense.Model, IOverview.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
@@ -208,4 +209,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
 
     }
 
+    @Override
+    public void DoDeleteExpense() {
+        //TODO : Delete all expenses
+    }
 }

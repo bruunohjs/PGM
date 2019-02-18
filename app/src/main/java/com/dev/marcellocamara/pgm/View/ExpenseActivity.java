@@ -71,7 +71,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     private void ViewBind() {
 
-        textViewDate = findViewById(R.id.textViewDate);
+        textViewDate = findViewById(R.id.tvDate);
         textViewDate.setOnClickListener(this);
         title = findViewById(R.id.etTitle);
         description = findViewById(R.id.etDescription);
@@ -116,7 +116,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 );
                 break;
             }
-            case R.id.textViewDate : {
+            case R.id.tvDate: {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         this, new DatePickerDialog.OnDateSetListener() {
                         @Override

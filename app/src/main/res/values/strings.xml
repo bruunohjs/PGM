@@ -8,6 +8,7 @@
     <string name="view_login_button_login">Log in</string>
     <string name="view_login_button_signup">Don\'t have an account ? Click here to register</string>
     <string name="view_login_customAlertDialog">Login in…</string>
+    <string name="view_login_alertDialog_title">Login</string>
     <string name="view_register_name">Name</string>
     <string name="view_register_password">Confirm password</string>
     <string name="view_register_button_register">Register</string>
@@ -44,6 +45,7 @@
     <string name="view_home_coinType">R$</string>
     <string name="view_home_title_welcome">Welcome, </string>
     <string name="view_home_alertDialog_loading">Loading expenses…</string>
+    <string name="view_overview_custom_alertDialog">Deleting expense…</string>
 
     <string-array name="spinner_parcels">
         <item>1</item>
@@ -73,6 +75,10 @@
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
     <string name="presenter_expense_big_price">Maximum price is 99999.99\nUse a dot "." to indicate Cents unity</string>
-    <string name="view_login_alertDialog_title">Login</string>
+    <string name="view_overview_installments">x</string>
+    <string name="view_overview_date">Purchased in:</string>
+    <string name="view_overview_each_installment">Price of each installment:</string>
+    <string name="view_overview_button_delete">Delete</string>
+    <string name="view_overview_actionbar_title">Expense Overview</string>
 
 </resources>

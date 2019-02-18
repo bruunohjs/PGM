@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(this, ItemOverviewActivity.class).putExtra("expense", list.get(position)));
+        startActivity(new Intent(this, OverviewActivity.class).putExtra("expense", list.get(position)));
     }
 
     @Override
