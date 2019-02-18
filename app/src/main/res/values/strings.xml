@@ -22,11 +22,13 @@
     <string name="view_expense_description">Description</string>
     <string name="view_expense_price">Price</string>
     <string name="view_expense_installments">Installments</string>
+    <string name="view_expense_installments_number">Number of installments</string>
     <string name="view_expense_icon_date">Date Icon</string>
     <string name="view_expense_icon_title">Title Icon</string>
     <string name="view_expense_icon_description">Description Icon</string>
     <string name="view_expense_icon_price">Price Icon</string>
     <string name="view_expense_icon_installments">Installments Icon</string>
+    <string name="view_expense_installment_1x">1x</string>
     <string name="view_expense_button_cancel">Cancel</string>
     <string name="view_expense_button_save">Save</string>
     <string name="view_expense_customAlertDialog">Adding new expense…</string>

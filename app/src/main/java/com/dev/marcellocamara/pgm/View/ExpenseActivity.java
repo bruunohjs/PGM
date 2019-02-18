@@ -8,12 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IExpense;
@@ -29,17 +26,16 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class ExpenseActivity extends AppCompatActivity implements IExpense.View, View.OnClickListener, AdapterView.OnItemSelectedListener{
+public class ExpenseActivity extends AppCompatActivity implements IExpense.View, View.OnClickListener {
 
     private IExpense.Presenter expensePresenter;
     private EditText title, description, price;
-    private TextView textViewDate;
+    private TextView textViewDate, textInstallments;
     private Toolbar toolbar;
-    private Spinner spinner;
     private Button btnCancel, btnSave;
-    private int installments, calendarDay, calendarMonth, calendarYear;
+    private int installments = 1, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog, alert;
-    private AlertDialog.Builder builder ;
+    private AlertDialog.Builder builder1, builderInstallments ;
     private Calendar calendar;
 
     @Override
@@ -64,16 +60,17 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 .setCancelable(false)
                 .build();
 
-        builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_expense_title_expense);
-        builder.setCancelable(false);
-
+        builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle(R.string.view_expense_title_expense);
+        builder1.setCancelable(false);
     }
 
     private void ViewBind() {
 
         textViewDate = findViewById(R.id.tvDate);
         textViewDate.setOnClickListener(this);
+        textInstallments = findViewById(R.id.tvInstallment);
+        textInstallments.setOnClickListener(this);
         title = findViewById(R.id.etTitle);
         description = findViewById(R.id.etDescription);
         price = findViewById(R.id.etPrice);
@@ -82,16 +79,6 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.view_expense_title_expense);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        spinner = findViewById(R.id.spinnerInstallments);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.installments,
-                android.R.layout.simple_spinner_item
-        );
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(this);
 
         btnCancel = findViewById(R.id.buttonCancel);
         btnSave = findViewById(R.id.buttonSave);
@@ -117,7 +104,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 );
                 break;
             }
-            case R.id.tvDate: {
+            case R.id.tvDate : {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         this, new DatePickerDialog.OnDateSetListener() {
                         @Override
@@ -126,6 +113,20 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                     }
                 },calendarYear,calendarMonth,calendarDay);
                 datePickerDialog.show();
+                break;
+            }
+            case R.id.tvInstallment : {
+                builderInstallments = new AlertDialog.Builder(this);
+                builderInstallments.setCancelable(false);
+                builderInstallments.setTitle(R.string.view_expense_installments_number);
+                builderInstallments.setItems(R.array.installments, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        installments = (which + 1);
+                        textInstallments.setText(installments + R.string.view_overview_installments);
+                    }
+                });
+                builderInstallments.show();
                 break;
             }
         }
@@ -139,23 +140,15 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        installments = Integer.parseInt(parent.getItemAtPosition(position).toString());
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
-
-    @Override
     public void OnInvalidField(String message) {
-        builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder1.setMessage(message);
+        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        alert = builder.create();
+        alert = builder1.create();
         alert.show();
     }
 
@@ -167,29 +160,27 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnAddExpenseSuccessful() {
-        builder.setMessage(R.string.view_expense_alertDialog_success);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder1.setMessage(R.string.view_expense_alertDialog_success);
+        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        alert = builder.create();
+        alert = builder1.create();
         alert.show();
     }
 
     @Override
     public void OnAddExpenseFailure(String message) {
-
-        builder.setMessage(R.string.view_expense_alertDialog_error);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder1.setMessage(R.string.view_expense_alertDialog_error);
+        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-
-        alert = builder.create();
+        alert = builder1.create();
         alert.show();
     }
 
