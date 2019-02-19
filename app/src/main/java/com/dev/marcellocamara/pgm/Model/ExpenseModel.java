@@ -3,6 +3,8 @@ package com.dev.marcellocamara.pgm.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.firebase.database.Exclude;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -10,8 +12,7 @@ import android.os.Parcelable;
 
 public class ExpenseModel implements Parcelable {
 
-    private String paymentDate;
-    private String title, description, currentInstallment, installments;
+    private String paymentDate, title, description, currentInstallment, installments, uniqueId;
     private double price;
 
     public ExpenseModel(){}
@@ -23,6 +24,7 @@ public class ExpenseModel implements Parcelable {
         currentInstallment = in.readString();
         installments = in.readString();
         price = in.readDouble();
+        uniqueId = in.readString();
     }
 
     public static final Creator<ExpenseModel> CREATOR = new Creator<ExpenseModel>() {
@@ -85,6 +87,16 @@ public class ExpenseModel implements Parcelable {
         this.price = price;
     }
 
+    @Exclude
+    public void setUniqueId(String key){
+        this.uniqueId = key;
+    }
+
+    @Exclude
+    public String getUniqueKey(){
+        return uniqueId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -98,5 +110,6 @@ public class ExpenseModel implements Parcelable {
         dest.writeString(currentInstallment);
         dest.writeString(installments);
         dest.writeDouble(price);
+        dest.writeString(uniqueId);
     }
 }

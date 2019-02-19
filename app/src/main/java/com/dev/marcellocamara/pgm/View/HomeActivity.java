@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(this, OverviewActivity.class).putExtra("expense", list.get(position)));
+        startActivity(new Intent(this, OverviewActivity.class).putExtra(getString(R.string.view_parcelable_name), list.get(position)));
     }
 
     @Override
@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         this.list = list;
         ExpensesAdapter adapter = new ExpensesAdapter(this.list, this);
         recyclerView.setAdapter(adapter);
-        homePresenter.OnTotalCalculate(list);
+        homePresenter.OnTotalCalculate(list, getString(R.string.view_home_price_example));
     }
 
     @Override

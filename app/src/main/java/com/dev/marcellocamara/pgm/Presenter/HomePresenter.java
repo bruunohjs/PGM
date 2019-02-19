@@ -45,9 +45,9 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnTotalCalculate(List<ExpenseModel> list) {
+    public void OnTotalCalculate(List<ExpenseModel> list, String sum) {
 
-        String result = "0.00";
+        String result = sum;
         double total = 0.0;
 
         if ( !(list.isEmpty()) ){

@@ -39,7 +39,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        expenseModel = getIntent().getParcelableExtra("expense");
+        expenseModel = getIntent().getParcelableExtra(getString(R.string.view_parcelable_name));
 
         ViewBind();
 
@@ -53,10 +53,6 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
                 .setMessage(R.string.view_overview_custom_alertDialog)
                 .setCancelable(false)
                 .build();
-
-        builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_overview_title);
-        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -94,13 +90,13 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
                 builder.setCancelable(false);
                 builder.setTitle(R.string.view_overview_actionbar_title);
                 builder.setMessage(R.string.view_overview_delete_confirm);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.view_overview_delete_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         overviewPresenter.OnDeleteExpense(expenseModel);
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.view_overview_delete_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) { }
                 });
@@ -118,20 +114,33 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
     @Override
     public void OnDeleteExpenseSuccess() {
-        finish();
+        builder = OnCreateBuilder(getString(R.string.view_overview_delete_successful));
+        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.show();
     }
 
     @Override
     public void OnDeleteExpenseFailure(String message) {
-        builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setTitle(R.string.view_overview_actionbar_title);
-        builder.setMessage(message);
+        builder = OnCreateBuilder(message);
         builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {}
         });
         builder.show();
+    }
+
+    private AlertDialog.Builder OnCreateBuilder(String message) {
+        AlertDialog.Builder builderDialog = new AlertDialog.Builder(this);
+        builderDialog.setTitle(R.string.view_overview_title);
+        builderDialog.setCancelable(false);
+        builderDialog.setTitle(R.string.view_overview_actionbar_title);
+        builderDialog.setMessage(message);
+        return builderDialog;
     }
 
     @Override

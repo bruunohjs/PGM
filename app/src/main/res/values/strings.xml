@@ -50,9 +50,11 @@
     <string name="view_overview_date">Purchased date:</string>
     <string name="view_overview_each_installment">Price of each installment:</string>
     <string name="view_overview_button_delete">Delete</string>
+    <string name="view_overview_dialog_close">Close</string>
     <string name="view_overview_actionbar_title">Expense Overview</string>
     <string name="view_overview_title">Expense overview</string>
-    <string name="view_overview_delete_confirm">Are you sure to delete this item ?</string>
+    <string name="view_overview_delete_confirm">Are you sure to delete this item and all installments ?</string>
+    <string name="view_overview_delete_successful">Expense successfully deleted.</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>
@@ -67,6 +69,9 @@
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
     <string name="presenter_expense_big_price">Maximum price is 99999.99\nUse a dot "." to indicate Cents unity</string>
+    <string name="view_overview_delete_yes">Yes</string>
+    <string name="view_overview_delete_cancel">No</string>
+    <string name="view_parcelable_name">expense</string>
 
     <string-array name="installments">
         <item>1x</item>

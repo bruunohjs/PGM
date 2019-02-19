@@ -31,7 +31,7 @@ public interface IOverview {
 
     interface Model {
 
-        void DoDeleteExpense(String date, String uniqueId);
+        void DoDeleteExpense(String date, int installments, String uniqueId);
 
     }
 

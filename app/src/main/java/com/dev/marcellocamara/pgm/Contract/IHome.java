@@ -19,7 +19,7 @@ public interface IHome {
 
         void OnRequestExpenses(String monthYear);
 
-        void OnTotalCalculate(List<ExpenseModel> list);
+        void OnTotalCalculate(List<ExpenseModel> list, String sum);
 
         void OnStop();
 

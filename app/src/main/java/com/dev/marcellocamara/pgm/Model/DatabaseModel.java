@@ -153,6 +153,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
                 HomePresenter.list.clear();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
+                    expenseModel.setUniqueId(data.getKey()); //Retrieves UniqueKey from each item of month
                     HomePresenter.list.add(expenseModel);
                 }
                 taskListener.OnSuccess();
@@ -182,9 +183,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
         expense.setPaymentDate(date);
         expense.setInstallments(NumberHelper.GetMonth(installments));
 
-        String DateSplited[] = date.split("/");
-        String month = DateSplited[1];
-        String year = DateSplited[2];
+        String dateSplit[] = date.split("/");
+        String month = dateSplit[1];
+        String year = dateSplit[2];
 
         //This guarantee same ID for all "n" installments
         final String UniqueID = getDatabaseReference().child("Expenses").push().getKey();
@@ -213,19 +214,31 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoDeleteExpense(String date, String uniqueId) {
-        getDatabaseReference().child("Expenses")
-                .child(getFirebaseAuthInstance().getCurrentUser().getUid())
-                .child(date)
-                .child(uniqueId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    taskListener.OnSuccess();
-                }else {
-                    taskListener.OnError(task.getException().getMessage());
-                }
+    public void DoDeleteExpense(String date, int installments, String uniqueId) {
+
+        //TODO: Missing OnCompleteListener TOO !
+
+        String dateSplit[] = date.split("/");
+        String month = dateSplit[1];
+        String year = dateSplit[2];
+
+        for (int i = 1 ; i <= installments ; i++){
+            if ( (Integer.parseInt(month)) > 12 ){
+                month = NumberHelper.GetMonth(1);
+                year = String.valueOf( (Integer.parseInt(year)) + 1 );
             }
-        });
+
+            getDatabaseReference()
+                    .child("Expenses")
+                    .child(getFirebaseAuthInstance().getCurrentUser().getUid())
+                    .child(month+year)
+                    .child(uniqueId).removeValue();
+
+            month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
+
+        }
+
+        taskListener.OnSuccess(); //TODO : OnFailure - no internet
+
     }
 }
