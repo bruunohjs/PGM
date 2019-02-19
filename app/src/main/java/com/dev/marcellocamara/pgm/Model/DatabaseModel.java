@@ -186,6 +186,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
         String month = DateSplited[1];
         String year = DateSplited[2];
 
+        //This guarantee same ID for all "n" installments
+        final String UniqueID = getDatabaseReference().child("Expenses").push().getKey();
+
         for (int i = 1 ; i <= installments ; i++){
             if ( (Integer.parseInt(month)) > 12 ){
                 month = NumberHelper.GetMonth(1);
@@ -198,19 +201,31 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
                     .child("Expenses")
                     .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                     .child(month+year)
-                    .push()
+                    .child(UniqueID)
                     .setValue(expense);
 
             month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
 
         }
 
-        taskListener.OnSuccess(); //TODO : Missing OnError
+        taskListener.OnSuccess(); //TODO : OnError - no internet
 
     }
 
     @Override
-    public void DoDeleteExpense() {
-        //TODO : Delete all expenses
+    public void DoDeleteExpense(String date, String uniqueId) {
+        getDatabaseReference().child("Expenses")
+                .child(getFirebaseAuthInstance().getCurrentUser().getUid())
+                .child(date)
+                .child(uniqueId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    taskListener.OnSuccess();
+                }else {
+                    taskListener.OnError(task.getException().getMessage());
+                }
+            }
+        });
     }
 }

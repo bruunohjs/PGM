@@ -31,17 +31,25 @@ public class OverviewPresenter implements IOverview.Presenter, ITaskListener {
 
     @Override
     public void OnDeleteExpense(ExpenseModel expenseModel) {
-        //TODO : model.DoDeleteExpense
+        view.ShowProgress();
+        //TODO : Delete
+        //model.DoDeleteExpense("date", "uniqueId");
     }
 
     @Override
     public void OnSuccess() {
-        //TODO : OnDeleteSuccess
+        if (view != null){
+            view.HideProgress();
+            view.OnDeleteExpenseSuccess();
+        }
     }
 
     @Override
     public void OnError(String message) {
-        //TODO : OnDeleteFailure
+        if (view != null){
+            view.HideProgress();
+            view.OnDeleteExpenseFailure(message);
+        }
     }
 
     @Override

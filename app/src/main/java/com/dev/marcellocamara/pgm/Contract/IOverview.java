@@ -23,11 +23,15 @@ public interface IOverview {
 
         void OnSetInstallments(String eachInstallment);
 
+        void OnDeleteExpenseSuccess();
+
+        void OnDeleteExpenseFailure(String message);
+
     }
 
     interface Model {
 
-        void DoDeleteExpense();
+        void DoDeleteExpense(String date, String uniqueId);
 
     }
 

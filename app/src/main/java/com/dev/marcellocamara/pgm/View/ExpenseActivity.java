@@ -35,7 +35,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private Button btnCancel, btnSave;
     private int installments = 1, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog, alert;
-    private AlertDialog.Builder builder1, builderInstallments ;
+    private AlertDialog.Builder builder, builderInstallments ;
     private Calendar calendar;
 
     @Override
@@ -60,9 +60,9 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 .setCancelable(false)
                 .build();
 
-        builder1 = new AlertDialog.Builder(this);
-        builder1.setTitle(R.string.view_expense_title_expense);
-        builder1.setCancelable(false);
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_expense_title_expense);
+        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -123,7 +123,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         installments = (which + 1);
-                        textInstallments.setText(installments + R.string.view_overview_installments);
+                        textInstallments.setText(installments + getString(R.string.view_overview_installments));
                     }
                 });
                 builderInstallments.show();
@@ -141,14 +141,14 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnInvalidField(String message) {
-        builder1.setMessage(message);
-        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        alert = builder1.create();
+        alert = builder.create();
         alert.show();
     }
 
@@ -160,27 +160,27 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
 
     @Override
     public void OnAddExpenseSuccessful() {
-        builder1.setMessage(R.string.view_expense_alertDialog_success);
-        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.view_expense_alertDialog_success);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        alert = builder1.create();
+        alert = builder.create();
         alert.show();
     }
 
     @Override
     public void OnAddExpenseFailure(String message) {
-        builder1.setMessage(R.string.view_expense_alertDialog_error);
-        builder1.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.view_expense_alertDialog_error);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        alert = builder1.create();
+        alert = builder.create();
         alert.show();
     }
 

@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View;
 
+import android.content.DialogInterface;
 import android.support.constraint.ConstraintLayout;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,9 +29,10 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     private ExpenseModel expenseModel;
     private Toolbar toolbar;
     private Button delete;
-    private ConstraintLayout layoutInstallments, layoutEachInstallments;
+    private ConstraintLayout layoutEachInstallments;
     private TextView title, description, price, installment, date, eachInstallment;
     private AlertDialog alertDialog;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,6 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
         overviewPresenter = new OverviewPresenter(this);
 
-        title.setText(expenseModel.getTitle());
-        description.setText(expenseModel.getDescription());
-        price.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
-        date.setText(expenseModel.getPaymentDate());
-
         overviewPresenter.OnVerifyInstallments(expenseModel.getInstallments(), expenseModel.getPrice());
 
         alertDialog = new SpotsDialog.Builder()
@@ -56,6 +53,10 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
                 .setMessage(R.string.view_overview_custom_alertDialog)
                 .setCancelable(false)
                 .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_overview_title);
+        builder.setCancelable(false);
     }
 
     private void ViewBind() {
@@ -72,11 +73,16 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         date = findViewById(R.id.textViewDate);
         eachInstallment = findViewById(R.id.textViewEachInstallment);
 
-        layoutInstallments = findViewById(R.id.layoutInstallment);
         layoutEachInstallments = findViewById(R.id.layoutEachInstallment);
 
         delete = findViewById(R.id.buttonDelete);
         delete.setOnClickListener(this);
+
+        title.setText(expenseModel.getTitle());
+        description.setText(expenseModel.getDescription());
+        price.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
+        installment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
+        date.setText(expenseModel.getPaymentDate());
 
     }
 
@@ -84,7 +90,21 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonDelete : {
-                //TODO : Delete
+                builder = new AlertDialog.Builder(this);
+                builder.setCancelable(false);
+                builder.setTitle(R.string.view_overview_actionbar_title);
+                builder.setMessage(R.string.view_overview_delete_confirm);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        overviewPresenter.OnDeleteExpense(expenseModel);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }
+                });
+                builder.show();
                 break;
             }
         }
@@ -92,10 +112,26 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
     @Override
     public void OnSetInstallments(String value) {
-        layoutInstallments.setVisibility(View.VISIBLE);
         layoutEachInstallments.setVisibility(View.VISIBLE);
-        installment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
         eachInstallment.setText(value);
+    }
+
+    @Override
+    public void OnDeleteExpenseSuccess() {
+        finish();
+    }
+
+    @Override
+    public void OnDeleteExpenseFailure(String message) {
+        builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.view_overview_actionbar_title);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {}
+        });
+        builder.show();
     }
 
     @Override

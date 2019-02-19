@@ -51,6 +51,8 @@
     <string name="view_overview_each_installment">Price of each installment:</string>
     <string name="view_overview_button_delete">Delete</string>
     <string name="view_overview_actionbar_title">Expense Overview</string>
+    <string name="view_overview_title">Expense overview</string>
+    <string name="view_overview_delete_confirm">Are you sure to delete this item ?</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>
