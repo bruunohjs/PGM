@@ -59,7 +59,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.view_overview_actionbar_title);
+        getSupportActionBar().setTitle(R.string.view_overview_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         title = findViewById(R.id.textViewTitle);
@@ -88,7 +88,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
             case R.id.buttonDelete : {
                 builder = new AlertDialog.Builder(this);
                 builder.setCancelable(false);
-                builder.setTitle(R.string.view_overview_actionbar_title);
+                builder.setTitle(R.string.view_overview_title);
                 builder.setMessage(R.string.view_overview_delete_confirm);
                 builder.setPositiveButton(R.string.view_overview_delete_yes, new DialogInterface.OnClickListener() {
                     @Override
@@ -122,7 +122,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.view_overview_title);
         builder.setCancelable(false);
-        builder.setTitle(R.string.view_overview_actionbar_title);
+        builder.setTitle(R.string.view_overview_title);
         builder.setMessage(message);
         builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
             @Override

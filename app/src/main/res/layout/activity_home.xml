@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         app:fabBackgroundColor="@color/colorAccent"
         app:fabIcon="@drawable/ic_add"
-        app:fabText="Add expense"
+        app:fabText="@string/view_home_fab"
         android:layout_margin="@dimen/fab_margin"
         app:fabTextColor="@android:color/white"
         android:layout_gravity="center_horizontal|bottom" />
