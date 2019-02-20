@@ -69,7 +69,7 @@
     <string name="presenter_expense_invalid_title">Preencha com o título.</string>
     <string name="presenter_expense_invalid_description">Preencha com a descrição.</string>
     <string name="presenter_expense_invalid_price">Preencha o preço.</string>
-    <string name="presenter_expense_big_price">O preço máximo é 99999.99\nUse um ponto "." para indicar a unidade dos Centavos</string>
+    <string name="presenter_expense_big_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos Centavos</string>
 
     <string-array name="installments">
         <item>1x</item>

@@ -68,7 +68,7 @@
     <string name="presenter_expense_invalid_title">Fill with title.</string>
     <string name="presenter_expense_invalid_description">Fill with description.</string>
     <string name="presenter_expense_invalid_price">Fill with price.</string>
-    <string name="presenter_expense_big_price">Maximum price is 99999.99\nUse a dot "." to indicate Cents unity</string>
+    <string name="presenter_expense_big_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
 
     <string-array name="installments">
         <item>1x</item>
