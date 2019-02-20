@@ -114,33 +114,21 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
     @Override
     public void OnDeleteExpenseSuccess() {
-        builder = OnCreateBuilder(getString(R.string.view_overview_delete_successful));
-        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        builder.show();
+        finish();
     }
 
     @Override
     public void OnDeleteExpenseFailure(String message) {
-        builder = OnCreateBuilder(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_overview_title);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.view_overview_actionbar_title);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {}
         });
         builder.show();
-    }
-
-    private AlertDialog.Builder OnCreateBuilder(String message) {
-        AlertDialog.Builder builderDialog = new AlertDialog.Builder(this);
-        builderDialog.setTitle(R.string.view_overview_title);
-        builderDialog.setCancelable(false);
-        builderDialog.setTitle(R.string.view_overview_actionbar_title);
-        builderDialog.setMessage(message);
-        return builderDialog;
     }
 
     @Override

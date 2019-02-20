@@ -26,15 +26,14 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
-        <!-- TODO: need to create a beautiful logo -->
         <ImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="48dp"
-            android:src="@drawable/logo"
+            android:layout_height="130dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/app_name"
             android:scaleType="fitCenter"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toStartOf="@+id/rightParentGuideLine"
             app:layout_constraintStart_toStartOf="@+id/leftParentGuideLine"
             app:layout_constraintTop_toTopOf="parent" />
@@ -73,6 +72,8 @@
                     android:id="@+id/tilEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
                     app:layout_constraintEnd_toStartOf="@+id/rightCardViewGuideLine"
                     app:layout_constraintStart_toStartOf="@+id/leftCardViewGuideLine"
@@ -96,6 +97,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     app:counterEnabled="true"
                     app:layout_constraintBottom_toBottomOf="parent"

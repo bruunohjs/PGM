@@ -105,7 +105,7 @@
                     android:id="@+id/linearLayoutDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="48dp"
                     android:background="#f1f1f1"
@@ -138,7 +138,7 @@
 
                     <android.support.v4.view.ViewPager
                         android:layout_width="wrap_content"
-                        android:layout_height="2dp"
+                        android:layout_height="1.5dp"
                         android:background="@color/colorAccent" />
 
                 </LinearLayout>
@@ -157,13 +157,12 @@
                     android:id="@+id/linearLayoutTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
                     android:background="#f1f1f1"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageViewTitle"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate">
 
@@ -196,7 +195,7 @@
 
                     <android.support.v4.view.ViewPager
                         android:layout_width="wrap_content"
-                        android:layout_height="2dp"
+                        android:layout_height="1.5dp"
                         android:background="@color/colorAccent" />
 
                 </LinearLayout>
@@ -215,13 +214,12 @@
                     android:id="@+id/linearLayoutDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
                     android:background="#f1f1f1"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageViewDescription"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayoutTitle">
 
@@ -253,7 +251,7 @@
 
                     <android.support.v4.view.ViewPager
                         android:layout_width="wrap_content"
-                        android:layout_height="2dp"
+                        android:layout_height="1.5dp"
                         android:background="@color/colorAccent" />
 
                 </LinearLayout>
@@ -272,7 +270,7 @@
                     android:id="@+id/layoutPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
                     android:background="#f1f1f1"
@@ -311,7 +309,7 @@
                     <android.support.v4.view.ViewPager
                         android:id="@+id/viewPager"
                         android:layout_width="wrap_content"
-                        android:layout_height="2dp"
+                        android:layout_height="1.5dp"
                         android:background="@color/colorAccent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -347,8 +345,8 @@
                     android:id="@+id/layoutInstallment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
                     android:background="#f1f1f1"
                     android:orientation="vertical"
@@ -376,14 +374,14 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginStart="12dp"
-                        android:text="@string/view_expense_installment_1x"
                         android:layout_marginTop="4dp"
                         android:singleLine="true"
+                        android:text="@string/view_expense_installment_1x"
                         android:textSize="16sp" />
 
                     <android.support.v4.view.ViewPager
                         android:layout_width="wrap_content"
-                        android:layout_height="2dp"
+                        android:layout_height="1.5dp"
                         android:background="@color/colorAccent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
