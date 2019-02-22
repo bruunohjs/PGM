@@ -31,7 +31,6 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private IExpense.Presenter expensePresenter;
     private EditText title, description, price;
     private TextView textViewDate, textInstallments;
-    private Toolbar toolbar;
     private Button btnCancel, btnSave;
     private int installments = 1, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog, alert;
@@ -75,8 +74,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         description = findViewById(R.id.etDescription);
         price = findViewById(R.id.etPrice);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(R.string.view_expense_title_expense);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

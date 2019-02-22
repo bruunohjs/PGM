@@ -74,6 +74,7 @@
                         android:drawablePadding="4dp"
                         android:drawableStart="@drawable/ic_person"
                         android:hint="@string/view_register_name"
+                        android:digits="@string/editTextPersonName"
                         android:inputType="textPersonName"
                         android:maxLength="50"
                         android:textSize="18sp" />

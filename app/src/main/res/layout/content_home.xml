@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:text="@string/view_home_title_welcome"
             android:textAlignment="textStart"
             android:textColor="@android:color/white"
@@ -90,8 +89,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="48dp"
                     android:text="@string/view_home_title_total"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
+                    android:textSize="28sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:text="@string/view_home_coinType"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
                     app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
                     app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -111,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     android:text="@string/view_home_price_example"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewTotal"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
@@ -167,4 +165,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

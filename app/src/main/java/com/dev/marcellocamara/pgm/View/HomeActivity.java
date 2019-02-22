@@ -39,7 +39,6 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     private RecyclerView recyclerView;
     private MutativeFab mutativeFab;
     private MaterialCalendarView calendarView;
-    private Toolbar toolbar;
     private TextView name, total;
     private List<ExpenseModel> list;
     private Calendar calendar;
@@ -66,8 +65,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
     private void ViewBind() {
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(null);
 
         name = findViewById(R.id.textViewName);

@@ -1,5 +1,7 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
+import android.util.Log;
+
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
@@ -54,6 +56,7 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
             for (ExpenseModel expenseModel : list){
                 total += ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
             }
+
             result = NumberHelper.GetDecimal(total);
         }
 

@@ -9,7 +9,7 @@ Ao registrar a compra de um produto parcelado, o calendário exibe suas parcelas
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/screenshots/portuguese/overview.png" title="Detalhes da compra">
 </p>
 
-## Análise e teste
+## Análise / Avaliação
 
 O aplicativo será lançado na `Google Play Store` em breve.
 
@@ -20,7 +20,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter).
 
 <p align="center">
-  <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" title="Model-View-Presenter">
+  <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">
 </p>
 
 ## Telas do aplicativo
@@ -49,5 +49,5 @@ Detalhes da despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/P
 - [Spots Progress Dialog](https://github.com/d-max/spots-dialog)
 
 <p align="center">
-  <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/icon/icon.png" title="Ícone">
+  <img src="https://github.com/marcellocamara/PGM/blob/master/app/src/main/ic_launcher-web.png" height="128" title="Ícone">
 </p>

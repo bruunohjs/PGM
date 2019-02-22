@@ -85,4 +85,7 @@
         <item>11x</item>
         <item>12x</item>
     </string-array>
+
+    <string name="editTextPersonName">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú"</string>
+
 </resources>
