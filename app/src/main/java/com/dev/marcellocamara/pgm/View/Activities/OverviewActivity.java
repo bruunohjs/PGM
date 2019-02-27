@@ -1,4 +1,4 @@
-package com.dev.marcellocamara.pgm.View;
+package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.content.DialogInterface;
 import android.support.constraint.ConstraintLayout;

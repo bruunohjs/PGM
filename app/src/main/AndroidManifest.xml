@@ -9,10 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning,InnerclassSeparator">
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".View.Activities.LoginActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,17 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.RegisterActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:name=".View.Activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize">
+        </activity>
         <activity
-            android:name=".View.HomeActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:name=".View.Activities.RegisterActivity"
+            android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.ExpenseActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:name=".View.Activities.ExpenseActivity"
+            android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.OverviewActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:name=".View.Activities.OverviewActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

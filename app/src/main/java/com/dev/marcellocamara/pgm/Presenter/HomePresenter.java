@@ -1,14 +1,11 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
-import android.util.Log;
-
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -20,19 +17,11 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
 
     private IHome.View view;
     private IHome.Model model;
-    public static List<ExpenseModel> list = new ArrayList<>(); //TODO: Try with not static
+    private List<ExpenseModel> list;
 
     public HomePresenter(IHome.View view) {
         this.view = view;
         this.model = new DatabaseModel(this);
-    }
-
-    @Override
-    public void OnLogout() {
-        if (view != null){
-            model.DoLogout();
-            view.OnLogoutSuccessful();
-        }
     }
 
     @Override
@@ -43,7 +32,7 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
     @Override
     public void OnRequestExpenses(String monthYear) {
         view.ShowProgress();
-        model.DoRecoverExpenses(monthYear);
+        this.list = model.DoRecoverExpenses(monthYear);
     }
 
     @Override

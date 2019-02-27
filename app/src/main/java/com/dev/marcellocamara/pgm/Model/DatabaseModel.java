@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
+import com.dev.marcellocamara.pgm.Contract.IMain;
 import com.dev.marcellocamara.pgm.Contract.IOverview;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
-
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
-import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /***
@@ -29,13 +31,14 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model, IExpense.Model, IOverview.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private ValueEventListener valueEventListener;
+    private List<ExpenseModel> list = new ArrayList<>();
 
     public DatabaseModel(ITaskListener taskListener) {
         this.taskListener = taskListener;
@@ -133,7 +136,10 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoLogout() { getFirebaseAuthInstance().signOut(); }
+    public void DoLogout() {
+        getFirebaseAuthInstance().signOut();
+        taskListener.OnSuccess();
+    }
 
     @Override
     public String GetUserDisplayName() {
@@ -141,7 +147,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
     }
 
     @Override
-    public void DoRecoverExpenses(String monthYear) {
+    public List<ExpenseModel> DoRecoverExpenses(String monthYear) {
 
         valueEventListener = getDatabaseReference()
                 .child("Expenses")
@@ -150,11 +156,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                HomePresenter.list.clear();
+                list.clear();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
                     expenseModel.setUniqueId(data.getKey()); //Retrieves UniqueKey from each item of month
-                    HomePresenter.list.add(expenseModel);
+                    list.add(expenseModel);
                 }
                 taskListener.OnSuccess();
             }
@@ -164,6 +170,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IHome.Model
                 taskListener.OnError(databaseError.getMessage());
             }
         });
+
+        return list;
     }
 
     @Override

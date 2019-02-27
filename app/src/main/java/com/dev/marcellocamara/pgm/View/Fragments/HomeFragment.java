@@ -1,15 +1,15 @@
-package com.dev.marcellocamara.pgm.View;
+package com.dev.marcellocamara.pgm.View.Fragments;
 
-import android.app.AlertDialog;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
@@ -19,6 +19,8 @@ import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
 import com.dev.marcellocamara.pgm.R;
+import com.dev.marcellocamara.pgm.View.Activities.ExpenseActivity;
+import com.dev.marcellocamara.pgm.View.Activities.OverviewActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
@@ -33,53 +35,56 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class HomeActivity extends AppCompatActivity implements IHome.View, View.OnClickListener, OnMonthChangedListener, ExpensesAdapter.OnRecyclerViewClick {
+public class HomeFragment extends Fragment implements IHome.View, ExpensesAdapter.OnRecyclerViewClick, View.OnClickListener, OnMonthChangedListener {
 
     private IHome.Presenter homePresenter;
     private RecyclerView recyclerView;
-    private MutativeFab mutativeFab;
     private MaterialCalendarView calendarView;
-    private TextView name, total;
+    private TextView total;
     private List<ExpenseModel> list;
     private Calendar calendar;
     private String calendarMonth, calendarYear;
     private AlertDialog alertDialog;
+    private MutativeFab mutativeFab;
+
+    public HomeFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        ViewBind();
+        ViewBind(view);
 
         homePresenter = new HomePresenter(this);
-        homePresenter.OnRequestUserName();
+        //homePresenter.OnRequestUserName();
 
         alertDialog = new SpotsDialog.Builder()
-                .setContext(this)
+                .setContext(view.getContext())
                 .setTheme(R.style.CustomAlertDialog)
                 .setMessage(R.string.view_home_alertDialog_loading)
                 .setCancelable(false)
-                .build();
+                .build();        
+
+        return view;
     }
 
-    private void ViewBind() {
+    private void ViewBind(View view) {
 
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        getSupportActionBar().setTitle(null);
+        total = view.findViewById(R.id.textViewPrice);
 
-        name = findViewById(R.id.textViewName);
-        total = findViewById(R.id.textViewPrice);
-
-        mutativeFab = findViewById(R.id.floatingAB);
+        mutativeFab = view.findViewById(R.id.floatingAB);
         mutativeFab.setOnClickListener(this);
 
-        recyclerView = findViewById(R.id.recyclerExpenses);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView = view.findViewById(R.id.recyclerExpenses);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        calendarView = findViewById(R.id.materialCalendar);
+        calendarView = view.findViewById(R.id.materialCalendar);
         calendarView.setOnMonthChangedListener(this);
 
         calendar = Calendar.getInstance();
@@ -91,7 +96,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.floatingAB : {
-                startActivity(new Intent(this, ExpenseActivity.class));
+                startActivity(new Intent(getContext(), ExpenseActivity.class));
                 break;
             }
         }
@@ -99,7 +104,7 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(this, OverviewActivity.class).putExtra(getString(R.string.view_parcelable_name), list.get(position)));
+        startActivity(new Intent(getContext(), OverviewActivity.class).putExtra(getString(R.string.view_parcelable_name), list.get(position)));
     }
 
     @Override
@@ -108,6 +113,11 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
         calendarYear = String.valueOf(date.getYear());
         homePresenter.OnStop();
         homePresenter.OnRequestExpenses( calendarMonth + calendarYear );
+    }
+
+    @Override
+    public void OnRequestUserNameResult(String result) {
+        //name.setText(result);
     }
 
     @Override
@@ -124,34 +134,6 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.logout : {
-                homePresenter.OnLogout();
-                break;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void OnLogoutSuccessful() {
-        startActivity(new Intent(this, LoginActivity.class));
-        finish();
-    }
-
-    @Override
-    public void OnRequestUserNameResult(String result) {
-        name.setText(result);
-    }
-
-    @Override
     public void ShowProgress() {
         alertDialog.show();
     }
@@ -162,19 +144,19 @@ public class HomeActivity extends AppCompatActivity implements IHome.View, View.
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         homePresenter.OnRequestExpenses(calendarMonth + calendarYear);
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         homePresenter.OnStop();
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         homePresenter.OnDestroy();
     }

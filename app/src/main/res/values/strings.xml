@@ -56,6 +56,8 @@
     <string name="view_overview_delete_successful">Expense successfully deleted.</string>
     <string name="view_overview_delete_yes">Yes</string>
     <string name="view_overview_delete_cancel">No</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>
@@ -70,6 +72,7 @@
     <string name="presenter_expense_invalid_price">Fill with price.</string>
     <string name="presenter_expense_big_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
 
+    <!-- Array of installments -->
     <string-array name="installments">
         <item>1x</item>
         <item>2x</item>
@@ -85,6 +88,7 @@
         <item>12x</item>
     </string-array>
 
-    <string name="editTextPersonName">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú"</string>
+    <!-- Characters allowed in Name EditText -->
+    <string name="editTextPersonName">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
 
 </resources>

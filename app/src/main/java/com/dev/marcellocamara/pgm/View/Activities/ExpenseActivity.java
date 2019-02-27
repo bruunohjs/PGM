@@ -1,4 +1,4 @@
-package com.dev.marcellocamara.pgm.View;
+package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

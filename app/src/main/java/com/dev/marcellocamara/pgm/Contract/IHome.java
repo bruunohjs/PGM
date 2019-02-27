@@ -13,8 +13,6 @@ public interface IHome {
 
     interface Presenter {
 
-        void OnLogout();
-
         void OnRequestUserName();
 
         void OnRequestExpenses(String monthYear);
@@ -29,8 +27,6 @@ public interface IHome {
 
     interface View extends IProgressLoading {
 
-        void OnLogoutSuccessful();
-
         void OnRequestUserNameResult(String result);
 
         void OnRequestExpensesResult(List<ExpenseModel> list);
@@ -41,11 +37,9 @@ public interface IHome {
 
     interface Model {
 
-        void DoLogout();
-
         String GetUserDisplayName();
 
-        void DoRecoverExpenses(String monthYear);
+        List<ExpenseModel> DoRecoverExpenses(String monthYear);
 
         void RemoveEventListener();
 

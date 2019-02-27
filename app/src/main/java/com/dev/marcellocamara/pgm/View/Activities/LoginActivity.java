@@ -1,4 +1,4 @@
-package com.dev.marcellocamara.pgm.View;
+package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     public void OnLoginSuccessful() {
-        startActivity(new Intent (this, HomeActivity.class));
+        startActivity(new Intent (this, MainActivity.class));
         finish();
     }
 
