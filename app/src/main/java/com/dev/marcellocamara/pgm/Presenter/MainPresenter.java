@@ -15,6 +15,11 @@ public class MainPresenter implements IMain.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnRequestUserData() {
+        view.OnRequestUserDataSuccessful(model.GetUserDisplayName(), model.GetUserEmail());
+    }
+
+    @Override
     public void OnLogout() {
         model.DoLogout();
     }

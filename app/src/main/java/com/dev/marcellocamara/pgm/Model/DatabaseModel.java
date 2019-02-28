@@ -7,6 +7,7 @@ import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Contract.IMain;
 import com.dev.marcellocamara.pgm.Contract.IOverview;
+import com.dev.marcellocamara.pgm.Contract.IProfile;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
@@ -31,7 +32,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
@@ -144,6 +145,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
     @Override
     public String GetUserDisplayName() {
         return getFirebaseAuthInstance().getCurrentUser().getDisplayName();
+    }
+
+    @Override
+    public String GetUserEmail() {
+        return getFirebaseAuthInstance().getCurrentUser().getEmail();
     }
 
     @Override

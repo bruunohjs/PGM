@@ -13,8 +13,6 @@ public interface IHome {
 
     interface Presenter {
 
-        void OnRequestUserName();
-
         void OnRequestExpenses(String monthYear);
 
         void OnTotalCalculate(List<ExpenseModel> list, String sum);
@@ -27,8 +25,6 @@ public interface IHome {
 
     interface View extends IProgressLoading {
 
-        void OnRequestUserNameResult(String result);
-
         void OnRequestExpensesResult(List<ExpenseModel> list);
 
         void OnRequestTotalCalculateResult(String value);
@@ -36,8 +32,6 @@ public interface IHome {
     }
 
     interface Model {
-
-        String GetUserDisplayName();
 
         List<ExpenseModel> DoRecoverExpenses(String monthYear);
 

@@ -116,11 +116,6 @@ public class HomeFragment extends Fragment implements IHome.View, ExpensesAdapte
     }
 
     @Override
-    public void OnRequestUserNameResult(String result) {
-        //name.setText(result);
-    }
-
-    @Override
     public void OnRequestExpensesResult(List<ExpenseModel> list) {
         this.list = list;
         ExpensesAdapter adapter = new ExpensesAdapter(this.list, this);
