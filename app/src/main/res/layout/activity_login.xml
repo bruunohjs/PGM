@@ -86,6 +86,7 @@
                         android:drawablePadding="4dp"
                         android:drawableStart="@drawable/ic_email"
                         android:hint="@string/view_login_email"
+
                         android:inputType="textEmailAddress"
                         android:maxLength="50"
                         android:textSize="18sp" />

@@ -61,6 +61,9 @@
     <string name="view_profile_alert_dialog_title">Profile</string>
     <string name="view_profile_loading_title">Updating profile…</string>
     <string name="view_profile_button_save">Save</string>
+    <string name="view_menu_home">Home</string>
+    <string name="view_menu_cards">Cards</string>
+    <string name="view_menu_profile">Profile</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>

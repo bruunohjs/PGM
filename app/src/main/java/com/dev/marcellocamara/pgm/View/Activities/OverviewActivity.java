@@ -96,10 +96,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
                         overviewPresenter.OnDeleteExpense(expenseModel);
                     }
                 });
-                builder.setNegativeButton(R.string.view_overview_delete_cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) { }
-                });
+                builder.setNegativeButton(R.string.view_overview_delete_cancel, null);
                 builder.show();
                 break;
             }
@@ -123,17 +120,8 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         builder.setTitle(R.string.view_overview_title);
         builder.setCancelable(false);
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {}
-        });
+        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
         builder.show();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
     }
 
     @Override
@@ -144,6 +132,12 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     @Override
     public void HideProgress() {
         alertDialog.dismiss();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     @Override

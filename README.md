@@ -37,11 +37,15 @@ Cadastrar | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/
 Home | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/home.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/home.png)
 Nova despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/expense.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/expense.png)
 Detalhes da despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/overview.png)
+Menu | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/menu.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/menu.png)
+Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/profile.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/profile.png)
 
 ## Ferramentas utilizadas
 
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
+- [CircularImageView](https://github.com/lopspower/CircularImageView)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database/)
+- [KeyboardVisibilityEvent](https://github.com/yshrsmz/KeyboardVisibilityEvent)
 - [Material Calendar View](https://github.com/prolificinteractive/material-calendarview)
 - [Material Design](https://material.io/design/)
 - [Mutative Fab](https://github.com/aniketbhoite/MutativeFab)

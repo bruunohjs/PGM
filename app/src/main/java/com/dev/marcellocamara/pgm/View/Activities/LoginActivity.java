@@ -14,6 +14,8 @@ import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Presenter.LoginPresenter;
 import com.dev.marcellocamara.pgm.R;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import dmax.dialog.SpotsDialog;
 
 /***
@@ -77,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                         editTextEmail.getText().toString().trim(),
                         editTextPassword.getText().toString().trim()
                 );
+                UIUtil.hideKeyboard(this);
                 break;
             }
             case R.id.btnRegister : {

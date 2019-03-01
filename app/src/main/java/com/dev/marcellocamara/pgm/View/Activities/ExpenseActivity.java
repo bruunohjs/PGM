@@ -17,6 +17,8 @@ import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Presenter.ExpensePresenter;
 import com.dev.marcellocamara.pgm.R;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import java.util.Calendar;
 
 import dmax.dialog.SpotsDialog;
@@ -33,7 +35,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     private TextView textViewDate, textInstallments;
     private Button btnCancel, btnSave;
     private int installments = 1, calendarDay, calendarMonth, calendarYear;
-    private AlertDialog alertDialog, alert;
+    private AlertDialog alertDialog;
     private AlertDialog.Builder builder, builderInstallments ;
     private Calendar calendar;
 
@@ -100,6 +102,7 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                         price.getText().toString().trim(),
                         installments
                 );
+                UIUtil.hideKeyboard(this);
                 break;
             }
             case R.id.tvDate : {
@@ -140,14 +143,8 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     @Override
     public void OnInvalidField(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        alert = builder.create();
-        alert.show();
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -165,21 +162,14 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
                 finish();
             }
         });
-        alert = builder.create();
-        alert.show();
+        builder.show();
     }
 
     @Override
     public void OnAddExpenseFailure(String message) {
         builder.setMessage(R.string.view_expense_alertDialog_error);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        alert = builder.create();
-        alert.show();
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.show();
     }
 
     @Override

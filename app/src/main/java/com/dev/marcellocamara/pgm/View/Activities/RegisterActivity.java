@@ -13,6 +13,8 @@ import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Presenter.RegisterPresenter;
 import com.dev.marcellocamara.pgm.R;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import dmax.dialog.SpotsDialog;
 
 /***
@@ -26,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPassword1, inputLayoutPassword2;
     private TextInputEditText editTextName, editTextEmail, editTextPassword1, editTextPassword2;
     private Button btnRegister, btnBackToLogin;
-    private AlertDialog alertDialog, alert;
+    private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
 
     @Override
@@ -83,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
                         editTextPassword1.getText().toString().trim(),
                         editTextPassword2.getText().toString().trim()
                 );
+                UIUtil.hideKeyboard(this);
                 break;
             }
             case R.id.btnBacktoLogin : {
@@ -135,21 +138,14 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
                 finish();
             }
         });
-        alert = builder.create();
-        alert.show();
+        builder.show();
     }
 
     @Override
     public void OnRegistrationFailure(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alert.dismiss();
-            }
-        });
-        alert = builder.create();
-        alert.show();
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.show();
     }
 
     @Override

@@ -17,6 +17,10 @@ import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
+import java.util.Objects;
+
 import dmax.dialog.SpotsDialog;
 
 /***
@@ -89,6 +93,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
             case R.id.buttonSave: {
                 layoutName.setErrorEnabled(false);
                 profilePresenter.OnUpdateUserName(editTextName.getText().toString().trim(), name);
+                UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
                 break;
             }
         }
@@ -118,10 +123,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     @Override
     public void OnUpdateUserNameFailure(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) { }
-        });
+        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
         builder.show();
     }
 
