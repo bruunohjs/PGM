@@ -122,7 +122,6 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.view_overview_title);
         builder.setCancelable(false);
-        builder.setTitle(R.string.view_overview_title);
         builder.setMessage(message);
         builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
             @Override

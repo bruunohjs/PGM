@@ -58,6 +58,9 @@
     <string name="view_overview_delete_cancel">No</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="view_profile_alert_dialog_title">Profile</string>
+    <string name="view_profile_loading_title">Updating profile…</string>
+    <string name="view_profile_button_save">Save</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>

@@ -148,6 +148,35 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
     }
 
     @Override
+    public void DoUpdateUserName(final String name) {
+        UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
+        getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    getDatabaseReference()
+                            .child("Users")
+                            .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                            .child("name")
+                            .setValue(name)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                taskListener.OnSuccess();
+                            }else {
+                                taskListener.OnError(task.getException().getMessage());
+                            }
+                        }
+                    });
+                }else {
+                    taskListener.OnError(task.getException().getMessage());
+                }
+            }
+        });
+    }
+
+    @Override
     public String GetUserEmail() {
         return getFirebaseAuthInstance().getCurrentUser().getEmail();
     }

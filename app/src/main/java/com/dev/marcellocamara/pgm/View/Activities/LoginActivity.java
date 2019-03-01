@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     private void ViewBind() {
 
-        inputLayoutEmail = findViewById(R.id.tilEmail);
+        inputLayoutEmail = findViewById(R.id.layoutEmail);
         inputLayoutPassword = findViewById(R.id.tilPassword);
 
         editTextEmail = findViewById(R.id.etEmail);

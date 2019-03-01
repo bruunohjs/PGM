@@ -20,12 +20,40 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnSuccess() {
+    public void OnRequestUserData() {
+        view.OnRequestUserDataSuccessful(model.GetUserDisplayName(), model.GetUserEmail());
+    }
 
+    @Override
+    public void OnUpdateUserName(String newName, String nameSaved) {
+        if (newName.isEmpty()){
+            view.OnBlankField();
+        } else if (newName.equals(nameSaved)){
+            view.OnUpdateUserNameFailure("No changes.");
+        } else {
+            view.ShowProgress();
+            model.DoUpdateUserName(newName);
+        }
+    }
+
+    @Override
+    public void OnDestroy() {
+        this.view = null;
+    }
+
+    @Override
+    public void OnSuccess() {
+        if (view != null){
+            view.HideProgress();
+            view.OnUpdateUserNameSuccessful();
+        }
     }
 
     @Override
     public void OnError(String message) {
-
+        if (view != null){
+            view.HideProgress();
+            view.OnUpdateUserNameFailure(message);
+        }
     }
 }

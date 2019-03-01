@@ -59,6 +59,9 @@
     <string name="view_overview_delete_cancel">Não</string>
     <string name="navigation_drawer_open">Abrir o menu de navegação</string>
     <string name="navigation_drawer_close">Fechar o menu de navegação</string>
+    <string name="view_profile_alert_dialog_title">Perfil</string>
+    <string name="view_profile_loading_title">Alterando perfil…</string>
+    <string name="view_profile_button_save">Save</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Preencha com o e-mail.</string>

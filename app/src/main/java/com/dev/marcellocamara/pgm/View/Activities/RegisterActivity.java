@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     private void ViewBind() {
 
         inputLayoutName = findViewById(R.id.tilName);
-        inputLayoutEmail = findViewById(R.id.tilEmail);
+        inputLayoutEmail = findViewById(R.id.layoutEmail);
         inputLayoutPassword1 = findViewById(R.id.tilPassword1);
         inputLayoutPassword2 = findViewById(R.id.tilPassword2);
 
