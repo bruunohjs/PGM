@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dev.marcellocamara.pgm.Contract.IRecyclerView;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.R;
@@ -22,9 +23,9 @@ import java.util.List;
 public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyViewHolder> {
 
     private List<ExpenseModel> list;
-    private OnRecyclerViewClick onRecyclerViewClick;
+    private IRecyclerView onRecyclerViewClick;
 
-    public ExpensesAdapter(List<ExpenseModel> list, OnRecyclerViewClick onRecyclerViewClick) {
+    public ExpensesAdapter(List<ExpenseModel> list, IRecyclerView onRecyclerViewClick) {
         this.list = list;
         this.onRecyclerViewClick = onRecyclerViewClick;
     }
@@ -57,11 +58,11 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private OnRecyclerViewClick onRecyclerViewClick;
+        private IRecyclerView onRecyclerViewClick;
         private TextView title, description, price, installment;
         private ConstraintLayout layoutInstallment;
 
-        public MyViewHolder(View itemView, OnRecyclerViewClick onRecyclerViewClick) {
+        public MyViewHolder(View itemView, IRecyclerView onRecyclerViewClick) {
             super(itemView);
 
             this.onRecyclerViewClick = onRecyclerViewClick;
@@ -78,12 +79,6 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
         public void onClick(View v) {
             onRecyclerViewClick.OnItemClick(getAdapterPosition());
         }
-    }
-
-    public interface OnRecyclerViewClick{
-
-        void OnItemClick(int position);
-
     }
 
 }

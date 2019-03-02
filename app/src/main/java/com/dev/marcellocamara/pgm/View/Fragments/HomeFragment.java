@@ -1,6 +1,5 @@
 package com.dev.marcellocamara.pgm.View.Fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
+import com.dev.marcellocamara.pgm.Contract.IRecyclerView;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
@@ -35,7 +35,7 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class HomeFragment extends Fragment implements IHome.View, ExpensesAdapter.OnRecyclerViewClick, View.OnClickListener, OnMonthChangedListener {
+public class HomeFragment extends Fragment implements IHome.View, IRecyclerView, View.OnClickListener, OnMonthChangedListener {
 
     private IHome.Presenter homePresenter;
     private RecyclerView recyclerView;
