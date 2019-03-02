@@ -1,5 +1,8 @@
 package com.dev.marcellocamara.pgm.Contract;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -13,6 +16,12 @@ public interface IProfile {
 
         void OnUpdateUserName(String newName, String nameSaved);
 
+        void OnCheckPermissions(Activity activity);
+
+        void OnCheckBitmap(Bitmap bitmap);
+
+        void OnCheckFilePath(String filePath);
+
         void OnDestroy();
     }
 
@@ -23,6 +32,14 @@ public interface IProfile {
         void OnUpdateUserNameSuccessful();
 
         void OnUpdateUserNameFailure(String message);
+
+        void OnCheckPermissionsSuccessful();
+
+        void OnSetUserImage(Bitmap bitmap);
+
+        void OnSetUserImage(String filePath);
+
+        void OnSetUserImageFailure();
 
         void OnBlankField();
 

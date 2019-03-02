@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.View.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -10,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.dev.marcellocamara.pgm.Contract.IPhoto;
 import com.dev.marcellocamara.pgm.Contract.IProfile;
+import com.dev.marcellocamara.pgm.Helper.PhotoDialog;
 import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
@@ -28,7 +31,7 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class ProfileFragment extends Fragment implements IProfile.View, View.OnClickListener {
+public class ProfileFragment extends Fragment implements IProfile.View, View.OnClickListener, IPhoto {
 
     private IProfile.Presenter profilePresenter;
     private CircularImageView imageView;
@@ -87,7 +90,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonPhoto : {
-                Toast.makeText(getContext(), "Send photo clicked.\nNot done yet.", Toast.LENGTH_SHORT).show();
+                profilePresenter.OnCheckPermissions(getActivity());
                 break;
             }
             case R.id.buttonSave: {
@@ -128,9 +131,45 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     }
 
     @Override
+    public void OnCheckPermissionsSuccessful() {
+        PhotoDialog dialog = new PhotoDialog();
+        dialog.show(Objects.requireNonNull(getFragmentManager()),"ChangePhoto");
+        dialog.setTargetFragment(ProfileFragment.this, 0);
+    }
+
+    @Override
     public void OnBlankField() {
         layoutName.setError(getResources().getString(R.string.presenter_register_name));
         layoutName.setErrorEnabled(true);
+    }
+
+    @Override
+    public void getBitmap(Bitmap bitmap) {
+        profilePresenter.OnCheckBitmap(bitmap);
+    }
+
+    @Override
+    public void getFilePath(String filePath) {
+        profilePresenter.OnCheckFilePath(filePath);
+    }
+
+    @Override
+    public void OnSetUserImage(Bitmap bitmap) {
+        //TODO : Put into Firebase and Navigation Drawer
+        Glide.with(this).load(bitmap).into(imageView);
+    }
+
+    @Override
+    public void OnSetUserImage(String filePath) {
+        //TODO : Put into Firebase and Navigation Drawer
+        Glide.with(this).load(filePath).into(imageView);
+    }
+
+    @Override
+    public void OnSetUserImageFailure() {
+        builder.setMessage("Oops! Something went wrong. Try again !");
+        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
+        builder.show();
     }
 
     @Override

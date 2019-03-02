@@ -64,6 +64,9 @@
     <string name="view_menu_home">Home</string>
     <string name="view_menu_cards">Cards</string>
     <string name="view_menu_profile">Profile</string>
+    <string name="view_dialog_photo_title">Choose photo from</string>
+    <string name="view_dialog_photo_camera">Camera</string>
+    <string name="view_dialog_photo_gallery">Gallery</string>
 
     <!-- Presenter -->
     <string name="presenter_login_empty_email">Fill the e-mail.</string>
