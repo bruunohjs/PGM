@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.Model;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.dev.marcellocamara.pgm.Contract.IExpense;
@@ -12,6 +13,7 @@ import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,6 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +43,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private StorageReference storageReference;
     private ValueEventListener valueEventListener;
     private List<ExpenseModel> list = new ArrayList<>();
 
@@ -67,6 +73,14 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
             databaseReference = getFirebaseDatabaseInstance().getReference();
         }
         return databaseReference;
+    }
+
+    //Singleton StorageReference
+    private StorageReference getStorageReference(){
+        if (storageReference == null){
+            storageReference = FirebaseStorage.getInstance().getReference();
+        }
+        return storageReference;
     }
 
     @Override
@@ -111,7 +125,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
                                         if (task.isSuccessful()){
                                             taskListener.OnSuccess();
                                         }else {
-                                            taskListener.OnError(task.getException().getMessage());
+                                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                                         }
                                     }
                                 });
@@ -144,13 +158,18 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
 
     @Override
     public String GetUserDisplayName() {
-        return getFirebaseAuthInstance().getCurrentUser().getDisplayName();
+        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getDisplayName();
+    }
+
+    @Override
+    public Uri GetUserPhotoUri() {
+        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getPhotoUrl();
     }
 
     @Override
     public void DoUpdateUserName(final String name) {
         UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
-        getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
@@ -165,12 +184,51 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
                             if (task.isSuccessful()){
                                 taskListener.OnSuccess();
                             }else {
-                                taskListener.OnError(task.getException().getMessage());
+                                taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                             }
                         }
                     });
                 }else {
-                    taskListener.OnError(task.getException().getMessage());
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                }
+            }
+        });
+    }
+
+    @Override
+    public void DoUpdateUserImage(Uri uri) {
+        //TODO : Get .format
+        String format = ".jpeg";
+        final StorageReference reference = getStorageReference()
+                .child("profile_images")
+                .child((Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())+format);
+        UploadTask uploadTask = reference.putFile(uri);
+        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw Objects.requireNonNull(task.getException());
+                }
+                // Continue with the task to get the download URL
+                return reference.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()){
+                    UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setPhotoUri(task.getResult()).build();
+                    getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                taskListener.OnError("response");
+                            }else {
+                                taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                            }
+                        }
+                    });
+                }else {
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                 }
             }
         });
@@ -178,7 +236,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
 
     @Override
     public String GetUserEmail() {
-        return getFirebaseAuthInstance().getCurrentUser().getEmail();
+        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getEmail();
     }
 
     @Override
@@ -186,7 +244,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
 
         valueEventListener = getDatabaseReference()
                 .child("Expenses")
-                .child(getFirebaseAuthInstance().getCurrentUser().getUid())
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                 .child(monthYear)
                 .addValueEventListener(new ValueEventListener() {
             @Override
@@ -194,7 +252,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
                 list.clear();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
-                    expenseModel.setUniqueId(data.getKey()); //Retrieves UniqueKey from each item of month
+                    Objects.requireNonNull(expenseModel).setUniqueId(data.getKey()); //Retrieves UniqueKey from each item of month
                     list.add(expenseModel);
                 }
                 taskListener.OnSuccess();
@@ -245,7 +303,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
                     .child("Expenses")
                     .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                     .child(month+year)
-                    .child(UniqueID)
+                    .child(Objects.requireNonNull(UniqueID))
                     .setValue(expense);
 
             month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
@@ -273,7 +331,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
 
             getDatabaseReference()
                     .child("Expenses")
-                    .child(getFirebaseAuthInstance().getCurrentUser().getUid())
+                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                     .child(month+year)
                     .child(uniqueId).removeValue();
 

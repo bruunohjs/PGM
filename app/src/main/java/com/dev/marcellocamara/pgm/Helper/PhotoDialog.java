@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import com.dev.marcellocamara.pgm.Contract.IPhoto;
 import com.dev.marcellocamara.pgm.R;
 
-import java.io.File;
 import java.util.Objects;
 
 /***
@@ -87,8 +86,7 @@ public class PhotoDialog extends DialogFragment implements View.OnClickListener 
                 }
                 case Permissions.GALLERY_REQUEST : {
                     Uri selectedImage = data.getData();
-                    File file = new File(Objects.requireNonNull(selectedImage).toString());
-                    photoListener.getFilePath(file.getPath());
+                    photoListener.getUri(selectedImage);
                     getDialog().dismiss();
                     break;
                 }

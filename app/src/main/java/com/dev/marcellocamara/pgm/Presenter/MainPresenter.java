@@ -4,6 +4,11 @@ import com.dev.marcellocamara.pgm.Contract.IMain;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 
+/***
+    marcellocamara@id.uff.br
+            2019
+***/
+
 public class MainPresenter implements IMain.Presenter, ITaskListener {
 
     private IMain.View view;
@@ -17,6 +22,9 @@ public class MainPresenter implements IMain.Presenter, ITaskListener {
     @Override
     public void OnRequestUserData() {
         view.OnRequestUserDataSuccessful(model.GetUserDisplayName(), model.GetUserEmail());
+        if (model.GetUserPhotoUri() != null){
+            view.OnSetUserImage(model.GetUserPhotoUri());
+        }
     }
 
     @Override

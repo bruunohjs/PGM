@@ -9,24 +9,27 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Description"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imageViewUserProfile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:contentDescription="@string/nav_header_image_description"
+        android:src="@drawable/default_user"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="2dp"
+        />
 
     <TextView
         android:id="@+id/textViewUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
+        android:paddingTop="4dp"
         android:textSize="16sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textViewUserEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp" />
 

@@ -3,7 +3,9 @@ package com.dev.marcellocamara.pgm.View.Fragments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dev.marcellocamara.pgm.Contract.IPhoto;
@@ -34,17 +37,15 @@ import dmax.dialog.SpotsDialog;
 public class ProfileFragment extends Fragment implements IProfile.View, View.OnClickListener, IPhoto {
 
     private IProfile.Presenter profilePresenter;
-    private CircularImageView imageView;
+    private CircularImageView imageViewProfile, navHeaderImageView;
     private TextInputLayout layoutName;
     private TextInputEditText editTextEmail, editTextName;
+    private TextView navHeaderUserName;
     private Button buttonPhoto, buttonSave;
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
-    private String name;
 
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
+    public ProfileFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,7 +73,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
 
     private void ViewBind(View view) {
 
-        imageView = view.findViewById(R.id.circularImageView);
+        imageViewProfile = view.findViewById(R.id.circularImageView);
 
         layoutName = view.findViewById(R.id.layoutName);
         editTextEmail = view.findViewById(R.id.editTextEmail);
@@ -83,6 +84,11 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
         buttonPhoto.setOnClickListener(this);
         buttonSave = view.findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(this);
+
+        NavigationView navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        navHeaderUserName = headerView.findViewById(R.id.textViewUserName);
+        navHeaderImageView = headerView.findViewById(R.id.imageViewUserProfile);
 
     }
 
@@ -95,7 +101,10 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
             }
             case R.id.buttonSave: {
                 layoutName.setErrorEnabled(false);
-                profilePresenter.OnUpdateUserName(editTextName.getText().toString().trim(), name);
+                profilePresenter.OnUpdateUserName(
+                        editTextName.getText().toString().trim(),
+                        navHeaderUserName.getText().toString().trim()
+                );
                 UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
                 break;
             }
@@ -106,25 +115,23 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     public void OnRequestUserDataSuccessful(String name, String email) {
         editTextEmail.setText(email);
         editTextName.setText(name);
-        this.name = name;
     }
 
     @Override
-    public void OnUpdateUserNameSuccessful() {
-        builder.setMessage("Name updated successful !");
+    public void OnUpdateUserSuccessful() {
+        builder.setMessage(R.string.view_profile_successful);
         builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO : Update navigation drawer textviewUserName
+                navHeaderUserName.setText(editTextName.getText().toString().trim());
             }
         });
         builder.show();
-        name = editTextName.getText().toString().trim();
         layoutName.clearFocus();
     }
 
     @Override
-    public void OnUpdateUserNameFailure(String message) {
+    public void OnUpdateUserFailure(String message) {
         builder.setMessage(message);
         builder.setPositiveButton(R.string.view_overview_dialog_close, null);
         builder.show();
@@ -149,25 +156,25 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     }
 
     @Override
-    public void getFilePath(String filePath) {
-        profilePresenter.OnCheckFilePath(filePath);
+    public void getUri(Uri uri) {
+        profilePresenter.OnCheckFilePath(uri);
     }
 
     @Override
     public void OnSetUserImage(Bitmap bitmap) {
-        //TODO : Put into Firebase and Navigation Drawer
-        Glide.with(this).load(bitmap).into(imageView);
+        Glide.with(this).load(bitmap).into(imageViewProfile);
+        Glide.with(Objects.requireNonNull(getActivity())).load(bitmap).into(navHeaderImageView);
     }
 
     @Override
-    public void OnSetUserImage(String filePath) {
-        //TODO : Put into Firebase and Navigation Drawer
-        Glide.with(this).load(filePath).into(imageView);
+    public void OnSetUserImage(Uri uri) {
+        Glide.with(this).load(uri).into(imageViewProfile);
+        Glide.with(Objects.requireNonNull(getActivity())).load(uri).into(navHeaderImageView);
     }
 
     @Override
     public void OnSetUserImageFailure() {
-        builder.setMessage("Oops! Something went wrong. Try again !");
+        builder.setMessage(R.string.view_profile_name_failure);
         builder.setPositiveButton(R.string.view_overview_dialog_close, null);
         builder.show();
     }

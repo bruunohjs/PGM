@@ -58,9 +58,12 @@
     <string name="view_overview_delete_cancel">No</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_image_description">User profile image</string>
     <string name="view_profile_alert_dialog_title">Profile</string>
     <string name="view_profile_loading_title">Updating profile…</string>
     <string name="view_profile_button_save">Save</string>
+    <string name="view_profile_successful">Profile updated successful !</string>
+    <string name="view_profile_name_failure">Oops! Something went wrong. Try again !</string>
     <string name="view_menu_home">Home</string>
     <string name="view_menu_cards">Cards</string>
     <string name="view_menu_profile">Profile</string>

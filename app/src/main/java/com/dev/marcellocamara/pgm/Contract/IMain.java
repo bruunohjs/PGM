@@ -1,5 +1,7 @@
 package com.dev.marcellocamara.pgm.Contract;
 
+import android.net.Uri;
+
 public interface IMain {
 
     interface Presenter {
@@ -14,6 +16,8 @@ public interface IMain {
 
         void OnRequestUserDataSuccessful(String name, String email);
 
+        void OnSetUserImage(Uri uri);
+
         void OnLogoutSuccessful();
 
     }
@@ -23,6 +27,8 @@ public interface IMain {
         String GetUserDisplayName();
 
         String GetUserEmail();
+
+        Uri GetUserPhotoUri();
 
         void DoLogout();
 

@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Contract;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 /***
     marcellocamara@id.uff.br
@@ -20,24 +21,25 @@ public interface IProfile {
 
         void OnCheckBitmap(Bitmap bitmap);
 
-        void OnCheckFilePath(String filePath);
+        void OnCheckFilePath(Uri uri);
 
         void OnDestroy();
+
     }
 
     interface View extends IProgressLoading {
 
         void OnRequestUserDataSuccessful(String name, String email);
 
-        void OnUpdateUserNameSuccessful();
+        void OnUpdateUserSuccessful();
 
-        void OnUpdateUserNameFailure(String message);
+        void OnUpdateUserFailure(String message);
 
         void OnCheckPermissionsSuccessful();
 
         void OnSetUserImage(Bitmap bitmap);
 
-        void OnSetUserImage(String filePath);
+        void OnSetUserImage(Uri uri);
 
         void OnSetUserImageFailure();
 
@@ -45,14 +47,17 @@ public interface IProfile {
 
     }
 
-
     interface Model {
 
         String GetUserDisplayName();
 
+        String GetUserEmail();
+
+        Uri GetUserPhotoUri();
+
         void DoUpdateUserName(String name);
 
-        String GetUserEmail();
+        void DoUpdateUserImage(Uri uri);
 
     }
 

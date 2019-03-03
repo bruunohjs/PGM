@@ -59,9 +59,12 @@
     <string name="view_overview_delete_cancel">Não</string>
     <string name="navigation_drawer_open">Abrir o menu de navegação</string>
     <string name="navigation_drawer_close">Fechar o menu de navegação</string>
+    <string name="nav_header_image_description">Imagem do perfil de usuário</string>
     <string name="view_profile_alert_dialog_title">Perfil</string>
     <string name="view_profile_loading_title">Alterando perfil…</string>
     <string name="view_profile_button_save">Salvar</string>
+    <string name="view_profile_successful">Perfil alterado com sucesso !</string>
+    <string name="view_profile_name_failure">Oops! Algo deu errado. Tente novamente !</string>
     <string name="view_menu_home">Início</string>
     <string name="view_menu_cards">Cartões</string>
     <string name="view_menu_profile">Perfil</string>
