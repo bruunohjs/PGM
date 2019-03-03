@@ -1,7 +1,6 @@
 package com.dev.marcellocamara.pgm.Contract;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.net.Uri;
 
 /***
@@ -19,9 +18,7 @@ public interface IProfile {
 
         void OnCheckPermissions(Activity activity);
 
-        void OnCheckBitmap(Bitmap bitmap);
-
-        void OnCheckFilePath(Uri uri);
+        void OnCheckUri(Uri uri);
 
         void OnDestroy();
 
@@ -37,11 +34,7 @@ public interface IProfile {
 
         void OnCheckPermissionsSuccessful();
 
-        void OnSetUserImage(Bitmap bitmap);
-
         void OnSetUserImage(Uri uri);
-
-        void OnSetUserImageFailure();
 
         void OnBlankField();
 

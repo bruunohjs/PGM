@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.View.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -22,12 +21,10 @@ import com.dev.marcellocamara.pgm.Helper.PhotoDialog;
 import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
-
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+import dmax.dialog.SpotsDialog;
 
 import java.util.Objects;
-
-import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
@@ -151,32 +148,14 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     }
 
     @Override
-    public void getBitmap(Bitmap bitmap) {
-        profilePresenter.OnCheckBitmap(bitmap);
-    }
-
-    @Override
     public void getUri(Uri uri) {
-        profilePresenter.OnCheckFilePath(uri);
-    }
-
-    @Override
-    public void OnSetUserImage(Bitmap bitmap) {
-        Glide.with(this).load(bitmap).into(imageViewProfile);
-        Glide.with(Objects.requireNonNull(getActivity())).load(bitmap).into(navHeaderImageView);
+        profilePresenter.OnCheckUri(uri);
     }
 
     @Override
     public void OnSetUserImage(Uri uri) {
         Glide.with(this).load(uri).into(imageViewProfile);
         Glide.with(Objects.requireNonNull(getActivity())).load(uri).into(navHeaderImageView);
-    }
-
-    @Override
-    public void OnSetUserImageFailure() {
-        builder.setMessage(R.string.view_profile_name_failure);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
-        builder.show();
     }
 
     @Override

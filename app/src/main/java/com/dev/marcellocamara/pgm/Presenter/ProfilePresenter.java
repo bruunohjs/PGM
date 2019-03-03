@@ -1,15 +1,12 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.net.Uri;
 
 import com.dev.marcellocamara.pgm.Contract.IProfile;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.Permissions;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
-
-import java.io.ByteArrayOutputStream;
 
 /***
     marcellocamara@id.uff.br
@@ -20,7 +17,6 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
 
     private IProfile.View view;
     private IProfile.Model model;
-    private final int BITMAP_QUALITY = 60;
 
     public ProfilePresenter(IProfile.View view) {
         this.view = view;
@@ -53,26 +49,10 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
             view.OnCheckPermissionsSuccessful();
         }
     }
-
     @Override
-    public void OnCheckBitmap(Bitmap bitmap) {
-        if (bitmap != null){
-            view.OnSetUserImage(OnCompressBitmap(bitmap));
-        }else {
-            view.OnSetUserImageFailure();
-        }
-    }
-
-    @Override
-    public void OnCheckFilePath(Uri uri) {
+    public void OnCheckUri(Uri uri) {
         view.ShowProgress();
         model.DoUpdateUserImage(uri);
-    }
-
-    private Bitmap OnCompressBitmap(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, BITMAP_QUALITY, stream);
-        return bitmap;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.dev.marcellocamara.pgm.Contract;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 
 /***
@@ -9,8 +8,6 @@ import android.net.Uri;
 ***/
 
 public interface IPhoto {
-
-    void getBitmap(Bitmap bitmap);
 
     void getUri(Uri uri);
 

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import com.dev.marcellocamara.pgm.Contract.IPhoto;
 import com.dev.marcellocamara.pgm.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
 /***
@@ -80,7 +81,7 @@ public class PhotoDialog extends DialogFragment implements View.OnClickListener 
             switch (requestCode){
                 case Permissions.CAMERA_REQUEST : {
                     Bitmap bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-                    photoListener.getBitmap(bitmap);
+                    photoListener.getUri(getImageUri(Objects.requireNonNull(bitmap)));
                     getDialog().dismiss();
                     break;
                 }
@@ -92,6 +93,18 @@ public class PhotoDialog extends DialogFragment implements View.OnClickListener 
                 }
             }
         }
+    }
+
+    private Uri getImageUri(Bitmap bitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(
+                Objects.requireNonNull(getContext()).getContentResolver(),
+                bitmap,
+                "Title",
+                null
+        );
+        return Uri.parse(path);
     }
 
     @Override
