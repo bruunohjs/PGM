@@ -110,17 +110,24 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()){
             case R.id.nav_home : {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, new HomeFragment()).commit();
                 break;
             }
             case R.id.nav_cards : {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new CardsFragment()).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, new CardsFragment()).commit();
                 break;
             }
             case R.id.nav_profile : {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProfileFragment()).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, new ProfileFragment()).commit();
                 break;
             }
         }

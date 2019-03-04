@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.View.Fragments;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -97,6 +99,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
                 break;
             }
             case R.id.buttonSave: {
+                layoutName.clearFocus();
                 layoutName.setErrorEnabled(false);
                 profilePresenter.OnUpdateUserName(
                         editTextName.getText().toString().trim(),
@@ -149,7 +152,9 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
 
     @Override
     public void getUri(Uri uri) {
-        profilePresenter.OnCheckUri(uri);
+        ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
+        String format = getString(R.string.view_profile_dot) + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri));
+        profilePresenter.OnCheckUri(uri, format);
     }
 
     @Override

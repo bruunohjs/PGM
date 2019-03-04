@@ -10,7 +10,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:focusable="true">
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineLeftParent"
@@ -41,9 +43,7 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusableInTouchMode="true"
-                android:focusable="true">
+                android:layout_height="match_parent">
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guidelineLeftCardView"
@@ -78,6 +78,7 @@
                         android:drawablePadding="4dp"
                         android:hint="@string/view_register_name"
                         android:inputType="textPersonName"
+                        android:imeOptions="flagNoExtractUi"
                         android:maxLength="50"
                         android:textSize="18sp" />
 
@@ -104,6 +105,7 @@
                         android:drawablePadding="4dp"
                         android:hint="@string/view_login_email"
                         android:inputType="textEmailAddress"
+                        android:imeOptions="flagNoExtractUi"
                         android:maxLength="50"
                         android:textSize="18sp" />
 

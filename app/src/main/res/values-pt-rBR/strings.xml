@@ -63,6 +63,7 @@
     <string name="view_profile_alert_dialog_title">Perfil</string>
     <string name="view_profile_loading_title">Alterando perfil…</string>
     <string name="view_profile_button_save">Salvar</string>
+    <string name="view_profile_dot">.</string>
     <string name="view_profile_successful">Perfil alterado com sucesso !</string>
     <string name="view_profile_name_failure">Oops! Algo deu errado. Tente novamente !</string>
     <string name="view_menu_home">Início</string>

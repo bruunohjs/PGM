@@ -62,6 +62,7 @@
     <string name="view_profile_alert_dialog_title">Profile</string>
     <string name="view_profile_loading_title">Updating profile…</string>
     <string name="view_profile_button_save">Save</string>
+    <string name="view_profile_dot">.</string>
     <string name="view_profile_successful">Profile updated successful !</string>
     <string name="view_profile_name_failure">Oops! Something went wrong. Try again !</string>
     <string name="view_menu_home">Home</string>

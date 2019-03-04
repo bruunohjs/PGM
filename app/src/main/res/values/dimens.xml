@@ -1,9 +1,13 @@
 <resources>
+
     <dimen name="fab_margin">16dp</dimen>
+
     <dimen name="cardview_radius">3dp</dimen>
+
     <dimen name="leftGuideLine">0.05</dimen>
     <dimen name="centerGuideLine">0.5</dimen>
     <dimen name="rightGuideLine">0.95</dimen>
 
     <dimen name="nav_header_height">176dp</dimen>
+
 </resources>

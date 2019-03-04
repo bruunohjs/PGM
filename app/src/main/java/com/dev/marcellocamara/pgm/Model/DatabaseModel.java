@@ -196,12 +196,10 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
     }
 
     @Override
-    public void DoUpdateUserImage(Uri uri) {
-        //TODO : Get .format
-        String format = ".jpeg";
+    public void DoUpdateUserImage(Uri uri, String format) {
         final StorageReference reference = getStorageReference()
                 .child("profile_images")
-                .child((Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())+format);
+                .child((Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid()) + format);
         UploadTask uploadTask = reference.putFile(uri);
         uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override

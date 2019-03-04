@@ -18,7 +18,7 @@ public interface IProfile {
 
         void OnCheckPermissions(Activity activity);
 
-        void OnCheckUri(Uri uri);
+        void OnCheckUri(Uri uri, String format);
 
         void OnDestroy();
 
@@ -50,7 +50,7 @@ public interface IProfile {
 
         void DoUpdateUserName(String name);
 
-        void DoUpdateUserImage(Uri uri);
+        void DoUpdateUserImage(Uri uri, String format);
 
     }
 

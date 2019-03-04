@@ -50,9 +50,9 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
         }
     }
     @Override
-    public void OnCheckUri(Uri uri) {
+    public void OnCheckUri(Uri uri, String format) {
         view.ShowProgress();
-        model.DoUpdateUserImage(uri);
+        model.DoUpdateUserImage(uri, format);
     }
 
     @Override
