@@ -32,8 +32,9 @@ A tabela abaixo mostra cada nome de tela desenvolvida e seu respectivo link para
 
 Nome da tela | Idioma
 :---  | :---: 
-Login | - 
+Login | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/login.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/login.png)
 Cadastrar | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/register.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/register.png)
+Recuperar Senha | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/recover.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/recover.png)
 Home | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/home.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/home.png)
 Nova despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/expense.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/expense.png)
 Detalhes da despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/overview.png)
@@ -45,6 +46,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
 - [CircularImageView](https://github.com/lopspower/CircularImageView)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database/)
+- [Glide](https://github.com/bumptech/glide)
 - [KeyboardVisibilityEvent](https://github.com/yshrsmz/KeyboardVisibilityEvent)
 - [Material Calendar View](https://github.com/prolificinteractive/material-calendarview)
 - [Material Design](https://material.io/design/)

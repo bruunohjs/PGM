@@ -31,7 +31,7 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
-            android:layout_height="130dp"
+            android:layout_height="110dp"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/app_name"
             android:scaleType="fitCenter"
@@ -139,18 +139,33 @@
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="48dp"
+            android:padding="8dp"
             android:background="@null"
             android:text="@string/view_login_button_signup"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btnLogin"
             app:layout_constraintStart_toStartOf="@+id/btnLogin"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+        <Button
+            android:id="@+id/btnRecoverPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="48dp"
+            android:padding="8dp"
+            android:background="@null"
+            android:text="@string/view_login_button_forgot_password"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightParentGuideLine"
+            app:layout_constraintStart_toStartOf="@+id/leftParentGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     </android.support.constraint.ConstraintLayout>
 

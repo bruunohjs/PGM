@@ -9,6 +9,7 @@ import com.dev.marcellocamara.pgm.Contract.ILogin;
 import com.dev.marcellocamara.pgm.Contract.IMain;
 import com.dev.marcellocamara.pgm.Contract.IOverview;
 import com.dev.marcellocamara.pgm.Contract.IProfile;
+import com.dev.marcellocamara.pgm.Contract.IRecoverPassword;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
@@ -37,7 +38,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model {
 
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
@@ -148,6 +149,20 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IMain.Model
     @Override
     public boolean CheckLoggedIn() {
         return getFirebaseAuthInstance().getCurrentUser() != null;
+    }
+
+    @Override
+    public void DoRecoverPassword(String email) {
+        getFirebaseAuthInstance().sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    taskListener.OnSuccess();
+                }else {
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                }
+            }
+        });
     }
 
     @Override

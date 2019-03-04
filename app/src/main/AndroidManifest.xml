@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dev.marcellocamara.pgm">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -25,12 +25,14 @@
         </activity>
         <activity
             android:name=".View.Activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|screenSize">
-        </activity>
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".View.Activities.RegisterActivity"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".View.Activities.RecoverPasswordActivity"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".View.Activities.ExpenseActivity"
             android:configChanges="orientation|screenSize" />

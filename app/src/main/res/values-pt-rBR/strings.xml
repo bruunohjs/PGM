@@ -7,6 +7,7 @@
     <string name="view_login_password">Senha</string>
     <string name="view_login_button_login">Logar</string>
     <string name="view_login_button_signup">Não tem uma conta ? Clique aqui e registre-se</string>
+    <string name="view_login_button_forgot_password">Esqueceu sua senha ?</string>
     <string name="view_login_customAlertDialog">Logando…</string>
     <string name="view_login_alertDialog_title">Login</string>
     <string name="view_register_name">Nome</string>
@@ -14,6 +15,10 @@
     <string name="view_register_button_register">Registrar</string>
     <string name="view_register_button_back_to_login">Já tem uma conta ? Clique aqui e logue-se</string>
     <string name="view_register_customAlertDialog">Registrando…</string>
+    <string name="view_recover_button">Recuperar Senha</string>
+    <string name="view_recover_password_dialog_loading">Recuperando senha…</string>
+    <string name="view_recover_password_dialog_message1">Um email foi enviado para</string>
+    <string name="view_recover_password_dialog_message2">Cheque seu email, em alguns minutos, e sigura as intruções para alterar sua senha.</string>
     <string name="view_actionbar_menu_logout">Sair</string>
     <string name="view_expense_title_expense">Nova despesa</string>
     <string name="view_register_alertDialog_title">Registrar</string>

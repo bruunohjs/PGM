@@ -6,6 +6,7 @@
     <string name="view_login_password">Password</string>
     <string name="view_login_button_login">Log in</string>
     <string name="view_login_button_signup">Don\'t have an account ? Click here to register</string>
+    <string name="view_login_button_forgot_password">Forgot your password ?</string>
     <string name="view_login_customAlertDialog">Login in…</string>
     <string name="view_login_alertDialog_title">Login</string>
     <string name="view_register_name">Name</string>
@@ -13,6 +14,10 @@
     <string name="view_register_button_register">Register</string>
     <string name="view_register_button_back_to_login">Already have an account ? Click here to login</string>
     <string name="view_register_customAlertDialog">Registering…</string>
+    <string name="view_recover_button">Recover Password</string>
+    <string name="view_recover_password_dialog_loading">Recovering password…</string>
+    <string name="view_recover_password_dialog_message1">An email was sent to</string>
+    <string name="view_recover_password_dialog_message2">\nCheck your mailbox, in a few minutes, and follow the instructions to set a new password.</string>
     <string name="view_actionbar_menu_logout">Logout</string>
     <string name="view_expense_title_expense">New expense</string>
     <string name="view_register_alertDialog_title">Register</string>

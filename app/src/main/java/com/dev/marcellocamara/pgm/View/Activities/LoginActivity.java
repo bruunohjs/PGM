@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
     private ILogin.Presenter loginPresenter;
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
     private TextInputEditText editTextEmail, editTextPassword;
-    private Button btnLogin, btnRegister;
+    private Button btnLogin, btnRegister, btnRecoverPassword;
     private AlertDialog alertDialog, alert;
     private AlertDialog.Builder builder;
 
@@ -63,8 +63,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
+        btnRecoverPassword = findViewById(R.id.btnRecoverPassword);
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        btnRecoverPassword.setOnClickListener(this);
 
     }
 
@@ -84,6 +86,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
             }
             case R.id.btnRegister : {
                 startActivity(new Intent(this, RegisterActivity.class));
+                break;
+            }
+            case R.id.btnRecoverPassword : {
+                startActivity(new Intent(this, RecoverPasswordActivity.class));
                 break;
             }
         }
