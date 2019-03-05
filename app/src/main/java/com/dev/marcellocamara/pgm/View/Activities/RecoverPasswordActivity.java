@@ -7,7 +7,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 
 import com.dev.marcellocamara.pgm.Contract.IProgressLoading;
@@ -19,6 +18,9 @@ import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 /***
@@ -26,21 +28,27 @@ import dmax.dialog.SpotsDialog;
             2019
 ***/
 
-public class RecoverPasswordActivity extends AppCompatActivity implements IRecoverPassword.View, IProgressLoading, View.OnClickListener {
+public class RecoverPasswordActivity extends AppCompatActivity implements IRecoverPassword.View, IProgressLoading {
+
+    @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
+    @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+
+    @BindView(R.id.btnRecoverPassword) protected Button btnRecoverPassword;
 
     private IRecoverPassword.Presenter presenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
-    private TextInputLayout layoutEmail;
-    private TextInputEditText editTextEmail;
-    private Button buttonRecoverPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recover_password);
 
-        ViewBind();
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_recover_button);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ButterKnife.bind(this);
 
         presenter = new RecoverPasswordPresenter(this);
 
@@ -56,31 +64,12 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
         builder.setCancelable(false);
     }
 
-    private void ViewBind() {
-
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_recover_button);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        layoutEmail = findViewById(R.id.layoutEmail);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        
-        buttonRecoverPassword = findViewById(R.id.btnRecoverPassword);
-        buttonRecoverPassword.setOnClickListener(this);
-
-    }
-    
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnRecoverPassword : {
-                layoutEmail.setErrorEnabled(false);
-                layoutEmail.clearFocus();
-                presenter.OnRecoverPassword(editTextEmail.getText().toString().trim());
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-        }
+    @OnClick(R.id.btnRecoverPassword)
+    public void OnButtonClick(){
+        layoutEmail.setErrorEnabled(false);
+        layoutEmail.clearFocus();
+        presenter.OnRecoverPassword(editTextEmail.getText().toString().trim());
+        UIUtil.hideKeyboard(this);
     }
 
     @Override

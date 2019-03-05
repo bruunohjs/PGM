@@ -15,6 +15,9 @@ import com.dev.marcellocamara.pgm.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -44,12 +47,12 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
 
         double value = ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
 
-        holder.title.setText(expenseModel.getTitle());
-        holder.description.setText(expenseModel.getDescription());
-        holder.price.setText(NumberHelper.GetDecimal(value));
+        holder.textViewTitle.setText(expenseModel.getTitle());
+        holder.textViewDescription.setText(expenseModel.getDescription());
+        holder.textViewPrice.setText(NumberHelper.GetDecimal(value));
         if ( (Integer.parseInt(expenseModel.getInstallments())) > 1){
             holder.layoutInstallment.setVisibility(View.VISIBLE);
-            holder.installment.setText(expenseModel.getCurrentInstallment());
+            holder.textViewInstallment.setText(expenseModel.getCurrentInstallment());
         }
     }
 
@@ -58,19 +61,20 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        @BindView(R.id.textViewTitle) protected TextView textViewTitle;
+        @BindView(R.id.textViewDescription) protected TextView textViewDescription;
+        @BindView(R.id.textViewPrice) protected TextView textViewPrice;
+        @BindView(R.id.textViewInstallment) protected TextView textViewInstallment;
+
+        @BindView(R.id.layoutInstallment) ConstraintLayout layoutInstallment;
+
         private IRecyclerView onRecyclerViewClick;
-        private TextView title, description, price, installment;
-        private ConstraintLayout layoutInstallment;
 
         public MyViewHolder(View itemView, IRecyclerView onRecyclerViewClick) {
             super(itemView);
-
             this.onRecyclerViewClick = onRecyclerViewClick;
-            title = itemView.findViewById(R.id.textViewTitle);
-            description = itemView.findViewById(R.id.textViewDescription);
-            price = itemView.findViewById(R.id.textViewPrice);
-            installment = itemView.findViewById(R.id.textViewInstallment);
-            layoutInstallment = itemView.findViewById(R.id.layoutInstallment);
+
+            ButterKnife.bind(this, itemView);
 
             itemView.setOnClickListener(this);
         }

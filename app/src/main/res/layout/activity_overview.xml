@@ -102,7 +102,7 @@
                     android:layout_marginStart="8dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/tvCoinType"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewCoinType"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,14 +110,15 @@
                     android:id="@+id/textViewDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/layoutInstallment"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
                 <TextView
-                    android:id="@+id/tvCoinType"
+                    android:id="@+id/textViewCoinType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
@@ -147,7 +148,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textViewPrice">
 
                     <ImageView
-                        android:id="@+id/ivCreditCard"
+                        android:id="@+id/imageViewCreditCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
@@ -162,18 +163,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="2dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivCreditCard"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
                         app:layout_constraintEnd_toStartOf="@+id/textViewX"
-                        app:layout_constraintTop_toTopOf="@+id/ivCreditCard" />
+                        app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
 
                     <TextView
                         android:id="@+id/textViewX"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/view_overview_installments"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivCreditCard"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/ivCreditCard" />
+                        app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -260,7 +261,7 @@
         </android.support.v7.widget.CardView>
 
         <Button
-            android:id="@+id/buttonDelete"
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/accent_background"

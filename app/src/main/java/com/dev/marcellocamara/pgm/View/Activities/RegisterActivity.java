@@ -6,7 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 
 import com.dev.marcellocamara.pgm.Contract.IRegister;
@@ -15,19 +15,34 @@ import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
+import java.util.Objects;
+
 import dmax.dialog.SpotsDialog;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class RegisterActivity extends AppCompatActivity implements IRegister.View, View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements IRegister.View {
+
+    @BindView(R.id.layoutName) protected TextInputLayout layoutName;
+    @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
+    @BindView(R.id.layoutPassword1) protected TextInputLayout layoutPassword1;
+    @BindView(R.id.layoutPassword2) protected TextInputLayout layoutPassword2;
+
+    @BindView(R.id.editTextName) protected TextInputEditText editTextName;
+    @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+    @BindView(R.id.editTextPassword1) protected TextInputEditText editTextPassword1;
+    @BindView(R.id.editTextPassword2) protected TextInputEditText editTextPassword2;
+
+    @BindView(R.id.btnRegister) protected Button btnRegister;
 
     private IRegister.Presenter registerPresenter;
-    private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPassword1, inputLayoutPassword2;
-    private TextInputEditText editTextName, editTextEmail, editTextPassword1, editTextPassword2;
-    private Button btnRegister, btnBackToLogin;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
 
@@ -36,7 +51,11 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        ViewBind();
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_register_alertDialog_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ButterKnife.bind(this);
 
         registerPresenter = new RegisterPresenter(this, this);
 
@@ -52,71 +71,43 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         builder.setCancelable(false);
     }
 
-    private void ViewBind() {
-
-        inputLayoutName = findViewById(R.id.tilName);
-        inputLayoutEmail = findViewById(R.id.layoutEmail);
-        inputLayoutPassword1 = findViewById(R.id.tilPassword1);
-        inputLayoutPassword2 = findViewById(R.id.tilPassword2);
-
-        editTextName = findViewById(R.id.etName);
-        editTextEmail = findViewById(R.id.etEmail);
-        editTextPassword1 = findViewById(R.id.etPassword1);
-        editTextPassword2 = findViewById(R.id.etPassword2);
-
-        btnRegister = findViewById(R.id.btnRegister);
-        btnBackToLogin = findViewById(R.id.btnBacktoLogin);
-        btnRegister.setOnClickListener(this);
-        btnBackToLogin.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnRegister : {
-                inputLayoutName.setErrorEnabled(false);
-                inputLayoutEmail.setErrorEnabled(false);
-                inputLayoutPassword1.setErrorEnabled(false);
-                inputLayoutPassword2.setErrorEnabled(false);
-                registerPresenter.OnRegister(
-                        editTextName.getText().toString().trim(),
-                        editTextEmail.getText().toString().trim(),
-                        editTextPassword1.getText().toString().trim(),
-                        editTextPassword2.getText().toString().trim()
-                );
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-            case R.id.btnBacktoLogin : {
-                finish();
-                break;
-            }
-        }
+    @OnClick(R.id.btnRegister)
+    public void OnButtonClick(){
+        layoutName.setErrorEnabled(false);
+        layoutEmail.setErrorEnabled(false);
+        layoutPassword1.setErrorEnabled(false);
+        layoutPassword2.setErrorEnabled(false);
+        registerPresenter.OnRegister(
+                editTextName.getText().toString().trim(),
+                editTextEmail.getText().toString().trim(),
+                editTextPassword1.getText().toString().trim(),
+                editTextPassword2.getText().toString().trim()
+        );
+        UIUtil.hideKeyboard(this);
     }
 
     @Override
     public void OnInvalidName(String message) {
-        inputLayoutName.setError(message);
-        inputLayoutName.setErrorEnabled(true);
+        layoutName.setError(message);
+        layoutName.setErrorEnabled(true);
     }
 
     @Override
     public void OnInvalidEmail(String message) {
-        inputLayoutEmail.setError(message);
-        inputLayoutEmail.setErrorEnabled(true);
+        layoutEmail.setError(message);
+        layoutEmail.setErrorEnabled(true);
     }
 
     @Override
     public void OnInvalidPassword1(String message) {
-        inputLayoutPassword1.setError(message);
-        inputLayoutPassword1.setErrorEnabled(true);
+        layoutPassword1.setError(message);
+        layoutPassword1.setErrorEnabled(true);
     }
 
     @Override
     public void OnInvalidPassword2(String message) {
-        inputLayoutPassword2.setError(message);
-        inputLayoutPassword2.setErrorEnabled(true);
+        layoutPassword2.setError(message);
+        layoutPassword2.setErrorEnabled(true);
     }
 
     @Override
@@ -146,6 +137,12 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         builder.setMessage(message);
         builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
         builder.show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     @Override

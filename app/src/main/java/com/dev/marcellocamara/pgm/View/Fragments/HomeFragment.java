@@ -30,26 +30,33 @@ import java.util.List;
 
 import dmax.dialog.SpotsDialog;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class HomeFragment extends Fragment implements IHome.View, IRecyclerView, View.OnClickListener, OnMonthChangedListener {
+public class HomeFragment extends Fragment implements IHome.View, IRecyclerView, OnMonthChangedListener {
+
+    @BindView(R.id.textViewPrice) protected TextView textViewPrice;
+
+    @BindView(R.id.materialCalendarView) protected MaterialCalendarView materialCalendarView;
+
+    @BindView(R.id.recyclerView) protected RecyclerView recyclerView;
+
+    @BindView(R.id.mutativeFAB) protected MutativeFab mutativeFAB;
 
     private IHome.Presenter homePresenter;
-    private RecyclerView recyclerView;
-    private MaterialCalendarView calendarView;
-    private TextView total;
     private List<ExpenseModel> list;
-    private Calendar calendar;
     private String calendarMonth, calendarYear;
     private AlertDialog alertDialog;
-    private MutativeFab mutativeFab;
+    private Unbinder unbinder;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,10 +64,19 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        ViewBind(view);
+        unbinder = ButterKnife.bind(this, view);
 
         homePresenter = new HomePresenter(this);
-        //homePresenter.OnRequestUserName();
+
+        Calendar calendar = Calendar.getInstance();
+        calendarMonth = NumberHelper.GetMonth( (calendar.get(Calendar.MONTH)) + 1 );
+        calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
+
+        materialCalendarView.setOnMonthChangedListener(this);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(view.getContext())
@@ -72,34 +88,9 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
         return view;
     }
 
-    private void ViewBind(View view) {
-
-        total = view.findViewById(R.id.textViewPrice);
-
-        mutativeFab = view.findViewById(R.id.floatingAB);
-        mutativeFab.setOnClickListener(this);
-
-        recyclerView = view.findViewById(R.id.recyclerExpenses);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
-        calendarView = view.findViewById(R.id.materialCalendar);
-        calendarView.setOnMonthChangedListener(this);
-
-        calendar = Calendar.getInstance();
-        calendarMonth = NumberHelper.GetMonth( (calendar.get(Calendar.MONTH)) + 1 );
-        calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.floatingAB : {
-                startActivity(new Intent(getContext(), ExpenseActivity.class));
-                break;
-            }
-        }
+    @OnClick(R.id.mutativeFAB)
+    public void OnFloatingActionButtonClick(){
+        startActivity(new Intent(getContext(), ExpenseActivity.class));
     }
 
     @Override
@@ -125,7 +116,7 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
 
     @Override
     public void OnRequestTotalCalculateResult(String value) {
-        total.setText(value);
+        textViewPrice.setText(value);
     }
 
     @Override
@@ -154,5 +145,6 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
     public void onDestroy() {
         super.onDestroy();
         homePresenter.OnDestroy();
+        unbinder.unbind();
     }
 }

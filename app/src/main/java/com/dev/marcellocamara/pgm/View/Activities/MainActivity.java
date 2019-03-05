@@ -26,6 +26,9 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -34,10 +37,13 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, IMain.View {
 
+    @BindView(R.id.toolbar) protected Toolbar toolbar;
+
+    @BindView(R.id.navigationView) protected NavigationView navigationView;
+
+    @BindView(R.id.drawerLayout) protected DrawerLayout drawerLayout;
+
     private IMain.Presenter mainPresenter;
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
     private TextView textViewUserName, textViewUserEmail;
     private CircularImageView imageViewUserProfile;
 
@@ -46,38 +52,31 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewBind();
+        ButterKnife.bind(this);
 
-        mainPresenter = new MainPresenter(this);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
-        navigationView.setCheckedItem(R.id.nav_home);
-    }
-
-    private void ViewBind() {
-
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
 
-        drawer = findViewById(R.id.drawer_layout);
+        navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
-                drawer,
+                drawerLayout,
                 toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
         );
-        drawer.addDrawerListener(toggle);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mainPresenter = new MainPresenter(this);
 
         View headerView = navigationView.getHeaderView(0);
         textViewUserName = headerView.findViewById(R.id.textViewUserName);
         textViewUserEmail = headerView.findViewById(R.id.textViewUserEmail);
         imageViewUserProfile = headerView.findViewById(R.id.imageViewUserProfile);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -143,8 +142,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }

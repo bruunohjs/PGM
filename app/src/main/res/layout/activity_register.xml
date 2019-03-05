@@ -12,8 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:focusable="true"
-        >
+        android:focusable="true" >
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.NoActionBar.AppBarOverlay"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
 
         <android.support.constraint.Guideline
             android:id="@+id/leftParentGuideLine"
@@ -33,11 +51,11 @@
             android:id="@+id/cardViewLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="@dimen/cardview_radius"
             app:layout_constraintEnd_toStartOf="@+id/rightParentGuideLine"
             app:layout_constraintStart_toStartOf="@+id/leftParentGuideLine"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -58,26 +76,26 @@
                     app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilName"
+                    android:id="@+id/layoutName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/rightCardViewGuideLine"
                     app:layout_constraintStart_toStartOf="@+id/leftCardViewGuideLine"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/etName"
+                        android:id="@+id/editTextName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="4dp"
-                        android:drawableStart="@drawable/ic_person"
-                        android:hint="@string/view_register_name"
                         android:digits="@string/editTextPersonName"
-                        android:inputType="textPersonName"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawablePadding="4dp"
+                        android:hint="@string/view_register_name"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textPersonName"
                         android:maxLength="50"
                         android:textSize="18sp" />
 
@@ -87,76 +105,76 @@
                     android:id="@+id/layoutEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/rightCardViewGuideLine"
                     app:layout_constraintStart_toStartOf="@+id/leftCardViewGuideLine"
-                    app:layout_constraintTop_toBottomOf="@+id/tilName">
+                    app:layout_constraintTop_toBottomOf="@+id/layoutName">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/etEmail"
+                        android:id="@+id/editTextEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="4dp"
                         android:drawableStart="@drawable/ic_email"
+                        android:drawablePadding="4dp"
                         android:hint="@string/view_login_email"
-                        android:inputType="textEmailAddress"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textEmailAddress"
                         android:maxLength="50"
                         android:textSize="18sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilPassword1"
+                    android:id="@+id/layoutPassword1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/rightCardViewGuideLine"
                     app:layout_constraintStart_toStartOf="@+id/leftCardViewGuideLine"
                     app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
                     app:passwordToggleEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/etPassword1"
+                        android:id="@+id/editTextPassword1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="4dp"
                         android:drawableStart="@drawable/ic_password"
+                        android:drawablePadding="4dp"
                         android:hint="@string/view_login_password"
-                        android:inputType="textPassword"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textPassword"
                         android:maxLength="20"
                         android:textSize="18sp" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilPassword2"
+                    android:id="@+id/layoutPassword2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="46dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="46dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/rightCardViewGuideLine"
                     app:layout_constraintStart_toStartOf="@+id/leftCardViewGuideLine"
-                    app:layout_constraintTop_toBottomOf="@+id/tilPassword1"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutPassword1"
                     app:passwordToggleEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/etPassword2"
+                        android:id="@+id/editTextPassword2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="4dp"
                         android:drawableStart="@drawable/ic_password"
+                        android:drawablePadding="4dp"
                         android:hint="@string/view_register_password"
-                        android:inputType="textPassword"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textPassword"
                         android:maxLength="20"
                         android:textSize="18sp" />
 
@@ -171,26 +189,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
             android:background="@drawable/white_background"
             android:text="@string/view_register_button_register"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/cardViewLogin"
             app:layout_constraintStart_toStartOf="@+id/cardViewLogin"
             app:layout_constraintTop_toBottomOf="@+id/cardViewLogin" />
-
-        <Button
-            android:id="@+id/btnBacktoLogin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@null"
-            android:text="@string/view_register_button_back_to_login"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnRegister"
-            app:layout_constraintStart_toStartOf="@+id/btnRegister"
-            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
         <TextView
-            android:id="@+id/tvCoinType"
+            android:id="@+id/textViewCoinType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -85,7 +85,7 @@
             app:layout_constraintTop_toTopOf="@+id/textViewDescription">
 
             <ImageView
-                android:id="@+id/ivCreditCard"
+                android:id="@+id/imageViewCreditCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
@@ -100,9 +100,9 @@
                 android:id="@+id/textViewInstallment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/ivCreditCard"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ivCreditCard" />
+                app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
 
         </android.support.constraint.ConstraintLayout>
 

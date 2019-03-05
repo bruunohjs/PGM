@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,36 +18,53 @@ import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
-import java.util.Calendar;
-
 import dmax.dialog.SpotsDialog;
+
+import java.util.Calendar;
+import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class ExpenseActivity extends AppCompatActivity implements IExpense.View, View.OnClickListener {
+public class ExpenseActivity extends AppCompatActivity implements IExpense.View {
+
+    @BindView(R.id.toolbar) protected Toolbar toolbar;
+
+    @BindView(R.id.textViewDate) protected TextView textViewDate;
+    @BindView(R.id.textViewInstallment) protected TextView textViewInstallment;
+
+    @BindView(R.id.editTextTitle) protected EditText editTextTitle;
+    @BindView(R.id.editTextDescription) protected EditText editTextDescription;
+    @BindView(R.id.editTextPrice) protected EditText editTextPrice;
+
+    @BindView(R.id.btnCancel) protected Button btnCancel;
+    @BindView(R.id.btnSave) protected Button btnSave;
 
     private IExpense.Presenter expensePresenter;
-    private EditText title, description, price;
-    private TextView textViewDate, textInstallments;
-    private Button btnCancel, btnSave;
-    private int installments = 1, calendarDay, calendarMonth, calendarYear;
     private AlertDialog alertDialog;
-    private AlertDialog.Builder builder, builderInstallments ;
-    private Calendar calendar;
+    private AlertDialog.Builder builder ;
+    private int installments = 1, calendarDay, calendarMonth, calendarYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
 
-        ViewBind();
+        ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_expense_title_expense);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         expensePresenter = new ExpensePresenter(this, this);
 
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendarDay = calendar.get(Calendar.DAY_OF_MONTH);
         calendarMonth = calendar.get(Calendar.MONTH);
         calendarYear = calendar.get(Calendar.YEAR);
@@ -66,78 +82,57 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
         builder.setCancelable(false);
     }
 
-    private void ViewBind() {
-
-        textViewDate = findViewById(R.id.tvDate);
-        textViewDate.setOnClickListener(this);
-        textInstallments = findViewById(R.id.tvInstallment);
-        textInstallments.setOnClickListener(this);
-        title = findViewById(R.id.etTitle);
-        description = findViewById(R.id.etDescription);
-        price = findViewById(R.id.etPrice);
-
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        getSupportActionBar().setTitle(R.string.view_expense_title_expense);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        btnCancel = findViewById(R.id.buttonCancel);
-        btnSave = findViewById(R.id.buttonSave);
-        btnCancel.setOnClickListener(this);
-        btnSave.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-
+    @OnClick({R.id.textViewDate, R.id.textViewInstallment})
+    public void OnTextViewClick(TextView v){
         switch (v.getId()){
-            case R.id.buttonCancel : {
-                finish();
-                break;
-            }
-            case R.id.buttonSave : {
-                expensePresenter.OnAddExpense(
-                        textViewDate.getText().toString().trim(),
-                        title.getText().toString().trim(),
-                        description.getText().toString().trim(),
-                        price.getText().toString().trim(),
-                        installments
-                );
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-            case R.id.tvDate : {
+            case R.id.textViewDate : {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         this, new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
-                            expensePresenter.OnCalculateDate(dayOfMonth,month,year);
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                        expensePresenter.OnCalculateDate(dayOfMonth,month,year);
                     }
                 },calendarYear,calendarMonth,calendarDay);
                 datePickerDialog.show();
                 break;
             }
-            case R.id.tvInstallment : {
-                builderInstallments = new AlertDialog.Builder(this);
+            case R.id.textViewInstallment : {
+                AlertDialog.Builder builderInstallments = new AlertDialog.Builder(this);
                 builderInstallments.setCancelable(false);
                 builderInstallments.setTitle(R.string.view_expense_installments_number);
                 builderInstallments.setItems(R.array.installments, new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         installments = (which + 1);
-                        textInstallments.setText(installments + getString(R.string.view_overview_installments));
+                        textViewInstallment.setText(installments + getString(R.string.view_overview_installments));
                     }
                 });
                 builderInstallments.show();
                 break;
             }
         }
-
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
+    @OnClick({R.id.btnCancel, R.id.btnSave})
+    public void OnButtonClick(Button v){
+        switch (v.getId()) {
+            case R.id.btnCancel: {
+                finish();
+                break;
+            }
+            case R.id.btnSave: {
+                expensePresenter.OnAddExpense(
+                        textViewDate.getText().toString().trim(),
+                        editTextTitle.getText().toString().trim(),
+                        editTextDescription.getText().toString().trim(),
+                        editTextPrice.getText().toString().trim(),
+                        installments
+                );
+                UIUtil.hideKeyboard(this);
+                break;
+            }
+        }
     }
 
     @Override
@@ -180,5 +175,17 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View,
     @Override
     public void HideProgress() {
         alertDialog.dismiss();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        expensePresenter.OnDestroy();
     }
 }

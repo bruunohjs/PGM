@@ -16,21 +16,34 @@ import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.OverviewPresenter;
 import com.dev.marcellocamara.pgm.R;
 
+import java.util.Objects;
+
 import dmax.dialog.SpotsDialog;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class OverviewActivity extends AppCompatActivity implements IOverview.View, View.OnClickListener{
+public class OverviewActivity extends AppCompatActivity implements IOverview.View {
+
+    @BindView(R.id.textViewTitle) protected TextView textViewTitle;
+    @BindView(R.id.textViewDescription) protected TextView textViewDescription;
+    @BindView(R.id.textViewPrice) protected TextView textViewPrice;
+    @BindView(R.id.textViewInstallment) protected TextView textViewInstallment;
+    @BindView(R.id.textViewDate) protected TextView textViewDate;
+    @BindView(R.id.textViewEachInstallment) protected TextView textViewEachInstallment;
+
+    @BindView(R.id.layoutEachInstallment) protected ConstraintLayout layoutEachInstallment;
+
+    @BindView(R.id.btnDelete) protected Button btnDelete;
 
     private IOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
-    private Toolbar toolbar;
-    private Button delete;
-    private ConstraintLayout layoutEachInstallments;
-    private TextView title, description, price, installment, date, eachInstallment;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
 
@@ -39,12 +52,21 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_overview_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ButterKnife.bind(this);
+
         expenseModel = getIntent().getParcelableExtra(getString(R.string.view_parcelable_name));
 
-        ViewBind();
+        textViewTitle.setText(expenseModel.getTitle());
+        textViewDescription.setText(expenseModel.getDescription());
+        textViewPrice.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
+        textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
+        textViewDate.setText(expenseModel.getPaymentDate());
 
         overviewPresenter = new OverviewPresenter(this);
-
         overviewPresenter.OnVerifyInstallments(expenseModel.getInstallments(), expenseModel.getPrice());
 
         alertDialog = new SpotsDialog.Builder()
@@ -55,58 +77,26 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
                 .build();
     }
 
-    private void ViewBind() {
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.view_overview_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        title = findViewById(R.id.textViewTitle);
-        description = findViewById(R.id.textViewDescription);
-        price = findViewById(R.id.textViewPrice);
-        installment = findViewById(R.id.textViewInstallment);
-        date = findViewById(R.id.textViewDate);
-        eachInstallment = findViewById(R.id.textViewEachInstallment);
-
-        layoutEachInstallments = findViewById(R.id.layoutEachInstallment);
-
-        delete = findViewById(R.id.buttonDelete);
-        delete.setOnClickListener(this);
-
-        title.setText(expenseModel.getTitle());
-        description.setText(expenseModel.getDescription());
-        price.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
-        installment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
-        date.setText(expenseModel.getPaymentDate());
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.buttonDelete : {
-                builder = new AlertDialog.Builder(this);
-                builder.setCancelable(false);
-                builder.setTitle(R.string.view_overview_title);
-                builder.setMessage(R.string.view_overview_delete_confirm);
-                builder.setPositiveButton(R.string.view_overview_delete_yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        overviewPresenter.OnDeleteExpense(expenseModel);
-                    }
-                });
-                builder.setNegativeButton(R.string.view_overview_delete_cancel, null);
-                builder.show();
-                break;
+    @OnClick(R.id.btnDelete)
+    public void OnButtonClick(){
+        builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.view_overview_title);
+        builder.setMessage(R.string.view_overview_delete_confirm);
+        builder.setPositiveButton(R.string.view_overview_delete_yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                overviewPresenter.OnDeleteExpense(expenseModel);
             }
-        }
+        });
+        builder.setNegativeButton(R.string.view_overview_delete_cancel, null);
+        builder.show();
     }
 
     @Override
     public void OnSetInstallments(String value) {
-        layoutEachInstallments.setVisibility(View.VISIBLE);
-        eachInstallment.setText(value);
+        layoutEachInstallment.setVisibility(View.VISIBLE);
+        textViewEachInstallment.setText(value);
     }
 
     @Override

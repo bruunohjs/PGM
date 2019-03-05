@@ -23,46 +23,39 @@ import com.dev.marcellocamara.pgm.R;
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class PhotoDialog extends DialogFragment implements View.OnClickListener {
+public class PhotoDialog extends DialogFragment {
+
+    @BindView(R.id.imageViewCamera) protected ImageView imageViewCamera;
+    @BindView(R.id.imageViewGallery) protected ImageView imageViewGallery;
+
+    @BindView(R.id.btnCancel) protected Button btnCancel;
 
     private IPhoto photoListener;
-    private ImageView imageViewCamera, imageViewGallery;
-    private Button buttonCancel;
+    private Unbinder unbinder;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View itemView = inflater.inflate(R.layout.dialog_photo, container, false);
 
-        ViewBind(itemView);
+        unbinder = ButterKnife.bind(this, itemView);
 
         return itemView;
     }
 
-    private void ViewBind(View itemView) {
-
-        imageViewCamera = itemView.findViewById(R.id.imageViewCamera);
-        imageViewGallery = itemView.findViewById(R.id.imageViewGallery);
-        imageViewCamera.setOnClickListener(this);
-        imageViewGallery.setOnClickListener(this);
-
-        buttonCancel = itemView.findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
+    @OnClick({R.id.imageViewCamera, R.id.imageViewGallery})
+    public void OnImageViewClick(ImageView v){
         switch (v.getId()){
-            case R.id.buttonCancel : {
-                getDialog().dismiss();
-                break;
-            }
             case R.id.imageViewCamera : {
                 startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), Permissions.CAMERA_REQUEST);
                 break;
@@ -72,6 +65,11 @@ public class PhotoDialog extends DialogFragment implements View.OnClickListener 
                 break;
             }
         }
+    }
+
+    @OnClick(R.id.btnCancel)
+    public void OnButtonClick(){
+        getDialog().dismiss();
     }
 
     @Override
@@ -115,5 +113,11 @@ public class PhotoDialog extends DialogFragment implements View.OnClickListener 
         }catch (Exception e){
             Log.d("IPhoto Exception", "onAttach: " + e.getMessage());
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

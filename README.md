@@ -29,7 +29,6 @@ O design segue as diretrizes do [Material Design](https://material.io/design) e 
 
 A tabela abaixo mostra cada nome de tela desenvolvida e seu respectivo link para visualização da print screen da tela.
 
-
 Nome da tela | Idioma
 :---  | :---: 
 Login | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/login.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/login.png)
@@ -43,6 +42,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 
 ## Ferramentas utilizadas
 
+- [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
 - [CircularImageView](https://github.com/lopspower/CircularImageView)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database/)

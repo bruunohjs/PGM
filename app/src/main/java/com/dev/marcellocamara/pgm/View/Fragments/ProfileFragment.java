@@ -17,32 +17,50 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
 import com.dev.marcellocamara.pgm.Contract.IPhoto;
 import com.dev.marcellocamara.pgm.Contract.IProfile;
 import com.dev.marcellocamara.pgm.Helper.PhotoDialog;
 import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
+
 import com.mikhaellopez.circularimageview.CircularImageView;
+
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import dmax.dialog.SpotsDialog;
 
 import java.util.Objects;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class ProfileFragment extends Fragment implements IProfile.View, View.OnClickListener, IPhoto {
+public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
+
+    @BindView(R.id.circularImageViewProfile) protected CircularImageView circularImageViewProfile;
+
+    @BindView(R.id.layoutName) protected TextInputLayout layoutName;
+
+    @BindView(R.id.editTextName) protected TextInputEditText editTextName;
+    @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+
+    @BindView(R.id.btnSave) protected Button btnSave;
+    @BindView(R.id.btnPhoto) protected Button btnPhoto;
 
     private IProfile.Presenter profilePresenter;
-    private CircularImageView imageViewProfile, navHeaderImageView;
-    private TextInputLayout layoutName;
-    private TextInputEditText editTextEmail, editTextName;
+    private CircularImageView navHeaderImageView;
     private TextView navHeaderUserName;
-    private Button buttonPhoto, buttonSave;
+
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
+    private Unbinder unbinder;
 
     public ProfileFragment() { }
 
@@ -52,9 +70,14 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        ViewBind(view);
+        unbinder = ButterKnife.bind(this, view);
 
         profilePresenter = new ProfilePresenter(this);
+
+        NavigationView navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigationView);
+        View headerView = navigationView.getHeaderView(0);
+        navHeaderUserName = headerView.findViewById(R.id.textViewUserName);
+        navHeaderImageView = headerView.findViewById(R.id.imageViewUserProfile);
 
         builder = new AlertDialog.Builder(getContext());
         builder.setTitle(R.string.view_profile_alert_dialog_title);
@@ -70,35 +93,10 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
         return view;
     }
 
-    private void ViewBind(View view) {
-
-        imageViewProfile = view.findViewById(R.id.circularImageView);
-
-        layoutName = view.findViewById(R.id.layoutName);
-        editTextEmail = view.findViewById(R.id.editTextEmail);
-        editTextEmail.setEnabled(false);
-        editTextName = view.findViewById(R.id.editTextName);
-
-        buttonPhoto = view.findViewById(R.id.buttonPhoto);
-        buttonPhoto.setOnClickListener(this);
-        buttonSave = view.findViewById(R.id.buttonSave);
-        buttonSave.setOnClickListener(this);
-
-        NavigationView navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
-        navHeaderUserName = headerView.findViewById(R.id.textViewUserName);
-        navHeaderImageView = headerView.findViewById(R.id.imageViewUserProfile);
-
-    }
-
-    @Override
-    public void onClick(View v) {
+    @OnClick({R.id.btnSave, R.id.btnPhoto})
+    public void OnButtonClick(Button v){
         switch (v.getId()){
-            case R.id.buttonPhoto : {
-                profilePresenter.OnCheckPermissions(getActivity());
-                break;
-            }
-            case R.id.buttonSave: {
+            case R.id.btnSave: {
                 layoutName.clearFocus();
                 layoutName.setErrorEnabled(false);
                 profilePresenter.OnUpdateUserName(
@@ -106,6 +104,10 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
                         navHeaderUserName.getText().toString().trim()
                 );
                 UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
+                break;
+            }
+            case R.id.btnPhoto : {
+                profilePresenter.OnCheckPermissions(getActivity());
                 break;
             }
         }
@@ -159,7 +161,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
 
     @Override
     public void OnSetUserImage(Uri uri) {
-        Glide.with(this).load(uri).into(imageViewProfile);
+        Glide.with(this).load(uri).into(circularImageViewProfile);
         Glide.with(Objects.requireNonNull(getActivity())).load(uri).into(navHeaderImageView);
     }
 
@@ -183,5 +185,6 @@ public class ProfileFragment extends Fragment implements IProfile.View, View.OnC
     public void onDestroy() {
         super.onDestroy();
         profilePresenter.OnDestroy();
+        unbinder.unbind();
     }
 }

@@ -1,13 +1,11 @@
 package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.dev.marcellocamara.pgm.Contract.ILogin;
@@ -18,26 +16,36 @@ import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import dmax.dialog.SpotsDialog;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /***
     marcellocamara@id.uff.br
             2019
 ***/
 
-public class LoginActivity extends AppCompatActivity implements ILogin.View, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements ILogin.View {
+
+    @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
+    @BindView(R.id.layoutPassword) protected TextInputLayout layoutPassword;
+
+    @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+    @BindView(R.id.editTextPassword) protected TextInputEditText editTextPassword;
+
+    @BindView(R.id.btnLogin) protected Button btnLogin;
+    @BindView(R.id.btnRegister) protected Button btnRegister;
+    @BindView(R.id.btnRecoverPassword) protected Button btnRecoverPassword;
 
     private ILogin.Presenter loginPresenter;
-    private TextInputLayout inputLayoutEmail, inputLayoutPassword;
-    private TextInputEditText editTextEmail, editTextPassword;
-    private Button btnLogin, btnRegister, btnRecoverPassword;
-    private AlertDialog alertDialog, alert;
-    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ViewBind();
+        ButterKnife.bind(this);
 
         loginPresenter = new LoginPresenter(this, this);
 
@@ -47,36 +55,14 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                 .setMessage(R.string.view_login_customAlertDialog)
                 .setCancelable(false)
                 .build();
-
-        builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_login_alertDialog_title);
-        builder.setCancelable(false);
     }
 
-    private void ViewBind() {
-
-        inputLayoutEmail = findViewById(R.id.layoutEmail);
-        inputLayoutPassword = findViewById(R.id.tilPassword);
-
-        editTextEmail = findViewById(R.id.etEmail);
-        editTextPassword = findViewById(R.id.etPassword);
-
-        btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
-        btnRecoverPassword = findViewById(R.id.btnRecoverPassword);
-        btnLogin.setOnClickListener(this);
-        btnRegister.setOnClickListener(this);
-        btnRecoverPassword.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
+    @OnClick({R.id.btnLogin, R.id.btnRegister, R.id.btnRecoverPassword})
+    public void OnButtonClick(Button v){
         switch (v.getId()){
             case R.id.btnLogin : {
-                inputLayoutEmail.setErrorEnabled(false);
-                inputLayoutPassword.setErrorEnabled(false);
+                layoutEmail.setErrorEnabled(false);
+                layoutPassword.setErrorEnabled(false);
                 loginPresenter.OnLogin(
                         editTextEmail.getText().toString().trim(),
                         editTextPassword.getText().toString().trim()
@@ -93,19 +79,18 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
                 break;
             }
         }
-
     }
 
     @Override
     public void OnInvalidEmail(String message) {
-        inputLayoutEmail.setError(message);
-        inputLayoutEmail.setErrorEnabled(true);
+        layoutEmail.setError(message);
+        layoutEmail.setErrorEnabled(true);
     }
 
     @Override
     public void OnInvalidPassword(String message) {
-        inputLayoutPassword.setError(message);
-        inputLayoutPassword.setErrorEnabled(true);
+        layoutPassword.setError(message);
+        layoutPassword.setErrorEnabled(true);
     }
 
     @Override
@@ -126,15 +111,12 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View, Vie
 
     @Override
     public void OnLoginFailure(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.view_login_alertDialog_title);
+        builder.setCancelable(false);
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        alert = builder.create();
-        alert.show();
+        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.show();
     }
 
     @Override
