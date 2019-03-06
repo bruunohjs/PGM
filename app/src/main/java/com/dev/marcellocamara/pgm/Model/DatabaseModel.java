@@ -40,6 +40,7 @@ import java.util.Objects;
 
 public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model {
 
+    private static boolean isPersistenceEnabled = false;
     private ITaskListener taskListener;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -60,10 +61,14 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         return firebaseAuth;
     }
 
-    //Singleton FirebaseAuth
+    //Singleton FirebaseDatabase
     private FirebaseDatabase getFirebaseDatabaseInstance(){
         if (firebaseDatabase == null){
             firebaseDatabase = FirebaseDatabase.getInstance();
+            if (!isPersistenceEnabled){
+                firebaseDatabase.setPersistenceEnabled(true);
+                isPersistenceEnabled = true;
+            }
         }
         return firebaseDatabase;
     }
@@ -72,6 +77,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     private DatabaseReference getDatabaseReference(){
         if (databaseReference == null){
             databaseReference = getFirebaseDatabaseInstance().getReference();
+            databaseReference.keepSynced(true);
         }
         return databaseReference;
     }
