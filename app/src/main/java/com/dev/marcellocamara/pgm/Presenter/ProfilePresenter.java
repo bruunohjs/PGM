@@ -36,7 +36,7 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
         if (newName.isEmpty()){
             view.OnBlankField();
         } else if (newName.equals(nameSaved)){
-            view.OnUpdateUserFailure("No changes to save.");
+            view.OnNoChangesUpdate();
         } else {
             view.ShowProgress();
             model.DoUpdateUserName(newName);

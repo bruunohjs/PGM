@@ -28,6 +28,7 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import java.util.Calendar;
 import java.util.List;
 
+import butterknife.BindString;
 import dmax.dialog.SpotsDialog;
 
 import butterknife.BindView;
@@ -49,6 +50,10 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
     @BindView(R.id.recyclerView) protected RecyclerView recyclerView;
 
     @BindView(R.id.mutativeFAB) protected MutativeFab mutativeFAB;
+
+    @BindString(R.string.expenses_loading) protected String loading_expenses;
+    @BindString(R.string.parcelable_name) protected String parcelable;
+    @BindString(R.string.zero) protected String zero;
 
     private IHome.Presenter homePresenter;
     private List<ExpenseModel> list;
@@ -81,9 +86,9 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
         alertDialog = new SpotsDialog.Builder()
                 .setContext(view.getContext())
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_home_alertDialog_loading)
+                .setMessage(loading_expenses)
                 .setCancelable(false)
-                .build();        
+                .build();
 
         return view;
     }
@@ -95,7 +100,7 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(getContext(), OverviewActivity.class).putExtra(getString(R.string.view_parcelable_name), list.get(position)));
+        startActivity(new Intent(getContext(), OverviewActivity.class).putExtra(parcelable, list.get(position)));
     }
 
     @Override
@@ -111,7 +116,7 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
         this.list = list;
         ExpensesAdapter adapter = new ExpensesAdapter(this.list, this);
         recyclerView.setAdapter(adapter);
-        homePresenter.OnTotalCalculate(list, getString(R.string.view_home_price_example));
+        homePresenter.OnTotalCalculate(list, zero);
     }
 
     @Override

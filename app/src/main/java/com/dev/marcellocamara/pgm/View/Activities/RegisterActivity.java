@@ -19,6 +19,7 @@ import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,6 +30,8 @@ import butterknife.OnClick;
 ***/
 
 public class RegisterActivity extends AppCompatActivity implements IRegister.View {
+
+    @BindView(R.id.toolbar) protected Toolbar toolbar;
 
     @BindView(R.id.layoutName) protected TextInputLayout layoutName;
     @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
@@ -42,6 +45,17 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
 
     @BindView(R.id.btnRegister) protected Button btnRegister;
 
+    @BindString(R.string.register) protected String register;
+    @BindString(R.string.empty_name) protected String empty_name;
+    @BindString(R.string.empty_email) protected String empty_email;
+    @BindString(R.string.invalid_email) protected String invalid_email;
+    @BindString(R.string.empty_password) protected String empty_password;
+    @BindString(R.string.invalid_password) protected String invalid_password;
+    @BindString(R.string.match_password) protected String match_password;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.registering) protected String registering;
+    @BindString(R.string.register_success) protected String register_success;
+
     private IRegister.Presenter registerPresenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
@@ -51,23 +65,23 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_register_alertDialog_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ButterKnife.bind(this);
 
-        registerPresenter = new RegisterPresenter(this, this);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        registerPresenter = new RegisterPresenter(this);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_register_customAlertDialog)
+                .setMessage(registering)
                 .setCancelable(false)
                 .build();
 
         builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_register_alertDialog_title);
+        builder.setTitle(register);
         builder.setCancelable(false);
     }
 
@@ -87,26 +101,50 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     }
 
     @Override
-    public void OnInvalidName(String message) {
-        layoutName.setError(message);
+    public void OnEmptyName() {
+        layoutName.setError(empty_name);
         layoutName.setErrorEnabled(true);
     }
 
     @Override
-    public void OnInvalidEmail(String message) {
-        layoutEmail.setError(message);
+    public void OnEmptyEmail() {
+        layoutEmail.setError(empty_email);
         layoutEmail.setErrorEnabled(true);
     }
 
     @Override
-    public void OnInvalidPassword1(String message) {
-        layoutPassword1.setError(message);
+    public void OnInvalidEmail() {
+        layoutEmail.setError(invalid_email);
+        layoutEmail.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnEmptyPassword1() {
+        layoutPassword1.setError(empty_password);
         layoutPassword1.setErrorEnabled(true);
     }
 
     @Override
-    public void OnInvalidPassword2(String message) {
-        layoutPassword2.setError(message);
+    public void OnEmptyPassword2() {
+        layoutPassword2.setError(empty_password);
+        layoutPassword2.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnInvalidPassword1() {
+        layoutPassword1.setError(invalid_password);
+        layoutPassword1.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnInvalidPassword2() {
+        layoutPassword2.setError(invalid_password);
+        layoutPassword2.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnMatchPasswords() {
+        layoutPassword2.setError(match_password);
         layoutPassword2.setErrorEnabled(true);
     }
 
@@ -121,9 +159,9 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     }
 
     @Override
-    public void OnRegistrationSuccessful(String message) {
-        builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+    public void OnRegistrationSuccessful() {
+        builder.setMessage(register_success);
+        builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -135,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     @Override
     public void OnRegistrationFailure(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 

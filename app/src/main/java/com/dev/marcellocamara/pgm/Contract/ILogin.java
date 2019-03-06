@@ -19,9 +19,13 @@ public interface ILogin {
 
     interface View extends IProgressLoading {
 
-        void OnInvalidEmail(String message);
+        void OnEmptyEmail();
 
-        void OnInvalidPassword(String message);
+        void OnInvalidEmail();
+
+        void OnEmptyPassword();
+
+        void OnInvalidPassword();
 
         void OnLoginSuccessful();
 

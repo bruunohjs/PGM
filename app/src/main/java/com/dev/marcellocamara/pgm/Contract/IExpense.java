@@ -19,7 +19,13 @@ public interface IExpense {
 
     interface View extends IProgressLoading {
 
-        void OnInvalidField(String message);
+        void OnEmptyTitle();
+
+        void OnEmptyDescription();
+
+        void OnEmptyPrice();
+
+        void OnMaxPrice();
 
         void OnCalculatedDate(String day, String month, String year);
 

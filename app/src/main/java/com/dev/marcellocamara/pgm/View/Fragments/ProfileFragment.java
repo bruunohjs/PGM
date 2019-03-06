@@ -36,6 +36,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.BindString;
 
 /***
     marcellocamara@id.uff.br
@@ -54,10 +55,17 @@ public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
     @BindView(R.id.btnSave) protected Button btnSave;
     @BindView(R.id.btnPhoto) protected Button btnPhoto;
 
+    @BindString(R.string.profile) protected String profile;
+    @BindString(R.string.dot) protected String dot;
+    @BindString(R.string.empty_name) protected String empty_name;
+    @BindString(R.string.no_changes) protected String no_changes;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.profile_updating) protected String updating_profile;
+    @BindString(R.string.profile_update_success) protected String update_success;
+
     private IProfile.Presenter profilePresenter;
     private CircularImageView navHeaderImageView;
     private TextView navHeaderUserName;
-
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
     private Unbinder unbinder;
@@ -80,13 +88,13 @@ public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
         navHeaderImageView = headerView.findViewById(R.id.imageViewUserProfile);
 
         builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(R.string.view_profile_alert_dialog_title);
+        builder.setTitle(profile);
         builder.setCancelable(false);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(getContext())
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_profile_loading_title)
+                .setMessage(updating_profile)
                 .setCancelable(false)
                 .build();
 
@@ -121,8 +129,8 @@ public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
 
     @Override
     public void OnUpdateUserSuccessful() {
-        builder.setMessage(R.string.view_profile_successful);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, new DialogInterface.OnClickListener() {
+        builder.setMessage(update_success);
+        builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 navHeaderUserName.setText(editTextName.getText().toString().trim());
@@ -135,7 +143,14 @@ public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
     @Override
     public void OnUpdateUserFailure(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnNoChangesUpdate() {
+        builder.setMessage(no_changes);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 
@@ -148,14 +163,14 @@ public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
 
     @Override
     public void OnBlankField() {
-        layoutName.setError(getResources().getString(R.string.presenter_register_name));
+        layoutName.setError(empty_name);
         layoutName.setErrorEnabled(true);
     }
 
     @Override
     public void getUri(Uri uri) {
         ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
-        String format = getString(R.string.view_profile_dot) + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri));
+        String format = dot + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri));
         profilePresenter.OnCheckUri(uri, format);
     }
 

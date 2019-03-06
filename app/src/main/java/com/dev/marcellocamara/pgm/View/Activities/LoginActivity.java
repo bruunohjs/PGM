@@ -18,6 +18,7 @@ import dmax.dialog.SpotsDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.BindString;
 import butterknife.OnClick;
 
 /***
@@ -37,6 +38,14 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @BindView(R.id.btnRegister) protected Button btnRegister;
     @BindView(R.id.btnRecoverPassword) protected Button btnRecoverPassword;
 
+    @BindString(R.string.login) protected String login;
+    @BindString(R.string.empty_email) protected String empty_email;
+    @BindString(R.string.invalid_email) protected String invalid_email;
+    @BindString(R.string.empty_password) protected String empty_password;
+    @BindString(R.string.invalid_password) protected String invalid_password;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.login_in) protected String login_in;
+
     private ILogin.Presenter loginPresenter;
     private AlertDialog alertDialog;
 
@@ -47,12 +56,12 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
         ButterKnife.bind(this);
 
-        loginPresenter = new LoginPresenter(this, this);
+        loginPresenter = new LoginPresenter(this);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_login_customAlertDialog)
+                .setMessage(login_in)
                 .setCancelable(false)
                 .build();
     }
@@ -82,25 +91,27 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     }
 
     @Override
-    public void OnInvalidEmail(String message) {
-        layoutEmail.setError(message);
+    public void OnEmptyEmail() {
+        layoutEmail.setError(empty_email);
         layoutEmail.setErrorEnabled(true);
     }
 
     @Override
-    public void OnInvalidPassword(String message) {
-        layoutPassword.setError(message);
+    public void OnInvalidEmail() {
+        layoutEmail.setError(invalid_email);
+        layoutEmail.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnEmptyPassword() {
+        layoutPassword.setError(empty_password);
         layoutPassword.setErrorEnabled(true);
     }
 
     @Override
-    public void ShowProgress() {
-        alertDialog.show();
-    }
-
-    @Override
-    public void HideProgress() {
-        alertDialog.dismiss();
+    public void OnInvalidPassword() {
+        layoutPassword.setError(invalid_password);
+        layoutPassword.setErrorEnabled(true);
     }
 
     @Override
@@ -112,11 +123,21 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     public void OnLoginFailure(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_login_alertDialog_title);
+        builder.setTitle(login);
         builder.setCancelable(false);
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.setPositiveButton(close, null);
         builder.show();
+    }
+
+    @Override
+    public void ShowProgress() {
+        alertDialog.show();
+    }
+
+    @Override
+    public void HideProgress() {
+        alertDialog.dismiss();
     }
 
     @Override

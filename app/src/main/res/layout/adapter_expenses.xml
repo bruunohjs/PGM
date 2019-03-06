@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:text="@string/view_home_coinType"
+            android:text="@string/coin_type"
             app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
             app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
             app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:contentDescription="@string/view_expense_icon_installments"
+                android:contentDescription="@string/icon_installments"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textViewInstallment"
                 app:layout_constraintTop_toTopOf="parent"

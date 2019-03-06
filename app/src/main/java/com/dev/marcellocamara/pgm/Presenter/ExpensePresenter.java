@@ -1,12 +1,9 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
-import android.content.Context;
-
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
-import com.dev.marcellocamara.pgm.R;
 
 /***
     marcellocamara@id.uff.br
@@ -17,12 +14,10 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
 
     private IExpense.View view;
     private IExpense.Model model;
-    private Context context;
 
-    public ExpensePresenter(IExpense.View view, Context context) {
+    public ExpensePresenter(IExpense.View view) {
         this.view = view;
         this.model = new DatabaseModel(this);
-        this.context = context;
     }
 
     @Override
@@ -31,19 +26,19 @@ public class ExpensePresenter implements IExpense.Presenter, ITaskListener {
         if (title.isEmpty() || description.isEmpty() || price.isEmpty()){
 
             if (title.isEmpty()){
-                view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_title));
+                view.OnEmptyTitle();
             }else if (description.isEmpty()){
-                view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_description));
+                view.OnEmptyDescription();
             }else {
-                view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_price));
+                view.OnEmptyPrice();
             }
 
         }else if (Double.parseDouble(price) == 0){
 
-            view.OnInvalidField(context.getString(R.string.presenter_expense_invalid_price));
+            view.OnEmptyPrice();
 
         }else if (Double.parseDouble(price) > 99999){
-            view.OnInvalidField(context.getString(R.string.presenter_expense_big_price));
+            view.OnMaxPrice();
         }else{
             view.ShowProgress();
             model.DoAddExpense(date, title, description, Double.parseDouble(price), installments);

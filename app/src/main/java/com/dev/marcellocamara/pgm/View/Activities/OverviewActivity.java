@@ -21,6 +21,7 @@ import java.util.Objects;
 import dmax.dialog.SpotsDialog;
 
 import butterknife.BindView;
+import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -30,6 +31,8 @@ import butterknife.OnClick;
 ***/
 
 public class OverviewActivity extends AppCompatActivity implements IOverview.View {
+
+    @BindView(R.id.toolbar) protected Toolbar toolbar;
 
     @BindView(R.id.textViewTitle) protected TextView textViewTitle;
     @BindView(R.id.textViewDescription) protected TextView textViewDescription;
@@ -42,6 +45,14 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
 
     @BindView(R.id.btnDelete) protected Button btnDelete;
 
+    @BindString(R.string.expense_overview) protected String overview_title;
+    @BindString(R.string.deleting_expense) protected String deleting;
+    @BindString(R.string.confirm_delete) protected String confirmation;
+    @BindString(R.string.yes) protected String yes;
+    @BindString(R.string.no) protected String no;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.parcelable_name) protected String parcelable;
+
     private IOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
     private AlertDialog alertDialog;
@@ -52,13 +63,13 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_overview_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ButterKnife.bind(this);
 
-        expenseModel = getIntent().getParcelableExtra(getString(R.string.view_parcelable_name));
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(overview_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        expenseModel = getIntent().getParcelableExtra(parcelable);
 
         textViewTitle.setText(expenseModel.getTitle());
         textViewDescription.setText(expenseModel.getDescription());
@@ -72,7 +83,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_overview_custom_alertDialog)
+                .setMessage(deleting)
                 .setCancelable(false)
                 .build();
     }
@@ -81,15 +92,15 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     public void OnButtonClick(){
         builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setTitle(R.string.view_overview_title);
-        builder.setMessage(R.string.view_overview_delete_confirm);
-        builder.setPositiveButton(R.string.view_overview_delete_yes, new DialogInterface.OnClickListener() {
+        builder.setTitle(overview_title);
+        builder.setMessage(confirmation);
+        builder.setPositiveButton(yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 overviewPresenter.OnDeleteExpense(expenseModel);
             }
         });
-        builder.setNegativeButton(R.string.view_overview_delete_cancel, null);
+        builder.setNegativeButton(no, null);
         builder.show();
     }
 
@@ -107,10 +118,10 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     @Override
     public void OnDeleteExpenseFailure(String message) {
         builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_overview_title);
+        builder.setTitle(overview_title);
         builder.setCancelable(false);
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 

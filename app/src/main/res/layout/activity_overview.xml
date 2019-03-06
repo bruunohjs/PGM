@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
-                    android:text="@string/view_home_coinType"
+                    android:text="@string/coin_type"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
                     app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
                     app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -152,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:contentDescription="@string/view_expense_icon_installments"
+                        android:contentDescription="@string/icon_installments"
                         app:layout_constraintEnd_toStartOf="@+id/textViewInstallment"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_credit_card"
@@ -196,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/view_overview_date"
+                    android:text="@string/purchased_date"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                     app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
 
@@ -228,7 +228,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/view_overview_each_installment"
+                        android:text="@string/each_installment_price"
                         android:textAlignment="textStart"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
                         app:layout_constraintEnd_toStartOf="@+id/tvSameCoinType"
@@ -240,7 +240,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:text="@string/view_home_coinType"
+                        android:text="@string/coin_type"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
                         app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
                         app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
@@ -270,7 +270,7 @@
             android:paddingEnd="22dp"
             android:drawablePadding="8dp"
             android:singleLine="true"
-            android:text="@string/view_overview_button_delete"
+            android:text="@string/delete"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@+id/cardView"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"

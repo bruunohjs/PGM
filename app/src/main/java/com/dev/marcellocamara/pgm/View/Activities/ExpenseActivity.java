@@ -23,8 +23,9 @@ import dmax.dialog.SpotsDialog;
 import java.util.Calendar;
 import java.util.Objects;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /***
@@ -46,6 +47,17 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
     @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
 
+    @BindString(R.string.new_expense) protected String title;
+    @BindString(R.string.installments_number) protected String installmentsNumber;
+    @BindString(R.string.empty_title) protected String empty_title;
+    @BindString(R.string.empty_description) protected String empty_description;
+    @BindString(R.string.empty_price) protected String empty_price;
+    @BindString(R.string.max_price) protected String max_price;
+    @BindString(R.string.view_overview_installments) protected String installmentsX;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.adding_expense) protected String alertDialogMessage;
+    @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
+
     private IExpense.Presenter expensePresenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder ;
@@ -59,10 +71,10 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_expense_title_expense);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        expensePresenter = new ExpensePresenter(this, this);
+        expensePresenter = new ExpensePresenter(this);
 
         Calendar calendar = Calendar.getInstance();
         calendarDay = calendar.get(Calendar.DAY_OF_MONTH);
@@ -73,12 +85,12 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_expense_customAlertDialog)
+                .setMessage(alertDialogMessage)
                 .setCancelable(false)
                 .build();
 
         builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_expense_title_expense);
+        builder.setTitle(title);
         builder.setCancelable(false);
     }
 
@@ -99,13 +111,13 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
             case R.id.textViewInstallment : {
                 AlertDialog.Builder builderInstallments = new AlertDialog.Builder(this);
                 builderInstallments.setCancelable(false);
-                builderInstallments.setTitle(R.string.view_expense_installments_number);
+                builderInstallments.setTitle(installmentsNumber);
                 builderInstallments.setItems(R.array.installments, new DialogInterface.OnClickListener() {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         installments = (which + 1);
-                        textViewInstallment.setText(installments + getString(R.string.view_overview_installments));
+                        textViewInstallment.setText(installments + installmentsX);
                     }
                 });
                 builderInstallments.show();
@@ -114,31 +126,46 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
         }
     }
 
-    @OnClick({R.id.btnCancel, R.id.btnSave})
-    public void OnButtonClick(Button v){
-        switch (v.getId()) {
-            case R.id.btnCancel: {
-                finish();
-                break;
-            }
-            case R.id.btnSave: {
-                expensePresenter.OnAddExpense(
-                        textViewDate.getText().toString().trim(),
-                        editTextTitle.getText().toString().trim(),
-                        editTextDescription.getText().toString().trim(),
-                        editTextPrice.getText().toString().trim(),
-                        installments
-                );
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-        }
+    @OnClick(R.id.btnSave)
+    public void OnSaveClick(){
+        expensePresenter.OnAddExpense(
+                textViewDate.getText().toString().trim(),
+                editTextTitle.getText().toString().trim(),
+                editTextDescription.getText().toString().trim(),
+                editTextPrice.getText().toString().trim(),
+                installments
+        );
+        UIUtil.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btnCancel)
+    public void OnCancelClick(){ finish(); }
+
+    @Override
+    public void OnEmptyTitle() {
+        builder.setMessage(empty_title);
+        builder.setPositiveButton(close, null);
+        builder.show();
     }
 
     @Override
-    public void OnInvalidField(String message) {
-        builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+    public void OnEmptyDescription() {
+        builder.setMessage(empty_description);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnEmptyPrice() {
+        builder.setMessage(empty_price);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnMaxPrice() {
+        builder.setMessage(max_price);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 
@@ -150,8 +177,8 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
 
     @Override
     public void OnAddExpenseSuccessful() {
-        builder.setMessage(R.string.view_expense_alertDialog_success);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setMessage(alertDialogSuccess);
+        builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -162,8 +189,8 @@ public class ExpenseActivity extends AppCompatActivity implements IExpense.View 
 
     @Override
     public void OnAddExpenseFailure(String message) {
-        builder.setMessage(R.string.view_expense_alertDialog_error);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, null);
+        builder.setMessage(message);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 

@@ -32,6 +32,8 @@ public interface IProfile {
 
         void OnUpdateUserFailure(String message);
 
+        void OnNoChangesUpdate();
+
         void OnCheckPermissionsSuccessful();
 
         void OnSetUserImage(Uri uri);

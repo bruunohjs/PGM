@@ -1,94 +1,109 @@
 <resources>
+
+    <!-- App name -->
     <string name="app_name">PGM</string>
 
-    <!-- View -->
-    <string name="view_login_email">E-mail</string>
-    <string name="view_login_password">Password</string>
-    <string name="view_login_button_login">Log in</string>
-    <string name="view_login_button_signup">Don\'t have an account ? Click here to register</string>
-    <string name="view_login_button_forgot_password">Forgot your password ?</string>
-    <string name="view_login_customAlertDialog">Login in…</string>
-    <string name="view_login_alertDialog_title">Login</string>
-    <string name="view_register_name">Name</string>
-    <string name="view_register_password">Confirm password</string>
-    <string name="view_register_button_register">Register</string>
-    <string name="view_register_button_back_to_login">Already have an account ? Click here to login</string>
-    <string name="view_register_customAlertDialog">Registering…</string>
-    <string name="view_recover_button">Recover Password</string>
-    <string name="view_recover_password_dialog_loading">Recovering password…</string>
-    <string name="view_recover_password_dialog_message1">An email was sent to</string>
-    <string name="view_recover_password_dialog_message2">\nCheck your mailbox, in a few minutes, and follow the instructions to set a new password.</string>
-    <string name="view_actionbar_menu_logout">Logout</string>
-    <string name="view_expense_title_expense">New expense</string>
-    <string name="view_register_alertDialog_title">Register</string>
-    <string name="view_expense_date">Date</string>
-    <string name="view_expense_title">Title</string>
-    <string name="view_expense_description">Description</string>
-    <string name="view_expense_price">Price</string>
-    <string name="view_expense_installments">Installments</string>
-    <string name="view_expense_installments_number">Number of installments</string>
-    <string name="view_expense_icon_date">Date Icon</string>
-    <string name="view_expense_icon_title">Title Icon</string>
-    <string name="view_expense_icon_description">Description Icon</string>
-    <string name="view_expense_icon_price">Price Icon</string>
-    <string name="view_expense_icon_installments">Installments Icon</string>
-    <string name="view_expense_installment_1x">1x</string>
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="login_in">Login in…</string>
+    <string name="sing_up">Don\'t have an account ? Click here to register</string>
+    <string name="forgot_password">Forgot your password ?</string>
+
+    <!-- Register -->
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="registering">Registering…</string>
+    <string name="register_success">Register Successful.</string>
+
+    <!-- Recover Password -->
+    <string name="recover_password">Recover Password</string>
+    <string name="recovering_password">Recovering password…</string>
+    <string name="recover_message1">An email was sent to\u0020</string>
+    <string name="recover_message2">\nCheck your mailbox, in a few minutes, and follow the instructions to set a new password.</string>
+
+    <!-- Expenses -->
+    <string name="new_expense">New expense</string>
+    <string name="date">Date</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="installments">Installments</string>
+    <string name="installments_number">Installments number</string>
+    <string name="installment">1x</string>
     <string name="view_expense_button_cancel">Cancel</string>
     <string name="view_expense_button_save">Save</string>
-    <string name="view_expense_customAlertDialog">Adding new expense…</string>
-    <string name="view_expense_alertDialog_error">Oops! Something went wrong. Check your Internet connection and try again.</string>
-    <string name="view_expense_alertDialog_success">Your expense is successful created.</string>
-    <string name="view_expense_alertDialog_positive_button">OK</string>
-    <string name="view_adapter_title">Title:</string>
-    <string name="view_adapter_description">Description:</string>
-    <string name="view_adapter_installment">Installment:</string>
-    <string name="view_home_title_month">Show all expenses for selected month</string>
-    <string name="view_home_title_total">TOTAL</string>
-    <string name="view_home_coinType">$</string>
-    <string name="view_home_price_example">0.00</string>
-    <string name="view_home_title_welcome">Welcome, </string>
-    <string name="view_home_alertDialog_loading">Loading expenses…</string>
-    <string name="view_parcelable_name">expense</string>
-    <string name="view_home_fab">Add expense</string>
-    <string name="view_overview_custom_alertDialog">Deleting expense…</string>
+    <string name="adding_expense">Adding new expense…</string>
+    <string name="adding_expense_success">Your expense is successful created.</string>
+
+    <!-- Icon/Image Description -->
+    <string name="icon_date">Date Icon</string>
+    <string name="icon_title">Title Icon</string>
+    <string name="icon_description">Description Icon</string>
+    <string name="icon_price">Price Icon</string>
+    <string name="icon_installments">Installments Icon</string>
+    <string name="user_image">User profile image</string>
+
+    <!-- Home -->
+    <string name="welcome">Welcome,</string>
+    <string name="total">TOTAL</string>
+    <string name="coin_type">$</string>
+    <string name="zero">0.00</string>
+    <string name="all_expenses">Expenses for selected month</string>
+    <string name="expenses_loading">Loading expenses…</string>
+    <string name="parcelable_name">expense</string>
+    <string name="fab">Add expense</string>
+
+    <!-- Overview -->
+    <string name="expense_overview">Expense overview</string>
+    <string name="purchased_date">Purchased date:</string>
+    <string name="each_installment_price">Each installment price:</string>
+    <string name="deleting_expense">Deleting expense…</string>
     <string name="view_overview_installments">x</string>
-    <string name="view_overview_date">Purchased date:</string>
-    <string name="view_overview_each_installment">Price of each installment:</string>
-    <string name="view_overview_button_delete">Delete</string>
-    <string name="view_overview_dialog_close">Close</string>
-    <string name="view_overview_title">Expense overview</string>
-    <string name="view_overview_delete_confirm">Are you sure to delete this item and all installments ?</string>
-    <string name="view_overview_delete_successful">Expense successfully deleted.</string>
-    <string name="view_overview_delete_yes">Yes</string>
-    <string name="view_overview_delete_cancel">No</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Are you sure to delete this item and all installments ?</string>
+    <string name="delete_success">Expense successfully deleted.</string>
+
+    <!-- AlertDialog Buttons -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="close">Close</string>
+
+    <!-- Photo -->
+    <string name="choose_photo">Choose photo from</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <!-- Profile -->
+    <string name="dot">.</string>
+    <string name="save">Save</string>
+    <string name="no_changes">No changes to save.</string>
+    <string name="profile_updating">Updating profile…</string>
+    <string name="profile_update_success">Profile updated successful !</string>
+    <string name="profile_update_failure">Oops! Something went wrong. Try again !</string>
+
+    <!-- Menu -->
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="cards">Cards</string>
+    <string name="profile">Profile</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_image_description">User profile image</string>
-    <string name="view_profile_alert_dialog_title">Profile</string>
-    <string name="view_profile_loading_title">Updating profile…</string>
-    <string name="view_profile_button_save">Save</string>
-    <string name="view_profile_dot">.</string>
-    <string name="view_profile_successful">Profile updated successful !</string>
-    <string name="view_profile_name_failure">Oops! Something went wrong. Try again !</string>
-    <string name="view_menu_home">Home</string>
-    <string name="view_menu_cards">Cards</string>
-    <string name="view_menu_profile">Profile</string>
-    <string name="view_dialog_photo_title">Choose photo from</string>
-    <string name="view_dialog_photo_camera">Camera</string>
-    <string name="view_dialog_photo_gallery">Gallery</string>
 
-    <!-- Presenter -->
-    <string name="presenter_login_empty_email">Fill the e-mail.</string>
-    <string name="presenter_login_empty_password">Fill the password.</string>
-    <string name="presenter_login_invalid_email">Fill with a valid e-mail.</string>
-    <string name="presenter_login_invalid_password">Password must be at least 6 characters.</string>
-    <string name="presenter_register_name">Fill with your name.</string>
-    <string name="presenter_register_passwords_not_match">Passwords do not match.</string>
-    <string name="presenter_register_successful">Register Successful.</string>
-    <string name="presenter_expense_invalid_title">Fill with title.</string>
-    <string name="presenter_expense_invalid_description">Fill with description.</string>
-    <string name="presenter_expense_invalid_price">Fill with price.</string>
-    <string name="presenter_expense_big_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
+    <!-- Forms -->
+    <string name="empty_name">Fill with your name.</string>
+    <string name="empty_email">Fill the e-mail.</string>
+    <string name="empty_password">Fill the password.</string>
+    <string name="invalid_email">Fill with a valid e-mail.</string>
+    <string name="invalid_password">Password must be at least 6 characters.</string>
+    <string name="match_password">Passwords do not match.</string>
+    <string name="empty_title">Fill with title.</string>
+    <string name="empty_description">Fill with description.</string>
+    <string name="empty_price">Fill with price.</string>
+    <string name="max_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
 
     <!-- Array of installments -->
     <string-array name="installments">
@@ -107,6 +122,6 @@
     </string-array>
 
     <!-- Characters allowed in Name EditText -->
-    <string name="editTextPersonName">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
 
 </resources>

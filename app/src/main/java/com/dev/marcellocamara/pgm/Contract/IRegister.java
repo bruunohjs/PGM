@@ -17,15 +17,23 @@ public interface IRegister {
 
     interface View extends IProgressLoading {
 
-        void OnInvalidName(String message);
+        void OnEmptyName();
 
-        void OnInvalidEmail(String message);
+        void OnEmptyEmail();
 
-        void OnInvalidPassword1(String message);
+        void OnInvalidEmail();
 
-        void OnInvalidPassword2(String message);
+        void OnEmptyPassword1();
 
-        void OnRegistrationSuccessful(String message);
+        void OnEmptyPassword2();
+
+        void OnInvalidPassword1();
+
+        void OnInvalidPassword2();
+
+        void OnMatchPasswords();
+
+        void OnRegistrationSuccessful();
 
         void OnRegistrationFailure(String message);
 

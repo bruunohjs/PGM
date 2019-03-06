@@ -16,12 +16,14 @@ import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
+import dmax.dialog.SpotsDialog;
+
 import java.util.Objects;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
@@ -30,10 +32,20 @@ import dmax.dialog.SpotsDialog;
 
 public class RecoverPasswordActivity extends AppCompatActivity implements IRecoverPassword.View, IProgressLoading {
 
+    @BindView(R.id.toolbar) protected Toolbar toolbar;
+
     @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
     @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
 
     @BindView(R.id.btnRecoverPassword) protected Button btnRecoverPassword;
+
+    @BindString(R.string.recover_password) protected String recover_password;
+    @BindString(R.string.recovering_password) protected String recovering;
+    @BindString(R.string.empty_email) protected String empty_email;
+    @BindString(R.string.invalid_email) protected String invalid_email;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.recover_message1) protected String message1;
+    @BindString(R.string.recover_message2) protected String message2;
 
     private IRecoverPassword.Presenter presenter;
     private AlertDialog alertDialog;
@@ -44,23 +56,23 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recover_password);
 
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.view_recover_button);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(recover_password);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new RecoverPasswordPresenter(this);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage(R.string.view_recover_password_dialog_loading)
+                .setMessage(recovering)
                 .setCancelable(false)
                 .build();
 
         builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.view_recover_button);
+        builder.setTitle(recover_password);
         builder.setCancelable(false);
     }
 
@@ -74,22 +86,21 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
 
     @Override
     public void OnEmptyEmail() {
-        layoutEmail.setError(getResources().getString(R.string.presenter_login_empty_email));
+        layoutEmail.setError(empty_email);
         layoutEmail.setErrorEnabled(true);
     }
 
     @Override
     public void OnInvalidEmail() {
-        layoutEmail.setError(getResources().getString(R.string.presenter_login_invalid_email));
+        layoutEmail.setError(invalid_email);
         layoutEmail.setErrorEnabled(true);
     }
 
     @Override
     public void OnRecoverPasswordSuccessful() {
-        String message = getString(R.string.view_recover_password_dialog_message1) + " " + editTextEmail.getText().toString().trim() +
-                getString(R.string.view_recover_password_dialog_message2);
+        String message = message1 + editTextEmail.getText().toString().trim() + message2;
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_expense_alertDialog_positive_button, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -101,7 +112,7 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
     @Override
     public void OnRecoverPasswordFailure(String message) {
         builder.setMessage(message);
-        builder.setPositiveButton(R.string.view_overview_dialog_close, null);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 

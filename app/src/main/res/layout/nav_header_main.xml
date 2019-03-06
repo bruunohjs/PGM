@@ -13,7 +13,7 @@
         android:id="@+id/imageViewUserProfile"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:contentDescription="@string/nav_header_image_description"
+        android:contentDescription="@string/user_image"
         android:src="@drawable/default_user"
         app:civ_border_color="@color/colorAccent"
         app:civ_border_width="2dp"
