@@ -294,13 +294,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     @Override
     public void DoAddExpense(String date, String title, String description, double price, int installments) {
 
-        //TODO: Missing OnCompleteListener
-
         ExpenseModel expense = new ExpenseModel();
-        expense.setTitle(title);
-        expense.setPrice(price);
-        expense.setDescription(description);
         expense.setPaymentDate(date);
+        expense.setTitle(title);
+        expense.setDescription(description);
+        expense.setPrice(price);
         expense.setInstallments(NumberHelper.GetMonth(installments));
 
         String dateSplit[] = date.split("/");
@@ -310,55 +308,117 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         //This guarantee same ID for all "n" installments
         final String UniqueID = getDatabaseReference().child("Expenses").push().getKey();
 
-        for (int i = 1 ; i <= installments ; i++){
-            if ( (Integer.parseInt(month)) > 12 ){
-                month = NumberHelper.GetMonth(1);
-                year = String.valueOf( (Integer.parseInt(year)) + 1 );
-            }
+        final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-            expense.setCurrentInstallment( (NumberHelper.GetMonth(i)) + "/" + expense.getInstallments());
+        DoAddExpenseRecursion(1, installments, userID, UniqueID, month, year, expense );
 
-            getDatabaseReference()
-                    .child("Expenses")
-                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                    .child(month+year)
-                    .child(Objects.requireNonNull(UniqueID))
-                    .setValue(expense);
+    }
 
-            month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
+    private void DoAddExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year, final ExpenseModel expense){
 
+        final String monthAux;
+        final String yearAux;
+
+        if ( (Integer.parseInt(month)) > 12 ){
+            monthAux = NumberHelper.GetMonth(1);
+            yearAux = String.valueOf( (Integer.parseInt(year)) + 1 );
+        }else {
+            monthAux = month;
+            yearAux = year;
         }
 
-        taskListener.OnSuccess(); //TODO : OnError - no internet
+        ExpenseModel expenseAux = new ExpenseModel();
+        expenseAux.setPaymentDate(expense.getPaymentDate());
+        expenseAux.setTitle(expense.getTitle());
+        expenseAux.setDescription(expense.getDescription());
+        expenseAux.setPrice(expense.getPrice());
+        expenseAux.setInstallments(expense.getInstallments());
 
+        expenseAux.setCurrentInstallment( (NumberHelper.GetMonth(n)) + "/" + expense.getInstallments());
+
+        getDatabaseReference()
+                .child("Expenses")
+                .child(userId)
+                .child(month+year)
+                .child(uniqueId)
+                .setValue(expenseAux)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            if (n.equals(countStop)){
+                                taskListener.OnSuccess();
+                            }else {
+                                DoAddExpenseRecursion(
+                                        (n+1),
+                                        countStop,
+                                        userId,
+                                        uniqueId,
+                                        (NumberHelper.GetMonth( (Integer.parseInt(monthAux)) + 1)),
+                                        yearAux,
+                                        expense
+                                );
+                            }
+                        }else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
     }
 
     @Override
     public void DoDeleteExpense(String date, int installments, String uniqueId) {
 
-        //TODO: Missing OnCompleteListener TOO !
-
         String dateSplit[] = date.split("/");
         String month = dateSplit[1];
         String year = dateSplit[2];
 
-        for (int i = 1 ; i <= installments ; i++){
-            if ( (Integer.parseInt(month)) > 12 ){
-                month = NumberHelper.GetMonth(1);
-                year = String.valueOf( (Integer.parseInt(year)) + 1 );
-            }
+        String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-            getDatabaseReference()
-                    .child("Expenses")
-                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                    .child(month+year)
-                    .child(uniqueId).removeValue();
-
-            month = NumberHelper.GetMonth( (Integer.parseInt(month)) + 1) ;
-
-        }
-
-        taskListener.OnSuccess(); //TODO : OnFailure - no internet
+        DoDeleteExpenseRecursion(1, installments, userID, uniqueId, month, year);
 
     }
+
+    private void DoDeleteExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year) {
+
+        final String monthAux;
+        final String yearAux;
+
+        if ((Integer.parseInt(month)) > 12) {
+            monthAux = NumberHelper.GetMonth(1);
+            yearAux = String.valueOf((Integer.parseInt(year)) + 1);
+        } else {
+            monthAux = month;
+            yearAux = year;
+        }
+
+        getDatabaseReference()
+                .child("Expenses")
+                .child(userId)
+                .child(monthAux + yearAux)
+                .child(uniqueId)
+                .removeValue()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            if (n.equals(countStop)) {
+                                taskListener.OnSuccess();
+                            } else {
+                                DoDeleteExpenseRecursion(
+                                        (n + 1),
+                                        countStop,
+                                        userId,
+                                        uniqueId,
+                                        (NumberHelper.GetMonth((Integer.parseInt(monthAux)) + 1)),
+                                        yearAux
+                                );
+                            }
+                        } else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
+    }
+
 }
