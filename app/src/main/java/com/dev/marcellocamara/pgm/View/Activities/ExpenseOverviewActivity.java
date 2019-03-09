@@ -30,7 +30,7 @@ import butterknife.OnClick;
             2019
 ***/
 
-public class OverviewActivity extends AppCompatActivity implements IOverview.View {
+public class ExpenseOverviewActivity extends AppCompatActivity implements IOverview.View {
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
@@ -61,7 +61,7 @@ public class OverviewActivity extends AppCompatActivity implements IOverview.Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_overview);
+        setContentView(R.layout.activity_expense_overview);
 
         ButterKnife.bind(this);
 

@@ -42,7 +42,7 @@
     <string name="welcome">Bem-vindo, </string>
     <string name="expenses_loading">Carregando despesas…</string>
     <string name="parcelable_name">expense</string>
-    <string name="fab">Nova despesa</string>
+    <string name="fabExpense">Nova despesa</string>
     <string name="deleting_expense">Deletando despesas…</string>
     <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
@@ -79,6 +79,9 @@
     <string name="empty_description">Preencha com a descrição.</string>
     <string name="empty_price">Preencha o preço.</string>
     <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos Centavos</string>
+    <string name="no_changes">Nenhnuma alteração realizada.</string>
+    <string name="fabCard">Novo cartão</string>
+    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -96,6 +99,5 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="no_changes">Nenhnuma alteração realizada.</string>
 
 </resources>

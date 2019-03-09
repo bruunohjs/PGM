@@ -20,24 +20,31 @@
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".View.Activities.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activities.RegisterActivity"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".View.Activities.RecoverPasswordActivity"
-            android:configChanges="orientation|screenSize"/>
-        <activity
-            android:name=".View.Activities.ExpenseActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.OverviewActivity"
+            android:name=".View.Activities.NewExpenseActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".View.Activities.NewCardActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".View.Activities.ExpenseOverviewActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".View.Activities.CardOverviewActivity"
             android:configChanges="orientation|screenSize" />
     </application>
 

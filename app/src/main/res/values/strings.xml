@@ -55,7 +55,11 @@
     <string name="all_expenses">Expenses for selected month</string>
     <string name="expenses_loading">Loading expenses…</string>
     <string name="parcelable_name">expense</string>
-    <string name="fab">Add expense</string>
+    <string name="fabExpense">Add expense</string>
+
+    <!-- Card/Cards -->
+    <string name="fabCard">Add Card</string>
+    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>

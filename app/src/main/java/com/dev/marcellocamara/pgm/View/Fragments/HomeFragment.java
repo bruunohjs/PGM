@@ -19,8 +19,8 @@ import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
 import com.dev.marcellocamara.pgm.R;
-import com.dev.marcellocamara.pgm.View.Activities.ExpenseActivity;
-import com.dev.marcellocamara.pgm.View.Activities.OverviewActivity;
+import com.dev.marcellocamara.pgm.View.Activities.NewExpenseActivity;
+import com.dev.marcellocamara.pgm.View.Activities.ExpenseOverviewActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
@@ -95,12 +95,12 @@ public class HomeFragment extends Fragment implements IHome.View, IRecyclerView,
 
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
-        startActivity(new Intent(getContext(), ExpenseActivity.class));
+        startActivity(new Intent(getContext(), NewExpenseActivity.class));
     }
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(getContext(), OverviewActivity.class).putExtra(parcelable, list.get(position)));
+        startActivity(new Intent(getContext(), ExpenseOverviewActivity.class).putExtra(parcelable, list.get(position)));
     }
 
     @Override
