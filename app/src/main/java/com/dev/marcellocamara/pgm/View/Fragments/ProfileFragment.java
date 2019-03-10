@@ -16,13 +16,13 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import com.dev.marcellocamara.pgm.Contract.IPhoto;
+import com.dev.marcellocamara.pgm.Contract.IDialog;
 import com.dev.marcellocamara.pgm.Contract.IProfile;
 import com.dev.marcellocamara.pgm.Helper.PhotoDialog;
 import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
+
+import com.bumptech.glide.Glide;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -43,7 +43,7 @@ import butterknife.BindString;
             2019
 ***/
 
-public class ProfileFragment extends Fragment implements IProfile.View, IPhoto {
+public class ProfileFragment extends Fragment implements IProfile.View, IDialog.Photo {
 
     @BindView(R.id.circularImageViewProfile) protected CircularImageView circularImageViewProfile;
 

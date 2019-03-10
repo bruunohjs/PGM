@@ -44,7 +44,7 @@
     <string name="icon_title">Title Icon</string>
     <string name="icon_description">Description Icon</string>
     <string name="icon_price">Price Icon</string>
-    <string name="icon_installments">Installments Icon</string>
+    <string name="icon_installments">Card Icon</string>
     <string name="user_image">User profile image</string>
 
     <!-- Home -->
@@ -60,6 +60,12 @@
     <!-- Card/Cards -->
     <string name="fabCard">Add Card</string>
     <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="card_number_0">XXXX</string>
+    <string name="card_number_1">XXX</string>
+    <string name="card_number_2">XX</string>
+    <string name="card_number_3">X</string>
+    <string name="payment_date">Payment date:</string>
+    <string name="final_numbers">Final numbers:</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>
@@ -109,7 +115,7 @@
     <string name="empty_price">Fill with price.</string>
     <string name="max_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
 
-    <!-- Array of installments -->
+    <!-- Arrays -->
     <string-array name="installments">
         <item>1x</item>
         <item>2x</item>
@@ -125,7 +131,16 @@
         <item>12x</item>
     </string-array>
 
+    <string-array name="cardColors">
+        <item>Grey</item>
+        <item>Purple</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Red</item>
+    </string-array>
+
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="new_card">New card</string>
 
 </resources>

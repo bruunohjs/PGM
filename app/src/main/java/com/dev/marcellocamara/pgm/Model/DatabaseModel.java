@@ -3,6 +3,7 @@ package com.dev.marcellocamara.pgm.Model;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.dev.marcellocamara.pgm.Contract.ICard;
 import com.dev.marcellocamara.pgm.Contract.IExpense;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ILogin;
@@ -38,7 +39,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, IExpense.Model, IOverview.Model, IProfile.Model, ICard.Model {
 
     private static boolean isPersistenceEnabled = false;
     private ITaskListener taskListener;

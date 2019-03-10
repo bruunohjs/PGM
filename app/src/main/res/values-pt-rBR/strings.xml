@@ -82,6 +82,12 @@
     <string name="no_changes">Nenhnuma alteração realizada.</string>
     <string name="fabCard">Novo cartão</string>
     <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="card_number_0">XXXX</string>
+    <string name="card_number_1">XXX</string>
+    <string name="card_number_2">XX</string>
+    <string name="card_number_3">X</string>
+    <string name="payment_date">Dia do pagamento:</string>
+    <string name="final_numbers">Final n°:</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -98,6 +104,15 @@
         <item>12x</item>
     </string-array>
 
+    <string-array name="cardColors">
+        <item>Cinza</item>
+        <item>Roxo</item>
+        <item>Verde</item>
+        <item>Amarelo</item>
+        <item>Vermelho</item>
+    </string-array>
+
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="new_card">New card</string>
 
 </resources>

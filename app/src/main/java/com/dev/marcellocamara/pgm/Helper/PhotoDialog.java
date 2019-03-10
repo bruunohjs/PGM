@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.dev.marcellocamara.pgm.Contract.IPhoto;
+import com.dev.marcellocamara.pgm.Contract.IDialog;
 import com.dev.marcellocamara.pgm.R;
 
 import java.io.ByteArrayOutputStream;
@@ -40,7 +40,7 @@ public class PhotoDialog extends DialogFragment {
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
 
-    private IPhoto photoListener;
+    private IDialog.Photo photoListener;
     private Unbinder unbinder;
 
     @Nullable
@@ -109,9 +109,9 @@ public class PhotoDialog extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            photoListener = (IPhoto) getTargetFragment();
+            photoListener = (IDialog.Photo) getTargetFragment();
         }catch (Exception e){
-            Log.d("IPhoto Exception", "onAttach: " + e.getMessage());
+            Log.d("IDialog.Photo Exception", "onAttach: " + e.getMessage());
         }
     }
 
