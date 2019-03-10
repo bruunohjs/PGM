@@ -88,6 +88,27 @@
     <string name="card_number_3">X</string>
     <string name="payment_date">Dia do pagamento:</string>
     <string name="final_numbers">Final n°:</string>
+    <string name="new_card">Novo cartão</string>
+    <string name="select_flag">Selecione a bandeira</string>
+    <string name="icon_mastercard">Ícone MasterCard</string>
+    <string name="icon_visa">Ícone visa</string>
+    <string name="visa">Visa</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="select_card_color">Selecione uma cor</string>
+    <string name="icon_yellow_card">Ícone cartão amarelo</string>
+    <string name="yellow">Amarelo</string>
+    <string name="icon_purple_card">Ícone cartão roxo</string>
+    <string name="purple">Roxo</string>
+    <string name="icon_green_card">Ícone cartão verde</string>
+    <string name="green">Verde</string>
+    <string name="icon_grey_card">Ícone cartão cinza</string>
+    <string name="grey">Cinza</string>
+    <string name="icon_red_card">Ícone cartão vermelho</string>
+    <string name="red">Vermelho</string>
+    <string name="card_flag">Bandeira:</string>
+    <string name="card_color">Cor do cartão:</string>
+    <string name="chip_image">Imagem do chip</string>
+    <string name="flag_image">Imagem da bandeira</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -113,6 +134,7 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="new_card">New card</string>
+    <string name="elo">Elo</string>
+    <string name="icon_elo">Icon elo</string>
 
 </resources>

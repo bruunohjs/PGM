@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.ICard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
@@ -46,7 +47,6 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindView(R.id.imageViewCardColor) protected ImageView imageViewCardColor;
     @BindView(R.id.imageViewCardFlag) protected ImageView imageViewCardFlag;
     @BindView(R.id.imageViewSelectedFlag) protected ImageView imageViewSelectedFlag;
-    @BindView(R.id.imageViewChip) protected ImageView imageViewChip;
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
@@ -55,6 +55,7 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
 
     @BindDrawable(R.drawable.flag_mastercard) protected Drawable flag_mastercard;
     @BindDrawable(R.drawable.flag_visa) protected Drawable flag_visa;
+    @BindDrawable(R.drawable.flag_elo) protected Drawable flag_elo;
     @BindDrawable(R.drawable.chip_gold) protected Drawable chip_gold;
     @BindDrawable(R.drawable.chip_silver) protected Drawable chip_silver;
     @BindDrawable(R.drawable.card_yellow) protected Drawable card_yellow;
@@ -63,8 +64,6 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindDrawable(R.drawable.card_grey) protected Drawable card_grey;
     @BindDrawable(R.drawable.card_red) protected Drawable card_red;
 
-    @BindColor(R.color.white) protected int white;
-    @BindColor(R.color.black) protected int black;
     @BindColor(R.color.cardYellow) protected int cardYellow;
     @BindColor(R.color.cardPurple) protected int cardPurple;
     @BindColor(R.color.cardGreen) protected int cardGreen;
@@ -72,9 +71,14 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindColor(R.color.cardRed) protected int cardRed;
 
     @BindString(R.string.new_card) protected String new_card;
+    @BindString(R.string.card_number) protected String card_number;
+    @BindString(R.string.card_number_0) protected String card_number_0;
+    @BindString(R.string.card_number_1) protected String card_number_1;
+    @BindString(R.string.card_number_2) protected String card_number_2;
+    @BindString(R.string.card_number_3) protected String card_number_3;
 
     private ICard.Presenter presenter;
-    private int cardColor = 1, cardFlag = 1;
+    private int cardColor = 2 /*Purple*/, cardFlag = 1 /*MasterCard*/;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -90,9 +94,7 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
 
         presenter = new CardPresenter(this);
 
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + getString(R.string.card_number_0)
-        );
+        textViewCardNumber.setText(card_number + card_number_0);
     }
 
     @OnClick({R.id.imageViewCardColor, R.id.imageViewCardFlag})
@@ -110,9 +112,18 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
         }
     }
 
-    @OnClick(R.id.btnCancel)
-    public void OnButtonClick(){
-        finish();
+    @OnClick({R.id.btnSave, R.id.btnCancel})
+    public void OnButtonClick(Button button){
+        switch (button.getId()){
+            case R.id.btnSave : {
+                Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.btnCancel : {
+                finish();
+                break;
+            }
+        }
     }
 
     @Override
@@ -122,51 +133,26 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
             case 1 : {
                 layoutCard.setBackground(card_yellow);
                 imageViewCardColor.setColorFilter(cardYellow);
-                imageViewChip.setImageDrawable(chip_gold);
-                setTextColor(1);
                 break;
             }
             case 2 : {
                 layoutCard.setBackground(card_purple);
                 imageViewCardColor.setColorFilter(cardPurple);
-                imageViewChip.setImageDrawable(chip_silver);
-                setTextColor(2);
                 break;
             }
             case 3 : {
                 layoutCard.setBackground(card_green);
                 imageViewCardColor.setColorFilter(cardGreen);
-                imageViewChip.setImageDrawable(chip_gold);
-                setTextColor(1);
                 break;
             }
             case 4 : {
                 layoutCard.setBackground(card_grey);
                 imageViewCardColor.setColorFilter(cardGrey);
-                imageViewChip.setImageDrawable(chip_silver);
-                setTextColor(2);
                 break;
             }
             case 5 : {
                 layoutCard.setBackground(card_red);
                 imageViewCardColor.setColorFilter(cardRed);
-                imageViewChip.setImageDrawable(chip_gold);
-                setTextColor(2);
-                break;
-            }
-        }
-    }
-
-    private void setTextColor(int color){
-        switch (color){
-            case 1 : {
-                textViewUserName.setTextColor(black);
-                textViewCardNumber.setTextColor(black);
-                break;
-            }
-            case 2 : {
-                textViewUserName.setTextColor(white);
-                textViewCardNumber.setTextColor(white);
                 break;
             }
         }
@@ -186,6 +172,11 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
                 imageViewSelectedFlag.setImageDrawable(flag_visa);
                 break;
             }
+            case 3 : {
+                imageViewCardFlag.setImageDrawable(flag_elo);
+                imageViewSelectedFlag.setImageDrawable(flag_elo);
+                break;
+            }
         }
     }
 
@@ -202,41 +193,31 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @SuppressLint("SetTextI18n")
     @Override
     public void OnSetZeroFinalNumbers() {
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + getString(R.string.card_number_0)
-        );
+        textViewCardNumber.setText(card_number + card_number_0);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void OnSetOneFinalNumber(String num) {
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + getString(R.string.card_number_1) + num
-        );
+        textViewCardNumber.setText(card_number + card_number_1 + num);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void OnSetTwoFinalNumbers(String num) {
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + getString(R.string.card_number_2) + num
-        );
+        textViewCardNumber.setText(card_number + card_number_2 + num);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void OnSetThreeFinalNumbers(String num) {
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + getString(R.string.card_number_3) + num
-        );
+        textViewCardNumber.setText(card_number + card_number_3 + num);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void OnSetFourFinalNumbers(String num) {
-        textViewCardNumber.setText(
-                getText(R.string.card_number) + num
-        );
+        textViewCardNumber.setText(card_number + num);
     }
 
     @Override

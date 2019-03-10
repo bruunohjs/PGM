@@ -28,6 +28,7 @@ public class FlagDialog extends DialogFragment {
 
     @BindView(R.id.layoutMasterCard) protected ConstraintLayout layoutMasterCard;
     @BindView(R.id.layoutVisa) protected ConstraintLayout layoutVisa;
+    @BindView(R.id.layoutElo) protected ConstraintLayout layoutElo;
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
 
@@ -44,7 +45,7 @@ public class FlagDialog extends DialogFragment {
         return itemView;
     }
 
-    @OnClick({R.id.layoutMasterCard, R.id.layoutVisa})
+    @OnClick({R.id.layoutMasterCard, R.id.layoutVisa, R.id.layoutElo})
     public void OnLayoutClick(ConstraintLayout v){
         switch (v.getId()){
             case R.id.layoutMasterCard : {
@@ -54,6 +55,11 @@ public class FlagDialog extends DialogFragment {
             }
             case R.id.layoutVisa : {
                 flagListener.getFlag(2);
+                getDialog().dismiss();
+                break;
+            }
+            case R.id.layoutElo : {
+                flagListener.getFlag(3);
                 getDialog().dismiss();
                 break;
             }
