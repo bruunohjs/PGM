@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutCard"
+        android:layout_width="@dimen/creditCardWidth"
+        android:layout_height="@dimen/creditCardHeight"
+        android:layout_margin="8dp"
+        android:background="@drawable/card_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineLeftCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineRightCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalCenterCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottomCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+        <TextView
+            android:id="@+id/textViewTitleCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewChip"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCard"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopCard" />
+
+        <ImageView
+            android:id="@+id/imageViewChip"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/chip_image"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenterCard"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
+            app:srcCompat="@drawable/chip_gold" />
+
+        <TextView
+            android:id="@+id/textViewCardNumber"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/card_number"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCard"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenterCard" />
+
+        <TextView
+            android:id="@+id/textViewUserName"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomCard"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewSelectedFlag"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCardNumber" />
+
+        <ImageView
+            android:id="@+id/imageViewSelectedFlag"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/flag_image"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomCard"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCard"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCardNumber"
+            app:srcCompat="@drawable/flag_mastercard" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

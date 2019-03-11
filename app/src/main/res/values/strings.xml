@@ -98,6 +98,7 @@
     <string name="date_invalid">Invalid best buy date format. Fill the day in the range 01 to 31.</string>
     <string name="annuity_invalid">Invalid annuity negotiation month format. Fill the month in the range 01 to 12.</string>
     <string name="new_card_success">Card added successfully.</string>
+    <string name="loading_cards">Loading cards…</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>

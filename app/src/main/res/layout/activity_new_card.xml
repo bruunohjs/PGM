@@ -465,10 +465,8 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/layoutCard"
-                android:layout_width="281dp"
-                android:layout_height="186dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="@dimen/creditCardWidth"
+                android:layout_height="@dimen/creditCardHeight"
                 android:background="@drawable/card_purple"
                 app:layout_constraintBottom_toTopOf="@+id/cardView"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
@@ -481,13 +479,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guidelineCenterCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guidelineRightCard"
@@ -516,6 +507,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+                <TextView
+                    android:id="@+id/textViewTitleCard"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/white"
+                    app:autoSizeMaxTextSize="18sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/imageViewChip"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightCard"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
+                    app:layout_constraintTop_toTopOf="@+id/guidelineTopCard" />
 
                 <ImageView
                     android:id="@+id/imageViewChip"

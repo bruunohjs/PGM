@@ -12,7 +12,13 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never" />
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:foregroundGravity="center"
+        android:layout_centerInParent="true"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        />
 
     <com.aniket.mutativefloatingactionbutton.MutativeFab
         android:id="@+id/mutativeFAB"

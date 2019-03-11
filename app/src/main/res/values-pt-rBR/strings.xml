@@ -125,6 +125,7 @@
     <string name="date_invalid">Formato inválido para a melhor data (dia) da compra. Preencha o dia no intervalo de 01 à 31.</string>
     <string name="annuity_invalid">Formato inválido para o mês de negociação da anuidade. Preencha o mês no intervalo de 01 à 12.</string>
     <string name="new_card_success">Cartão adicionado com sucesso.</string>
+    <string name="loading_cards">Carregando cartões…</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -150,5 +151,6 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+
 
 </resources>

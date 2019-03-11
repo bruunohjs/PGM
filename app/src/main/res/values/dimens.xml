@@ -10,4 +10,7 @@
 
     <dimen name="nav_header_height">176dp</dimen>
 
+    <dimen name="creditCardWidth">281dp</dimen>
+    <dimen name="creditCardHeight">186dp</dimen>
+
 </resources>

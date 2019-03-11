@@ -3,6 +3,7 @@ package com.dev.marcellocamara.pgm.Model;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.dev.marcellocamara.pgm.Contract.ICards;
 import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.INewExpense;
 import com.dev.marcellocamara.pgm.Contract.IHome;
@@ -39,7 +40,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model, ICards.Model {
 
     private static boolean isPersistenceEnabled = false;
     private ITaskListener taskListener;
@@ -48,7 +49,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private ValueEventListener valueEventListener;
-    private List<ExpenseModel> list = new ArrayList<>();
+    private List<ExpenseModel> expensesList = new ArrayList<>();
+    private List<CardModel> cardsList = new ArrayList<>();
 
     public DatabaseModel(ITaskListener taskListener) {
         this.taskListener = taskListener;
@@ -293,11 +295,12 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list.clear();
+                expensesList.clear();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
-                    Objects.requireNonNull(expenseModel).setUniqueId(data.getKey()); //Retrieves UniqueKey from each item of month
-                    list.add(expenseModel);
+                    //Retrieves UniqueKey from each item of month
+                    Objects.requireNonNull(expenseModel).setUniqueId(data.getKey());
+                    expensesList.add(expenseModel);
                 }
                 taskListener.OnSuccess();
             }
@@ -308,7 +311,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
             }
         });
 
-        return list;
+        return expensesList;
     }
 
     @Override
@@ -446,4 +449,31 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 });
     }
 
+    @Override
+    public List<CardModel> DoRequestCards() {
+
+        valueEventListener = getDatabaseReference()
+                .child("Cards")
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        cardsList.clear();
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            CardModel card = data.getValue(CardModel.class);
+                            //Retrieves UniqueKey from each card
+                            Objects.requireNonNull(card).setUniqueId(data.getKey());
+                            cardsList.add(card);
+                        }
+                        taskListener.OnSuccess();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        taskListener.OnError(databaseError.getMessage());
+                    }
+                });
+
+        return cardsList;
+    }
 }

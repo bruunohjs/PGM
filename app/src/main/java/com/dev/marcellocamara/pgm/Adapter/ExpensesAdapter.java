@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.dev.marcellocamara.pgm.Contract.IRecyclerView;
+import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.R;
@@ -26,9 +26,9 @@ import butterknife.ButterKnife;
 public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyViewHolder> {
 
     private List<ExpenseModel> list;
-    private IRecyclerView onRecyclerViewClick;
+    private IAdapter onRecyclerViewClick;
 
-    public ExpensesAdapter(List<ExpenseModel> list, IRecyclerView onRecyclerViewClick) {
+    public ExpensesAdapter(List<ExpenseModel> list, IAdapter onRecyclerViewClick) {
         this.list = list;
         this.onRecyclerViewClick = onRecyclerViewClick;
     }
@@ -68,9 +68,9 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
 
         @BindView(R.id.layoutInstallment) ConstraintLayout layoutInstallment;
 
-        private IRecyclerView onRecyclerViewClick;
+        private IAdapter onRecyclerViewClick;
 
-        public MyViewHolder(View itemView, IRecyclerView onRecyclerViewClick) {
+        public MyViewHolder(View itemView, IAdapter onRecyclerViewClick) {
             super(itemView);
             this.onRecyclerViewClick = onRecyclerViewClick;
 

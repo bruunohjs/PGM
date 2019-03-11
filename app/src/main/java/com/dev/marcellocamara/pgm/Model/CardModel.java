@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 public class CardModel {
 
-    private String cardTitle, finalDigits, betterDayToBuy, annuityNegotiationMonth;
+    private String cardTitle, finalDigits, betterDayToBuy, annuityNegotiationMonth, uniqueId;
     private int cardColor, cardFlag;
 
     public CardModel (){}
@@ -46,6 +46,14 @@ public class CardModel {
 
     public void setAnnuityNegotiationMonth(String annuityNegotiationMonth) {
         this.annuityNegotiationMonth = annuityNegotiationMonth;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     public int getCardColor() {

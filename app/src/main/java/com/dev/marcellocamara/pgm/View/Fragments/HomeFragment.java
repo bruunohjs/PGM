@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
-import com.dev.marcellocamara.pgm.Contract.IRecyclerView;
+import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
@@ -41,7 +41,7 @@ import butterknife.Unbinder;
             2019
 ***/
 
-public class HomeFragment extends Fragment implements IHome.View, IRecyclerView, OnMonthChangedListener {
+public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMonthChangedListener {
 
     @BindView(R.id.textViewPrice) protected TextView textViewPrice;
 

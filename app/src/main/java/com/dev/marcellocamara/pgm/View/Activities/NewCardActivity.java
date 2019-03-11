@@ -43,6 +43,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
+    @BindView(R.id.textViewTitleCard) protected TextView textViewTitleCard;
     @BindView(R.id.textViewCardNumber) protected TextView textViewCardNumber;
     @BindView(R.id.textViewUserName) protected TextView textViewUserName;
 
@@ -67,7 +68,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindDrawable(R.drawable.flag_visa) protected Drawable flag_visa;
     @BindDrawable(R.drawable.flag_elo) protected Drawable flag_elo;
     @BindDrawable(R.drawable.chip_gold) protected Drawable chip_gold;
-    @BindDrawable(R.drawable.chip_silver) protected Drawable chip_silver;
     @BindDrawable(R.drawable.card_yellow) protected Drawable card_yellow;
     @BindDrawable(R.drawable.card_purple) protected Drawable card_purple;
     @BindDrawable(R.drawable.card_green) protected Drawable card_green;
@@ -170,6 +170,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @Override
     public void getSelectedColor(int color) {
+        //TODO : Class Helper to change the background
         cardColor = color;
         switch (color){
             case 1 : {
@@ -202,6 +203,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @Override
     public void getFlag(int flag) {
+        //TODO : Class Helper to change the flag
         cardFlag = flag;
         switch (flag){
             case 1 : {
@@ -222,8 +224,13 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         }
     }
 
+    @OnTextChanged(R.id.editTextCardTitle)
+    protected void OnTitleTextChanged(CharSequence text){
+        textViewTitleCard.setText(text.toString());
+    }
+
     @OnTextChanged(R.id.editTextFinalNumber)
-    protected void onTextChanged(CharSequence text) {
+    protected void onFinalNumbersTextChanged(CharSequence text) {
         presenter.OnGetFinalNumbers(text.toString());
     }
 
