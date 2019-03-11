@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dev.marcellocamara.pgm.Contract.IOverview;
+import com.dev.marcellocamara.pgm.Contract.IExpenseOverview;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
-import com.dev.marcellocamara.pgm.Presenter.OverviewPresenter;
+import com.dev.marcellocamara.pgm.Presenter.ExpenseOverviewPresenter;
 import com.dev.marcellocamara.pgm.R;
 
 import java.util.Objects;
@@ -30,7 +30,7 @@ import butterknife.OnClick;
             2019
 ***/
 
-public class ExpenseOverviewActivity extends AppCompatActivity implements IOverview.View {
+public class ExpenseOverviewActivity extends AppCompatActivity implements IExpenseOverview.View {
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
@@ -53,7 +53,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IOverv
     @BindString(R.string.close) protected String close;
     @BindString(R.string.parcelable_name) protected String parcelable;
 
-    private IOverview.Presenter overviewPresenter;
+    private IExpenseOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
@@ -77,7 +77,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IOverv
         textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
         textViewDate.setText(expenseModel.getPaymentDate());
 
-        overviewPresenter = new OverviewPresenter(this);
+        overviewPresenter = new ExpenseOverviewPresenter(this);
         overviewPresenter.OnVerifyInstallments(expenseModel.getInstallments(), expenseModel.getPrice());
 
         alertDialog = new SpotsDialog.Builder()

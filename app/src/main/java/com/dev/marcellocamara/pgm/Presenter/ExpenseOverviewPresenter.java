@@ -1,6 +1,6 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
-import com.dev.marcellocamara.pgm.Contract.IOverview;
+import com.dev.marcellocamara.pgm.Contract.IExpenseOverview;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
@@ -11,12 +11,12 @@ import com.dev.marcellocamara.pgm.Model.ExpenseModel;
             2019
 ***/
 
-public class OverviewPresenter implements IOverview.Presenter, ITaskListener {
+public class ExpenseOverviewPresenter implements IExpenseOverview.Presenter, ITaskListener {
 
-    private IOverview.View view;
-    private IOverview.Model model;
+    private IExpenseOverview.View view;
+    private IExpenseOverview.Model model;
 
-    public OverviewPresenter(IOverview.View view) {
+    public ExpenseOverviewPresenter(IExpenseOverview.View view) {
         this.view = view;
         this.model = new DatabaseModel(this);
     }

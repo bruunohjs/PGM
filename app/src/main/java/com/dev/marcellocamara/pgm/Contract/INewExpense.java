@@ -5,7 +5,7 @@ package com.dev.marcellocamara.pgm.Contract;
             2019
 ***/
 
-public interface IExpense {
+public interface INewExpense {
 
     interface Presenter {
 

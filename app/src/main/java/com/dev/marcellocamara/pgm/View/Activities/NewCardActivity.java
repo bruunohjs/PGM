@@ -13,11 +13,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dev.marcellocamara.pgm.Contract.ICard;
+import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
 import com.dev.marcellocamara.pgm.Helper.CardColorDialog;
 import com.dev.marcellocamara.pgm.Helper.FlagDialog;
-import com.dev.marcellocamara.pgm.Presenter.CardPresenter;
+import com.dev.marcellocamara.pgm.Presenter.NewCardPresenter;
 import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -39,7 +39,7 @@ import butterknife.OnTextChanged;
             2019
 ***/
 
-public class NewCardActivity extends AppCompatActivity implements ICard.View, IDialog.Color, IDialog.Flag{
+public class NewCardActivity extends AppCompatActivity implements INewCard.View, IDialog.Color, IDialog.Flag{
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
@@ -96,7 +96,7 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindString(R.string.adding_new_card) protected String adding_new_card;
     @BindString(R.string.new_card_success) protected String new_card_success;
 
-    private ICard.Presenter presenter;
+    private INewCard.Presenter presenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
     private int cardColor = 2 /*Purple*/, cardFlag = 1 /*MasterCard*/;
@@ -113,7 +113,7 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
         Objects.requireNonNull(getSupportActionBar()).setTitle(new_card);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        presenter = new CardPresenter(this);
+        presenter = new NewCardPresenter(this);
 
         textViewCardNumber.setText(card_number + card_number_0);
 

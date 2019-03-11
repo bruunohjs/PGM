@@ -12,8 +12,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.dev.marcellocamara.pgm.Contract.IExpense;
-import com.dev.marcellocamara.pgm.Presenter.ExpensePresenter;
+import com.dev.marcellocamara.pgm.Contract.INewExpense;
+import com.dev.marcellocamara.pgm.Presenter.NewExpensePresenter;
 import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -33,7 +33,7 @@ import butterknife.OnClick;
             2019
 ***/
 
-public class NewExpenseActivity extends AppCompatActivity implements IExpense.View {
+public class NewExpenseActivity extends AppCompatActivity implements INewExpense.View {
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
@@ -58,7 +58,7 @@ public class NewExpenseActivity extends AppCompatActivity implements IExpense.Vi
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
     @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
 
-    private IExpense.Presenter expensePresenter;
+    private INewExpense.Presenter expensePresenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder ;
     private int installments = 1, calendarDay, calendarMonth, calendarYear;
@@ -74,7 +74,7 @@ public class NewExpenseActivity extends AppCompatActivity implements IExpense.Vi
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        expensePresenter = new ExpensePresenter(this);
+        expensePresenter = new NewExpensePresenter(this);
 
         Calendar calendar = Calendar.getInstance();
         calendarDay = calendar.get(Calendar.DAY_OF_MONTH);

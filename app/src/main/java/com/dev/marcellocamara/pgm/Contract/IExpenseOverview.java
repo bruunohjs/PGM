@@ -7,7 +7,7 @@ import com.dev.marcellocamara.pgm.Model.ExpenseModel;
             2019
 ***/
 
-public interface IOverview {
+public interface IExpenseOverview {
 
     interface Presenter{
 

@@ -1,6 +1,6 @@
 package com.dev.marcellocamara.pgm.Presenter;
 
-import com.dev.marcellocamara.pgm.Contract.ICard;
+import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 
@@ -9,12 +9,12 @@ import com.dev.marcellocamara.pgm.Model.DatabaseModel;
             2019
 ***/
 
-public class CardPresenter implements ICard.Presenter, ITaskListener {
+public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
 
-    private ICard.View view;
-    private ICard.Model model;
+    private INewCard.View view;
+    private INewCard.Model model;
 
-    public CardPresenter(ICard.View view) {
+    public NewCardPresenter(INewCard.View view) {
         this.view = view;
         this.model = new DatabaseModel(this);
     }

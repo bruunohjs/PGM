@@ -5,7 +5,7 @@ package com.dev.marcellocamara.pgm.Contract;
             2019
 ***/
 
-public interface ICard {
+public interface INewCard {
 
     interface Presenter {
 
