@@ -12,12 +12,14 @@ import com.google.firebase.database.Exclude;
 
 public class ExpenseModel implements Parcelable {
 
+    private String creditCardId;
     private String paymentDate, title, description, currentInstallment, installments, uniqueId;
     private double price;
 
     public ExpenseModel(){}
 
     protected ExpenseModel(Parcel in) {
+        creditCardId = in.readString();
         paymentDate = in.readString();
         title = in.readString();
         description = in.readString();
@@ -38,6 +40,18 @@ public class ExpenseModel implements Parcelable {
             return new ExpenseModel[size];
         }
     };
+
+    public String getCreditCardId() {
+        return creditCardId;
+    }
+
+    public void setCreditCardId(String creditCardId) {
+        this.creditCardId = creditCardId;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
 
     public String getPaymentDate() {
         return paymentDate;
@@ -104,6 +118,7 @@ public class ExpenseModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(creditCardId);
         dest.writeString(paymentDate);
         dest.writeString(title);
         dest.writeString(description);

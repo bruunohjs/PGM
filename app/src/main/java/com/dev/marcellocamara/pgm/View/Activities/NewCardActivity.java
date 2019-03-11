@@ -1,8 +1,10 @@
 package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.Contract.ICard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
@@ -19,7 +20,11 @@ import com.dev.marcellocamara.pgm.Helper.FlagDialog;
 import com.dev.marcellocamara.pgm.Presenter.CardPresenter;
 import com.dev.marcellocamara.pgm.R;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import java.util.Objects;
+
+import dmax.dialog.SpotsDialog;
 
 import butterknife.BindColor;
 import butterknife.BindDrawable;
@@ -41,12 +46,17 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindView(R.id.textViewCardNumber) protected TextView textViewCardNumber;
     @BindView(R.id.textViewUserName) protected TextView textViewUserName;
 
+    @BindView(R.id.editTextCardTitle) protected EditText editTextCardTitle;
     @BindView(R.id.editTextFinalNumber) protected EditText editTextFinalNumber;
     @BindView(R.id.editTextPaymentDate) protected EditText editTextPaymentDate;
+    @BindView(R.id.editTextAnnuity) protected EditText editTextAnnuity;
 
     @BindView(R.id.imageViewCardColor) protected ImageView imageViewCardColor;
     @BindView(R.id.imageViewCardFlag) protected ImageView imageViewCardFlag;
     @BindView(R.id.imageViewSelectedFlag) protected ImageView imageViewSelectedFlag;
+    @BindView(R.id.imageViewInfoFinalDigits) protected ImageView imageViewInfoFinalDigits;
+    @BindView(R.id.imageViewInfoBetterDay) protected ImageView imageViewInfoBetterDay;
+    @BindView(R.id.imageViewInfoAnnuity) protected ImageView imageViewInfoAnnuity;
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
@@ -76,8 +86,19 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @BindString(R.string.card_number_1) protected String card_number_1;
     @BindString(R.string.card_number_2) protected String card_number_2;
     @BindString(R.string.card_number_3) protected String card_number_3;
+    @BindString(R.string.card_title_empty) protected String card_title_empty;
+    @BindString(R.string.card_number_empty) protected String card_number_empty;
+    @BindString(R.string.date_empty) protected String date_empty;
+    @BindString(R.string.date_invalid) protected String date_invalid;
+    @BindString(R.string.annuity_empty) protected String annuity_empty;
+    @BindString(R.string.annuity_invalid) protected String annuity_invalid;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.adding_new_card) protected String adding_new_card;
+    @BindString(R.string.new_card_success) protected String new_card_success;
 
     private ICard.Presenter presenter;
+    private AlertDialog alertDialog;
+    private AlertDialog.Builder builder;
     private int cardColor = 2 /*Purple*/, cardFlag = 1 /*MasterCard*/;
 
     @SuppressLint("SetTextI18n")
@@ -95,6 +116,17 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
         presenter = new CardPresenter(this);
 
         textViewCardNumber.setText(card_number + card_number_0);
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(new_card);
+        builder.setCancelable(false);
+
+        alertDialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setTheme(R.style.CustomAlertDialog)
+                .setMessage(adding_new_card)
+                .setCancelable(false)
+                .build();
     }
 
     @OnClick({R.id.imageViewCardColor, R.id.imageViewCardFlag})
@@ -116,7 +148,17 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     public void OnButtonClick(Button button){
         switch (button.getId()){
             case R.id.btnSave : {
-                Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show();
+                editTextFinalNumber.clearFocus();
+                editTextPaymentDate.clearFocus();
+                presenter.OnAddCard(
+                        editTextCardTitle.getText().toString().trim(),
+                        editTextFinalNumber.getText().toString().trim(),
+                        editTextPaymentDate.getText().toString().trim(),
+                        editTextAnnuity.getText().toString().trim(),
+                        cardColor,
+                        cardFlag
+                );
+                UIUtil.hideKeyboard(this);
                 break;
             }
             case R.id.btnCancel : {
@@ -218,6 +260,70 @@ public class NewCardActivity extends AppCompatActivity implements ICard.View, ID
     @Override
     public void OnSetFourFinalNumbers(String num) {
         textViewCardNumber.setText(card_number + num);
+    }
+
+    @Override
+    public void OnTitleEmpty() {
+        builder.setMessage(card_title_empty);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnFinalNumbersInvalid() {
+        builder.setMessage(card_number_empty);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnDateInvalid() {
+        builder.setMessage(date_empty);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnAnnuityInvalid() {
+        builder.setMessage(annuity_empty);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnDateInvalidValue() {
+        builder.setMessage(date_invalid);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnAnnuityInvalidValue() {
+        builder.setMessage(annuity_invalid);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnAddCardSuccess() {
+        builder.setMessage(new_card_success);
+        builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    public void ShowProgress() {
+        alertDialog.show();
+    }
+
+    @Override
+    public void HideProgress() {
+        alertDialog.dismiss();
     }
 
     @Override

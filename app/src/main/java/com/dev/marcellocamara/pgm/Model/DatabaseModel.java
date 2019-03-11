@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dev.marcellocamara.pgm.Contract.ICard;
 import com.dev.marcellocamara.pgm.Contract.IExpense;
@@ -181,6 +182,30 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     @Override
     public String GetUserDisplayName() {
         return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getDisplayName();
+    }
+
+    @Override
+    public void DoAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag) {
+
+        CardModel card = new CardModel(title, numbers, date, annuity, cardColor, cardFlag);
+
+        final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
+
+        getDatabaseReference()
+                .child("Cards")
+                .child(userID)
+                .push()
+                .setValue(card)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    taskListener.OnSuccess();
+                }else {
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                }
+            }
+        });
     }
 
     @Override

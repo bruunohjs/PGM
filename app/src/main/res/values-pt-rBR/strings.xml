@@ -86,7 +86,6 @@
     <string name="card_number_1">XXX</string>
     <string name="card_number_2">XX</string>
     <string name="card_number_3">X</string>
-    <string name="payment_date">Dia do pagamento:</string>
     <string name="final_numbers">Final n°:</string>
     <string name="new_card">Novo cartão</string>
     <string name="select_flag">Selecione a bandeira</string>
@@ -109,6 +108,23 @@
     <string name="card_color">Cor do cartão:</string>
     <string name="chip_image">Imagem do chip</string>
     <string name="flag_image">Imagem da bandeira</string>
+    <string name="elo">Elo</string>
+    <string name="icon_elo">Ícone Elo</string>
+    <string name="adding_new_card">Adicionando cartão…</string>
+    <string name="annuity_negotiation_month">Mês de negociação da anuidade:</string>
+    <string name="best_buy_date">Melhor data de compra:</string>
+    <string name="optional_info">Informações opcionais</string>
+    <string name="icon_info_final_digits">Ícone de infmação dos dígitos finais</string>
+    <string name="icon_info_better_day">Ícone de infmação da melhor data de pagamento</string>
+    <string name="icon_info_annuity">Ícone de infmação do mês da negociação da anuidade</string>
+    <string name="card_title">Título do cartão:</string>
+    <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
+    <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
+    <string name="date_empty">Preencha melhor data (dia) de compra com dois dígitos.\nEx.: 02</string>
+    <string name="annuity_empty">Preencha o mês de negociação da anuidade com dois dígitos.\nEx.: 02</string>
+    <string name="date_invalid">Formato inválido para a melhor data (dia) da compra. Preencha o dia no intervalo de 01 à 31.</string>
+    <string name="annuity_invalid">Formato inválido para o mês de negociação da anuidade. Preencha o mês no intervalo de 01 à 12.</string>
+    <string name="new_card_success">Cartão adicionado com sucesso.</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -134,7 +150,5 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="elo">Elo</string>
-    <string name="icon_elo">Icon elo</string>
 
 </resources>

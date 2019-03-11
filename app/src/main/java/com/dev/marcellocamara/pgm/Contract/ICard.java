@@ -13,11 +13,13 @@ public interface ICard {
 
         void OnGetFinalNumbers(String numbers);
 
+        void OnAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag);
+
         void OnDestroy();
 
     }
 
-    interface View {
+    interface View extends IProgressLoading {
 
         void OnRequestUserDataSuccessful(String name);
 
@@ -31,11 +33,29 @@ public interface ICard {
 
         void OnSetFourFinalNumbers(String num);
 
+        void OnTitleEmpty();
+
+        void OnFinalNumbersInvalid();
+
+        void OnDateInvalid();
+
+        void OnAnnuityInvalid();
+
+        void OnDateInvalidValue();
+
+        void OnAnnuityInvalidValue();
+
+        void OnAddCardSuccess();
+
     }
 
     interface Model {
 
         String GetUserDisplayName();
+
+        //List<CardModel> GetUserCardList();
+
+        void DoAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag);
 
     }
 
