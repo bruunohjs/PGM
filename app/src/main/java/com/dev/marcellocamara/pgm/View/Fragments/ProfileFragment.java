@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IDialog;
 import com.dev.marcellocamara.pgm.Contract.IProfile;
-import com.dev.marcellocamara.pgm.Helper.PhotoDialog;
+import com.dev.marcellocamara.pgm.View.Dialogs.PhotoDialog;
 import com.dev.marcellocamara.pgm.Presenter.ProfilePresenter;
 import com.dev.marcellocamara.pgm.R;
 

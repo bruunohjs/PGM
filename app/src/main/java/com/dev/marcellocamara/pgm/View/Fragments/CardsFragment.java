@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.CardsAdapter;
@@ -83,9 +82,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     @Override
     public void OnItemClick(int position) {
-        Toast.makeText(getContext(),
-                "Item clicked: " + position +
-                "\nCard: " + list.get(position).getFinalDigits(), Toast.LENGTH_SHORT).show();
+         //TODO : Handle item click - this.list.get(position)
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.View.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +14,9 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
-import com.dev.marcellocamara.pgm.Helper.CardColorDialog;
-import com.dev.marcellocamara.pgm.Helper.FlagDialog;
+import com.dev.marcellocamara.pgm.View.Dialogs.CardColorDialog;
+import com.dev.marcellocamara.pgm.Helper.CardHelper;
+import com.dev.marcellocamara.pgm.View.Dialogs.CardFlagDialog;
 import com.dev.marcellocamara.pgm.Presenter.NewCardPresenter;
 import com.dev.marcellocamara.pgm.R;
 
@@ -26,8 +26,6 @@ import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
-import butterknife.BindColor;
-import butterknife.BindDrawable;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,22 +61,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
-
-    @BindDrawable(R.drawable.flag_mastercard) protected Drawable flag_mastercard;
-    @BindDrawable(R.drawable.flag_visa) protected Drawable flag_visa;
-    @BindDrawable(R.drawable.flag_elo) protected Drawable flag_elo;
-    @BindDrawable(R.drawable.chip_gold) protected Drawable chip_gold;
-    @BindDrawable(R.drawable.card_yellow) protected Drawable card_yellow;
-    @BindDrawable(R.drawable.card_purple) protected Drawable card_purple;
-    @BindDrawable(R.drawable.card_green) protected Drawable card_green;
-    @BindDrawable(R.drawable.card_grey) protected Drawable card_grey;
-    @BindDrawable(R.drawable.card_red) protected Drawable card_red;
-
-    @BindColor(R.color.cardYellow) protected int cardYellow;
-    @BindColor(R.color.cardPurple) protected int cardPurple;
-    @BindColor(R.color.cardGreen) protected int cardGreen;
-    @BindColor(R.color.cardGrey) protected int cardGrey;
-    @BindColor(R.color.cardRed) protected int cardRed;
 
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.card_number) protected String card_number;
@@ -138,7 +120,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
                 break;
             }
             case R.id.imageViewCardFlag : {
-                FlagDialog flag = new FlagDialog();
+                CardFlagDialog flag = new CardFlagDialog();
                 flag.show(getSupportFragmentManager(),"SelectFlag");
             }
         }
@@ -170,58 +152,16 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @Override
     public void getSelectedColor(int color) {
-        //TODO : Class Helper to change the background
         cardColor = color;
-        switch (color){
-            case 1 : {
-                layoutCard.setBackground(card_yellow);
-                imageViewCardColor.setColorFilter(cardYellow);
-                break;
-            }
-            case 2 : {
-                layoutCard.setBackground(card_purple);
-                imageViewCardColor.setColorFilter(cardPurple);
-                break;
-            }
-            case 3 : {
-                layoutCard.setBackground(card_green);
-                imageViewCardColor.setColorFilter(cardGreen);
-                break;
-            }
-            case 4 : {
-                layoutCard.setBackground(card_grey);
-                imageViewCardColor.setColorFilter(cardGrey);
-                break;
-            }
-            case 5 : {
-                layoutCard.setBackground(card_red);
-                imageViewCardColor.setColorFilter(cardRed);
-                break;
-            }
-        }
+        layoutCard.setBackground( CardHelper.getBackground(this, color) );
+        imageViewCardColor.setColorFilter( CardHelper.getColor(this, color) );
     }
 
     @Override
     public void getFlag(int flag) {
-        //TODO : Class Helper to change the flag
         cardFlag = flag;
-        switch (flag){
-            case 1 : {
-                imageViewCardFlag.setImageDrawable(flag_mastercard);
-                imageViewSelectedFlag.setImageDrawable(flag_mastercard);
-                break;
-            }
-            case 2 : {
-                imageViewCardFlag.setImageDrawable(flag_visa);
-                imageViewSelectedFlag.setImageDrawable(flag_visa);
-                break;
-            }
-            case 3 : {
-                imageViewCardFlag.setImageDrawable(flag_elo);
-                imageViewSelectedFlag.setImageDrawable(flag_elo);
-                break;
-            }
-        }
+        imageViewCardFlag.setImageDrawable( CardHelper.getFlag(this, cardFlag));
+        imageViewSelectedFlag.setImageDrawable( CardHelper.getFlag(this, cardFlag) );
     }
 
     @OnTextChanged(R.id.editTextCardTitle)

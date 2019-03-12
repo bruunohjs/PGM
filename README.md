@@ -6,7 +6,7 @@ O objetivo deste trabalho é possibilitar que o usuário acompanhe as despesas d
 Ao registrar a compra de um produto parcelado, o calendário exibe suas parcelas em cada mês que o tiver. Sendo assim, o usuário conta com uma estimativa de seus gastos em meses futuros.
 
 <p align="center">
-  <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/screenshots/portuguese/overview.png" title="Detalhes da compra">
+  <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/giphy.gif" title="Criando um cartão">
 </p>
 
 ## Análise / Avaliação
@@ -38,7 +38,7 @@ Home | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extra
 Nova despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/expense.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/expense.png)
 Despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/overview.png)
 Menu | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/menu.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/menu.png)
-Cartões | -
+Cartões | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/cards.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/cards.png)
 Novo cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/new_card.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/new_card.png)
 Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/profile.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/profile.png)
 

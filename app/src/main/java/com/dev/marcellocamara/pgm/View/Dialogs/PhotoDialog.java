@@ -1,4 +1,4 @@
-package com.dev.marcellocamara.pgm.Helper;
+package com.dev.marcellocamara.pgm.View.Dialogs;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dev.marcellocamara.pgm.Contract.IDialog;
+import com.dev.marcellocamara.pgm.Helper.Permissions;
 import com.dev.marcellocamara.pgm.R;
 
 import java.io.ByteArrayOutputStream;
