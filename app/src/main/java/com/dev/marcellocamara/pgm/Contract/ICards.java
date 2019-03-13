@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Contract;
 
 import com.dev.marcellocamara.pgm.Model.CardModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /***
     marcellocamara@id.uff.br
@@ -27,7 +27,7 @@ public interface ICards {
 
         void OnRequestUserDataSuccessful(String name);
 
-        void OnRequestExpensesResult(List<CardModel> list);
+        void OnRequestCardsResult(ArrayList<CardModel> list);
 
     }
 
@@ -35,9 +35,9 @@ public interface ICards {
 
         String GetUserDisplayName();
 
-        List<CardModel> DoRequestCards();
+        ArrayList<CardModel> DoRecoverCards();
 
-        void RemoveEventListener();
+        void RemoveCardsEventListener();
 
     }
 

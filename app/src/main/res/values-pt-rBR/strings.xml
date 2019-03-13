@@ -19,17 +19,17 @@
     <string name="recover_message2">\nCheque seus emails, em alguns minutos, e siga as intruções para alterar sua senha.</string>
     <string name="logout">Sair</string>
     <string name="new_expense">Nova despesa</string>
-    <string name="date">Data</string>
-    <string name="title">Título</string>
-    <string name="description">Descrição</string>
-    <string name="price">Preço</string>
-    <string name="installments">Parcelas</string>
+    <string name="date">Data:</string>
+    <string name="title">Título:</string>
+    <string name="description">Descrição:</string>
+    <string name="price">Preço:</string>
+    <string name="installments">Parcelas:</string>
     <string name="installments_number">Número de parcelas</string>
     <string name="icon_date">Ícone data</string>
     <string name="icon_title">Ícone título</string>
     <string name="icon_description">Ícone descrição</string>
     <string name="icon_price">Ícone preço</string>
-    <string name="icon_installments">Ícone parcelas</string>
+    <string name="icon_installments">Ícone cartão</string>
     <string name="installment">1x</string>
     <string name="view_expense_button_cancel">Cancelar</string>
     <string name="view_expense_button_save">Salvar</string>
@@ -41,7 +41,7 @@
     <string name="zero">0.00</string>
     <string name="welcome">Bem-vindo, </string>
     <string name="expenses_loading">Carregando despesas…</string>
-    <string name="parcelable_name">expense</string>
+    <string name="parcelable">expense</string>
     <string name="fabExpense">Nova despesa</string>
     <string name="deleting_expense">Deletando despesas…</string>
     <string name="view_overview_installments">x</string>
@@ -80,13 +80,13 @@
     <string name="empty_price">Preencha o preço.</string>
     <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos Centavos</string>
     <string name="no_changes">Nenhnuma alteração realizada.</string>
-    <string name="fabCard">Novo cartão</string>
+    <string name="fabCard">Adicionar cartão</string>
     <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
     <string name="card_number_0">XXXX</string>
     <string name="card_number_1">XXX</string>
     <string name="card_number_2">XX</string>
     <string name="card_number_3">X</string>
-    <string name="final_numbers">Final n°:</string>
+    <string name="final_numbers">Final número:</string>
     <string name="new_card">Novo cartão</string>
     <string name="select_flag">Selecione a bandeira</string>
     <string name="icon_mastercard">Ícone MasterCard</string>
@@ -114,9 +114,11 @@
     <string name="annuity_negotiation_month">Mês de negociação da anuidade:</string>
     <string name="best_buy_date">Melhor data de compra:</string>
     <string name="optional_info">Informações opcionais</string>
-    <string name="icon_info_final_digits">Ícone de infmação dos dígitos finais</string>
-    <string name="icon_info_better_day">Ícone de infmação da melhor data de pagamento</string>
-    <string name="icon_info_annuity">Ícone de infmação do mês da negociação da anuidade</string>
+    <string name="icon_info_date">Ícone de informação da data de compra</string>
+    <string name="icon_info_price">Ícone de informação do preço</string>
+    <string name="icon_info_final_digits">Ícone de informação dos dígitos finais</string>
+    <string name="icon_info_better_day">Ícone de informação da melhor data de pagamento</string>
+    <string name="icon_info_annuity">Ícone de informação do mês da negociação da anuidade</string>
     <string name="card_title">Título do cartão:</string>
     <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
     <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
@@ -126,6 +128,8 @@
     <string name="annuity_invalid">Formato inválido para o mês de negociação da anuidade. Preencha o mês no intervalo de 01 à 12.</string>
     <string name="new_card_success">Cartão adicionado com sucesso.</string>
     <string name="loading_cards">Carregando cartões…</string>
+    <string name="select_card">Selecione um cartão</string>
+    <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
 
     <string-array name="installments">
         <item>1x</item>
@@ -151,6 +155,6 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-
+    <string name="card_select">Card:</string>
 
 </resources>

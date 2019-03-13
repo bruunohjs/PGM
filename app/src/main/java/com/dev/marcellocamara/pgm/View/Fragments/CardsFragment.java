@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.CardsAdapter;
@@ -18,7 +19,7 @@ import com.dev.marcellocamara.pgm.Presenter.CardsPresenter;
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.View.Activities.NewCardActivity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +38,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     @BindView(R.id.viewPager) protected ViewPager viewPager;
 
     private ICards.Presenter cardsPresenter;
-    private List<CardModel> list;
+    private ArrayList<CardModel> list;
     private AlertDialog alertDialog;
     private String userName;
 
@@ -74,7 +75,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     }
 
     @Override
-    public void OnRequestExpensesResult(List<CardModel> list) {
+    public void OnRequestCardsResult(ArrayList<CardModel> list) {
         this.list = list;
         CardsAdapter adapter = new CardsAdapter(list, userName, getContext(), this);
         viewPager.setAdapter(adapter);
@@ -83,6 +84,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     @Override
     public void OnItemClick(int position) {
          //TODO : Handle item click - this.list.get(position)
+         //Toast.makeText(getContext(), "Card: " + list.get(position).getFinalDigits() + "\nId: " + list.get(position).getUniqueId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

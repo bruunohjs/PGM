@@ -3,7 +3,10 @@ package com.dev.marcellocamara.pgm.Presenter;
 import com.dev.marcellocamara.pgm.Contract.INewExpense;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
+
+import java.util.ArrayList;
 
 /***
     marcellocamara@id.uff.br
@@ -45,6 +48,16 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
         }
 
     }
+
+    @Override
+    public CharSequence[] OnRequestCardSequence(ArrayList<CardModel> cards) {
+        CharSequence charSequence[] = new String[cards.size()];
+        for (int i = 0 ; i < cards.size() ; i++){
+            charSequence[i] = cards.get(i).getCardTitle() + " - " + cards.get(i).getFinalDigits();
+        }
+        return charSequence;
+    }
+
 
     @Override
     public void OnCalculateDate(int day, int month, int year) {

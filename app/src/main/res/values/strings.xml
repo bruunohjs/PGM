@@ -27,11 +27,11 @@
 
     <!-- Expenses -->
     <string name="new_expense">New expense</string>
-    <string name="date">Date</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
-    <string name="price">Price</string>
-    <string name="installments">Installments</string>
+    <string name="date">Date:</string>
+    <string name="title">Title:</string>
+    <string name="description">Description:</string>
+    <string name="price">Price:</string>
+    <string name="installments">Installments:</string>
     <string name="installments_number">Installments number</string>
     <string name="installment">1x</string>
     <string name="view_expense_button_cancel">Cancel</string>
@@ -57,6 +57,8 @@
     <string name="chip_image">Chip Image</string>
     <string name="flag_image">Flag Image</string>
     <string name="icon_info_final_digits">Final Digits Info Icon</string>
+    <string name="icon_info_date">Date Info Icon</string>
+    <string name="icon_info_price">Price Info Icon</string>
     <string name="icon_info_better_day">Better Day Info Icon</string>
     <string name="icon_info_annuity">Annuity Info Icon</string>
 
@@ -67,8 +69,9 @@
     <string name="zero">0.00</string>
     <string name="all_expenses">Expenses for selected month</string>
     <string name="expenses_loading">Loading expenses…</string>
-    <string name="parcelable_name">expense</string>
+    <string name="parcelable">parcelable</string>
     <string name="fabExpense">Add expense</string>
+    <string name="fab_no_card">It\'s not possible to add expenses without adding a card first.</string>
 
     <!-- Card/Cards -->
     <string name="fabCard">Add Card</string>
@@ -99,6 +102,9 @@
     <string name="annuity_invalid">Invalid annuity negotiation month format. Fill the month in the range 01 to 12.</string>
     <string name="new_card_success">Card added successfully.</string>
     <string name="loading_cards">Loading cards…</string>
+
+    <!-- Dialogs -->
+    <string name="select_card">Select one card</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>
@@ -181,5 +187,6 @@
 
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="card_select">Card:</string>
 
 </resources>

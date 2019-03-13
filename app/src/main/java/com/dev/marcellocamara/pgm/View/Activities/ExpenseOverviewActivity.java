@@ -51,7 +51,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindString(R.string.yes) protected String yes;
     @BindString(R.string.no) protected String no;
     @BindString(R.string.close) protected String close;
-    @BindString(R.string.parcelable_name) protected String parcelable;
+    @BindString(R.string.parcelable) protected String parcelable;
 
     private IExpenseOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;

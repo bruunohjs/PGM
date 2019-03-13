@@ -13,4 +13,6 @@
     <dimen name="creditCardWidth">281dp</dimen>
     <dimen name="creditCardHeight">186dp</dimen>
 
+    <dimen name="viewPagerLine">1.5dp</dimen>
+
 </resources>

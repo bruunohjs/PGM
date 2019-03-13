@@ -1,6 +1,16 @@
 package com.dev.marcellocamara.pgm.Model;
 
-public class CardModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.firebase.database.Exclude;
+
+/***
+    marcellocamara@id.uff.br
+            2019
+***/
+
+public class CardModel implements Parcelable {
 
     private String cardTitle, finalDigits, betterDayToBuy, annuityNegotiationMonth, uniqueId;
     private int cardColor, cardFlag;
@@ -15,6 +25,28 @@ public class CardModel {
         this.cardColor = color;
         this.cardFlag = flag;
     }
+
+    protected CardModel(Parcel in) {
+        cardTitle = in.readString();
+        finalDigits = in.readString();
+        betterDayToBuy = in.readString();
+        annuityNegotiationMonth = in.readString();
+        uniqueId = in.readString();
+        cardColor = in.readInt();
+        cardFlag = in.readInt();
+    }
+
+    public static final Creator<CardModel> CREATOR = new Creator<CardModel>() {
+        @Override
+        public CardModel createFromParcel(Parcel in) {
+            return new CardModel(in);
+        }
+
+        @Override
+        public CardModel[] newArray(int size) {
+            return new CardModel[size];
+        }
+    };
 
     public String getCardTitle() {
         return cardTitle;
@@ -48,10 +80,12 @@ public class CardModel {
         this.annuityNegotiationMonth = annuityNegotiationMonth;
     }
 
+    @Exclude
     public String getUniqueId() {
         return uniqueId;
     }
 
+    @Exclude
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
     }
@@ -70,5 +104,21 @@ public class CardModel {
 
     public void setCardFlag(int cardFlag) {
         this.cardFlag = cardFlag;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(cardTitle);
+        dest.writeString(finalDigits);
+        dest.writeString(betterDayToBuy);
+        dest.writeString(annuityNegotiationMonth);
+        dest.writeString(uniqueId);
+        dest.writeInt(cardColor);
+        dest.writeInt(cardFlag);
     }
 }

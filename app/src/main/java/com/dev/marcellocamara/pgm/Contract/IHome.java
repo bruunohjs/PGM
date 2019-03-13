@@ -1,7 +1,9 @@
 package com.dev.marcellocamara.pgm.Contract;
 
+import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -25,7 +27,7 @@ public interface IHome {
 
     interface View extends IProgressLoading {
 
-        void OnRequestExpensesResult(List<ExpenseModel> list);
+        void OnRequestExpensesResult(List<ExpenseModel> expensesList, ArrayList<CardModel> cardsList);
 
         void OnRequestTotalCalculateResult(String value);
 
@@ -33,9 +35,11 @@ public interface IHome {
 
     interface Model {
 
+        ArrayList<CardModel> DoRecoverCards();
+
         List<ExpenseModel> DoRecoverExpenses(String monthYear);
 
-        void RemoveEventListener();
+        void RemoveExpensesEventListener();
 
     }
 

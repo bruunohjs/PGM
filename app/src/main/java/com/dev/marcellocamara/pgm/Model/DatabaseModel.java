@@ -48,9 +48,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
-    private ValueEventListener valueEventListener;
+    private ValueEventListener expensesValueEventListener, cardsValueEventListener;
     private List<ExpenseModel> expensesList = new ArrayList<>();
-    private List<CardModel> cardsList = new ArrayList<>();
+    private ArrayList<CardModel> cardsList = new ArrayList<>();
 
     public DatabaseModel(ITaskListener taskListener) {
         this.taskListener = taskListener;
@@ -288,7 +288,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     @Override
     public List<ExpenseModel> DoRecoverExpenses(String monthYear) {
 
-        valueEventListener = getDatabaseReference()
+        expensesValueEventListener = getDatabaseReference()
                 .child("Expenses")
                 .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                 .child(monthYear)
@@ -315,8 +315,13 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void RemoveEventListener() {
-        getDatabaseReference().removeEventListener(this.valueEventListener);
+    public void RemoveExpensesEventListener() {
+        getDatabaseReference().removeEventListener(this.expensesValueEventListener);
+    }
+
+    @Override
+    public void RemoveCardsEventListener() {
+        getDatabaseReference().removeEventListener(this.cardsValueEventListener);
     }
 
     @Override
@@ -450,9 +455,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public List<CardModel> DoRequestCards() {
+    public ArrayList<CardModel> DoRecoverCards() {
 
-        valueEventListener = getDatabaseReference()
+        cardsValueEventListener = getDatabaseReference()
                 .child("Cards")
                 .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
                 .addValueEventListener(new ValueEventListener() {

@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.View.Fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,15 +17,18 @@ import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
 import com.dev.marcellocamara.pgm.R;
+import com.dev.marcellocamara.pgm.View.Activities.NewCardActivity;
 import com.dev.marcellocamara.pgm.View.Activities.NewExpenseActivity;
 import com.dev.marcellocamara.pgm.View.Activities.ExpenseOverviewActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -51,12 +55,16 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @BindView(R.id.mutativeFAB) protected MutativeFab mutativeFAB;
 
+    @BindString(R.string.new_expense) protected String new_expense;
     @BindString(R.string.expenses_loading) protected String loading_expenses;
-    @BindString(R.string.parcelable_name) protected String parcelable;
+    @BindString(R.string.parcelable) protected String parcelable;
     @BindString(R.string.zero) protected String zero;
+    @BindString(R.string.fab_no_card) protected String fab_no_card;
+    @BindString(R.string.close) protected String close;
 
     private IHome.Presenter homePresenter;
-    private List<ExpenseModel> list;
+    private List<ExpenseModel> expensesList;
+    private ArrayList<CardModel> cardsList;
     private String calendarMonth, calendarYear;
     private AlertDialog alertDialog;
     private Unbinder unbinder;
@@ -95,12 +103,28 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
-        startActivity(new Intent(getContext(), NewExpenseActivity.class));
+        if (!cardsList.isEmpty()){
+            startActivity(new Intent(getContext(), NewExpenseActivity.class).putParcelableArrayListExtra(parcelable, cardsList));
+        }else {
+            AlertDialog.Builder builder;
+            builder = new AlertDialog.Builder(getContext());
+            builder.setTitle(new_expense);
+            builder.setCancelable(false);
+            builder.setMessage(fab_no_card);
+            builder.setPositiveButton(close, null);
+            builder.setNegativeButton(R.string.fabCard, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivity(new Intent(getContext(), NewCardActivity.class));
+                }
+            });
+            builder.show();
+        }
     }
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(getContext(), ExpenseOverviewActivity.class).putExtra(parcelable, list.get(position)));
+        startActivity(new Intent(getContext(), ExpenseOverviewActivity.class).putExtra(parcelable, expensesList.get(position)));
     }
 
     @Override
@@ -112,11 +136,12 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     }
 
     @Override
-    public void OnRequestExpensesResult(List<ExpenseModel> list) {
-        this.list = list;
-        ExpensesAdapter adapter = new ExpensesAdapter(this.list, this);
+    public void OnRequestExpensesResult(List<ExpenseModel> expensesList, ArrayList<CardModel> cardsList) {
+        this.expensesList = expensesList;
+        this.cardsList = cardsList;
+        ExpensesAdapter adapter = new ExpensesAdapter(this.expensesList, this);
         recyclerView.setAdapter(adapter);
-        homePresenter.OnTotalCalculate(list, zero);
+        homePresenter.OnTotalCalculate(this.expensesList, zero);
     }
 
     @Override

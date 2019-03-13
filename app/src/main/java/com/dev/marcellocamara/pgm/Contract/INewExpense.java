@@ -1,5 +1,9 @@
 package com.dev.marcellocamara.pgm.Contract;
 
+import com.dev.marcellocamara.pgm.Model.CardModel;
+
+import java.util.ArrayList;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -10,6 +14,8 @@ public interface INewExpense {
     interface Presenter {
 
         void OnAddExpense(String date, String title, String description, String price, int installments);
+
+        CharSequence[] OnRequestCardSequence(ArrayList<CardModel> cards);
 
         void OnCalculateDate(int day, int month, int year);
 
@@ -26,6 +32,8 @@ public interface INewExpense {
         void OnEmptyPrice();
 
         void OnMaxPrice();
+
+        void OnRequestCharSequenceResult(CharSequence[] charSequence);
 
         void OnCalculatedDate(String day, String month, String year);
 

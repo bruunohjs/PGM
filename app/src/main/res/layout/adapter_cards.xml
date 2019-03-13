@@ -11,7 +11,6 @@
         android:id="@+id/layoutCard"
         android:layout_width="@dimen/creditCardWidth"
         android:layout_height="@dimen/creditCardHeight"
-        android:layout_margin="8dp"
         android:background="@drawable/card_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
