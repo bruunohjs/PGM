@@ -138,45 +138,31 @@
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                     app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
 
-                <android.support.constraint.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/layoutInstallment"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
                     android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewPrice">
-
-                    <ImageView
-                        android:id="@+id/imageViewCreditCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:contentDescription="@string/icon_installments"
-                        app:layout_constraintEnd_toStartOf="@+id/textViewInstallment"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_credit_card"
-                        tools:ignore="VectorDrawableCompat" />
+                    app:layout_constraintTop_toTopOf="@+id/textViewDescription">
 
                     <TextView
                         android:id="@+id/textViewInstallment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="2dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
-                        app:layout_constraintEnd_toStartOf="@+id/textViewX"
-                        app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
+                        android:layout_marginEnd="2dp" />
 
                     <TextView
                         android:id="@+id/textViewX"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/view_overview_installments"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
+                        android:text="@string/view_overview_installments" />
 
-                </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPager2"
@@ -212,47 +198,118 @@
                     app:layout_constraintStart_toEndOf="@+id/tvDate"
                     app:layout_constraintTop_toTopOf="@+id/tvDate" />
 
+                <TextView
+                    android:id="@+id/tvCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/card_select"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+                <TextView
+                    android:id="@+id/textViewCard"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="start|center_vertical"
+                    app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
+                    app:autoSizeMinTextSize="@dimen/minTextSize"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCard"
+                    app:layout_constraintEnd_toStartOf="@+id/layoutCard"
+                    app:layout_constraintStart_toEndOf="@+id/tvCard"
+                    app:layout_constraintTop_toTopOf="@+id/tvCard" />
+
+                <LinearLayout
+                    android:id="@+id/layoutCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewCard"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                    app:layout_constraintTop_toTopOf="@+id/textViewCard"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/textViewFinalDigits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:textSize="@dimen/cardInfoTextSize" />
+
+                    <ImageView
+                        android:id="@+id/imageViewCreditCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/icon_installments"
+                        app:srcCompat="@drawable/ic_credit_card"
+                        tools:ignore="VectorDrawableCompat" />
+
+                </LinearLayout>
+
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/layoutEachInstallment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="6dp"
                     android:layout_marginEnd="8dp"
-                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDate">
+                    app:layout_constraintTop_toBottomOf="@+id/tvCard">
 
                     <TextView
                         android:id="@+id/tvEach"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
+                        android:layout_height="@dimen/uniformTextViewHeight"
+                        android:gravity="start|center_vertical"
                         android:text="@string/each_installment_price"
-                        android:textAlignment="textStart"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
-                        app:layout_constraintEnd_toStartOf="@+id/tvSameCoinType"
+                        android:layout_marginEnd="8dp"
+                        app:autoSizeMaxTextSize="14sp"
+                        app:autoSizeMinTextSize="10sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
-
-                    <TextView
-                        android:id="@+id/tvSameCoinType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:text="@string/coin_type"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
-                        app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
-                        app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
-
-                    <TextView
-                        android:id="@+id/textViewEachInstallment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvSameCoinType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:text="@string/coin_type"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
+                            app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
+                            app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
+
+                        <TextView
+                            android:id="@+id/textViewEachInstallment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </LinearLayout>
 
                 </android.support.constraint.ConstraintLayout>
 

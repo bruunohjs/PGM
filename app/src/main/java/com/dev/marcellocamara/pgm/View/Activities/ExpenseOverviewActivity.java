@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IExpenseOverview;
+import com.dev.marcellocamara.pgm.Helper.CardHelper;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.ExpenseOverviewPresenter;
 import com.dev.marcellocamara.pgm.R;
@@ -38,8 +41,12 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindView(R.id.textViewDescription) protected TextView textViewDescription;
     @BindView(R.id.textViewPrice) protected TextView textViewPrice;
     @BindView(R.id.textViewInstallment) protected TextView textViewInstallment;
+    @BindView(R.id.textViewCard) protected TextView textViewCard;
+    @BindView(R.id.textViewFinalDigits) protected TextView textViewFinalDigits;
     @BindView(R.id.textViewDate) protected TextView textViewDate;
     @BindView(R.id.textViewEachInstallment) protected TextView textViewEachInstallment;
+
+    @BindView(R.id.imageViewCreditCard) protected ImageView imageViewCreditCard;
 
     @BindView(R.id.layoutEachInstallment) protected ConstraintLayout layoutEachInstallment;
 
@@ -51,7 +58,8 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindString(R.string.yes) protected String yes;
     @BindString(R.string.no) protected String no;
     @BindString(R.string.close) protected String close;
-    @BindString(R.string.parcelable) protected String parcelable;
+    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
+    @BindString(R.string.parcelable_card) protected String parcelable_card;
 
     private IExpenseOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
@@ -69,12 +77,16 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
         Objects.requireNonNull(getSupportActionBar()).setTitle(overview_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        expenseModel = getIntent().getParcelableExtra(parcelable);
+        expenseModel = getIntent().getParcelableExtra(parcelable_expense);
+        CardModel cardModel = getIntent().getParcelableExtra(parcelable_card);
 
         textViewTitle.setText(expenseModel.getTitle());
         textViewDescription.setText(expenseModel.getDescription());
         textViewPrice.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
         textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
+        textViewCard.setText(cardModel.getCardTitle());
+        imageViewCreditCard.setColorFilter(CardHelper.getColor(this, cardModel.getCardColor()));
+        textViewFinalDigits.setText(cardModel.getFinalDigits());
         textViewDate.setText(expenseModel.getPaymentDate());
 
         overviewPresenter = new ExpenseOverviewPresenter(this);

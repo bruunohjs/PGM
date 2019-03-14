@@ -69,7 +69,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
     @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
-    @BindString(R.string.parcelable) protected String parcelable;
+    @BindString(R.string.parcelable_card) protected String parcelable_card;
 
     private INewExpense.Presenter expensePresenter;
     private ArrayList<CardModel> cardsList = new ArrayList<>();
@@ -89,7 +89,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        cardsList = getIntent().getParcelableArrayListExtra(parcelable);
+        cardsList = getIntent().getParcelableArrayListExtra(parcelable_card);
 
         expensePresenter = new NewExpensePresenter(this);
         expensePresenter.OnRequestCardSequence(cardsList);

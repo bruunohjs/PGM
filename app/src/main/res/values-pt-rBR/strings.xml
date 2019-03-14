@@ -41,12 +41,11 @@
     <string name="zero">0.00</string>
     <string name="welcome">Bem-vindo, </string>
     <string name="expenses_loading">Carregando despesas…</string>
-    <string name="parcelable">expense</string>
     <string name="fabExpense">Nova despesa</string>
     <string name="deleting_expense">Deletando despesas…</string>
     <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
-    <string name="each_installment_price">Preço de cada parcela:</string>
+    <string name="each_installment_price">Preço aproximado de cada parcela:</string>
     <string name="delete">Deletar</string>
     <string name="close">Fechar</string>
     <string name="expense_overview">Resumo da despesa</string>
@@ -131,6 +130,8 @@
     <string name="select_card">Selecione um cartão</string>
     <string name="card_select">Cartão:</string>
     <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
+    <string name="parcelable_expense">expense</string>
+    <string name="parcelable_card">card</string>
 
     <string-array name="installments">
         <item>1x</item>

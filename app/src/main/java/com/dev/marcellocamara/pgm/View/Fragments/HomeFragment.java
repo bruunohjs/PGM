@@ -17,6 +17,7 @@ import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.SpecificCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
@@ -57,7 +58,8 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @BindString(R.string.new_expense) protected String new_expense;
     @BindString(R.string.expenses_loading) protected String loading_expenses;
-    @BindString(R.string.parcelable) protected String parcelable;
+    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
+    @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.zero) protected String zero;
     @BindString(R.string.fab_no_card) protected String fab_no_card;
     @BindString(R.string.close) protected String close;
@@ -104,7 +106,9 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
         if (!cardsList.isEmpty()){
-            startActivity(new Intent(getContext(), NewExpenseActivity.class).putParcelableArrayListExtra(parcelable, cardsList));
+            startActivity(new Intent(getContext(), NewExpenseActivity.class)
+                    .putParcelableArrayListExtra(parcelable_card, cardsList)
+            );
         }else {
             AlertDialog.Builder builder;
             builder = new AlertDialog.Builder(getContext());
@@ -124,7 +128,10 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @Override
     public void OnItemClick(int position) {
-        startActivity(new Intent(getContext(), ExpenseOverviewActivity.class).putExtra(parcelable, expensesList.get(position)));
+        startActivity(new Intent(getContext(), ExpenseOverviewActivity.class)
+                .putExtra(parcelable_expense, expensesList.get(position))
+                .putExtra(parcelable_card, SpecificCard.getCard(expensesList.get(position).getCreditCard(), cardsList))
+        );
     }
 
     @Override
