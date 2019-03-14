@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Helper;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
 import com.dev.marcellocamara.pgm.R;
 
@@ -15,19 +16,19 @@ public class CardHelper {
     public static Drawable getBackground(Context context, int drawable){
         switch (drawable){
             case 1 : {
-                return (context.getResources().getDrawable(R.drawable.card_yellow));
+                return ContextCompat.getDrawable(context, R.drawable.card_yellow);
             }
             case 2 : {
-                return (context.getResources().getDrawable(R.drawable.card_purple));
+                return ContextCompat.getDrawable(context, R.drawable.card_purple);
             }
             case 3 : {
-                return (context.getResources().getDrawable(R.drawable.card_green));
+                return ContextCompat.getDrawable(context, R.drawable.card_green);
             }
             case 4 : {
-                return (context.getResources().getDrawable(R.drawable.card_grey));
+                return ContextCompat.getDrawable(context, R.drawable.card_grey);
             }
             case 5 : {
-                return (context.getResources().getDrawable(R.drawable.card_red));
+                return ContextCompat.getDrawable(context, R.drawable.card_red);
             }
             default : {
                 return null;
@@ -38,13 +39,13 @@ public class CardHelper {
     public static Drawable getFlag(Context context, int flag) {
         switch (flag){
             case 1 : {
-                return (context.getResources().getDrawable(R.drawable.flag_mastercard));
+                return ContextCompat.getDrawable(context, R.drawable.flag_mastercard);
             }
             case 2 : {
-                return (context.getResources().getDrawable(R.drawable.flag_visa));
+                return ContextCompat.getDrawable(context, R.drawable.flag_visa);
             }
             case 3 : {
-                return (context.getResources().getDrawable(R.drawable.flag_elo));
+                return ContextCompat.getDrawable(context, R.drawable.flag_elo);
             }
             default : {
                 return null;
@@ -55,19 +56,19 @@ public class CardHelper {
     public static int getColor(Context context, int flag) {
         switch (flag){
             case 1 : {
-                return (context.getResources().getColor(R.color.cardYellow));
+                return ContextCompat.getColor(context, R.color.cardYellow);
             }
             case 2 : {
-                return (context.getResources().getColor(R.color.cardPurple));
+                return ContextCompat.getColor(context, R.color.cardPurple);
             }
             case 3 : {
-                return (context.getResources().getColor(R.color.cardGreen));
+                return ContextCompat.getColor(context, R.color.cardGreen);
             }
             case 4 : {
-                return (context.getResources().getColor(R.color.cardGrey));
+                return ContextCompat.getColor(context, R.color.cardGrey);
             }
             case 5 : {
-                return (context.getResources().getColor(R.color.cardRed));
+                return ContextCompat.getColor(context, R.color.cardRed);
             }
             default : {
                 return 0;

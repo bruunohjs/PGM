@@ -36,7 +36,7 @@
             android:id="@+id/textViewTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -75,11 +75,12 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
             app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:id="@+id/layoutInstallment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:orientation="horizontal"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
             app:layout_constraintTop_toTopOf="@+id/textViewDescription">
@@ -88,11 +89,7 @@
                 android:id="@+id/imageViewCreditCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
                 android:contentDescription="@string/icon_installments"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewInstallment"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_credit_card"
                 tools:ignore="VectorDrawableCompat" />
 
@@ -100,11 +97,9 @@
                 android:id="@+id/textViewInstallment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewCreditCard"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageViewCreditCard" />
+                android:layout_marginStart="4dp"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 

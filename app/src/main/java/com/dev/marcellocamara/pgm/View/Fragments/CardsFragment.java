@@ -84,7 +84,6 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     @Override
     public void OnItemClick(int position) {
          //TODO : Handle item click - this.list.get(position)
-         //Toast.makeText(getContext(), "Card: " + list.get(position).getFinalDigits() + "\nId: " + list.get(position).getUniqueId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

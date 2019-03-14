@@ -79,7 +79,7 @@ public class CardsAdapter extends PagerAdapter {
 
         container.addView(view);
 
-        view.setOnClickListener(new View.OnClickListener() {
+        layoutCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onViewPagerClick.OnItemClick(position);

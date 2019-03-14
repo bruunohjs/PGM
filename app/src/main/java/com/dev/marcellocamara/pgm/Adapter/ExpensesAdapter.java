@@ -1,7 +1,6 @@
 package com.dev.marcellocamara.pgm.Adapter;
 
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,10 +49,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
         holder.textViewTitle.setText(expenseModel.getTitle());
         holder.textViewDescription.setText(expenseModel.getDescription());
         holder.textViewPrice.setText(NumberHelper.GetDecimal(value));
-        if ( (Integer.parseInt(expenseModel.getInstallments())) > 1){
-            holder.layoutInstallment.setVisibility(View.VISIBLE);
-            holder.textViewInstallment.setText(expenseModel.getCurrentInstallment());
-        }
+        holder.textViewInstallment.setText(expenseModel.getCurrentInstallment());
     }
 
     @Override
@@ -65,8 +61,6 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
         @BindView(R.id.textViewDescription) protected TextView textViewDescription;
         @BindView(R.id.textViewPrice) protected TextView textViewPrice;
         @BindView(R.id.textViewInstallment) protected TextView textViewInstallment;
-
-        @BindView(R.id.layoutInstallment) ConstraintLayout layoutInstallment;
 
         private IAdapter onRecyclerViewClick;
 
