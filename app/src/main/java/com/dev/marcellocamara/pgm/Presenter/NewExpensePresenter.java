@@ -24,7 +24,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
     }
 
     @Override
-    public void OnAddExpense(String date, String title, String description, String price, int installments) {
+    public void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard) {
 
         if (title.isEmpty() || description.isEmpty() || price.isEmpty()){
 
@@ -44,18 +44,18 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
             view.OnMaxPrice();
         }else{
             view.ShowProgress();
-            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments);
+            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments, creditCard);
         }
 
     }
 
     @Override
-    public CharSequence[] OnRequestCardSequence(ArrayList<CardModel> cards) {
+    public void OnRequestCardSequence(ArrayList<CardModel> cards) {
         CharSequence charSequence[] = new String[cards.size()];
         for (int i = 0 ; i < cards.size() ; i++){
             charSequence[i] = cards.get(i).getCardTitle() + " - " + cards.get(i).getFinalDigits();
         }
-        return charSequence;
+        view.OnRequestCharSequenceResult(charSequence);
     }
 
 

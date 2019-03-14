@@ -325,7 +325,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoAddExpense(String date, String title, String description, double price, int installments) {
+    public void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard) {
 
         ExpenseModel expense = new ExpenseModel();
         expense.setPaymentDate(date);
@@ -333,6 +333,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expense.setDescription(description);
         expense.setPrice(price);
         expense.setInstallments(NumberHelper.GetMonth(installments));
+        expense.setCreditCard(creditCard);
 
         String dateSplit[] = date.split("/");
         String month = dateSplit[1];
@@ -343,7 +344,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
         final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-        DoAddExpenseRecursion(1, installments, userID, UniqueID, month, year, expense );
+        DoAddExpenseRecursion(1, installments, userID, UniqueID, month, year, expense);
 
     }
 
@@ -366,6 +367,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expenseAux.setDescription(expense.getDescription());
         expenseAux.setPrice(expense.getPrice());
         expenseAux.setInstallments(expense.getInstallments());
+        expenseAux.setCreditCard(expense.getCreditCard());
 
         expenseAux.setCurrentInstallment( (NumberHelper.GetMonth(n)) + "/" + expense.getInstallments());
 

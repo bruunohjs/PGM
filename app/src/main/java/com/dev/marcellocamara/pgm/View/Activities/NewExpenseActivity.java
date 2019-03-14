@@ -53,6 +53,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
 
+    @BindView(R.id.layoutSelectInstallment) protected LinearLayout layoutSelectInstallment;
     @BindView(R.id.layoutSelectCard) protected LinearLayout layoutSelectCard;
 
     @BindView(R.id.imageViewCard) protected ImageView imageViewCard;
@@ -91,8 +92,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         cardsList = getIntent().getParcelableArrayListExtra(parcelable);
 
         expensePresenter = new NewExpensePresenter(this);
-
-        charSequence = expensePresenter.OnRequestCardSequence(cardsList);
+        expensePresenter.OnRequestCardSequence(cardsList);
 
         textViewCard.setText(cardsList.get(0).getFinalDigits());
         imageViewCard.setColorFilter(CardHelper.getColor(this, cardsList.get(0).getCardColor()));
@@ -127,7 +127,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         datePickerDialog.show();
     }
 
-    @OnClick(R.id.textViewInstallment)
+    @OnClick(R.id.layoutSelectInstallment)
     public void OnSelectInstallmentsClick(){
         AlertDialog.Builder builderInstallments = new AlertDialog.Builder(this);
         builderInstallments.setCancelable(false);
@@ -168,7 +168,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
                 editTextTitle.getText().toString().trim(),
                 editTextDescription.getText().toString().trim(),
                 editTextPrice.getText().toString().trim(),
-                installments
+                installments,
+                cardsList.get(card).getUniqueId()
         );
         UIUtil.hideKeyboard(this);
     }

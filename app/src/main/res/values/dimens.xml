@@ -13,6 +13,12 @@
     <dimen name="creditCardWidth">281dp</dimen>
     <dimen name="creditCardHeight">186dp</dimen>
 
+    <dimen name="uniformTextViewHeight">24dp</dimen>
+    <dimen name="titleTextSize">16sp</dimen>
+    <dimen name="descriptionTextSize">14sp</dimen>
+    <dimen name="cardInfoTextSize">14sp</dimen>
+    <dimen name="minTextSize">10sp</dimen>
+    
     <dimen name="viewPagerLine">1.5dp</dimen>
 
 </resources>

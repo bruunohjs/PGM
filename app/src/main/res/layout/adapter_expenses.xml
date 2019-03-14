@@ -35,11 +35,14 @@
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/uniformTextViewHeight"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="16sp"
             android:textStyle="bold"
+            android:gravity="center_vertical"
+            app:autoSizeMaxTextSize="@dimen/titleTextSize"
+            app:autoSizeMinTextSize="@dimen/minTextSize"
+            app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toStartOf="@+id/layoutInstallment"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,9 +50,13 @@
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/uniformTextViewHeight"
+            android:layout_marginTop="4dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
+            app:autoSizeMinTextSize="@dimen/minTextSize"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
@@ -60,7 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
+            android:gravity="center_vertical"
             android:text="@string/coin_type"
+            android:textSize="@dimen/descriptionTextSize"
             app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
             app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
             app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -69,7 +78,8 @@
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/titleTextSize"
+            android:gravity="center_vertical"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
@@ -80,10 +90,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
+            android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
             app:layout_constraintTop_toTopOf="@+id/textViewDescription">
+
+            <TextView
+                android:id="@+id/textViewFinalDigits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/cardInfoTextSize"
+                android:layout_marginEnd="4dp"/>
 
             <ImageView
                 android:id="@+id/imageViewCreditCard"
@@ -97,6 +114,7 @@
                 android:id="@+id/textViewInstallment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/cardInfoTextSize"
                 android:layout_marginStart="4dp"/>
 
         </LinearLayout>

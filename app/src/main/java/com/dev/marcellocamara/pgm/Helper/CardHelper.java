@@ -53,8 +53,8 @@ public class CardHelper {
         }
     }
 
-    public static int getColor(Context context, int flag) {
-        switch (flag){
+    public static int getColor(Context context, int color) {
+        switch (color){
             case 1 : {
                 return ContextCompat.getColor(context, R.color.cardYellow);
             }

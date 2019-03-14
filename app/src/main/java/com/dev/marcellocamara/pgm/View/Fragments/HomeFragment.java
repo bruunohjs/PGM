@@ -139,7 +139,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     public void OnRequestExpensesResult(List<ExpenseModel> expensesList, ArrayList<CardModel> cardsList) {
         this.expensesList = expensesList;
         this.cardsList = cardsList;
-        ExpensesAdapter adapter = new ExpensesAdapter(this.expensesList, this);
+        ExpensesAdapter adapter = new ExpensesAdapter(getContext(), this.expensesList, this.cardsList, this);
         recyclerView.setAdapter(adapter);
         homePresenter.OnTotalCalculate(this.expensesList, zero);
     }

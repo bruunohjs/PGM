@@ -129,6 +129,7 @@
     <string name="new_card_success">Cartão adicionado com sucesso.</string>
     <string name="loading_cards">Carregando cartões…</string>
     <string name="select_card">Selecione um cartão</string>
+    <string name="card_select">Cartão:</string>
     <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
 
     <string-array name="installments">
@@ -155,6 +156,5 @@
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="card_select">Card:</string>
 
 </resources>

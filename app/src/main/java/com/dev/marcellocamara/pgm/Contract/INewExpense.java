@@ -13,9 +13,9 @@ public interface INewExpense {
 
     interface Presenter {
 
-        void OnAddExpense(String date, String title, String description, String price, int installments);
+        void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard);
 
-        CharSequence[] OnRequestCardSequence(ArrayList<CardModel> cards);
+        void OnRequestCardSequence(ArrayList<CardModel> cards);
 
         void OnCalculateDate(int day, int month, int year);
 
@@ -45,7 +45,7 @@ public interface INewExpense {
 
     interface Model {
 
-        void DoAddExpense(String date, String title, String description, double price, int installments);
+        void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard);
 
     }
 

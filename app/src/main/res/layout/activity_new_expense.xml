@@ -96,31 +96,20 @@
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
-                    <ImageView
-                        android:id="@+id/imageViewDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="48dp"
-                        android:contentDescription="@string/icon_date"
-                        android:src="@drawable/ic_today"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <LinearLayout
                         android:id="@+id/layoutDate"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
                         android:background="#f1f1f1"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewDate"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewDate"
-                        app:layout_constraintTop_toTopOf="@+id/imageViewDate">
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_margin="8dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
@@ -134,7 +123,7 @@
                             <TextView
                                 android:id="@+id/textViewDate"
                                 android:layout_width="81dp"
-                                android:layout_height="22dp"
+                                android:layout_height="@dimen/uniformTextViewHeight"
                                 android:layout_marginStart="8dp"
                                 android:gravity="center_vertical"
                                 app:autoSizeMaxTextSize="16sp"
@@ -161,33 +150,22 @@
                         app:layout_constraintStart_toEndOf="@+id/layoutDate"
                         app:layout_constraintTop_toTopOf="@+id/layoutDate" />
 
-                    <ImageView
-                        android:id="@+id/imageViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="32dp"
-                        android:contentDescription="@string/icon_title"
-                        android:src="@drawable/ic_create"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/layoutDate" />
-
                     <LinearLayout
                         android:id="@+id/layoutTitle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
                         android:background="#f1f1f1"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewTitle"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewTitle"
-                        app:layout_constraintTop_toTopOf="@+id/imageViewTitle">
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutDate">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:orientation="horizontal">
@@ -202,7 +180,7 @@
                             <EditText
                                 android:id="@+id/editTextTitle"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/uniformTextViewHeight"
                                 android:layout_marginStart="8dp"
                                 android:background="@null"
                                 android:gravity="center_vertical"
@@ -221,33 +199,22 @@
 
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imageViewDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="32dp"
-                        android:contentDescription="@string/icon_description"
-                        android:src="@drawable/ic_description"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/layoutTitle" />
-
                     <LinearLayout
                         android:id="@+id/layoutDescription"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
                         android:background="#f1f1f1"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewDescription"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewDescription"
-                        app:layout_constraintTop_toTopOf="@+id/imageViewDescription">
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutTitle">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:orientation="horizontal">
@@ -262,7 +229,7 @@
                             <EditText
                                 android:id="@+id/editTextDescription"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/uniformTextViewHeight"
                                 android:layout_marginStart="8dp"
                                 android:background="@null"
                                 android:gravity="center_vertical"
@@ -281,41 +248,31 @@
 
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imageViewExpense"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:contentDescription="@string/icon_price"
-                        android:src="@drawable/ic_money"
-                        app:layout_constraintBottom_toBottomOf="@+id/layoutPrice"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toTopOf="@+id/layoutPrice" />
-
                     <LinearLayout
                         android:id="@+id/layoutPrice"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="24dp"
                         android:background="#f1f1f1"
+                        android:gravity="center_vertical"
                         android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewExpense"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutDescription">
 
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_margin="8dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="20dp"
-                                android:text="@string/price"
+                                android:layout_height="@dimen/uniformTextViewHeight"
                                 android:gravity="center"
+                                android:text="@string/price"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -329,14 +286,14 @@
                             <EditText
                                 android:id="@+id/editTextPrice"
                                 android:layout_width="81dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/uniformTextViewHeight"
                                 android:layout_marginStart="4dp"
-                                android:textSize="16sp"
                                 android:background="@null"
-                                android:gravity="start"
+                                android:gravity="center_vertical"
                                 android:imeOptions="flagNoExtractUi"
                                 android:inputType="numberDecimal"
                                 android:maxLength="8"
+                                android:textSize="16sp"
                                 tools:ignore="Autofill,LabelFor" />
 
                         </LinearLayout>
@@ -359,53 +316,45 @@
                         app:layout_constraintStart_toEndOf="@+id/layoutPrice"
                         app:layout_constraintTop_toTopOf="@+id/layoutPrice" />
 
-                    <ImageView
-                        android:id="@+id/imageViewInstallments"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:contentDescription="@string/icon_installments"
-                        android:src="@drawable/ic_credit_card"
-                        app:layout_constraintBottom_toBottomOf="@+id/layoutInstallment"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toTopOf="@+id/layoutInstallment" />
-
                     <LinearLayout
                         android:id="@+id/layoutInstallment"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="16dp"
                         android:background="#f1f1f1"
+                        android:gravity="center_vertical"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineCenterCardView"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewInstallments"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutPrice">
 
-                        <TextView
+                        <LinearLayout
+                            android:id="@+id/layoutSelectInstallment"
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            android:text="@string/installments"
-                            android:textAlignment="textStart"
-                            app:autoSizeMaxTextSize="14sp"
-                            app:autoSizeMinTextSize="10sp"
-                            app:autoSizeTextType="uniform" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:gravity="center"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="86dp"
+                                android:layout_height="@dimen/uniformTextViewHeight"
+                                android:gravity="center_vertical"
+                                android:text="@string/installments"
+                                app:autoSizeMaxTextSize="14sp"
+                                app:autoSizeMinTextSize="10sp"
+                                app:autoSizeTextType="uniform" />
 
                             <TextView
                                 android:id="@+id/textViewInstallment"
                                 android:layout_width="match_parent"
-                                android:layout_height="22dp"
+                                android:layout_height="@dimen/uniformTextViewHeight"
+                                android:layout_marginStart="4dp"
                                 android:background="@null"
                                 android:gravity="center"
                                 android:text="@string/installment"
@@ -423,9 +372,9 @@
                     <LinearLayout
                         android:id="@+id/layoutCard"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="0dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginEnd="16dp"
                         android:background="#f1f1f1"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="@+id/layoutInstallment"
@@ -433,44 +382,49 @@
                         app:layout_constraintStart_toStartOf="@+id/guidelineCenterCardView"
                         app:layout_constraintTop_toTopOf="@+id/layoutInstallment">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
+                            android:layout_height="@dimen/uniformTextViewHeight"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            android:text="@string/card_select"
-                            android:textAlignment="textStart"
-                            app:autoSizeMaxTextSize="14sp"
-                            app:autoSizeMinTextSize="10sp"
-                            app:autoSizeTextType="uniform" />
-
-                        <LinearLayout
-                            android:id="@+id/layoutSelectCard"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            tools:ignore="UseCompoundDrawables">
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/textViewCard"
                                 android:layout_width="wrap_content"
-                                android:layout_height="22dp"
-                                android:background="@null"
-                                android:gravity="center"
-                                android:layout_marginEnd="4dp"
-                                app:autoSizeMaxTextSize="14sp"
-                                app:autoSizeMinTextSize="10sp"
-                                app:autoSizeTextType="uniform" />
+                                android:layout_height="@dimen/uniformTextViewHeight"
+                                android:text="@string/card_select"
+                                android:gravity="center_vertical|start" />
 
-                            <ImageView
-                                android:id="@+id/imageViewCard"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/icon_info_date"
-                                android:src="@drawable/ic_credit_card" />
+                            <LinearLayout
+                                android:id="@+id/layoutSelectCard"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/uniformTextViewHeight"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center"
+                                tools:ignore="UseCompoundDrawables">
+
+                                <TextView
+                                    android:id="@+id/textViewCard"
+                                    android:layout_width="40dp"
+                                    android:layout_height="@dimen/uniformTextViewHeight"
+                                    app:autoSizeMaxTextSize="16sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform"
+                                    android:gravity="end|center_vertical"/>
+
+                                <ImageView
+                                    android:id="@+id/imageViewCard"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="4dp"
+                                    android:contentDescription="@string/icon_info_date"
+                                    android:src="@drawable/ic_credit_card" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
