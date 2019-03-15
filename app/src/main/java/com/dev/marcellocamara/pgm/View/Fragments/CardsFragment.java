@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.CardsAdapter;
@@ -17,10 +16,12 @@ import com.dev.marcellocamara.pgm.Contract.ICards;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Presenter.CardsPresenter;
 import com.dev.marcellocamara.pgm.R;
+import com.dev.marcellocamara.pgm.View.Activities.CardOverviewActivity;
 import com.dev.marcellocamara.pgm.View.Activities.NewCardActivity;
 
 import java.util.ArrayList;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,8 +38,14 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     @BindView(R.id.viewPager) protected ViewPager viewPager;
 
+    @BindString(R.string.new_card) protected String new_card;
+    @BindString(R.string.close) protected String close;
+    @BindString(R.string.parcelable_card) protected String parcelable_card;
+    @BindString(R.string.cards_limit_reached) protected String cards_limit_reached;
+
     private ICards.Presenter cardsPresenter;
-    private ArrayList<CardModel> list;
+    private ArrayList<CardModel> cards;
+    private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
     private String userName;
 
@@ -66,7 +73,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
-        startActivity(new Intent(getContext(), NewCardActivity.class));
+        cardsPresenter.OnCountMaxCards(cards);
     }
 
     @Override
@@ -75,15 +82,31 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     }
 
     @Override
-    public void OnRequestCardsResult(ArrayList<CardModel> list) {
-        this.list = list;
-        CardsAdapter adapter = new CardsAdapter(list, userName, getContext(), this);
+    public void OnRequestCardsResult(ArrayList<CardModel> cards) {
+        this.cards = cards;
+        CardsAdapter adapter = new CardsAdapter(cards, userName, getContext(), this);
         viewPager.setAdapter(adapter);
     }
 
     @Override
+    public void AllowAddNewCard() {
+        startActivity(new Intent(getContext(), NewCardActivity.class));
+    }
+
+    @Override
+    public void DenyAddNewCard() {
+        builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(new_card);
+        builder.setMessage(cards_limit_reached);
+        builder.setCancelable(false);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     public void OnItemClick(int position) {
-         //TODO : Handle item click - this.list.get(position)
+        startActivity(new Intent(getContext(), CardOverviewActivity.class)
+                .putExtra(parcelable_card, cards.get(position)));
     }
 
     @Override

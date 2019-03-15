@@ -48,7 +48,7 @@
     <string name="each_installment_price">Preço aproximado de cada parcela:</string>
     <string name="delete">Deletar</string>
     <string name="close">Fechar</string>
-    <string name="expense_overview">Resumo da despesa</string>
+    <string name="expense_overview">Despesa</string>
     <string name="confirm_delete">Você deseja deletar esta despesa e todas as suas outras parcelas ?</string>
     <string name="delete_success">Despesa deletada com sucesso.</string>
     <string name="yes">Sim</string>
@@ -132,6 +132,8 @@
     <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
     <string name="parcelable_expense">expense</string>
     <string name="parcelable_card">card</string>
+    <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter 10 cartões de crédito.</string>
+    <string name="card_overview">Cartão</string>
 
     <string-array name="installments">
         <item>1x</item>

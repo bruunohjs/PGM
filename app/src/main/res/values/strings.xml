@@ -106,6 +106,7 @@
     <string name="annuity_invalid">Invalid annuity negotiation month format. Fill the month in the range 01 to 12.</string>
     <string name="new_card_success">Card added successfully.</string>
     <string name="loading_cards">Loading cards…</string>
+    <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
 
     <!-- Dialogs -->
     <string name="select_card">Select one card</string>
@@ -119,6 +120,7 @@
     <string name="delete">Delete</string>
     <string name="confirm_delete">Are you sure to delete this item and all installments ?</string>
     <string name="delete_success">Expense successfully deleted.</string>
+    <string name="card_overview">Card Overview</string>
 
     <!-- AlertDialog Buttons -->
     <string name="yes">Yes</string>

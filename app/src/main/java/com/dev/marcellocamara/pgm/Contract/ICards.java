@@ -17,6 +17,8 @@ public interface ICards {
 
         void OnRequestCards();
 
+        void OnCountMaxCards(ArrayList<CardModel> cards);
+
         void OnStop();
 
         void OnDestroy();
@@ -28,6 +30,10 @@ public interface ICards {
         void OnRequestUserDataSuccessful(String name);
 
         void OnRequestCardsResult(ArrayList<CardModel> list);
+
+        void AllowAddNewCard();
+
+        void DenyAddNewCard();
 
     }
 

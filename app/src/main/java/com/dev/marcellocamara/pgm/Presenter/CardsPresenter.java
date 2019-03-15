@@ -36,6 +36,15 @@ public class CardsPresenter implements ICards.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnCountMaxCards(ArrayList<CardModel> cards) {
+        if (cards.size() < 10){
+            view.AllowAddNewCard();
+        }else {
+            view.DenyAddNewCard();
+        }
+    }
+
+    @Override
     public void OnStop() {
         model.RemoveCardsEventListener();
     }
