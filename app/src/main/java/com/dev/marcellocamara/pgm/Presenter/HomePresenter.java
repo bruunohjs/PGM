@@ -52,6 +52,15 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnCheckUserCards(ArrayList<CardModel> cards) {
+        if (!cardsList.isEmpty()){
+            view.AllowAddNewExpense();
+        }else {
+            view.DenyAddNewExpense();
+        }
+    }
+
+    @Override
     public void OnDestroy() {
         this.view = null;
     }

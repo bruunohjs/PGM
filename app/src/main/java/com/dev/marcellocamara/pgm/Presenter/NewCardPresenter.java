@@ -25,41 +25,33 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag) {
+    public void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag) {
 
-        if (title.isEmpty() || numbers.isEmpty() || date.isEmpty() || annuity.isEmpty()){
+        if (title.isEmpty() || numbers.isEmpty() || date.isEmpty()){
 
             if (title.isEmpty()){
                 view.OnTitleEmpty();
             }else if (numbers.isEmpty()){
                 view.OnFinalNumbersInvalid();
-            }else if (date.isEmpty()){
-                view.OnDateInvalid();
             }else {
-                view.OnAnnuityInvalid();
+                view.OnDateInvalid();
             }
 
-        }else if ( (numbers.length() < 4) || (date.length() < 2) || (annuity.length() < 2) ){
+        }else if ( (numbers.length() < 4) || (date.length() < 2) ){
 
             if (numbers.length() < 4){
                 view.OnFinalNumbersInvalid();
-            }else if (date.length() < 2){
-                view.OnDateInvalid();
             }else {
-                view.OnAnnuityInvalid();
+                view.OnDateInvalid();
             }
 
         }else if ( date.equals("00") || (Integer.parseInt(date) > 31) ){
 
             view.OnDateInvalidValue();
 
-        }else if ( annuity.equals("00") || (Integer.parseInt(annuity) > 12) ){
-
-            view.OnAnnuityInvalidValue();
-
         }else {
             view.ShowProgress();
-            model.DoAddCard(title, numbers, date, annuity, cardColor, cardFlag);
+            model.DoAddCard(title, numbers, date, cardColor, cardFlag);
         }
 
     }
@@ -102,7 +94,7 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
     public void OnError(String message) {
         if ( view != null){
             view.HideProgress();
-            //TODO : OnAddCardFailure
+            view.OnAddCardFailure(message);
         }
     }
 }

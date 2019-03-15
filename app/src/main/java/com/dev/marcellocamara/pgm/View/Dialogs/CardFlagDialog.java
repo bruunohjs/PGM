@@ -45,28 +45,25 @@ public class CardFlagDialog extends DialogFragment {
         return itemView;
     }
 
-    @OnClick({R.id.layoutMasterCard, R.id.layoutVisa, R.id.layoutElo})
-    public void OnLayoutClick(ConstraintLayout v){
-        switch (v.getId()){
-            case R.id.layoutMasterCard : {
-                flagListener.getFlag(1);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutVisa : {
-                flagListener.getFlag(2);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutElo : {
-                flagListener.getFlag(3);
-                getDialog().dismiss();
-                break;
-            }
-        }
+    @OnClick(R.id.layoutMasterCard)
+    public void OnMasterCardClick(){
+        flagListener.getFlag(1);
+        getDialog().dismiss();
     }
 
-    @OnClick({R.id.btnCancel})
+    @OnClick(R.id.layoutVisa)
+    public void OnVisaClick(){
+        flagListener.getFlag(2);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutElo)
+    public void OnEloClick(){
+        flagListener.getFlag(3);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.btnCancel)
     public void OnButtonClick(){
         getDialog().dismiss();
     }

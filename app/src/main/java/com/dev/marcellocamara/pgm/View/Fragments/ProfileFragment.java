@@ -101,24 +101,22 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
         return view;
     }
 
-    @OnClick({R.id.btnSave, R.id.btnPhoto})
-    public void OnButtonClick(Button v){
-        switch (v.getId()){
-            case R.id.btnSave: {
-                layoutName.clearFocus();
-                layoutName.setErrorEnabled(false);
-                profilePresenter.OnUpdateUserName(
-                        editTextName.getText().toString().trim(),
-                        navHeaderUserName.getText().toString().trim()
-                );
-                UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
-                break;
-            }
-            case R.id.btnPhoto : {
-                profilePresenter.OnCheckPermissions(getActivity());
-                break;
-            }
-        }
+    @OnClick(R.id.btnSave)
+    public void OnButtonClick(){
+        layoutName.clearFocus();
+        layoutName.setErrorEnabled(false);
+        profilePresenter.OnUpdateUserName(
+                editTextName.getText().toString().trim(),
+                navHeaderUserName.getText().toString().trim()
+        );
+        UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
+    }
+
+    @OnClick(R.id.btnPhoto)
+    public void OnButtonPhotoClick(){
+        layoutName.clearFocus();
+        profilePresenter.OnCheckPermissions(getActivity());
+        UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
     }
 
     @Override
@@ -133,7 +131,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
         builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                navHeaderUserName.setText(editTextName.getText().toString().trim());
+                navHeaderUserName.setText(Objects.requireNonNull(editTextName.getText()).toString().trim());
             }
         });
         builder.show();
@@ -157,7 +155,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
     @Override
     public void OnCheckPermissionsSuccessful() {
         PhotoDialog dialog = new PhotoDialog();
-        dialog.show(Objects.requireNonNull(getFragmentManager()),"ChangePhoto");
+        dialog.show(Objects.requireNonNull(getFragmentManager()), "ChangePhoto");
         dialog.setTargetFragment(ProfileFragment.this, 0);
     }
 

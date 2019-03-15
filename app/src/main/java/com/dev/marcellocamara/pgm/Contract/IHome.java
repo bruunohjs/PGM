@@ -19,6 +19,8 @@ public interface IHome {
 
         void OnTotalCalculate(List<ExpenseModel> list, String sum);
 
+        void OnCheckUserCards(ArrayList<CardModel> cards);
+
         void OnStop();
 
         void OnDestroy();
@@ -27,7 +29,11 @@ public interface IHome {
 
     interface View extends IProgressLoading {
 
-        void OnRequestExpensesResult(List<ExpenseModel> expensesList, ArrayList<CardModel> cardsList);
+        void OnRequestExpensesResult(List<ExpenseModel> expensesList, ArrayList<CardModel> cards);
+
+        void AllowAddNewExpense();
+
+        void DenyAddNewExpense();
 
         void OnRequestTotalCalculateResult(String value);
 

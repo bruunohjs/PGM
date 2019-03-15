@@ -50,7 +50,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindView(R.id.editTextCardTitle) protected EditText editTextCardTitle;
     @BindView(R.id.editTextFinalNumber) protected EditText editTextFinalNumber;
     @BindView(R.id.editTextPaymentDate) protected EditText editTextPaymentDate;
-    @BindView(R.id.editTextAnnuity) protected EditText editTextAnnuity;
 
     @BindView(R.id.imageViewCardColor) protected ImageView imageViewCardColor;
     @BindView(R.id.imageViewCardFlag) protected ImageView imageViewCardFlag;
@@ -73,8 +72,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.card_number_empty) protected String card_number_empty;
     @BindString(R.string.date_empty) protected String date_empty;
     @BindString(R.string.date_invalid) protected String date_invalid;
-    @BindString(R.string.annuity_empty) protected String annuity_empty;
-    @BindString(R.string.annuity_invalid) protected String annuity_invalid;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_new_card) protected String adding_new_card;
     @BindString(R.string.new_card_success) protected String new_card_success;
@@ -116,57 +113,45 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
                 .build();
     }
 
-    @OnClick({R.id.imageViewCardColor, R.id.imageViewCardFlag})
-    public void OnImageViewClick(ImageView v){
-        switch (v.getId()){
-            case R.id.imageViewCardColor : {
-                CardColorDialog cardColor = new CardColorDialog();
-                cardColor.show(getSupportFragmentManager(), "SelectColor");
-                break;
-            }
-            case R.id.imageViewCardFlag : {
-                CardFlagDialog flag = new CardFlagDialog();
-                flag.show(getSupportFragmentManager(),"SelectFlag");
-            }
-        }
+    @OnClick(R.id.imageViewCardColor)
+    public void OnImageViewClick(){
+        CardColorDialog cardColor = new CardColorDialog();
+        cardColor.show(getSupportFragmentManager(), "SelectColor");
     }
 
-    @OnClick({R.id.btnSave, R.id.btnCancel})
-    public void OnButtonClick(Button button){
-        switch (button.getId()){
-            case R.id.btnSave : {
-                editTextFinalNumber.clearFocus();
-                editTextPaymentDate.clearFocus();
-                presenter.OnAddCard(
-                        editTextCardTitle.getText().toString().trim(),
-                        editTextFinalNumber.getText().toString().trim(),
-                        editTextPaymentDate.getText().toString().trim(),
-                        editTextAnnuity.getText().toString().trim(),
-                        cardColor,
-                        cardFlag
-                );
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-            case R.id.btnCancel : {
-                finish();
-                break;
-            }
-        }
+    @OnClick(R.id.imageViewCardFlag)
+    public void OnCardFlagClick(){
+        CardFlagDialog flag = new CardFlagDialog();
+        flag.show(getSupportFragmentManager(),"SelectFlag");
     }
 
-    @OnClick({R.id.imageViewInfoFinalDigits, R.id.imageViewInfoBetterDay})
-    public void ShowTooltipInformation(ImageView view){
-        switch (view.getId()){
-            case R.id.imageViewInfoFinalDigits : {
-                TooltipHelper.show(imageViewInfoFinalDigits, info_digits, colorAccent);
-                break;
-            }
-            case R.id.imageViewInfoBetterDay : {
-                TooltipHelper.show(imageViewInfoBetterDay, info_best_day, colorAccent);
-                break;
-            }
-        }
+    @OnClick(R.id.btnSave)
+    public void OnButtonSaveClick(){
+        editTextFinalNumber.clearFocus();
+        editTextPaymentDate.clearFocus();
+        presenter.OnAddCard(
+                editTextCardTitle.getText().toString().trim(),
+                editTextFinalNumber.getText().toString().trim(),
+                editTextPaymentDate.getText().toString().trim(),
+                cardColor,
+                cardFlag
+        );
+        UIUtil.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btnCancel)
+    public void OnButtonCancelClick(){
+        finish();
+    }
+
+    @OnClick(R.id.imageViewInfoFinalDigits)
+    public void OnInfoFinalDigitsClick(){
+        TooltipHelper.show(imageViewInfoFinalDigits, info_digits, colorAccent);
+    }
+
+    @OnClick(R.id.imageViewInfoBetterDay)
+    public void OnInfoBetterDayClick(){
+        TooltipHelper.show(imageViewInfoBetterDay, info_best_day, colorAccent);
     }
 
     @Override
@@ -250,22 +235,8 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     }
 
     @Override
-    public void OnAnnuityInvalid() {
-        builder.setMessage(annuity_empty);
-        builder.setPositiveButton(close, null);
-        builder.show();
-    }
-
-    @Override
     public void OnDateInvalidValue() {
         builder.setMessage(date_invalid);
-        builder.setPositiveButton(close, null);
-        builder.show();
-    }
-
-    @Override
-    public void OnAnnuityInvalidValue() {
-        builder.setMessage(annuity_invalid);
         builder.setPositiveButton(close, null);
         builder.show();
     }
@@ -279,6 +250,13 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
                 finish();
             }
         });
+        builder.show();
+    }
+
+    @Override
+    public void OnAddCardFailure(String message) {
+        builder.setMessage(message);
+        builder.setPositiveButton(close, null);
         builder.show();
     }
 

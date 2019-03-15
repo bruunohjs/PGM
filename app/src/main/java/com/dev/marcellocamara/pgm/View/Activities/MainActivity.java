@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        //TODO : Replace switch into methods
         switch (item.getItemId()){
             case R.id.nav_home : {
                 getSupportFragmentManager()

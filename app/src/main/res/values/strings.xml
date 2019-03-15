@@ -61,7 +61,6 @@
     <string name="icon_info_date">Date Info Icon</string>
     <string name="icon_info_price">Price Info Icon</string>
     <string name="icon_info_better_day">Better Day Info Icon</string>
-    <string name="icon_info_annuity">Annuity Info Icon</string>
 
     <!-- Home -->
     <string name="welcome">Welcome,</string>
@@ -72,10 +71,6 @@
     <string name="expenses_loading">Loading expenses…</string>
     <string name="fabExpense">Add expense</string>
     <string name="fab_no_card">It\'s not possible to add expenses without adding a card first.</string>
-
-    <!-- Parcelable -->
-    <string name="parcelable_expense">expense</string>
-    <string name="parcelable_card">card</string>
 
     <!-- Card/Cards -->
     <string name="fabCard">Add Card</string>
@@ -88,7 +83,6 @@
     <string name="card_title">Card title:</string>
     <string name="final_numbers">Final digits:</string>
     <string name="best_buy_date">Best buy date:</string>
-    <string name="annuity_negotiation_month">Annuity negotiation month:</string>
     <string name="optional_info">Optional Info</string>
     <string name="card_select">Card:</string>
     <string name="card_flag">Card flag:</string>
@@ -102,9 +96,7 @@
     <string name="card_title_empty">Fill card title to help identify your card.</string>
     <string name="card_number_empty">Fill the four final digits of your card to help identify your card.</string>
     <string name="date_empty">Fill best buy date with two digits. E.g.: 02</string>
-    <string name="annuity_empty">Fill annuity negotiation month with two digits. E.g.: 02</string>
     <string name="date_invalid">Invalid best buy date format. Fill the day in the range 01 to 31.</string>
-    <string name="annuity_invalid">Invalid annuity negotiation month format. Fill the month in the range 01 to 12.</string>
     <string name="new_card_success">Card added successfully.</string>
     <string name="loading_cards">Loading cards…</string>
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
@@ -164,6 +156,10 @@
     <string name="empty_title">Fill with title.</string>
     <string name="empty_description">Fill with description.</string>
     <string name="empty_price">Fill with price.</string>
+
+    <!-- Tags -->
+    <string name="parcelable_expense">expense</string>
+    <string name="parcelable_card">card</string>
 
     <!-- Colors -->
     <string name="yellow">Yellow</string>

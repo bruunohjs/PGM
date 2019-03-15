@@ -79,15 +79,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
 
         expenseModel = getIntent().getParcelableExtra(parcelable_expense);
         CardModel cardModel = getIntent().getParcelableExtra(parcelable_card);
-
-        textViewTitle.setText(expenseModel.getTitle());
-        textViewDescription.setText(expenseModel.getDescription());
-        textViewPrice.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
-        textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
-        textViewCard.setText(cardModel.getCardTitle());
-        imageViewCreditCard.setColorFilter(CardHelper.getColor(this, cardModel.getCardColor()));
-        textViewFinalDigits.setText(cardModel.getFinalDigits());
-        textViewDate.setText(expenseModel.getPaymentDate());
+        SetCreditCard(cardModel);
 
         overviewPresenter = new ExpenseOverviewPresenter(this);
         overviewPresenter.OnVerifyInstallments(expenseModel.getInstallments(), expenseModel.getPrice());
@@ -98,6 +90,17 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
                 .setMessage(deleting)
                 .setCancelable(false)
                 .build();
+    }
+
+    private void SetCreditCard(CardModel cardModel) {
+        textViewTitle.setText(expenseModel.getTitle());
+        textViewDescription.setText(expenseModel.getDescription());
+        textViewPrice.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
+        textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
+        textViewCard.setText(cardModel.getCardTitle());
+        imageViewCreditCard.setColorFilter(CardHelper.getColor(this, cardModel.getCardColor()));
+        textViewFinalDigits.setText(cardModel.getFinalDigits());
+        textViewDate.setText(expenseModel.getPaymentDate());
     }
 
     @OnClick(R.id.btnDelete)

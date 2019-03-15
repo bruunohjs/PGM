@@ -66,28 +66,25 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
                 .build();
     }
 
-    @OnClick({R.id.btnLogin, R.id.btnRegister, R.id.btnRecoverPassword})
-    public void OnButtonClick(Button v){
-        switch (v.getId()){
-            case R.id.btnLogin : {
-                layoutEmail.setErrorEnabled(false);
-                layoutPassword.setErrorEnabled(false);
-                loginPresenter.OnLogin(
-                        editTextEmail.getText().toString().trim(),
-                        editTextPassword.getText().toString().trim()
-                );
-                UIUtil.hideKeyboard(this);
-                break;
-            }
-            case R.id.btnRegister : {
-                startActivity(new Intent(this, RegisterActivity.class));
-                break;
-            }
-            case R.id.btnRecoverPassword : {
-                startActivity(new Intent(this, RecoverPasswordActivity.class));
-                break;
-            }
-        }
+    @OnClick(R.id.btnLogin)
+    public void OnButtonLoginClick(){
+        layoutEmail.setErrorEnabled(false);
+        layoutPassword.setErrorEnabled(false);
+        loginPresenter.OnLogin(
+                editTextEmail.getText().toString().trim(),
+                editTextPassword.getText().toString().trim()
+        );
+        UIUtil.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btnRegister)
+    public void OnButtonRegisterClick(){
+        startActivity(new Intent(this, RegisterActivity.class));
+    }
+
+    @OnClick(R.id.btnRecoverPassword)
+    public void OnButtonRecoverPasswordClick(){
+        startActivity(new Intent(this, RecoverPasswordActivity.class));
     }
 
     @Override

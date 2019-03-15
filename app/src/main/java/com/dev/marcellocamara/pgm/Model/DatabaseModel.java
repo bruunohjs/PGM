@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dev.marcellocamara.pgm.Contract.ICardOverview;
 import com.dev.marcellocamara.pgm.Contract.ICards;
@@ -187,9 +188,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag) {
+    public void DoAddCard(String title, String numbers, String date, int cardColor, int cardFlag) {
 
-        CardModel card = new CardModel(title, numbers, date, annuity, cardColor, cardFlag);
+        CardModel card = new CardModel(title, numbers, date, cardColor, cardFlag);
 
         final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
@@ -362,6 +363,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
             yearAux = year;
         }
 
+        Log.d("MONTH", "Month: " + monthAux);
+
         ExpenseModel expenseAux = new ExpenseModel();
         expenseAux.setPaymentDate(expense.getPaymentDate());
         expenseAux.setTitle(expense.getTitle());
@@ -375,7 +378,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         getDatabaseReference()
                 .child("Expenses")
                 .child(userId)
-                .child(month+year)
+                .child(monthAux + yearAux)
                 .child(uniqueId)
                 .setValue(expenseAux)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

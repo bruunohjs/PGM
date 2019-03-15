@@ -13,8 +13,14 @@ import com.dev.marcellocamara.pgm.R;
 
 public class CardHelper {
 
-    public static Drawable getBackground(Context context, int drawable){
-        switch (drawable){
+    /**
+     * finds the respective drawable of the int background
+     * @param context - environment data
+     * @param background - int that refers to a specific resource drawable
+     * @return resource drawable or null if it does not find
+     */
+    public static Drawable getBackground(Context context, int background){
+        switch (background){
             case 1 : {
                 return ContextCompat.getDrawable(context, R.drawable.card_yellow);
             }
@@ -36,6 +42,12 @@ public class CardHelper {
         }
     }
 
+    /**
+     * finds the respective drawable of the int flag
+     * @param context - environment data
+     * @param flag - int that refers to a specific resource drawable
+     * @return resource drawable or null if it does not find
+     */
     public static Drawable getFlag(Context context, int flag) {
         switch (flag){
             case 1 : {
@@ -53,6 +65,12 @@ public class CardHelper {
         }
     }
 
+    /**
+     * finds the respective color of the int color
+     * @param context - environment data
+     * @param color - int that refers to a specific resource color
+     * @return resource color or 0 if it does not find
+     */
     public static int getColor(Context context, int color) {
         switch (color){
             case 1 : {

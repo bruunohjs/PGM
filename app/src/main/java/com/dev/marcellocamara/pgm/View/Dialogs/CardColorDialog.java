@@ -47,35 +47,34 @@ public class CardColorDialog extends DialogFragment {
         return itemView;
     }
 
-    @OnClick({R.id.layoutYellow, R.id.layoutPurple, R.id.layoutGreen, R.id.layoutGrey, R.id.layoutRed})
-    public void OnImageViewClick(ConstraintLayout v){
-        switch (v.getId()){
-            case R.id.layoutYellow : {
-                colorListener.getSelectedColor(1);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutPurple : {
-                colorListener.getSelectedColor(2);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutGreen : {
-                colorListener.getSelectedColor(3);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutGrey : {
-                colorListener.getSelectedColor(4);
-                getDialog().dismiss();
-                break;
-            }
-            case R.id.layoutRed : {
-                colorListener.getSelectedColor(5);
-                getDialog().dismiss();
-                break;
-            }
-        }
+    @OnClick(R.id.layoutYellow)
+    public void OnYellowClick(){
+        colorListener.getSelectedColor(1);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutPurple)
+    public void OnPurpleClick(){
+        colorListener.getSelectedColor(2);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutGreen)
+    public void OnGreenClick(){
+        colorListener.getSelectedColor(3);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutGrey)
+    public void OnGreyClick(){
+        colorListener.getSelectedColor(4);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutRed)
+    public void OnRedClick(){
+        colorListener.getSelectedColor(5);
+        getDialog().dismiss();
     }
 
     @OnClick(R.id.btnCancel)

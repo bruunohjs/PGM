@@ -53,17 +53,19 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         presenter = new CardOverviewPresenter(this);
 
         card = getIntent().getParcelableExtra(parcelable_card);
-
-        layoutCard.setBackground( CardHelper.getBackground(this, card.getCardColor() ) );
-        imageViewSelectedFlag.setImageDrawable( CardHelper.getFlag(this, card.getCardFlag()) );
-
-        textViewTitleCard.setText(card.getCardTitle());
-        String number = (card_number) + (card.getFinalDigits());
-        textViewCardNumber.setText( number );
+        SetCreditCard();
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(card_overview);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void SetCreditCard() {
+        layoutCard.setBackground( CardHelper.getBackground(this, card.getCardColor() ) );
+        imageViewSelectedFlag.setImageDrawable( CardHelper.getFlag(this, card.getCardFlag()) );
+        textViewTitleCard.setText(card.getCardTitle());
+        String number = (card_number) + (card.getFinalDigits());
+        textViewCardNumber.setText( number );
     }
 
     @Override

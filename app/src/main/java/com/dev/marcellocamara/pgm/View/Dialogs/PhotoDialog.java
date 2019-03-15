@@ -54,18 +54,14 @@ public class PhotoDialog extends DialogFragment {
         return itemView;
     }
 
-    @OnClick({R.id.imageViewCamera, R.id.imageViewGallery})
-    public void OnImageViewClick(ImageView v){
-        switch (v.getId()){
-            case R.id.imageViewCamera : {
-                startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), Permissions.CAMERA_REQUEST);
-                break;
-            }
-            case R.id.imageViewGallery : {
-                startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT).setType("image/*"), Permissions.GALLERY_REQUEST);
-                break;
-            }
-        }
+    @OnClick(R.id.imageViewCamera)
+    public void OnCameraClick(){
+        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), Permissions.CAMERA_REQUEST);
+    }
+
+    @OnClick(R.id.imageViewGallery)
+    public void OnGalleryClick(){
+        startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT).setType("image/*"), Permissions.GALLERY_REQUEST);
     }
 
     @OnClick(R.id.btnCancel)

@@ -55,6 +55,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
 
+    @BindView(R.id.layoutSelectDate) protected LinearLayout layoutSelectDate;
     @BindView(R.id.layoutSelectInstallment) protected LinearLayout layoutSelectInstallment;
     @BindView(R.id.layoutSelectCard) protected LinearLayout layoutSelectCard;
 
@@ -122,7 +123,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         builder.setCancelable(false);
     }
 
-    @OnClick(R.id.textViewDate)
+    @OnClick(R.id.layoutSelectDate)
     public void OnSelectDateClick(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this, new DatePickerDialog.OnDateSetListener() {
@@ -168,18 +169,14 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         builderInstallments.show();
     }
 
-    @OnClick({R.id.imageViewInfoDate, R.id.imageViewInfoPrice})
-    public void ShowTooltipInformation(ImageView imageView){
-        switch (imageView.getId()){
-            case R.id.imageViewInfoDate : {
-                TooltipHelper.show(imageViewInfoDate, info_date, colorAccent);
-                break;
-            }
-            case R.id.imageViewInfoPrice : {
-                TooltipHelper.show(imageViewInfoPrice, max_price, colorAccent);
-                break;
-            }
-        }
+    @OnClick(R.id.imageViewInfoDate)
+    public void OnInfoDateClick(){
+        TooltipHelper.show(imageViewInfoDate, info_date, colorAccent);
+    }
+
+    @OnClick(R.id.imageViewInfoPrice)
+    public void OnInfoPriceClick(){
+        TooltipHelper.show(imageViewInfoPrice, max_price, colorAccent);
     }
 
     @OnClick(R.id.btnSave)

@@ -13,7 +13,7 @@ public interface INewCard {
 
         void OnGetFinalNumbers(String numbers);
 
-        void OnAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag);
+        void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag);
 
         void OnDestroy();
 
@@ -39,13 +39,11 @@ public interface INewCard {
 
         void OnDateInvalid();
 
-        void OnAnnuityInvalid();
-
         void OnDateInvalidValue();
 
-        void OnAnnuityInvalidValue();
-
         void OnAddCardSuccess();
+
+        void OnAddCardFailure(String message);
 
     }
 
@@ -53,9 +51,7 @@ public interface INewCard {
 
         String GetUserDisplayName();
 
-        //List<CardModel> GetUserCardList();
-
-        void DoAddCard(String title, String numbers, String date, String annuity, int cardColor, int cardFlag);
+        void DoAddCard(String title, String numbers, String date, int cardColor, int cardFlag);
 
     }
 

@@ -105,25 +105,30 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
-        if (!cardsList.isEmpty()){
-            startActivity(new Intent(getContext(), NewExpenseActivity.class)
-                    .putParcelableArrayListExtra(parcelable_card, cardsList)
-            );
-        }else {
-            AlertDialog.Builder builder;
-            builder = new AlertDialog.Builder(getContext());
-            builder.setTitle(new_expense);
-            builder.setCancelable(false);
-            builder.setMessage(fab_no_card);
-            builder.setPositiveButton(close, null);
-            builder.setNegativeButton(R.string.fabCard, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(getContext(), NewCardActivity.class));
-                }
-            });
-            builder.show();
-        }
+        homePresenter.OnCheckUserCards(cardsList);
+    }
+
+    @Override
+    public void AllowAddNewExpense() {
+        startActivity(new Intent(getContext(), NewExpenseActivity.class)
+                .putParcelableArrayListExtra(parcelable_card, cardsList)
+        );
+    }
+
+    @Override
+    public void DenyAddNewExpense() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(new_expense);
+        builder.setCancelable(false);
+        builder.setMessage(fab_no_card);
+        builder.setPositiveButton(close, null);
+        builder.setNegativeButton(R.string.fabCard, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(getContext(), NewCardActivity.class));
+            }
+        });
+        builder.show();
     }
 
     @Override
