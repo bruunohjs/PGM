@@ -77,7 +77,7 @@
     <string name="empty_title">Preencha com o título.</string>
     <string name="empty_description">Preencha com a descrição.</string>
     <string name="empty_price">Preencha o preço.</string>
-    <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos Centavos</string>
+    <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
     <string name="no_changes">Nenhnuma alteração realizada.</string>
     <string name="fabCard">Adicionar cartão</string>
     <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
@@ -134,6 +134,9 @@
     <string name="parcelable_card">card</string>
     <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter 10 cartões de crédito.</string>
     <string name="card_overview">Cartão</string>
+    <string name="info_digits">Os últimos quatro dígitos do seu cartão de crédito irão ajudar a identificar suas despesas.</string>
+    <string name="info_best_day">Dia do fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte.</string>
+    <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês.</string>
 
     <string-array name="installments">
         <item>1x</item>

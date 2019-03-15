@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.INewExpense;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
+import com.dev.marcellocamara.pgm.Helper.TooltipHelper;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Presenter.NewExpensePresenter;
 import com.dev.marcellocamara.pgm.R;
@@ -29,6 +30,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import butterknife.ButterKnife;
+import butterknife.BindColor;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,6 +59,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindView(R.id.layoutSelectCard) protected LinearLayout layoutSelectCard;
 
     @BindView(R.id.imageViewCard) protected ImageView imageViewCard;
+    @BindView(R.id.imageViewInfoDate) protected ImageView imageViewInfoDate;
+    @BindView(R.id.imageViewInfoPrice) protected ImageView imageViewInfoPrice;
 
     @BindString(R.string.new_expense) protected String title;
     @BindString(R.string.installments_number) protected String installments_number;
@@ -64,12 +68,15 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.empty_title) protected String empty_title;
     @BindString(R.string.empty_description) protected String empty_description;
     @BindString(R.string.empty_price) protected String empty_price;
+    @BindString(R.string.info_date) protected String info_date;
     @BindString(R.string.max_price) protected String max_price;
     @BindString(R.string.view_overview_installments) protected String installmentsX;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
     @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
+
+    @BindColor(R.color.colorAccent) protected int colorAccent;
 
     private INewExpense.Presenter expensePresenter;
     private ArrayList<CardModel> cardsList = new ArrayList<>();
@@ -159,6 +166,20 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
             }
         });
         builderInstallments.show();
+    }
+
+    @OnClick({R.id.imageViewInfoDate, R.id.imageViewInfoPrice})
+    public void ShowTooltipInformation(ImageView imageView){
+        switch (imageView.getId()){
+            case R.id.imageViewInfoDate : {
+                TooltipHelper.show(imageViewInfoDate, info_date, colorAccent);
+                break;
+            }
+            case R.id.imageViewInfoPrice : {
+                TooltipHelper.show(imageViewInfoPrice, max_price, colorAccent);
+                break;
+            }
+        }
     }
 
     @OnClick(R.id.btnSave)

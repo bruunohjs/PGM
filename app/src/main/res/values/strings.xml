@@ -38,6 +38,7 @@
     <string name="view_expense_button_save">Save</string>
     <string name="adding_expense">Adding new expense…</string>
     <string name="adding_expense_success">Your expense is successful created.</string>
+    <string name="max_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate cents unity.</string>
 
     <!-- Icon/Image Description -->
     <string name="icon_date">Date Icon</string>
@@ -111,6 +112,11 @@
     <!-- Dialogs -->
     <string name="select_card">Select one card</string>
 
+    <!-- Tooltips -->
+    <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
+    <string name="info_best_day">The day your invoice is closed.\n From that day, purchases made on the credit card will only come in the following month.</string>
+    <string name="info_date">Expense will appear in the open invoice month. If this month invoice is already closed, the expense will appear next month.</string>
+
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>
     <string name="purchased_date">Purchased date:</string>
@@ -158,7 +164,6 @@
     <string name="empty_title">Fill with title.</string>
     <string name="empty_description">Fill with description.</string>
     <string name="empty_price">Fill with price.</string>
-    <string name="max_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate Cents unity</string>
 
     <!-- Colors -->
     <string name="yellow">Yellow</string>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
+import com.dev.marcellocamara.pgm.Helper.TooltipHelper;
 import com.dev.marcellocamara.pgm.View.Dialogs.CardColorDialog;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
 import com.dev.marcellocamara.pgm.View.Dialogs.CardFlagDialog;
@@ -26,6 +27,7 @@ import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
 
+import butterknife.BindColor;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +57,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindView(R.id.imageViewSelectedFlag) protected ImageView imageViewSelectedFlag;
     @BindView(R.id.imageViewInfoFinalDigits) protected ImageView imageViewInfoFinalDigits;
     @BindView(R.id.imageViewInfoBetterDay) protected ImageView imageViewInfoBetterDay;
-    @BindView(R.id.imageViewInfoAnnuity) protected ImageView imageViewInfoAnnuity;
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
@@ -77,6 +78,10 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_new_card) protected String adding_new_card;
     @BindString(R.string.new_card_success) protected String new_card_success;
+    @BindString(R.string.info_digits) protected String info_digits;
+    @BindString(R.string.info_best_day) protected String info_best_day;
+
+    @BindColor(R.color.colorAccent) protected int colorAccent;
 
     private INewCard.Presenter presenter;
     private AlertDialog alertDialog;
@@ -145,6 +150,20 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
             }
             case R.id.btnCancel : {
                 finish();
+                break;
+            }
+        }
+    }
+
+    @OnClick({R.id.imageViewInfoFinalDigits, R.id.imageViewInfoBetterDay})
+    public void ShowTooltipInformation(ImageView view){
+        switch (view.getId()){
+            case R.id.imageViewInfoFinalDigits : {
+                TooltipHelper.show(imageViewInfoFinalDigits, info_digits, colorAccent);
+                break;
+            }
+            case R.id.imageViewInfoBetterDay : {
+                TooltipHelper.show(imageViewInfoBetterDay, info_best_day, colorAccent);
                 break;
             }
         }
