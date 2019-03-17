@@ -7,9 +7,10 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="cardYellow">#FAC802</color>
+    <color name="cardYellow">#FFB300</color>
     <color name="cardPurple">#BA45CC</color>
     <color name="cardGreen">#43A047</color>
     <color name="cardGrey">#616161</color>
     <color name="cardRed">#DD2C00</color>
+    <color name="cardBlue">#0D47A1</color>
 </resources>

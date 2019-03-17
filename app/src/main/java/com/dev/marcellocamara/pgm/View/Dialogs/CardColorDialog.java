@@ -31,6 +31,7 @@ public class CardColorDialog extends DialogFragment {
     @BindView(R.id.layoutGreen) protected ConstraintLayout layoutGreen;
     @BindView(R.id.layoutGrey) protected ConstraintLayout layoutGrey;
     @BindView(R.id.layoutRed) protected ConstraintLayout layoutRed;
+    @BindView(R.id.layoutBlue) protected ConstraintLayout layoutBlue;
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
 
@@ -74,6 +75,12 @@ public class CardColorDialog extends DialogFragment {
     @OnClick(R.id.layoutRed)
     public void OnRedClick(){
         colorListener.getSelectedColor(5);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutBlue)
+    public void OnBlueClick(){
+        colorListener.getSelectedColor(6);
         getDialog().dismiss();
     }
 

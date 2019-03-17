@@ -22,19 +22,16 @@
         android:id="@+id/layoutMasterCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutVisa"
+        app:layout_constraintTop_toTopOf="@+id/layoutVisa">
 
         <ImageView
             android:id="@+id/imageViewMasterCard"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@string/icon_mastercard"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/flag_mastercard" />
@@ -42,33 +39,33 @@
         <TextView
             android:id="@+id/textViewMasterCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="16dp"
             android:text="@string/mastercard"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewMasterCard"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewMasterCard"
-            app:layout_constraintTop_toTopOf="@+id/imageViewMasterCard" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewMasterCard" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layoutVisa"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutMasterCard"
-        app:layout_constraintStart_toStartOf="@+id/layoutMasterCard"
-        app:layout_constraintTop_toBottomOf="@+id/layoutMasterCard">
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <ImageView
             android:id="@+id/imageViewVisa"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@string/icon_visa"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/flag_visa"
@@ -78,32 +75,30 @@
             android:id="@+id/textViewVisa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/visa"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewVisa"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewVisa"
-            app:layout_constraintTop_toTopOf="@+id/imageViewVisa" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewVisa" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layoutElo"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutVisa"
-        app:layout_constraintStart_toStartOf="@+id/layoutVisa"
-        app:layout_constraintTop_toBottomOf="@+id/layoutVisa">
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/layoutMasterCard"
+        app:layout_constraintTop_toTopOf="@+id/layoutMasterCard">
 
         <ImageView
             android:id="@+id/imageViewElo"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@string/icon_elo"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/flag_elo"
@@ -113,17 +108,110 @@
             android:id="@+id/textViewElo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/elo"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewElo"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewElo"
-            app:layout_constraintTop_toTopOf="@+id/imageViewElo" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewElo" />
 
     </android.support.constraint.ConstraintLayout>
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutDinnersClub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/layoutMasterCard"
+        app:layout_constraintStart_toStartOf="@+id/layoutMasterCard"
+        app:layout_constraintTop_toTopOf="@+id/layoutAmericanExpress">
+
+        <ImageView
+            android:id="@+id/imageViewDinnersClub"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/icon_dinnersclub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/flag_dinners_club" />
+
+        <TextView
+            android:id="@+id/textViewDinnersClub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dinners_club"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDinnersClub" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutHipercard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/layoutElo"
+        app:layout_constraintStart_toStartOf="@+id/layoutElo"
+        app:layout_constraintTop_toTopOf="@+id/layoutDinnersClub">
+
+        <ImageView
+            android:id="@+id/imageViewHipercard"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/icon_hipercard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/flag_hipercard" />
+
+        <TextView
+            android:id="@+id/textViewHipercard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hipercard"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewHipercard" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutAmericanExpress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/layoutVisa"
+        app:layout_constraintStart_toStartOf="@+id/layoutVisa"
+        app:layout_constraintTop_toBottomOf="@+id/layoutMasterCard">
+
+        <ImageView
+            android:id="@+id/imageViewAmericanExpress"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/icon_american_express"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/flag_american_express" />
+
+        <TextView
+            android:id="@+id/textViewAmericanExpress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/american_express"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAmericanExpress" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/btnCancel"
@@ -131,12 +219,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:background="@null"
         android:text="@string/view_expense_button_cancel"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutElo" />
+        app:layout_constraintStart_toEndOf="@+id/layoutDinnersClub"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAmericanExpress" />
 
 </android.support.constraint.ConstraintLayout>

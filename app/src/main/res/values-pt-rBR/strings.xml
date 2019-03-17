@@ -102,6 +102,8 @@
     <string name="icon_grey_card">Ícone cartão cinza</string>
     <string name="grey">Cinza</string>
     <string name="icon_red_card">Ícone cartão vermelho</string>
+    <string name="icon_blue_card">Ícone cartão azul</string>
+    <string name="blue">Azul</string>
     <string name="red">Vermelho</string>
     <string name="card_flag">Bandeira:</string>
     <string name="card_color">Cor do cartão:</string>
@@ -133,6 +135,12 @@
     <string name="info_digits">Os últimos quatro dígitos do seu cartão de crédito irão ajudar a identificar suas despesas.</string>
     <string name="info_best_day">Dia do fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte.</string>
     <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês.</string>
+    <string name="icon_dinnersclub">Ícone bandeira DinnersClub</string>
+    <string name="dinners_club">Dinners Club</string>
+    <string name="icon_american_express">Ícone bandeira American Express</string>
+    <string name="icon_hipercard">Ícone bandeira Hipercard</string>
+    <string name="hipercard">Hipercard</string>
+    <string name="american_express">American\nExpress</string>
 
     <string-array name="installments">
         <item>1x</item>

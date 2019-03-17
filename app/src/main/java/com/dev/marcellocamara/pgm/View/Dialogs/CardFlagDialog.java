@@ -26,9 +26,12 @@ import butterknife.Unbinder;
 
 public class CardFlagDialog extends DialogFragment {
 
-    @BindView(R.id.layoutMasterCard) protected ConstraintLayout layoutMasterCard;
     @BindView(R.id.layoutVisa) protected ConstraintLayout layoutVisa;
+    @BindView(R.id.layoutMasterCard) protected ConstraintLayout layoutMasterCard;
     @BindView(R.id.layoutElo) protected ConstraintLayout layoutElo;
+    @BindView(R.id.layoutAmericanExpress) protected ConstraintLayout layoutAmericanExpress;
+    @BindView(R.id.layoutDinnersClub) protected ConstraintLayout layoutDinnersClub;
+    @BindView(R.id.layoutHipercard) protected ConstraintLayout layoutHipercard;
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
 
@@ -45,14 +48,14 @@ public class CardFlagDialog extends DialogFragment {
         return itemView;
     }
 
-    @OnClick(R.id.layoutMasterCard)
-    public void OnMasterCardClick(){
+    @OnClick(R.id.layoutVisa)
+    public void OnVisaClick(){
         flagListener.getFlag(1);
         getDialog().dismiss();
     }
 
-    @OnClick(R.id.layoutVisa)
-    public void OnVisaClick(){
+    @OnClick(R.id.layoutMasterCard)
+    public void OnMasterCardClick(){
         flagListener.getFlag(2);
         getDialog().dismiss();
     }
@@ -60,6 +63,24 @@ public class CardFlagDialog extends DialogFragment {
     @OnClick(R.id.layoutElo)
     public void OnEloClick(){
         flagListener.getFlag(3);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutAmericanExpress)
+    public void OnAmericanExpressClick(){
+        flagListener.getFlag(4);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutDinnersClub)
+    public void OnDinnersClubClick(){
+        flagListener.getFlag(5);
+        getDialog().dismiss();
+    }
+
+    @OnClick(R.id.layoutHipercard)
+    public void OnHipercardClick(){
+        flagListener.getFlag(6);
         getDialog().dismiss();
     }
 

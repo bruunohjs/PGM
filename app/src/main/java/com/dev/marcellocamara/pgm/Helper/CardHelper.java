@@ -36,6 +36,9 @@ public class CardHelper {
             case 5 : {
                 return ContextCompat.getDrawable(context, R.drawable.card_red);
             }
+            case 6 : {
+                return ContextCompat.getDrawable(context, R.drawable.card_blue);
+            }
             default : {
                 return null;
             }
@@ -51,13 +54,22 @@ public class CardHelper {
     public static Drawable getFlag(Context context, int flag) {
         switch (flag){
             case 1 : {
-                return ContextCompat.getDrawable(context, R.drawable.flag_mastercard);
+                return ContextCompat.getDrawable(context, R.drawable.flag_visa);
             }
             case 2 : {
-                return ContextCompat.getDrawable(context, R.drawable.flag_visa);
+                return ContextCompat.getDrawable(context, R.drawable.flag_mastercard);
             }
             case 3 : {
                 return ContextCompat.getDrawable(context, R.drawable.flag_elo);
+            }
+            case 4 : {
+                return ContextCompat.getDrawable(context, R.drawable.flag_american_express);
+            }
+            case 5 : {
+                return ContextCompat.getDrawable(context, R.drawable.flag_dinners_club);
+            }
+            case 6 : {
+                return ContextCompat.getDrawable(context, R.drawable.flag_hipercard);
             }
             default : {
                 return null;
@@ -87,6 +99,9 @@ public class CardHelper {
             }
             case 5 : {
                 return ContextCompat.getColor(context, R.color.cardRed);
+            }
+            case 6 : {
+                return ContextCompat.getColor(context, R.color.cardBlue);
             }
             default : {
                 return 0;

@@ -83,7 +83,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     private INewCard.Presenter presenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
-    private int cardColor = 2 /*Purple*/, cardFlag = 1 /*MasterCard*/;
+    private int cardColor = 2 /*Purple*/, cardFlag = 2 /*MasterCard*/;
 
     @SuppressLint("SetTextI18n")
     @Override

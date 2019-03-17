@@ -51,10 +51,14 @@
     <string name="icon_mastercard">Icon MasterCard</string>
     <string name="icon_visa">Icon Visa</string>
     <string name="icon_elo">Icon Elo</string>
+    <string name="icon_american_express">Icon American Express</string>
+    <string name="icon_dinnersclub">Icon DinnersClub</string>
+    <string name="icon_hipercard">Icon Hipercard</string>
     <string name="icon_yellow_card">Icon Yellow Card</string>
     <string name="icon_green_card">Icon Green Card</string>
     <string name="icon_grey_card">Icon Grey Card</string>
     <string name="icon_red_card">Icon Red Card</string>
+    <string name="icon_blue_card">Icon Blue Card</string>
     <string name="chip_image">Chip Image</string>
     <string name="flag_image">Flag Image</string>
     <string name="icon_info_final_digits">Final Digits Info Icon</string>
@@ -93,16 +97,19 @@
     <string name="visa">Visa</string>
     <string name="mastercard">MasterCard</string>
     <string name="elo">Elo</string>
+    <string name="american_express">American\nExpress</string>
+    <string name="dinners_club">Dinners Club\nInternational</string>
+    <string name="hipercard">Hipercard</string>
     <string name="card_title_empty">Fill card title to help identify your card.</string>
     <string name="card_number_empty">Fill the four final digits of your card to help identify your card.</string>
     <string name="date_empty">Fill best buy date with two digits. E.g.: 02</string>
     <string name="date_invalid">Invalid best buy date format. Fill the day in the range 01 to 31.</string>
     <string name="new_card_success">Card added successfully.</string>
-    <string name="loading_cards">Loading cards…</string>
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
 
     <!-- Dialogs -->
     <string name="select_card">Select one card</string>
+    <string name="loading_cards">Loading cards…</string>
 
     <!-- Tooltips -->
     <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
@@ -167,6 +174,7 @@
     <string name="green">Green</string>
     <string name="grey">Grey</string>
     <string name="red">Red</string>
+    <string name="blue">Blue</string>
 
     <!-- Arrays -->
     <string-array name="installments">

@@ -9,208 +9,249 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/select_card_color"
-        android:textAppearance="@android:style/TextAppearance.Material.Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="NewApi" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutYellow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:padding="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="72dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <ImageView
-            android:id="@+id/imageViewYellow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/icon_yellow_card"
-            android:tint="@color/cardYellow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_credit_card"
-            tools:ignore="VectorDrawableCompat" />
 
         <TextView
-            android:id="@+id/textViewYellow"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/yellow"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewYellow"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/select_card_color"
+            android:textAppearance="@android:style/TextAppearance.Material.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="NewApi" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:padding="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="72dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewYellow"
-            app:layout_constraintTop_toTopOf="@+id/imageViewYellow" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutPurple"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutYellow"
-        app:layout_constraintStart_toStartOf="@+id/layoutYellow"
-        app:layout_constraintTop_toBottomOf="@+id/layoutYellow">
-
-        <ImageView
-            android:id="@+id/imageViewPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/icon_purple_card"
-            android:tint="@color/cardPurple"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_credit_card"
-            tools:ignore="VectorDrawableCompat" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <TextView
-            android:id="@+id/textViewPurple"
+            <ImageView
+                android:id="@+id/imageViewYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_yellow_card"
+                android:tint="@color/cardYellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/textViewYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/yellow"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewYellow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewYellow"
+                app:layout_constraintTop_toTopOf="@+id/imageViewYellow" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutPurple"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/purple"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewPurple"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPurple"
-            app:layout_constraintTop_toTopOf="@+id/imageViewPurple" />
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutYellow"
+            app:layout_constraintStart_toStartOf="@+id/layoutYellow"
+            app:layout_constraintTop_toBottomOf="@+id/layoutYellow">
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageViewPurple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_purple_card"
+                android:tint="@color/cardPurple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutGreen"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutPurple"
-        app:layout_constraintStart_toStartOf="@+id/layoutPurple"
-        app:layout_constraintTop_toBottomOf="@+id/layoutPurple">
+            <TextView
+                android:id="@+id/textViewPurple"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/purple"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewPurple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPurple"
+                app:layout_constraintTop_toTopOf="@+id/imageViewPurple" />
 
-        <ImageView
-            android:id="@+id/imageViewGreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/icon_green_card"
-            android:tint="@color/cardGreen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_credit_card"
-            tools:ignore="VectorDrawableCompat" />
+        </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textViewGreen"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutGreen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/green"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewGreen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewGreen"
-            app:layout_constraintTop_toTopOf="@+id/imageViewGreen" />
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutPurple"
+            app:layout_constraintStart_toStartOf="@+id/layoutPurple"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPurple">
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageViewGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_green_card"
+                android:tint="@color/cardGreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutGrey"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutGreen"
-        app:layout_constraintStart_toStartOf="@+id/layoutGreen"
-        app:layout_constraintTop_toBottomOf="@+id/layoutGreen">
+            <TextView
+                android:id="@+id/textViewGreen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/green"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewGreen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewGreen"
+                app:layout_constraintTop_toTopOf="@+id/imageViewGreen" />
 
-        <ImageView
-            android:id="@+id/imageViewGrey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/icon_grey_card"
-            android:tint="@color/cardGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_credit_card"
-            tools:ignore="VectorDrawableCompat" />
+        </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textViewGrey"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutGrey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/grey"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewGrey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewGrey"
-            app:layout_constraintTop_toTopOf="@+id/imageViewGrey" />
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutGreen"
+            app:layout_constraintStart_toStartOf="@+id/layoutGreen"
+            app:layout_constraintTop_toBottomOf="@+id/layoutGreen">
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageViewGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_grey_card"
+                android:tint="@color/cardGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutRed"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/layoutGrey"
-        app:layout_constraintStart_toStartOf="@+id/layoutGrey"
-        app:layout_constraintTop_toBottomOf="@+id/layoutGrey">
+            <TextView
+                android:id="@+id/textViewGrey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/grey"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewGrey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewGrey"
+                app:layout_constraintTop_toTopOf="@+id/imageViewGrey" />
 
-        <ImageView
-            android:id="@+id/imageViewRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/icon_red_card"
-            android:tint="@color/cardRed"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_credit_card"
-            tools:ignore="VectorDrawableCompat" />
+        </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textViewRed"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutRed"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:text="@string/red"
-            app:autoSizeMaxTextSize="14sp"
-            app:autoSizeMinTextSize="10sp"
-            app:autoSizeTextType="uniform"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewRed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewRed"
-            app:layout_constraintTop_toTopOf="@+id/imageViewRed" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutGrey"
+            app:layout_constraintStart_toStartOf="@+id/layoutGrey"
+            app:layout_constraintTop_toBottomOf="@+id/layoutGrey">
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageViewRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_red_card"
+                android:tint="@color/cardRed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/textViewRed"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/red"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeTextType="uniform"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewRed"
+                app:layout_constraintTop_toTopOf="@+id/imageViewRed" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutBlue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutRed"
+            app:layout_constraintStart_toStartOf="@+id/layoutRed"
+            app:layout_constraintTop_toBottomOf="@+id/layoutRed">
+
+            <ImageView
+                android:id="@+id/imageViewBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/icon_blue_card"
+                android:tint="@color/cardBlue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_credit_card"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/textViewBlue"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/blue"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeTextType="uniform"
+                android:gravity="center_vertical|start"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewBlue"
+                app:layout_constraintTop_toTopOf="@+id/imageViewBlue" />
+
+        </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/btnCancel"
@@ -224,7 +265,7 @@
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutRed" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutBlue" />
 
     </android.support.constraint.ConstraintLayout>
 
