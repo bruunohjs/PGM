@@ -46,7 +46,8 @@
     <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
     <string name="each_installment_price">Preço aproximado de cada parcela:</string>
-    <string name="delete">Deletar</string>
+    <string name="delete_expense">Deletar Despesa</string>
+    <string name="delete_card">Deletar Cartão</string>
     <string name="close">Fechar</string>
     <string name="expense_overview">Despesa</string>
     <string name="confirm_delete">Você deseja deletar esta despesa e todas as suas outras parcelas ?</string>
@@ -118,6 +119,7 @@
     <string name="icon_info_price">Ícone de informação do preço</string>
     <string name="icon_info_final_digits">Ícone de informação dos dígitos finais</string>
     <string name="icon_info_better_day">Ícone de informação da melhor data de pagamento</string>
+    <string name="icon_info_annuity">Ícone de informação de notificação da anuidade</string>
     <string name="card_title">Título do cartão:</string>
     <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
     <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
@@ -141,6 +143,18 @@
     <string name="icon_hipercard">Ícone bandeira Hipercard</string>
     <string name="hipercard">Hipercard</string>
     <string name="american_express">American\nExpress</string>
+    <string name="zero_int">0</string>
+    <string name="negotiation_notification">Notificação de negociação:</string>
+    <string name="edit_notifications">Editar notificação</string>
+    <string name="edit_card">Editar cartão</string>
+    <string name="not_activated">Não ativada</string>
+    <string name="points">Pontos</string>
+    <string name="annuity">Anuidade</string>
+    <string name="expense">Despesas</string>
+    <string name="edit_points">Editar pontos</string>
+    <string name="view_expenses">Ver despesas</string>
+    <string name="negotiation_month">Mês de negociação:</string>
+    <string name="not_specified">Não especificado</string>
 
     <string-array name="installments">
         <item>1x</item>

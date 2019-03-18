@@ -65,6 +65,7 @@
     <string name="icon_info_date">Date Info Icon</string>
     <string name="icon_info_price">Price Info Icon</string>
     <string name="icon_info_better_day">Better Day Info Icon</string>
+    <string name="icon_info_annuity">Annuity Info Notification Icon</string>
 
     <!-- Home -->
     <string name="welcome">Welcome,</string>
@@ -115,6 +116,7 @@
     <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
     <string name="info_best_day">The day your invoice is closed.\n From that day, purchases made on the credit card will only come in the following month.</string>
     <string name="info_date">Expense will appear in the open invoice month. If this month invoice is already closed, the expense will appear next month.</string>
+    <string name="negotiation_notification">Negotiation notification:</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>
@@ -122,10 +124,22 @@
     <string name="each_installment_price">Approximate price of each installment:</string>
     <string name="deleting_expense">Deleting expense…</string>
     <string name="view_overview_installments">x</string>
-    <string name="delete">Delete</string>
+    <string name="delete_expense">Delete Expense</string>
+    <string name="delete_card">Delete Card</string>
     <string name="confirm_delete">Are you sure to delete this item and all installments ?</string>
     <string name="delete_success">Expense successfully deleted.</string>
     <string name="card_overview">Card Overview</string>
+    <string name="zero_int">0</string>
+    <string name="edit_notifications">Edit notification</string>
+    <string name="edit_card">Edit card</string>
+    <string name="not_activated">Not activated</string>
+    <string name="points">Points</string>
+    <string name="annuity">Annuity</string>
+    <string name="expense">Expenses</string>
+    <string name="edit_points">Edit points</string>
+    <string name="view_expenses">View Expenses</string>
+    <string name="negotiation_month">Negotiation month:</string>
+    <string name="not_specified">Not specified</string>
 
     <!-- AlertDialog Buttons -->
     <string name="yes">Yes</string>
