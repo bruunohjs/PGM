@@ -24,7 +24,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
     }
 
     @Override
-    public void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard) {
+    public void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard, String betterDayCard) {
 
         if (title.isEmpty() || description.isEmpty() || price.isEmpty()){
 
@@ -44,7 +44,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
             view.OnMaxPrice();
         }else{
             view.ShowProgress();
-            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments, creditCard);
+            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments, creditCard, betterDayCard);
         }
 
     }

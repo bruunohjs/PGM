@@ -327,7 +327,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard) {
+    public void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard, String betterDayCard) {
 
         ExpenseModel expense = new ExpenseModel();
         expense.setPaymentDate(date);
@@ -338,8 +338,19 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expense.setCreditCard(creditCard);
 
         String dateSplit[] = date.split("/");
+        String day = dateSplit[0];
         String month = dateSplit[1];
         String year = dateSplit[2];
+
+        //TODO : Change "betterDayCard" for "invoiceClosingDay" and subtract the running days to pay of current card
+        if ( (Integer.parseInt(day)) >= (Integer.parseInt(betterDayCard)) ){
+            month = NumberHelper.GetMonth((Integer.parseInt(month)) + 1);
+            if ( (Integer.parseInt(month)) > 12 ){
+                month = NumberHelper.GetMonth(1);
+                year = String.valueOf( (Integer.parseInt(year)) + 1 );
+            }
+            expense.setClosedInvoice(true);
+        }
 
         //This guarantee same ID for all "n" installments
         final String UniqueID = getDatabaseReference().child("Expenses").push().getKey();
@@ -372,6 +383,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expenseAux.setPrice(expense.getPrice());
         expenseAux.setInstallments(expense.getInstallments());
         expenseAux.setCreditCard(expense.getCreditCard());
+        expenseAux.setClosedInvoice(expense.getClosedInvoice());
 
         expenseAux.setCurrentInstallment( (NumberHelper.GetMonth(n)) + "/" + expense.getInstallments());
 
@@ -406,15 +418,24 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoDeleteExpense(String date, int installments, String uniqueId) {
+    public void DoDeleteExpense(ExpenseModel expense) {
 
-        String dateSplit[] = date.split("/");
+        String dateSplit[] = expense.getPaymentDate().split("/");
+        String day = dateSplit[0];
         String month = dateSplit[1];
         String year = dateSplit[2];
 
+        if (expense.getClosedInvoice()){
+            month = NumberHelper.GetMonth( (Integer.parseInt(month) + 1) );
+            if ( (Integer.parseInt(month)) > 12 ) {
+                month = NumberHelper.GetMonth(1);
+                year = String.valueOf( (Integer.parseInt(year)) + 1 );
+            }
+        }
+
         String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-        DoDeleteExpenseRecursion(1, installments, userID, uniqueId, month, year);
+        DoDeleteExpenseRecursion(1, Integer.parseInt(expense.getInstallments()), userID, expense.getUniqueId(), month, year);
 
     }
 

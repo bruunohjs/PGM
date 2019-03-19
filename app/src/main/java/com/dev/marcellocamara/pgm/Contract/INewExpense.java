@@ -13,7 +13,7 @@ public interface INewExpense {
 
     interface Presenter {
 
-        void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard);
+        void OnAddExpense(String date, String title, String description, String price, int installments, String creditCard, String betterDayCard);
 
         void OnRequestCardSequence(ArrayList<CardModel> cards);
 
@@ -45,7 +45,7 @@ public interface INewExpense {
 
     interface Model {
 
-        void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard);
+        void DoAddExpense(String date, String title, String description, double price, int installments, String creditCard, String betterDayCard);
 
     }
 

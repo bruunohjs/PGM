@@ -154,7 +154,7 @@
     <string name="edit_points">Editar pontos</string>
     <string name="view_expenses">Ver despesas</string>
     <string name="negotiation_month">Mês de negociação:</string>
-    <string name="not_specified">Não especificado</string>
+    <string name="not_specified">Não informado</string>
 
     <string-array name="installments">
         <item>1x</item>

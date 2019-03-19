@@ -31,7 +31,7 @@ public interface IExpenseOverview {
 
     interface Model {
 
-        void DoDeleteExpense(String date, int installments, String uniqueId);
+        void DoDeleteExpense(ExpenseModel expense);
 
     }
 

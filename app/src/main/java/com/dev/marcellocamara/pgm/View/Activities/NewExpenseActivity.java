@@ -187,7 +187,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
                 editTextDescription.getText().toString().trim(),
                 editTextPrice.getText().toString().trim(),
                 installments,
-                cardsList.get(card).getUniqueId()
+                cardsList.get(card).getUniqueId(),
+                cardsList.get(card).getBetterDayToBuy()
         );
         UIUtil.hideKeyboard(this);
     }

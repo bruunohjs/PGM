@@ -15,6 +15,7 @@ public class ExpenseModel implements Parcelable {
     private String creditCard;
     private String paymentDate, title, description, currentInstallment, installments, uniqueId;
     private double price;
+    private boolean closedInvoice;
 
     public ExpenseModel(){}
 
@@ -25,8 +26,9 @@ public class ExpenseModel implements Parcelable {
         description = in.readString();
         currentInstallment = in.readString();
         installments = in.readString();
-        price = in.readDouble();
         uniqueId = in.readString();
+        price = in.readDouble();
+        closedInvoice = in.readByte() != 0;
     }
 
     public static final Creator<ExpenseModel> CREATOR = new Creator<ExpenseModel>() {
@@ -47,10 +49,6 @@ public class ExpenseModel implements Parcelable {
 
     public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
-    }
-
-    public String getUniqueId() {
-        return uniqueId;
     }
 
     public String getPaymentDate() {
@@ -107,8 +105,16 @@ public class ExpenseModel implements Parcelable {
     }
 
     @Exclude
-    public String getUniqueKey(){
+    public String getUniqueId(){
         return uniqueId;
+    }
+
+    public boolean getClosedInvoice() {
+        return closedInvoice;
+    }
+
+    public void setClosedInvoice(boolean closedInvoice) {
+        this.closedInvoice = closedInvoice;
     }
 
     @Override
@@ -124,7 +130,8 @@ public class ExpenseModel implements Parcelable {
         dest.writeString(description);
         dest.writeString(currentInstallment);
         dest.writeString(installments);
-        dest.writeDouble(price);
         dest.writeString(uniqueId);
+        dest.writeDouble(price);
+        dest.writeByte((byte) (closedInvoice ? 1 : 0));
     }
 }

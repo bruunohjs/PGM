@@ -1,9 +1,10 @@
 PGM
 ===
 
-O objetivo deste trabalho é possibilitar que o usuário acompanhe as despesas de seu cartão de crédito, exibindo suas faturas mensais. 
+O objetivo deste trabalho é possibilitar que o usuário acompanhe as despesas de seus cartões de crédito, exibindo suas despesas mensais. 
 
 Ao registrar a compra de um produto parcelado, o calendário exibe suas parcelas em cada mês que o tiver. Sendo assim, o usuário conta com uma estimativa de seus gastos em meses futuros.
+Caso a fatura do mês já esteja fechada, a despesa adicionada irá entrar automaticamente na fatura do mês seguinte.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/giphy.gif" title="Criando um cartão">
@@ -17,7 +18,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 
 ## Sobre
 
-O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter).
+O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter) e o Firebase Realtime Database.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">
@@ -56,6 +57,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 - [Mutative Fab](https://github.com/aniketbhoite/MutativeFab)
 - [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 - [Spots Progress Dialog](https://github.com/d-max/spots-dialog)
+- [Tooltips](https://github.com/ViHtarb/Tooltip)
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/app/src/main/ic_launcher-web.png" height="128" title="Ícone">

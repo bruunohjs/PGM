@@ -32,11 +32,7 @@ public class ExpenseOverviewPresenter implements IExpenseOverview.Presenter, ITa
     @Override
     public void OnDeleteExpense(ExpenseModel expenseModel) {
         view.ShowProgress();
-        model.DoDeleteExpense(
-                expenseModel.getPaymentDate(),
-                Integer.parseInt(expenseModel.getInstallments()),
-                expenseModel.getUniqueKey()
-        );
+        model.DoDeleteExpense(expenseModel);
     }
 
     @Override
