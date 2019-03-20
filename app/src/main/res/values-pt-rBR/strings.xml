@@ -155,6 +155,9 @@
     <string name="view_expenses">Ver despesas</string>
     <string name="negotiation_month">Mês de negociação:</string>
     <string name="not_specified">Não informado</string>
+    <string name="update_card">Editar cartão</string>
+    <string name="save_changes">Salvar mudanças</string>
+    <string name="update_success">Cartão alterado com sucesso.</string>
 
     <string-array name="installments">
         <item>1x</item>

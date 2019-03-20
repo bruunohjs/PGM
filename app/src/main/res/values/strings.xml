@@ -93,6 +93,7 @@
     <string name="card_flag">Card flag:</string>
     <string name="card_color">Card color:</string>
     <string name="new_card">New card</string>
+    <string name="update_card">Update card</string>
     <string name="select_flag">Select one flag</string>
     <string name="select_card_color">Select card color</string>
     <string name="visa">Visa</string>
@@ -106,6 +107,7 @@
     <string name="date_empty">Fill best buy date with two digits. E.g.: 02</string>
     <string name="date_invalid">Invalid best buy date format. Fill the day in the range 01 to 31.</string>
     <string name="new_card_success">Card added successfully.</string>
+    <string name="update_success">Card updated successfully.</string>
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
 
     <!-- Dialogs -->
@@ -216,5 +218,6 @@
 
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="save_changes">Save changes</string>
 
 </resources>

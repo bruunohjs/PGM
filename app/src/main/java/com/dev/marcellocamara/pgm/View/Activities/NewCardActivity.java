@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.dev.marcellocamara.pgm.Contract.INewCard;
 import com.dev.marcellocamara.pgm.Contract.IDialog;
 import com.dev.marcellocamara.pgm.Helper.TooltipHelper;
+import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.View.Dialogs.CardColorDialog;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
 import com.dev.marcellocamara.pgm.View.Dialogs.CardFlagDialog;
@@ -61,8 +63,11 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
+    @BindView(R.id.btnEdit) protected Button btnEdit;
 
     @BindString(R.string.new_card) protected String new_card;
+    @BindString(R.string.update_card) protected String update_card;
+    @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.card_number_0) protected String card_number_0;
     @BindString(R.string.card_number_1) protected String card_number_1;
@@ -72,9 +77,11 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.card_number_empty) protected String card_number_empty;
     @BindString(R.string.date_empty) protected String date_empty;
     @BindString(R.string.date_invalid) protected String date_invalid;
+    @BindString(R.string.no_changes) protected String no_changes;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_new_card) protected String adding_new_card;
     @BindString(R.string.new_card_success) protected String new_card_success;
+    @BindString(R.string.update_success) protected String update_success;
     @BindString(R.string.info_digits) protected String info_digits;
     @BindString(R.string.info_best_day) protected String info_best_day;
 
@@ -83,6 +90,8 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     private INewCard.Presenter presenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
+    private CardModel card;
+    private String builderTitle, card_success;
     private int cardColor = 2 /*Purple*/, cardFlag = 2 /*MasterCard*/;
 
     @SuppressLint("SetTextI18n")
@@ -93,16 +102,21 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
         ButterKnife.bind(this);
 
+        builderTitle = new_card;
+        card_success = new_card_success;
+
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(new_card);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new NewCardPresenter(this);
+        card = getIntent().getParcelableExtra(parcelable_card);
+        presenter.OnCheckCardDataUpdate(card);
 
         textViewCardNumber.setText(card_number + card_number_0);
 
         builder = new AlertDialog.Builder(this);
-        builder.setTitle(new_card);
+        builder.setTitle(builderTitle);
         builder.setCancelable(false);
 
         alertDialog = new SpotsDialog.Builder()
@@ -130,6 +144,21 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         editTextFinalNumber.clearFocus();
         editTextPaymentDate.clearFocus();
         presenter.OnAddCard(
+                editTextCardTitle.getText().toString().trim(),
+                editTextFinalNumber.getText().toString().trim(),
+                editTextPaymentDate.getText().toString().trim(),
+                cardColor,
+                cardFlag
+        );
+        UIUtil.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btnEdit)
+    public void OnButtonEditClick(){
+        editTextFinalNumber.clearFocus();
+        editTextPaymentDate.clearFocus();
+        presenter.OnUpdateCard(
+                card,
                 editTextCardTitle.getText().toString().trim(),
                 editTextFinalNumber.getText().toString().trim(),
                 editTextPaymentDate.getText().toString().trim(),
@@ -181,6 +210,21 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @Override
     public void OnRequestUserDataSuccessful(String name) {
         textViewUserName.setText(name);
+    }
+
+    @Override
+    public void OnCheckCardDataUpdateSuccessful() {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(update_card);
+        builderTitle = update_card;
+        card_success = update_success;
+        editTextCardTitle.setText(card.getCardTitle());
+        editTextFinalNumber.setText(card.getFinalDigits());
+        editTextPaymentDate.setText(card.getBetterDayToBuy());
+        getSelectedColor(card.getCardColor());
+        getFlag(card.getCardFlag());
+        btnCancel.setVisibility(View.GONE);
+        btnSave.setVisibility(View.GONE);
+        btnEdit.setVisibility(View.VISIBLE);
     }
 
     @SuppressLint("SetTextI18n")
@@ -243,7 +287,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @Override
     public void OnAddCardSuccess() {
-        builder.setMessage(new_card_success);
+        builder.setMessage(card_success);
         builder.setPositiveButton(close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -256,6 +300,13 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @Override
     public void OnAddCardFailure(String message) {
         builder.setMessage(message);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnUpdateCardFailure() {
+        builder.setMessage(no_changes);
         builder.setPositiveButton(close, null);
         builder.show();
     }

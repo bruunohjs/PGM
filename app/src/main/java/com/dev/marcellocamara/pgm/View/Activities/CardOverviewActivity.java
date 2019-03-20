@@ -1,9 +1,11 @@
 package com.dev.marcellocamara.pgm.View.Activities;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +43,8 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindView(R.id.imageViewInfoPoints) protected ImageView imageViewInfoPoints;
     @BindView(R.id.imageViewInfoAnnuityNotification) protected ImageView imageViewInfoAnnuityNotification;
 
+    @BindView(R.id.btnEditCard) protected Button btnEditCard;
+
     @BindString(R.string.card_overview) protected String card_overview;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.card_number) protected String card_number;
@@ -50,6 +54,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     private ICardOverview.Presenter presenter;
     private CardModel card;
+    private String cardId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,25 +65,26 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
         presenter = new CardOverviewPresenter(this);
 
-        card = getIntent().getParcelableExtra(parcelable_card);
-        SetCreditCardInfo();
+        cardId = getIntent().getStringExtra(parcelable_card);
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(card_overview);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void SetCreditCardInfo() {
+    @Override
+    public void OnRequestUserDataSuccessful(String name) {
+        textViewUserName.setText(name);
+    }
+
+    @Override
+    public void OnRequestCardSuccessful(CardModel card) {
+        this.card = card;
         layoutCard.setBackground( CardHelper.getBackground(this, card.getCardColor() ) );
         imageViewSelectedFlag.setImageDrawable( CardHelper.getFlag(this, card.getCardFlag()) );
         textViewTitleCard.setText(card.getCardTitle());
         String number = (card_number) + (card.getFinalDigits());
         textViewCardNumber.setText(number);
-    }
-
-    @Override
-    public void OnRequestUserDataSuccessful(String name) {
-        textViewUserName.setText(name);
     }
 
     @OnClick(R.id.imageViewInfoPoints)
@@ -91,6 +97,12 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         TooltipHelper.show(imageViewInfoAnnuityNotification, "Annuity notification information", colorAccent);
     }
 
+    @OnClick(R.id.btnEditCard)
+    public void OnButtonEditCardClick(){
+        startActivity(new Intent(this, NewCardActivity.class)
+                .putExtra(parcelable_card, this.card));
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -101,6 +113,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     protected void onStart() {
         super.onStart();
         presenter.OnRequestUserData();
+        presenter.OnRequestCard(cardId);
     }
 
     @Override

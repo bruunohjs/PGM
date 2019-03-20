@@ -106,7 +106,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     @Override
     public void OnItemClick(int position) {
         startActivity(new Intent(getContext(), CardOverviewActivity.class)
-                .putExtra(parcelable_card, cards.get(position)));
+                .putExtra(parcelable_card, cards.get(position).getUniqueId()));
     }
 
     @Override

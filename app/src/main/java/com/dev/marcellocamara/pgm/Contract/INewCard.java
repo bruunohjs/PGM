@@ -1,5 +1,7 @@
 package com.dev.marcellocamara.pgm.Contract;
 
+import com.dev.marcellocamara.pgm.Model.CardModel;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -11,9 +13,13 @@ public interface INewCard {
 
         void OnRequestUserData();
 
+        void OnCheckCardDataUpdate(CardModel card);
+
         void OnGetFinalNumbers(String numbers);
 
         void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag);
+
+        void OnUpdateCard(CardModel card, String title, String numbers, String date, int cardColor, int cardFlag);
 
         void OnDestroy();
 
@@ -22,6 +28,8 @@ public interface INewCard {
     interface View extends IProgressLoading {
 
         void OnRequestUserDataSuccessful(String name);
+
+        void OnCheckCardDataUpdateSuccessful();
 
         void OnSetZeroFinalNumbers();
 
@@ -45,6 +53,8 @@ public interface INewCard {
 
         void OnAddCardFailure(String message);
 
+        void OnUpdateCardFailure();
+
     }
 
     interface Model {
@@ -52,6 +62,8 @@ public interface INewCard {
         String GetUserDisplayName();
 
         void DoAddCard(String title, String numbers, String date, int cardColor, int cardFlag);
+
+        void DoUpdateCard(String uniqueId, String title, String numbers, String date, int cardColor, int cardFlag);
 
     }
 

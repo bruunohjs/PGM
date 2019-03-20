@@ -211,6 +211,31 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
+    public void DoUpdateCard(String uniqueId, String title, String numbers, String date, int cardColor, int cardFlag) {
+
+        CardModel card = new CardModel(title, numbers, date, cardColor, cardFlag);
+
+        final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
+
+        getDatabaseReference()
+                .child("Cards")
+                .child(userID)
+                .child(uniqueId)
+                .setValue(card)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            taskListener.OnSuccess();
+                        }else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
+
+    }
+
+    @Override
     public Uri GetUserPhotoUri() {
         return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getPhotoUrl();
     }
@@ -504,4 +529,5 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
         return cardsList;
     }
+
 }
