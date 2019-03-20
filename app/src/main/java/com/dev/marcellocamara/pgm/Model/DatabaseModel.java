@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.Model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.dev.marcellocamara.pgm.Contract.ICardOverview;
 import com.dev.marcellocamara.pgm.Contract.ICards;
@@ -374,8 +373,6 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
             yearAux = year;
         }
 
-        Log.d("MONTH", "Month: " + monthAux);
-
         ExpenseModel expenseAux = new ExpenseModel();
         expenseAux.setPaymentDate(expense.getPaymentDate());
         expenseAux.setTitle(expense.getTitle());
@@ -421,7 +418,6 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     public void DoDeleteExpense(ExpenseModel expense) {
 
         String dateSplit[] = expense.getPaymentDate().split("/");
-        String day = dateSplit[0];
         String month = dateSplit[1];
         String year = dateSplit[2];
 
