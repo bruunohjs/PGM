@@ -1,4 +1,6 @@
-package com.dev.marcellocamara.pgm.Helper;
+package com.dev.marcellocamara.pgm;
+
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 
 import org.junit.Test;
 
@@ -10,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
             2019
 ***/
 
-public class NumberHelperTest {
+public class NumberFormatTest {
 
     private int month[] = { 1, 12 };
     private double decimal[] = { 0, 0.9, 0.99, 0.990, 0.994, 0.995, 0.999 };
@@ -19,7 +21,7 @@ public class NumberHelperTest {
     public void GetDecimal_successReturned(){
         String result[] = new String[decimal.length];
         for ( int i = 0 ; i < decimal.length ; i++ ){
-            result[i] = NumberHelper.GetDecimal(decimal[i]);
+            result[i] = NumberFormat.getDecimal(decimal[i]);
         }
         for (String res : result) {
             assertThat(res.length(), is(4));
@@ -37,7 +39,7 @@ public class NumberHelperTest {
     public void GetMonth_successReturned(){
         String result[] = new String[month.length];
         for ( int i = 0 ; i < month.length ; i++ ){
-            result[i] = NumberHelper.GetMonth(month[i]);
+            result[i] = NumberFormat.getMonth(month[i]);
         }
         assertThat(result[0].length(), is(2));
         assertThat(result[1].length(), is(2));

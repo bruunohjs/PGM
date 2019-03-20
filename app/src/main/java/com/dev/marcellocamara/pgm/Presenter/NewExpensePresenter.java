@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Presenter;
 
 import com.dev.marcellocamara.pgm.Contract.INewExpense;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 
@@ -61,7 +61,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
 
     @Override
     public void OnCalculateDate(int day, int month, int year) {
-        view.OnCalculatedDate(NumberHelper.GetMonth(day), NumberHelper.GetMonth(month+1), String.valueOf(year));
+        view.OnCalculatedDate(NumberFormat.getMonth(day), NumberFormat.getMonth(month+1), String.valueOf(year));
     }
 
     @Override

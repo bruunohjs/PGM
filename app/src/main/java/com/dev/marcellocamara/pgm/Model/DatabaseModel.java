@@ -15,7 +15,7 @@ import com.dev.marcellocamara.pgm.Contract.IProfile;
 import com.dev.marcellocamara.pgm.Contract.IRecoverPassword;
 import com.dev.marcellocamara.pgm.Contract.IRegister;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -358,7 +358,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expense.setTitle(title);
         expense.setDescription(description);
         expense.setPrice(price);
-        expense.setInstallments(NumberHelper.GetMonth(installments));
+        expense.setInstallments(NumberFormat.getMonth(installments));
         expense.setCreditCard(creditCard);
 
         String dateSplit[] = date.split("/");
@@ -368,9 +368,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
         //TODO : Change "betterDayCard" for "invoiceClosingDay" and subtract the running days to pay of current card
         if ( (Integer.parseInt(day)) >= (Integer.parseInt(betterDayCard)) ){
-            month = NumberHelper.GetMonth((Integer.parseInt(month)) + 1);
+            month = NumberFormat.getMonth((Integer.parseInt(month)) + 1);
             if ( (Integer.parseInt(month)) > 12 ){
-                month = NumberHelper.GetMonth(1);
+                month = NumberFormat.getMonth(1);
                 year = String.valueOf( (Integer.parseInt(year)) + 1 );
             }
             expense.setClosedInvoice(true);
@@ -391,7 +391,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         final String yearAux;
 
         if ( (Integer.parseInt(month)) > 12 ){
-            monthAux = NumberHelper.GetMonth(1);
+            monthAux = NumberFormat.getMonth(1);
             yearAux = String.valueOf( (Integer.parseInt(year)) + 1 );
         }else {
             monthAux = month;
@@ -407,7 +407,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expenseAux.setCreditCard(expense.getCreditCard());
         expenseAux.setClosedInvoice(expense.getClosedInvoice());
 
-        expenseAux.setCurrentInstallment( (NumberHelper.GetMonth(n)) + "/" + expense.getInstallments());
+        expenseAux.setCurrentInstallment( (NumberFormat.getMonth(n)) + "/" + expense.getInstallments());
 
         getDatabaseReference()
                 .child("Expenses")
@@ -427,7 +427,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                                         countStop,
                                         userId,
                                         uniqueId,
-                                        (NumberHelper.GetMonth( (Integer.parseInt(monthAux)) + 1)),
+                                        (NumberFormat.getMonth( (Integer.parseInt(monthAux)) + 1)),
                                         yearAux,
                                         expense
                                 );
@@ -447,9 +447,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         String year = dateSplit[2];
 
         if (expense.getClosedInvoice()){
-            month = NumberHelper.GetMonth( (Integer.parseInt(month) + 1) );
+            month = NumberFormat.getMonth( (Integer.parseInt(month) + 1) );
             if ( (Integer.parseInt(month)) > 12 ) {
-                month = NumberHelper.GetMonth(1);
+                month = NumberFormat.getMonth(1);
                 year = String.valueOf( (Integer.parseInt(year)) + 1 );
             }
         }
@@ -466,7 +466,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         final String yearAux;
 
         if ((Integer.parseInt(month)) > 12) {
-            monthAux = NumberHelper.GetMonth(1);
+            monthAux = NumberFormat.getMonth(1);
             yearAux = String.valueOf((Integer.parseInt(year)) + 1);
         } else {
             monthAux = month;
@@ -491,7 +491,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                                         countStop,
                                         userId,
                                         uniqueId,
-                                        (NumberHelper.GetMonth((Integer.parseInt(monthAux)) + 1)),
+                                        (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
                                         yearAux
                                 );
                             }

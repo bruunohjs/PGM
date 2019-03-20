@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Presenter;
 
 import com.dev.marcellocamara.pgm.Contract.IExpenseOverview;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 
@@ -24,7 +24,7 @@ public class ExpenseOverviewPresenter implements IExpenseOverview.Presenter, ITa
     @Override
     public void OnVerifyInstallments(String installments, double price) {
         if (Double.parseDouble(installments) > 1){
-            String value = NumberHelper.GetDecimal((price) / Integer.parseInt(installments) );
+            String value = NumberFormat.getDecimal((price) / Integer.parseInt(installments) );
             view.OnSetInstallments(value);
         }
     }

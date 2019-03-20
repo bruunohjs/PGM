@@ -16,7 +16,7 @@ import com.aniket.mutativefloatingactionbutton.MutativeFab;
 import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Helper.SpecificCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
         homePresenter = new HomePresenter(this);
 
         Calendar calendar = Calendar.getInstance();
-        calendarMonth = NumberHelper.GetMonth( (calendar.get(Calendar.MONTH)) + 1 );
+        calendarMonth = NumberFormat.getMonth( (calendar.get(Calendar.MONTH)) + 1 );
         calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
 
         materialCalendarView.setOnMonthChangedListener(this);
@@ -141,7 +141,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @Override
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-        calendarMonth = NumberHelper.GetMonth(date.getMonth());
+        calendarMonth = NumberFormat.getMonth(date.getMonth());
         calendarYear = String.valueOf(date.getYear());
         homePresenter.OnStop();
         homePresenter.OnRequestExpenses( calendarMonth + calendarYear );

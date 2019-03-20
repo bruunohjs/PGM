@@ -491,7 +491,7 @@
 
                     <TextView
                         android:id="@+id/textViewMonthNegotiation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="@dimen/uniformTextViewHeight"
                         android:layout_marginEnd="8dp"
                         android:background="@null"
@@ -499,6 +499,7 @@
                         android:text="@string/not_specified"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewAnnuityMonth"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightAnnuity"
+                        app:layout_constraintStart_toStartOf="@+id/textViewNotificationsCount"
                         app:layout_constraintTop_toTopOf="@+id/textViewAnnuityMonth"
                         tools:ignore="LabelFor,TextFields" />
 

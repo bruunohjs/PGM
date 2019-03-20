@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Helper.SpecificCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
@@ -60,7 +60,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
 
         holder.textViewTitle.setText(expenseModel.getTitle());
         holder.textViewDescription.setText(expenseModel.getDescription());
-        holder.textViewPrice.setText(NumberHelper.GetDecimal(value));
+        holder.textViewPrice.setText(NumberFormat.getDecimal(value));
         holder.textViewFinalDigits.setText(Objects.requireNonNull(card).getFinalDigits());
         holder.imageViewCreditCard.setColorFilter(CardHelper.getColor(context, card.getCardColor()));
         holder.textViewInstallment.setText(expenseModel.getCurrentInstallment());

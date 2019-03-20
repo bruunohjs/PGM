@@ -5,15 +5,15 @@ package com.dev.marcellocamara.pgm.Helper;
             2019
 ***/
 
-public class NumberHelper {
+public class NumberFormat {
 
-    public static String GetDecimal(double value){
+    public static String getDecimal(double value){
 
         return String.format("%.2f", value);
 
     }
 
-    public static String GetMonth(int month){
+    public static String getMonth(int month){
 
         String result = String.valueOf(month);
 

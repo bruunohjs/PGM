@@ -2,7 +2,7 @@ package com.dev.marcellocamara.pgm.Presenter;
 
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
@@ -45,7 +45,7 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
                 total += ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
             }
 
-            result = NumberHelper.GetDecimal(total);
+            result = NumberFormat.getDecimal(total);
         }
 
         view.OnRequestTotalCalculateResult(result);

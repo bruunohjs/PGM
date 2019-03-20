@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.IExpenseOverview;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
-import com.dev.marcellocamara.pgm.Helper.NumberHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.ExpenseOverviewPresenter;
@@ -95,7 +95,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     private void SetCreditCard(CardModel cardModel) {
         textViewTitle.setText(expenseModel.getTitle());
         textViewDescription.setText(expenseModel.getDescription());
-        textViewPrice.setText(NumberHelper.GetDecimal(expenseModel.getPrice()));
+        textViewPrice.setText(NumberFormat.getDecimal(expenseModel.getPrice()));
         textViewInstallment.setText(String.valueOf(Integer.parseInt(expenseModel.getInstallments())));
         textViewCard.setText(cardModel.getCardTitle());
         imageViewCreditCard.setColorFilter(CardHelper.getColor(this, cardModel.getCardColor()));
