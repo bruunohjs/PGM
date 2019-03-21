@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
 import com.dev.marcellocamara.pgm.Helper.NumberFormat;
-import com.dev.marcellocamara.pgm.Helper.SpecificCard;
+import com.dev.marcellocamara.pgm.Helper.SpecificExpenseCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.R;
@@ -54,7 +54,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         ExpenseModel expenseModel = expensesList.get(position);
-        CardModel card = SpecificCard.getCard(expenseModel.getCreditCard(), cards);
+        CardModel card = SpecificExpenseCard.getCard(expenseModel.getCreditCard(), cards);
 
         double value = ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
 

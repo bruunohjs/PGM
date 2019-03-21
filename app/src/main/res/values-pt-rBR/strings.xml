@@ -46,11 +46,11 @@
     <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
     <string name="each_installment_price">Preço aproximado de cada parcela:</string>
-    <string name="delete_expense">Deletar Despesa</string>
-    <string name="delete_card">Deletar Cartão</string>
+    <string name="delete_expense">Excluir Despesa</string>
+    <string name="delete_card">Excluir Cartão</string>
     <string name="close">Fechar</string>
     <string name="expense_overview">Despesa</string>
-    <string name="confirm_delete">Você deseja deletar esta despesa e todas as suas outras parcelas ?</string>
+    <string name="confirm_delete">Você deseja excluir esta despesa e todas as suas outras parcelas ?</string>
     <string name="delete_success">Despesa deletada com sucesso.</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>

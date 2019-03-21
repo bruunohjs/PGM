@@ -32,8 +32,7 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
         }
     }
 
-    @Override
-    public void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag) {
+    private boolean OnCheckFields(String title, String numbers, String date){
 
         if (title.isEmpty() || numbers.isEmpty() || date.isEmpty()){
 
@@ -44,6 +43,7 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
             }else {
                 view.OnDateInvalid();
             }
+            return false;
 
         }else if ( (numbers.length() < 4) || (date.length() < 2) ){
 
@@ -52,56 +52,41 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
             }else {
                 view.OnDateInvalid();
             }
+            return false;
 
         }else if ( date.equals("00") || (Integer.parseInt(date) > 31) ){
 
             view.OnDateInvalidValue();
+            return false;
 
         }else {
-            view.ShowProgress();
-            model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+            return true;
         }
 
     }
 
     @Override
+    public void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag) {
+        if (OnCheckFields(title, numbers, date)){
+            view.ShowProgress();
+            model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+        }
+    }
+
+    @Override
     public void OnUpdateCard(CardModel card, String title, String numbers, String date, int cardColor, int cardFlag) {
-
-        if (title.isEmpty() || numbers.isEmpty() || date.isEmpty()){
-
-            if (title.isEmpty()){
-                view.OnTitleEmpty();
-            }else if (numbers.isEmpty()){
-                view.OnFinalNumbersInvalid();
-            }else {
-                view.OnDateInvalid();
-            }
-
-        }else if ( (numbers.length() < 4) || (date.length() < 2) ){
-
-            if (numbers.length() < 4){
-                view.OnFinalNumbersInvalid();
-            }else {
-                view.OnDateInvalid();
-            }
-
-        }else if ( date.equals("00") || (Integer.parseInt(date) > 31) ){
-
-            view.OnDateInvalidValue();
-
-        }else {
+        if (OnCheckFields(title, numbers, date)){
             if (card.getCardTitle().equals(title) &&
-                card.getFinalDigits().equals(numbers) &&
-                card.getBetterDayToBuy().equals(date) &&
-                card.getCardColor() == cardColor &&
-                card.getCardFlag() == cardFlag){
+                    card.getFinalDigits().equals(numbers) &&
+                    card.getBetterDayToBuy().equals(date) &&
+                    card.getCardColor() == cardColor &&
+                    card.getCardFlag() == cardFlag){
                 view.OnUpdateCardFailure();
             }else {
                 view.ShowProgress();
                 model.DoUpdateCard(card.getUniqueId(), title, numbers, date, cardColor, cardFlag);
             }
         }
-
     }
 
     @Override

@@ -17,7 +17,7 @@ import com.dev.marcellocamara.pgm.Adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.Contract.IHome;
 import com.dev.marcellocamara.pgm.Contract.IAdapter;
 import com.dev.marcellocamara.pgm.Helper.NumberFormat;
-import com.dev.marcellocamara.pgm.Helper.SpecificCard;
+import com.dev.marcellocamara.pgm.Helper.SpecificExpenseCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 import com.dev.marcellocamara.pgm.Presenter.HomePresenter;
@@ -135,7 +135,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     public void OnItemClick(int position) {
         startActivity(new Intent(getContext(), ExpenseOverviewActivity.class)
                 .putExtra(parcelable_expense, expensesList.get(position))
-                .putExtra(parcelable_card, SpecificCard.getCard(expensesList.get(position).getCreditCard(), cardsList))
+                .putExtra(parcelable_card, SpecificExpenseCard.getCard(expensesList.get(position).getCreditCard(), cardsList))
         );
     }
 

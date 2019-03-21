@@ -2,10 +2,14 @@ package com.dev.marcellocamara.pgm.Presenter;
 
 import com.dev.marcellocamara.pgm.Contract.ICardOverview;
 import com.dev.marcellocamara.pgm.Contract.ITaskListener;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
+import com.dev.marcellocamara.pgm.Helper.SpecificExpenseCard;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Model.DatabaseModel;
+import com.dev.marcellocamara.pgm.Model.ExpenseModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /***
     marcellocamara@id.uff.br
@@ -17,6 +21,7 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     private ICardOverview.View view;
     private ICardOverview.Model model;
     private ArrayList<CardModel> cardList;
+    private List<ExpenseModel> expenseList;
     private String uniqueId;
 
     public CardOverviewPresenter(ICardOverview.View view) {
@@ -30,29 +35,54 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     }
 
     @Override
-    public void OnRequestCard(String uniqueId) {
-        this.cardList = model.DoRecoverCards();
+    public void OnRequestCardExpenses(String uniqueId, String monthYear) {
         this.uniqueId = uniqueId;
+        this.cardList = model.DoRecoverCards();
+        this.expenseList = model.DoRecoverExpenses(monthYear);
     }
 
     @Override
-    public void OnDestroy() {
-        this.view = null;
+    public void OnTotalCalculate(List<ExpenseModel> list) {
+        String result = "0.00";
+        double total = 0.0;
+
+        if ( !(list.isEmpty()) ){
+            for (ExpenseModel expenseModel : list){
+                total += ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
+            }
+
+            result = NumberFormat.getDecimal(total);
+        }
+
+        view.OnRequestTotalCalculateResult(result);
+    }
+
+
+    private void GetSpecificCardExpenses() {
+        OnTotalCalculate(SpecificExpenseCard.getExpensesList(expenseList, uniqueId));
     }
 
     private void checkCardUpdate() {
-        for (CardModel card : cardList){
-            if (card.getUniqueId().equals(uniqueId)){
-                view.OnRequestCardSuccessful(card);
-            }
-        }
+        view.OnRequestCardSuccessful(SpecificExpenseCard.getCard(uniqueId, cardList));
     }
 
     @Override
     public void OnSuccess() {
         if (view != null){
             checkCardUpdate();
+            GetSpecificCardExpenses();
         }
+    }
+
+    @Override
+    public void OnStop() {
+        model.RemoveCardsEventListener();
+        model.RemoveExpensesEventListener();
+    }
+
+    @Override
+    public void OnDestroy() {
+        this.view = null;
     }
 
     @Override

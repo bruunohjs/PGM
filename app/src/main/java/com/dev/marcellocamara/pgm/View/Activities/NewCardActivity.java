@@ -109,11 +109,11 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         Objects.requireNonNull(getSupportActionBar()).setTitle(new_card);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        textViewCardNumber.setText(card_number + card_number_0);
+
         presenter = new NewCardPresenter(this);
         card = getIntent().getParcelableExtra(parcelable_card);
         presenter.OnCheckCardDataUpdate(card);
-
-        textViewCardNumber.setText(card_number + card_number_0);
 
         builder = new AlertDialog.Builder(this);
         builder.setTitle(builderTitle);

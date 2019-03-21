@@ -11,11 +11,16 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.Contract.ICardOverview;
 import com.dev.marcellocamara.pgm.Helper.CardHelper;
+import com.dev.marcellocamara.pgm.Helper.NumberFormat;
 import com.dev.marcellocamara.pgm.Helper.TooltipHelper;
 import com.dev.marcellocamara.pgm.Model.CardModel;
 import com.dev.marcellocamara.pgm.Presenter.CardOverviewPresenter;
 import com.dev.marcellocamara.pgm.R;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 import butterknife.BindColor;
@@ -29,19 +34,22 @@ import butterknife.OnClick;
             2019
 ***/
 
-public class CardOverviewActivity extends AppCompatActivity implements ICardOverview.View {
+public class CardOverviewActivity extends AppCompatActivity implements ICardOverview.View, OnMonthChangedListener {
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
     @BindView(R.id.textViewTitleCard) protected TextView textViewTitleCard;
     @BindView(R.id.textViewCardNumber) protected TextView textViewCardNumber;
     @BindView(R.id.textViewUserName) protected TextView textViewUserName;
+    @BindView(R.id.textViewPrice) protected TextView textViewPrice;
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
     @BindView(R.id.imageViewSelectedFlag) protected ImageView imageViewSelectedFlag;
     @BindView(R.id.imageViewInfoPoints) protected ImageView imageViewInfoPoints;
     @BindView(R.id.imageViewInfoAnnuityNotification) protected ImageView imageViewInfoAnnuityNotification;
+
+    @BindView(R.id.materialCalendarView) protected MaterialCalendarView materialCalendarView;
 
     @BindView(R.id.btnEditCard) protected Button btnEditCard;
 
@@ -54,7 +62,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     private ICardOverview.Presenter presenter;
     private CardModel card;
-    private String cardId;
+    private String cardId, calendarMonth, calendarYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +78,12 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(card_overview);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Calendar calendar = Calendar.getInstance();
+        calendarMonth = NumberFormat.getMonth( (calendar.get(Calendar.MONTH)) + 1 );
+        calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
+
+        materialCalendarView.setOnMonthChangedListener(this);
     }
 
     @Override
@@ -85,6 +99,19 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         textViewTitleCard.setText(card.getCardTitle());
         String number = (card_number) + (card.getFinalDigits());
         textViewCardNumber.setText(number);
+    }
+
+    @Override
+    public void OnRequestTotalCalculateResult(String value) {
+        textViewPrice.setText(value);
+    }
+
+    @Override
+    public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+        calendarMonth = NumberFormat.getMonth(date.getMonth());
+        calendarYear = String.valueOf(date.getYear());
+        presenter.OnStop();
+        presenter.OnRequestCardExpenses( cardId, calendarMonth + calendarYear );
     }
 
     @OnClick(R.id.imageViewInfoPoints)
@@ -113,7 +140,13 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     protected void onStart() {
         super.onStart();
         presenter.OnRequestUserData();
-        presenter.OnRequestCard(cardId);
+        presenter.OnRequestCardExpenses(cardId, calendarMonth + calendarYear);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.OnStop();
     }
 
     @Override
