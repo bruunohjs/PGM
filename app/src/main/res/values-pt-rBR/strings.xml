@@ -158,6 +158,9 @@
     <string name="update_card">Editar cartão</string>
     <string name="save_changes">Salvar mudanças</string>
     <string name="update_success">Cartão alterado com sucesso.</string>
+    <string name="expenses_for">Despesas para</string>
+    <string name="card_expenses">Despesas do cartão</string>
+    <string name="view_expenses_denied">Não há despesas para o mês selecionado.</string>
 
     <string-array name="installments">
         <item>1x</item>

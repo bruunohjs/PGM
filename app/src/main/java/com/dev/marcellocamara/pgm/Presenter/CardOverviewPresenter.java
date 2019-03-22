@@ -57,13 +57,25 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
         view.OnRequestTotalCalculateResult(result);
     }
 
+    @Override
+    public void OnCheckExpenses(String price) {
+        double value = Double.parseDouble(price.replace(",","."));
+        if (value!=0){
+            view.OnAllowViewExpenses();
+        }else {
+            view.OnDenyViewExpenses();
+        }
+    }
+
 
     private void GetSpecificCardExpenses() {
         OnTotalCalculate(SpecificExpenseCard.getExpensesList(expenseList, uniqueId));
     }
 
     private void checkCardUpdate() {
-        view.OnRequestCardSuccessful(SpecificExpenseCard.getCard(uniqueId, cardList));
+        ArrayList<CardModel> arrayList = new ArrayList<>(1);
+        arrayList.add(SpecificExpenseCard.getCard(uniqueId, cardList));
+        view.OnRequestCardSuccessful(arrayList);
     }
 
     @Override
@@ -87,6 +99,8 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnError(String message) {
-
+        if (view != null){
+            view.OnRequestCardExpensesFailure(message);
+        }
     }
 }

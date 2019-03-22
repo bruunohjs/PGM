@@ -109,6 +109,7 @@
     <string name="new_card_success">Card added successfully.</string>
     <string name="update_success">Card updated successfully.</string>
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
+    <string name="save_changes">Save changes</string>
 
     <!-- Dialogs -->
     <string name="select_card">Select one card</string>
@@ -142,6 +143,9 @@
     <string name="view_expenses">View Expenses</string>
     <string name="negotiation_month">Negotiation month:</string>
     <string name="not_specified">Not specified</string>
+    <string name="view_expenses_denied">There\'s no expenses at selected date.</string>
+    <string name="expenses_for">Expenses for</string>
+    <string name="card_expenses">Card expenses</string>
 
     <!-- AlertDialog Buttons -->
     <string name="yes">Yes</string>
@@ -218,6 +222,5 @@
 
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="save_changes">Save changes</string>
 
 </resources>

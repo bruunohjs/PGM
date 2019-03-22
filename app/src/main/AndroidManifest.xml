@@ -45,6 +45,9 @@
         <activity
             android:name=".View.Activities.CardOverviewActivity"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".View.Activities.CardExpensesActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

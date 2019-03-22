@@ -21,6 +21,8 @@ public interface ICardOverview {
 
         void OnTotalCalculate(List<ExpenseModel> list);
 
+        void OnCheckExpenses(String price);
+
         void OnStop();
 
         void OnDestroy();
@@ -31,9 +33,15 @@ public interface ICardOverview {
 
         void OnRequestUserDataSuccessful(String name);
 
-        void OnRequestCardSuccessful(CardModel card);
+        void OnRequestCardSuccessful(ArrayList<CardModel> card);
 
         void OnRequestTotalCalculateResult(String value);
+
+        void OnAllowViewExpenses();
+
+        void OnDenyViewExpenses();
+
+        void OnRequestCardExpensesFailure(String message);
 
     }
 
