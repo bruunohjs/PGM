@@ -1,6 +1,6 @@
 package com.dev.marcellocamara.pgm;
 
-import com.dev.marcellocamara.pgm.Helper.NumberFormat;
+import com.dev.marcellocamara.pgm.utils.NumberFormat;
 
 import org.junit.Test;
 

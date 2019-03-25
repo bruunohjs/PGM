@@ -111,7 +111,7 @@
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
     <string name="save_changes">Save changes</string>
 
-    <!-- Dialogs -->
+    <!-- dialogs -->
     <string name="select_card">Select one card</string>
     <string name="loading_cards">Loading cards…</string>
 

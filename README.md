@@ -18,7 +18,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 
 ## Sobre
 
-O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter) e o Firebase Realtime Database.
+O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (model ui Presenter) e o Firebase Realtime Database.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">

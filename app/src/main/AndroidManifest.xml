@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,InnerclassSeparator">
         <activity
-            android:name=".View.Activities.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,29 +24,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.Activities.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Activities.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.RecoverPasswordActivity"
+            android:name=".ui.recover_password.RecoverPasswordActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.NewExpenseActivity"
+            android:name=".ui.new_expense.NewExpenseActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.NewCardActivity"
+            android:name=".ui.new_card.NewCardActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.ExpenseOverviewActivity"
+            android:name=".ui.expense_overview.ExpenseOverviewActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.CardOverviewActivity"
+            android:name=".ui.card_overview.CardOverviewActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.Activities.CardExpensesActivity"
+            android:name=".ui.card_expenses.CardExpensesActivity"
             android:configChanges="orientation|screenSize" />
     </application>
 
