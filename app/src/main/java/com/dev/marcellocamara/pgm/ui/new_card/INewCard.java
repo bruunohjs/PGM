@@ -3,6 +3,8 @@ package com.dev.marcellocamara.pgm.ui.new_card;
 import com.dev.marcellocamara.pgm.ui.IProgressLoading;
 import com.dev.marcellocamara.pgm.model.CardModel;
 
+import java.util.ArrayList;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -12,7 +14,7 @@ public interface INewCard {
 
     interface Presenter {
 
-        void OnRequestUserData();
+        void OnRequestUserData(ArrayList<String> cardsNumbers);
 
         void OnCheckCardDataUpdate(CardModel card);
 
@@ -45,6 +47,8 @@ public interface INewCard {
         void OnTitleEmpty();
 
         void OnFinalNumbersInvalid();
+
+        void OnFinalNumbersAlreadyExists();
 
         void OnDateInvalid();
 

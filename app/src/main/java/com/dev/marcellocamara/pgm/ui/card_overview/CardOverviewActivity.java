@@ -56,6 +56,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindString(R.string.card_overview) protected String card_overview;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.parcelable_expense) protected String parcelable_expense;
+    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.view_expenses_denied) protected String view_expenses_denied;
@@ -146,7 +147,9 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @OnClick(R.id.btnEditCard)
     public void OnButtonEditCardClick(){
         startActivity(new Intent(this, NewCardActivity.class)
-                .putExtra(parcelable_card, cardArray.get(0)));
+                .putExtra(parcelable_card, cardArray.get(0))
+                .putStringArrayListExtra(cards_numbers, presenter.GetCardsNumbers())
+        );
     }
 
     @Override

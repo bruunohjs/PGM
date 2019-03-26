@@ -23,6 +23,7 @@ import com.dev.marcellocamara.pgm.R;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import dmax.dialog.SpotsDialog;
@@ -66,6 +67,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.update_card) protected String update_card;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
+    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.card_number_0) protected String card_number_0;
     @BindString(R.string.card_number_1) protected String card_number_1;
@@ -80,6 +82,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.adding_new_card) protected String adding_new_card;
     @BindString(R.string.new_card_success) protected String new_card_success;
     @BindString(R.string.update_success) protected String update_success;
+    @BindString(R.string.card_already_exists) protected String card_already_exists;
     @BindString(R.string.info_digits) protected String info_digits;
     @BindString(R.string.info_best_day) protected String info_best_day;
 
@@ -88,6 +91,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     private INewCard.Presenter presenter;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
+    private ArrayList<String> cardsNumbers;
     private CardModel card;
     private String builderTitle, card_success;
     private int cardColor = 2 /*Purple*/, cardFlag = 2 /*MasterCard*/;
@@ -111,6 +115,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
         presenter = new NewCardPresenter(this);
         card = getIntent().getParcelableExtra(parcelable_card);
+        cardsNumbers = getIntent().getStringArrayListExtra(cards_numbers);
         presenter.OnCheckCardDataUpdate(card);
 
         builder = new AlertDialog.Builder(this);
@@ -270,6 +275,13 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     }
 
     @Override
+    public void OnFinalNumbersAlreadyExists() {
+        builder.setMessage(card_already_exists);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     public void OnDateInvalid() {
         builder.setMessage(date_empty);
         builder.setPositiveButton(close, null);
@@ -328,7 +340,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @Override
     protected void onStart() {
         super.onStart();
-        presenter.OnRequestUserData();
+        presenter.OnRequestUserData(cardsNumbers);
     }
 
     @Override

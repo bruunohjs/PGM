@@ -32,7 +32,7 @@ public interface ICards {
 
         void OnRequestCardsResult(ArrayList<CardModel> list);
 
-        void AllowAddNewCard();
+        void AllowAddNewCard(ArrayList<String> cardsNumbers);
 
         void DenyAddNewCard();
 

@@ -23,6 +23,8 @@ public interface ICardOverview {
 
         void OnCheckExpenses(String price);
 
+        ArrayList<String> GetCardsNumbers();
+
         void OnStop();
 
         void OnDestroy();

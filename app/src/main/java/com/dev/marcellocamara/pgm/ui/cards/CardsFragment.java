@@ -36,6 +36,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
+    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.cards_limit_reached) protected String cards_limit_reached;
 
     private ICards.Presenter cardsPresenter;
@@ -84,8 +85,10 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     }
 
     @Override
-    public void AllowAddNewCard() {
-        startActivity(new Intent(getContext(), NewCardActivity.class));
+    public void AllowAddNewCard(ArrayList<String> cardsNumbers) {
+        startActivity(new Intent(getContext(), NewCardActivity.class)
+                .putStringArrayListExtra(cards_numbers, cardsNumbers)
+        );
     }
 
     @Override

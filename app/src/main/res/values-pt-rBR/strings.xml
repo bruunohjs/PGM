@@ -161,6 +161,8 @@
     <string name="expenses_for">Despesas para</string>
     <string name="card_expenses">Despesas do cartão</string>
     <string name="view_expenses_denied">Não há despesas para o mês selecionado.</string>
+    <string name="card_already_exists">Não é possível adicionar dois cartões de crédito com o mesmos números.</string>
+    <string name="cards_numbers">cards_numbers</string>
 
     <string-array name="installments">
         <item>1x</item>

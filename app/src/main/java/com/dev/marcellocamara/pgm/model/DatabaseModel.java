@@ -367,7 +367,6 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         String month = dateSplit[1];
         String year = dateSplit[2];
 
-        //TODO : Change "betterDayCard" for "invoiceClosingDay" and subtract the running days to pay of current card
         if ( (Integer.parseInt(day)) >= (Integer.parseInt(betterDayCard)) ){
             month = NumberFormat.getMonth((Integer.parseInt(month)) + 1);
             if ( (Integer.parseInt(month)) > 12 ){

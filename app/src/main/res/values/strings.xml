@@ -110,6 +110,7 @@
     <string name="update_success">Card updated successfully.</string>
     <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
     <string name="save_changes">Save changes</string>
+    <string name="card_already_exists">Can\'t add two credit cards with the same final numbers.</string>
 
     <!-- dialogs -->
     <string name="select_card">Select one card</string>
@@ -222,5 +223,6 @@
 
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="cards_numbers">cards_numbers</string>
 
 </resources>

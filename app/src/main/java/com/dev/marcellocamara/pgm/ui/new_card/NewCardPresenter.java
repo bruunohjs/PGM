@@ -4,6 +4,8 @@ import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 
+import java.util.ArrayList;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -13,6 +15,7 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
 
     private INewCard.View view;
     private INewCard.Model model;
+    private ArrayList<String> cardsNumbers;
 
     public NewCardPresenter(INewCard.View view) {
         this.view = view;
@@ -20,8 +23,9 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnRequestUserData() {
+    public void OnRequestUserData(ArrayList<String> cardsNumbers) {
         view.OnRequestUserDataSuccessful(model.GetUserDisplayName());
+        this.cardsNumbers = cardsNumbers;
     }
 
     @Override
@@ -64,11 +68,28 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
 
     }
 
+    private boolean checkExistingCard(String numbers){
+        if (cardsNumbers != null){
+            for (String card : this.cardsNumbers){
+                if (card.equals(numbers)){
+                    return true;
+                }
+            }
+            return false;
+        }else {
+            return false;
+        }
+    }
+
     @Override
     public void OnAddCard(String title, String numbers, String date, int cardColor, int cardFlag) {
         if (OnCheckFields(title, numbers, date)){
-            view.ShowProgress();
-            model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+            if (checkExistingCard(numbers)){
+                view.OnFinalNumbersAlreadyExists();
+            }else {
+                view.ShowProgress();
+                model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+            }
         }
     }
 
@@ -82,8 +103,12 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
                     card.getCardFlag() == cardFlag){
                 view.OnUpdateCardFailure();
             }else {
-                view.ShowProgress();
-                model.DoUpdateCard(card.getUniqueId(), title, numbers, date, cardColor, cardFlag);
+                if (checkExistingCard(numbers)){
+                    view.OnFinalNumbersAlreadyExists();
+                }else {
+                    view.ShowProgress();
+                    model.DoUpdateCard(card.getUniqueId(), title, numbers, date, cardColor, cardFlag);
+                }
             }
         }
     }

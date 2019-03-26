@@ -20,6 +20,7 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     private ICardOverview.View view;
     private ICardOverview.Model model;
     private ArrayList<CardModel> cardList;
+    private CardModel specificCard;
     private List<ExpenseModel> expenseList;
     private String uniqueId;
 
@@ -38,6 +39,17 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
         this.uniqueId = uniqueId;
         this.cardList = model.DoRecoverCards();
         this.expenseList = model.DoRecoverExpenses(monthYear);
+    }
+
+    @Override
+    public ArrayList<String> GetCardsNumbers() {
+        ArrayList<String> cardsNumbers = new ArrayList<>();
+        for (CardModel card : cardList){
+            if (!(card.getFinalDigits().equals(specificCard.getFinalDigits()))){
+                cardsNumbers.add(card.getFinalDigits());
+            }
+        }
+        return cardsNumbers;
     }
 
     @Override
@@ -74,6 +86,7 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     private void checkCardUpdate() {
         ArrayList<CardModel> arrayList = new ArrayList<>(1);
         arrayList.add(SpecificExpenseCard.getCard(uniqueId, cardList));
+        this.specificCard = arrayList.get(0);
         view.OnRequestCardSuccessful(arrayList);
     }
 

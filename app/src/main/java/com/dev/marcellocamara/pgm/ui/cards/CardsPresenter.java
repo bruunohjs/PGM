@@ -31,13 +31,16 @@ public class CardsPresenter implements ICards.Presenter, ITaskListener {
     public void OnRequestCards() {
         view.ShowProgress();
         this.list = model.DoRecoverCards();
-        OnSuccess();
     }
 
     @Override
     public void OnCountMaxCards(ArrayList<CardModel> cards) {
         if (cards.size() < 10){
-            view.AllowAddNewCard();
+            ArrayList<String> cardsNumbers = new ArrayList<>();
+            for (CardModel card : list){
+                cardsNumbers.add(card.getFinalDigits());
+            }
+            view.AllowAddNewCard(cardsNumbers);
         }else {
             view.DenyAddNewCard();
         }
