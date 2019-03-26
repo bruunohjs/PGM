@@ -18,7 +18,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 
 ## Sobre
 
-O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (model ui Presenter) e o Firebase Realtime Database.
+O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter) e o Firebase Realtime Database.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">
@@ -41,7 +41,7 @@ Despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ex
 Menu | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/menu.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/menu.png)
 Cartões | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/cards.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/cards.png)
 Novo cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/new_card.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/new_card.png)
-Cartão | -
+Cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/card_overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/card_overview.png)
 Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/profile.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/profile.png)
 
 ## Ferramentas utilizadas
