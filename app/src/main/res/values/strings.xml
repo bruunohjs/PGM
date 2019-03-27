@@ -148,6 +148,10 @@
     <string name="expenses_for">Expenses for</string>
     <string name="card_expenses">Card expenses</string>
 
+    <!-- Points -->
+    <string name="add">Add</string>
+    <string name="subtract">Subtract</string>
+
     <!-- AlertDialog Buttons -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -188,6 +192,7 @@
     <!-- Tags -->
     <string name="parcelable_expense">expense</string>
     <string name="parcelable_card">card</string>
+    <string name="cards_numbers">cards_numbers</string>
 
     <!-- Colors -->
     <string name="yellow">Yellow</string>
@@ -223,6 +228,5 @@
 
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
-    <string name="cards_numbers">cards_numbers</string>
 
 </resources>

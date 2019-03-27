@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.dev.marcellocamara.pgm.ui.card_expenses.CardExpensesActivity;
 import com.dev.marcellocamara.pgm.ui.new_card.NewCardActivity;
+import com.dev.marcellocamara.pgm.ui.points.PointsActivity;
 import com.dev.marcellocamara.pgm.utils.CardUtils;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
@@ -142,6 +143,11 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @OnClick(R.id.btnExpenses)
     public void OnButtonExpensesClick(){
         presenter.OnCheckExpenses(textViewPrice.getText().toString().trim());
+    }
+
+    @OnClick(R.id.btnEditPoints)
+    public void OnButtonPointsClick(){
+        startActivity(new Intent(this, PointsActivity.class));
     }
 
     @OnClick(R.id.btnEditCard)
