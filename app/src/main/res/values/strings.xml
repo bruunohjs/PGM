@@ -224,6 +224,7 @@
         <item>Green</item>
         <item>Yellow</item>
         <item>Red</item>
+        <item>Blue</item>
     </string-array>
 
     <!-- Characters allowed in Name EditText -->

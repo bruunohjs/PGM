@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App name -->
     <string name="app_name">PGM</string>
 
+    <!-- Login -->
+    <string name="login">Login</string>
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="log_in">Logar</string>
+    <string name="login_in">Logando…</string>
     <string name="sing_up">Não tem uma conta ? Clique aqui e registre-se</string>
     <string name="forgot_password">Esqueceu sua senha ?</string>
-    <string name="login_in">Logando…</string>
-    <string name="login">Login</string>
+
+    <!-- Register -->
+    <string name="register">Registrar</string>
     <string name="name">Nome</string>
     <string name="confirm_password">Confirme a senha</string>
-    <string name="register">Registrar</string>
     <string name="registering">Registrando…</string>
+    <string name="register_success">Registro realizado com sucesso.</string>
+
+    <!-- Recover Password -->
     <string name="recover_password">Recuperar Senha</string>
     <string name="recovering_password">Recuperando senha…</string>
     <string name="recover_message1">Um email foi enviado para\u0020</string>
     <string name="recover_message2">\nCheque seus emails, em alguns minutos, e siga as intruções para alterar sua senha.</string>
-    <string name="logout">Sair</string>
+
+    <!-- Expenses -->
     <string name="new_expense">Nova despesa</string>
     <string name="date">Data:</string>
     <string name="title">Título:</string>
@@ -25,128 +33,109 @@
     <string name="price">Preço:</string>
     <string name="installments">Parcelas:</string>
     <string name="installments_number">Número de parcelas</string>
-    <string name="icon_date">Ícone data</string>
-    <string name="icon_title">Ícone título</string>
-    <string name="icon_description">Ícone descrição</string>
-    <string name="icon_price">Ícone preço</string>
-    <string name="icon_installments">Ícone cartão</string>
+    <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
     <string name="installment">1x</string>
     <string name="view_expense_button_cancel">Cancelar</string>
     <string name="view_expense_button_save">Salvar</string>
     <string name="adding_expense">Adicionando despesa…</string>
     <string name="adding_expense_success">Despesa criada com sucesso.</string>
-    <string name="all_expenses">Despesas para o mês selecionado</string>
+
+    <!-- Icon/Image Description -->
+    <string name="icon_date">Ícone data</string>
+    <string name="icon_title">Ícone título</string>
+    <string name="icon_description">Ícone descrição</string>
+    <string name="icon_price">Ícone preço</string>
+    <string name="icon_installments">Ícone cartão</string>
+    <string name="user_image">Imagem do perfil de usuário</string>
+    <string name="icon_mastercard">Ícone bandeira MasterCard</string>
+    <string name="icon_visa">Ícone bandeira visa</string>
+    <string name="icon_elo">Ícone bandeira Elo</string>
+    <string name="icon_dinnersclub">Ícone bandeira DinnersClub</string>
+    <string name="icon_hipercard">Ícone bandeira Hipercard</string>
+    <string name="icon_american_express">Ícone bandeira American Express</string>
+    <string name="icon_yellow_card">Ícone cartão amarelo</string>
+    <string name="icon_purple_card">Ícone cartão roxo</string>
+    <string name="icon_green_card">Ícone cartão verde</string>
+    <string name="icon_grey_card">Ícone cartão cinza</string>
+    <string name="icon_red_card">Ícone cartão vermelho</string>
+    <string name="icon_blue_card">Ícone cartão azul</string>
+    <string name="chip_image">Imagem do chip</string>
+    <string name="flag_image">Imagem da bandeira</string>
+    <string name="icon_info_date">Ícone de informação da data de compra</string>
+    <string name="icon_info_price">Ícone de informação do preço</string>
+    <string name="icon_info_final_digits">Ícone de informação dos dígitos finais</string>
+    <string name="icon_info_better_day">Ícone de informação da melhor data de pagamento</string>
+    <string name="icon_info_annuity">Ícone de informação de notificação da anuidade</string>
+
+    <!-- Home -->
+    <string name="welcome">Bem-vindo,</string>
     <string name="total">TOTAL</string>
     <string name="coin_type">R$</string>
     <string name="zero">0.00</string>
-    <string name="welcome">Bem-vindo, </string>
+    <string name="all_expenses">Despesas para o mês selecionado</string>
     <string name="expenses_loading">Carregando despesas…</string>
     <string name="fabExpense">Nova despesa</string>
+    <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
+
+    <!-- Card/Cards -->
+    <string name="fabCard">Novo cartão</string>
+    <string name="adding_new_card">Adicionando cartão…</string>
+    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="card_number_0">XXXX</string>
+    <string name="card_number_1">XXX</string>
+    <string name="card_number_2">XX</string>
+    <string name="card_number_3">X</string>
+    <string name="card_title">Título do cartão:</string>
+    <string name="final_numbers">Final número:</string>
+    <string name="best_buy_date">Melhor data de compra:</string>
+    <string name="optional_info">Informações opcionais</string>
+    <string name="card_select">Cartão:</string>
+    <string name="card_flag">Bandeira:</string>
+    <string name="card_color">Cor do cartão:</string>
+    <string name="new_card">Novo cartão</string>
+    <string name="update_card">Editar cartão</string>
+    <string name="select_flag">Selecione uma bandeira</string>
+    <string name="select_card_color">Selecione uma cor</string>
+    <string name="visa">Visa</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="elo">Elo</string>
+    <string name="american_express">American\nExpress</string>
+    <string name="dinners_club">Dinners Club</string>
+    <string name="hipercard">Hipercard</string>
+    <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
+    <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
+    <string name="date_empty">Preencha melhor data (dia) de compra com dois dígitos.\nEx.: 02</string>
+    <string name="date_invalid">Formato inválido para a melhor data (dia) da compra. Preencha o dia no intervalo de 01 à 31.</string>
+    <string name="save_changes">Salvar mudanças</string>
+    <string name="update_success">Cartão alterado com sucesso.</string>
+    <string name="new_card_success">Cartão adicionado com sucesso.</string>
+    <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter 10 cartões de crédito.</string>
+    <string name="card_already_exists">Não é possível adicionar dois cartões de crédito com o mesmos números.</string>
+
+    <!-- dialogs -->
+    <string name="select_card">Selecione um cartão</string>
+    <string name="loading_cards">Carregando cartões…</string>
+
+    <!-- Tooltips -->
+    <string name="info_digits">Os últimos quatro dígitos do seu cartão de crédito irão ajudar a identificar suas despesas.</string>
+    <string name="info_best_day">Dia do fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte.</string>
+    <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês.</string>
+
+    <!-- Overview -->
+    <string name="expense_overview">Despesa</string>
     <string name="deleting_expense">Deletando despesas…</string>
     <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
     <string name="each_installment_price">Preço aproximado de cada parcela:</string>
     <string name="delete_expense">Excluir Despesa</string>
     <string name="delete_card">Excluir Cartão</string>
-    <string name="close">Fechar</string>
-    <string name="expense_overview">Despesa</string>
     <string name="confirm_delete">Você deseja excluir esta despesa e todas as suas outras parcelas ?</string>
     <string name="delete_success">Despesa deletada com sucesso.</string>
-    <string name="yes">Sim</string>
-    <string name="no">Não</string>
-    <string name="navigation_drawer_open">Abrir o menu de navegação</string>
-    <string name="navigation_drawer_close">Fechar o menu de navegação</string>
-    <string name="user_image">Imagem do perfil de usuário</string>
-    <string name="profile_updating">Alterando perfil…</string>
-    <string name="save">Salvar</string>
-    <string name="dot">.</string>
-    <string name="profile_update_success">Perfil alterado com sucesso !</string>
-    <string name="profile_update_failure">Oops! Algo deu errado. Tente novamente !</string>
-    <string name="home">Início</string>
-    <string name="cards">Cartões</string>
-    <string name="profile">Perfil</string>
-    <string name="choose_photo">Escolher foto da</string>
-    <string name="camera">Câmera</string>
-    <string name="gallery">Galeria</string>
-    <string name="empty_email">Preencha com o e-mail.</string>
-    <string name="empty_password">Preencha com a senha.</string>
-    <string name="invalid_email">Digite um e-mail válido.</string>
-    <string name="invalid_password">A senha deve ter no mínimo 6 dígitos.</string>
-    <string name="empty_name">Preencha com seu nome.</string>
-    <string name="match_password">As senhas não conferem.</string>
-    <string name="register_success">Registro realizado com sucesso.</string>
-    <string name="empty_title">Preencha com o título.</string>
-    <string name="empty_description">Preencha com a descrição.</string>
-    <string name="empty_price">Preencha o preço.</string>
-    <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
-    <string name="no_changes">Nenhnuma alteração realizada.</string>
-    <string name="fabCard">Adicionar cartão</string>
-    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
-    <string name="card_number_0">XXXX</string>
-    <string name="card_number_1">XXX</string>
-    <string name="card_number_2">XX</string>
-    <string name="card_number_3">X</string>
-    <string name="final_numbers">Final número:</string>
-    <string name="new_card">Novo cartão</string>
-    <string name="select_flag">Selecione a bandeira</string>
-    <string name="icon_mastercard">Ícone MasterCard</string>
-    <string name="icon_visa">Ícone visa</string>
-    <string name="visa">Visa</string>
-    <string name="mastercard">MasterCard</string>
-    <string name="select_card_color">Selecione uma cor</string>
-    <string name="icon_yellow_card">Ícone cartão amarelo</string>
-    <string name="yellow">Amarelo</string>
-    <string name="icon_purple_card">Ícone cartão roxo</string>
-    <string name="purple">Roxo</string>
-    <string name="icon_green_card">Ícone cartão verde</string>
-    <string name="green">Verde</string>
-    <string name="icon_grey_card">Ícone cartão cinza</string>
-    <string name="grey">Cinza</string>
-    <string name="icon_red_card">Ícone cartão vermelho</string>
-    <string name="icon_blue_card">Ícone cartão azul</string>
-    <string name="blue">Azul</string>
-    <string name="red">Vermelho</string>
-    <string name="card_flag">Bandeira:</string>
-    <string name="card_color">Cor do cartão:</string>
-    <string name="chip_image">Imagem do chip</string>
-    <string name="flag_image">Imagem da bandeira</string>
-    <string name="elo">Elo</string>
-    <string name="icon_elo">Ícone Elo</string>
-    <string name="adding_new_card">Adicionando cartão…</string>
-    <string name="best_buy_date">Melhor data de compra:</string>
-    <string name="optional_info">Informações opcionais</string>
-    <string name="icon_info_date">Ícone de informação da data de compra</string>
-    <string name="icon_info_price">Ícone de informação do preço</string>
-    <string name="icon_info_final_digits">Ícone de informação dos dígitos finais</string>
-    <string name="icon_info_better_day">Ícone de informação da melhor data de pagamento</string>
-    <string name="icon_info_annuity">Ícone de informação de notificação da anuidade</string>
-    <string name="card_title">Título do cartão:</string>
-    <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
-    <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
-    <string name="date_empty">Preencha melhor data (dia) de compra com dois dígitos.\nEx.: 02</string>
-    <string name="date_invalid">Formato inválido para a melhor data (dia) da compra. Preencha o dia no intervalo de 01 à 31.</string>
-    <string name="new_card_success">Cartão adicionado com sucesso.</string>
-    <string name="loading_cards">Carregando cartões…</string>
-    <string name="select_card">Selecione um cartão</string>
-    <string name="card_select">Cartão:</string>
-    <string name="fab_no_card">Não é possível adicionar uma despesa sem ter adicionado um cartão primeiro.</string>
-    <string name="parcelable_expense">expense</string>
-    <string name="parcelable_card">card</string>
-    <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter 10 cartões de crédito.</string>
     <string name="card_overview">Cartão</string>
-    <string name="info_digits">Os últimos quatro dígitos do seu cartão de crédito irão ajudar a identificar suas despesas.</string>
-    <string name="info_best_day">Dia do fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte.</string>
-    <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês.</string>
-    <string name="icon_dinnersclub">Ícone bandeira DinnersClub</string>
-    <string name="dinners_club">Dinners Club</string>
-    <string name="icon_american_express">Ícone bandeira American Express</string>
-    <string name="icon_hipercard">Ícone bandeira Hipercard</string>
-    <string name="hipercard">Hipercard</string>
-    <string name="american_express">American\nExpress</string>
     <string name="zero_int">0</string>
-    <string name="negotiation_notification">Notificação de negociação:</string>
-    <string name="edit_notifications">Editar notificação</string>
     <string name="edit_card">Editar cartão</string>
+    <string name="edit_notifications">Editar notificação</string>
+    <string name="negotiation_notification">Notificação de negociação:</string>
     <string name="not_activated">Não ativada</string>
     <string name="points">Pontos</string>
     <string name="annuity">Anuidade</string>
@@ -155,17 +144,65 @@
     <string name="view_expenses">Ver despesas</string>
     <string name="negotiation_month">Mês de negociação:</string>
     <string name="not_specified">Não informado</string>
-    <string name="update_card">Editar cartão</string>
-    <string name="save_changes">Salvar mudanças</string>
-    <string name="update_success">Cartão alterado com sucesso.</string>
     <string name="expenses_for">Despesas para</string>
     <string name="card_expenses">Despesas do cartão</string>
     <string name="view_expenses_denied">Não há despesas para o mês selecionado.</string>
-    <string name="card_already_exists">Não é possível adicionar dois cartões de crédito com o mesmos números.</string>
-    <string name="cards_numbers">cards_numbers</string>
+
+    <!-- Points -->
     <string name="add">Somar</string>
     <string name="subtract">Subtrair</string>
 
+    <!-- AlertDialog Buttons -->
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="close">Fechar</string>
+
+    <!-- Photo -->
+    <string name="choose_photo">Escolher foto da</string>
+    <string name="camera">Câmera</string>
+    <string name="gallery">Galeria</string>
+
+    <!-- Profile -->
+    <string name="dot">.</string>
+    <string name="save">Salvar</string>
+    <string name="no_changes">Nenhnuma alteração realizada.</string>
+    <string name="profile_updating">Alterando perfil…</string>
+    <string name="profile_update_success">Perfil alterado com sucesso !</string>
+    <string name="profile_update_failure">Oops! Algo deu errado. Tente novamente !</string>
+
+    <!-- Menu -->
+    <string name="logout">Sair</string>
+    <string name="home">Principal</string>
+    <string name="cards">Cartões</string>
+    <string name="profile">Perfil</string>
+    <string name="navigation_drawer_open">Abrir o menu de navegação</string>
+    <string name="navigation_drawer_close">Fechar o menu de navegação</string>
+
+    <!-- Forms -->
+    <string name="empty_email">Preencha com o e-mail.</string>
+    <string name="empty_password">Preencha com a senha.</string>
+    <string name="invalid_email">Digite um e-mail válido.</string>
+    <string name="invalid_password">A senha deve ter no mínimo 6 dígitos.</string>
+    <string name="empty_name">Preencha com seu nome.</string>
+    <string name="match_password">As senhas não conferem.</string>
+    <string name="empty_title">Preencha com o título.</string>
+    <string name="empty_description">Preencha com a descrição.</string>
+    <string name="empty_price">Preencha o preço.</string>
+
+    <!-- Tags -->
+    <string name="parcelable_expense">expense</string>
+    <string name="parcelable_card">card</string>
+    <string name="cards_numbers">cards_numbers</string>
+
+    <!-- Colors -->
+    <string name="yellow">Amarelo</string>
+    <string name="purple">Roxo</string>
+    <string name="blue">Azul</string>
+    <string name="red">Vermelho</string>
+    <string name="grey">Cinza</string>
+    <string name="green">Verde</string>
+
+    <!-- Arrays -->
     <string-array name="installments">
         <item>1x</item>
         <item>2x</item>
@@ -187,6 +224,7 @@
         <item>Verde</item>
         <item>Amarelo</item>
         <item>Vermelho</item>
+        <item>Azul</item>
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
