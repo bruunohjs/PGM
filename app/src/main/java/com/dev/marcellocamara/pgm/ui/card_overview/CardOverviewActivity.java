@@ -58,6 +58,8 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.parcelable_expense) protected String parcelable_expense;
     @BindString(R.string.cards_numbers) protected String cards_numbers;
+    @BindString(R.string.info_points) protected String info_points;
+    @BindString(R.string.info_annuity_notification) protected String info_annuity_notification;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.view_expenses_denied) protected String view_expenses_denied;
@@ -132,12 +134,12 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     @OnClick(R.id.imageViewInfoPoints)
     public void OnInfoBetterDayClick(){
-        Tooltip.show(imageViewInfoPoints, "Points information", colorAccent);
+        Tooltip.show(imageViewInfoPoints, info_points, colorAccent);
     }
 
     @OnClick(R.id.imageViewInfoAnnuityNotification)
     public void OnInfoAnnuityNotificationsClick(){
-        Tooltip.show(imageViewInfoAnnuityNotification, "Annuity notification information", colorAccent);
+        Tooltip.show(imageViewInfoAnnuityNotification, info_annuity_notification, colorAccent);
     }
 
     @OnClick(R.id.btnExpenses)

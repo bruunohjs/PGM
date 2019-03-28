@@ -1,10 +1,10 @@
 PGM
 ===
 
-O objetivo deste trabalho é possibilitar que o usuário acompanhe as despesas de seus cartões de crédito, exibindo suas despesas mensais. 
+O objetivo deste trabalho é possibilitar que o usuário acompanhe as despesas de seus diversos cartões de crédito, exibindo suas despesas mensais. 
 
 Ao registrar a compra de um produto parcelado, o calendário exibe suas parcelas em cada mês que o tiver. Sendo assim, o usuário conta com uma estimativa de seus gastos em meses futuros.
-Caso a fatura do mês já esteja fechada, a despesa adicionada irá entrar automaticamente na fatura do mês seguinte.
+Caso a fatura do mês já esteja fechada, a despesa adicionada irá entrar automaticamente na fatura do mês seguinte da data informada.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/giphy.gif" title="Criando um cartão">

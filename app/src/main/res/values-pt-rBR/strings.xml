@@ -118,8 +118,10 @@
 
     <!-- Tooltips -->
     <string name="info_digits">Os últimos quatro dígitos do seu cartão de crédito irão ajudar a identificar suas despesas.</string>
-    <string name="info_best_day">Dia do fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte.</string>
-    <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês.</string>
+    <string name="info_best_day">Um dia após o fechamento da fatura.\nA partir deste dia, compras realizadas neste cartão irão para a fatura do mês seguinte. Lembre-se de atualizar o dia de melhor compra, do cartão selecionado, todo mês.</string>
+    <string name="info_date">A despesa irá aparecer no mês de fatura em aberto. Caso este mês a fatura já esteja fechada, a despesa irá aparecer no próximo mês. Lembre-se de atualizar o dia de melhor compra, do cartão selecionado, todo mês.</string>
+    <string name="info_points">Soma total dos seus pontos de programas de trocas/milhas obtidos em cada fatura do cartão de crédito.</string>
+    <string name="info_annuity_notification">Notificação para lembrá-lo de solicitar ao seu banco a negociação do preço/parcela da anuidade do cartão de crédito.</string>
 
     <!-- Overview -->
     <string name="expense_overview">Despesa</string>
@@ -165,7 +167,7 @@
     <!-- Profile -->
     <string name="dot">.</string>
     <string name="save">Salvar</string>
-    <string name="no_changes">Nenhnuma alteração realizada.</string>
+    <string name="no_changes">Nenhuma alteração realizada.</string>
     <string name="profile_updating">Alterando perfil…</string>
     <string name="profile_update_success">Perfil alterado com sucesso !</string>
     <string name="profile_update_failure">Oops! Algo deu errado. Tente novamente !</string>
@@ -216,15 +218,6 @@
         <item>10x</item>
         <item>11x</item>
         <item>12x</item>
-    </string-array>
-
-    <string-array name="cardColors">
-        <item>Cinza</item>
-        <item>Roxo</item>
-        <item>Verde</item>
-        <item>Amarelo</item>
-        <item>Vermelho</item>
-        <item>Azul</item>
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>

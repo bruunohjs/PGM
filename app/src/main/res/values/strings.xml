@@ -100,7 +100,7 @@
     <string name="mastercard">MasterCard</string>
     <string name="elo">Elo</string>
     <string name="american_express">American\nExpress</string>
-    <string name="dinners_club">Dinners Club\nInternational</string>
+    <string name="dinners_club">Dinners Club</string>
     <string name="hipercard">Hipercard</string>
     <string name="card_title_empty">Fill card title to help identify your card.</string>
     <string name="card_number_empty">Fill the four final digits of your card to help identify your card.</string>
@@ -120,7 +120,8 @@
     <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
     <string name="info_best_day">The day your invoice is closed.\n From that day, purchases made on the credit card will only come in the following month.</string>
     <string name="info_date">Expense will appear in the open invoice month. If this month invoice is already closed, the expense will appear next month.</string>
-    <string name="negotiation_notification">Negotiation notification:</string>
+    <string name="info_points">Total sum of your exchange/miles program points earned on each credit card bill.</string>
+    <string name="info_annuity_notification">Notification to remind you to ask your bank to negotiate the price/installment of the annuity of your credit card.</string>
 
     <!-- Overview -->
     <string name="expense_overview">Expense overview</string>
@@ -136,6 +137,7 @@
     <string name="zero_int">0</string>
     <string name="edit_notifications">Edit notification</string>
     <string name="edit_card">Edit card</string>
+    <string name="negotiation_notification">Negotiation notification:</string>
     <string name="not_activated">Not activated</string>
     <string name="points">Points</string>
     <string name="annuity">Annuity</string>
@@ -216,15 +218,6 @@
         <item>10x</item>
         <item>11x</item>
         <item>12x</item>
-    </string-array>
-
-    <string-array name="cardColors">
-        <item>Grey</item>
-        <item>Purple</item>
-        <item>Green</item>
-        <item>Yellow</item>
-        <item>Red</item>
-        <item>Blue</item>
     </string-array>
 
     <!-- Characters allowed in Name EditText -->
