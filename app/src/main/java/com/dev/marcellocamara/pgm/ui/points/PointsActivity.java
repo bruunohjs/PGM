@@ -53,7 +53,6 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
     private IPoints.Presenter presenter;
-    private CardModel card;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
 
@@ -65,7 +64,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
 
         ButterKnife.bind(this);
 
-        card = getIntent().getParcelableExtra(parcelable_card);
+        CardModel card = getIntent().getParcelableExtra(parcelable_card);
         textViewPointsTotal.setText(String.format("%.0f", Objects.requireNonNull(card).getPoints()));
 
         presenter = new PointsPresenter(this, card);
@@ -108,6 +107,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @Override
     public void OnUpdatePointsSuccessful(String points) {
         textViewPointsTotal.setText(points);
+        editTextValue.setText("");
         builder.setMessage(points_updated);
         builder.setPositiveButton(close, null);
         builder.show();

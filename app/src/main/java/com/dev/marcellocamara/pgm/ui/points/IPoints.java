@@ -3,7 +3,6 @@ package com.dev.marcellocamara.pgm.ui.points;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.ui.IProgressLoading;
 
-
 /***
     marcellocamara@id.uff.br
             2019
