@@ -1,5 +1,6 @@
 package com.dev.marcellocamara.pgm.ui.card_overview;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
@@ -45,6 +46,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindView(R.id.textViewCardNumber) protected TextView textViewCardNumber;
     @BindView(R.id.textViewUserName) protected TextView textViewUserName;
     @BindView(R.id.textViewPrice) protected TextView textViewPrice;
+    @BindView(R.id.textViewPointsTotal) protected TextView textViewPointsTotal;
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
@@ -97,6 +99,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         textViewUserName.setText(name);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void OnRequestCardSuccessful(ArrayList<CardModel> card) {
         this.cardArray = card;
@@ -105,6 +108,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         textViewTitleCard.setText(card.get(0).getCardTitle());
         String number = (card_number) + (card.get(0).getFinalDigits());
         textViewCardNumber.setText(number);
+        textViewPointsTotal.setText(String.format("%.0f", cardArray.get(0).getPoints()));
     }
 
     @Override
@@ -149,7 +153,9 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     @OnClick(R.id.btnEditPoints)
     public void OnButtonPointsClick(){
-        startActivity(new Intent(this, PointsActivity.class));
+        startActivity(new Intent(this, PointsActivity.class)
+                .putExtra(parcelable_card, cardArray.get(0))
+        );
     }
 
     @OnClick(R.id.btnEditCard)

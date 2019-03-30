@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dev.marcellocamara.pgm.ui.card_expenses.ICardExpenses;
 import com.dev.marcellocamara.pgm.ui.card_overview.ICardOverview;
@@ -12,6 +13,7 @@ import com.dev.marcellocamara.pgm.ui.home.IHome;
 import com.dev.marcellocamara.pgm.ui.login.ILogin;
 import com.dev.marcellocamara.pgm.ui.main.IMain;
 import com.dev.marcellocamara.pgm.ui.expense_overview.IExpenseOverview;
+import com.dev.marcellocamara.pgm.ui.points.IPoints;
 import com.dev.marcellocamara.pgm.ui.profile.IProfile;
 import com.dev.marcellocamara.pgm.ui.recover_password.IRecoverPassword;
 import com.dev.marcellocamara.pgm.ui.register.IRegister;
@@ -42,7 +44,7 @@ import java.util.Objects;
             2019
 ***/
 
-public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model, ICards.Model, ICardOverview.Model, ICardExpenses.Model {
+public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model, ICards.Model, ICardOverview.Model, ICardExpenses.Model, IPoints.Model {
 
     private static boolean isPersistenceEnabled = false;
     private ITaskListener taskListener;
@@ -528,6 +530,31 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 });
 
         return cardsList;
+    }
+
+    @Override
+    public void DoUpdateCardPoints(CardModel card) {
+
+        //TODO : this method can be the same as DoUpdateCard - just need to pass a cardModel param instead of attributes
+
+        final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
+
+        getDatabaseReference()
+                .child("Cards")
+                .child(userID)
+                .child(card.getUniqueId())
+                .setValue(card)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            taskListener.OnSuccess();
+                        }else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
+
     }
 
 }

@@ -32,7 +32,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineLeftParent"
@@ -60,10 +62,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="48dp"
                 app:cardCornerRadius="@dimen/cardview_radius"
                 app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -71,7 +71,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="48dp">
+                    android:layout_marginBottom="44dp">
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guidelineLeftPoints"
@@ -144,8 +144,112 @@
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewEditPoints"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="48dp"
+                app:cardCornerRadius="@dimen/cardview_radius"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewPoints">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="48dp">
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guidelineLeftEditPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guidelineRightEditPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+                    <TextView
+                        android:id="@+id/textViewEditPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/edit_points"
+                        android:textAllCaps="true"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/layoutFinalNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#f1f1f1"
+                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewEditPoints">
+
+                        <TextView
+                            android:id="@+id/textViewValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/value"
+                            android:textAlignment="textStart"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/editTextValue"
+                            android:layout_width="0dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@null"
+                            android:imeOptions="flagNoExtractUi"
+                            android:inputType="number"
+                            android:maxLength="9"
+                            android:gravity="center_vertical|start"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewValue"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textViewValue"
+                            app:layout_constraintTop_toTopOf="@+id/textViewValue"
+                            tools:ignore="Autofill,LabelFor" />
+
+                        <android.support.v4.view.ViewPager
+                            android:layout_width="0dp"
+                            android:layout_height="1.5dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorAccent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextValue" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
             <Button
-                android:id="@+id/btnMinus"
+                android:id="@+id/btnSubtract"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -157,13 +261,13 @@
                 android:singleLine="true"
                 android:text="@string/subtract"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardViewPoints"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineCenterParent"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewPoints" />
+                app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
 
             <Button
-                android:id="@+id/btnPlus"
+                android:id="@+id/btnAdd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -175,10 +279,10 @@
                 android:singleLine="true"
                 android:text="@string/add"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardViewPoints"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
                 app:layout_constraintStart_toStartOf="@+id/guidelineCenterParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewPoints" />
+                app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
 
         </android.support.constraint.ConstraintLayout>
 

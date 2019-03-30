@@ -14,6 +14,7 @@ public class CardModel implements Parcelable {
 
     private String cardTitle, finalDigits, betterDayToBuy, uniqueId;
     private int cardColor, cardFlag;
+    private double points;
 
     public CardModel (){}
 
@@ -32,6 +33,7 @@ public class CardModel implements Parcelable {
         uniqueId = in.readString();
         cardColor = in.readInt();
         cardFlag = in.readInt();
+        points = in.readDouble();
     }
 
     public static final Creator<CardModel> CREATOR = new Creator<CardModel>() {
@@ -96,6 +98,14 @@ public class CardModel implements Parcelable {
         this.cardFlag = cardFlag;
     }
 
+    public double getPoints() {
+        return points;
+    }
+
+    public void setPoints(double points) {
+        this.points = points;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -109,5 +119,7 @@ public class CardModel implements Parcelable {
         dest.writeString(uniqueId);
         dest.writeInt(cardColor);
         dest.writeInt(cardFlag);
+        dest.writeDouble(points);
     }
+
 }

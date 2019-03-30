@@ -153,6 +153,12 @@
     <!-- Points -->
     <string name="add">Somar</string>
     <string name="subtract">Subtrair</string>
+    <string name="value">Valor:</string>
+    <string name="value_invalid">Preencha com um valor válido.</string>
+    <string name="add_failure">O valor adicionado excede o limite de 999.999.999 pontos.</string>
+    <string name="subtract_failure">O valor subtraído não pode ser maior do que o total.</string>
+    <string name="loading_points">Carregando pontos…</string>
+    <string name="points_updated">Pontos atualizados com sucesso.</string>
 
     <!-- AlertDialog Buttons -->
     <string name="yes">Sim</string>
