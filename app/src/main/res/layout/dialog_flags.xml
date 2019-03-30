@@ -28,8 +28,8 @@
 
         <ImageView
             android:id="@+id/imageViewMasterCard"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_mastercard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,11 +61,10 @@
 
         <ImageView
             android:id="@+id/imageViewVisa"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_visa"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/flag_visa"
@@ -95,8 +94,8 @@
 
         <ImageView
             android:id="@+id/imageViewElo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_elo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,8 +127,8 @@
 
         <ImageView
             android:id="@+id/imageViewDinnersClub"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_dinnersclub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,8 +158,8 @@
 
         <ImageView
             android:id="@+id/imageViewHipercard"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_hipercard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -191,8 +190,8 @@
 
         <ImageView
             android:id="@+id/imageViewAmericanExpress"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/icon_american_express"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
