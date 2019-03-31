@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,43 +18,43 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guidelineLeftParent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineLeftParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guidelineCenterParent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineCenterParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guidelineRightParent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineRightParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardViewPoints"
@@ -149,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="48dp"
+                android:layout_marginBottom="56dp"
                 app:cardCornerRadius="@dimen/cardview_radius"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -222,10 +221,10 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:background="@null"
+                            android:gravity="center_vertical|start"
                             android:imeOptions="flagNoExtractUi"
                             android:inputType="number"
                             android:maxLength="9"
-                            android:gravity="center_vertical|start"
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/textViewValue"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -254,8 +253,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="8dp"
-                android:drawableStart="@drawable/ic_subtract"
                 android:background="@drawable/button_background_accent"
+                android:drawableStart="@drawable/ic_subtract"
                 android:paddingStart="@dimen/button_padding"
                 android:paddingEnd="@dimen/button_padding"
                 android:singleLine="true"
@@ -272,8 +271,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
-                android:drawableStart="@drawable/ic_add"
                 android:background="@drawable/button_background_accent"
+                android:drawableStart="@drawable/ic_add"
                 android:paddingStart="@dimen/button_padding"
                 android:paddingEnd="@dimen/button_padding"
                 android:singleLine="true"

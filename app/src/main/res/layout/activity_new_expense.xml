@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,7 +18,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
@@ -27,13 +25,15 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint_Layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <android.support.constraint.Guideline
                 android:id="@+id/guidelineLeftParent"
@@ -71,9 +71,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="56dp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true">
+                    android:layout_marginBottom="56dp">
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guidelineLeftCardView"
@@ -397,8 +395,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/uniformTextViewHeight"
-                                android:text="@string/card_select"
-                                android:gravity="center_vertical|start" />
+                                android:gravity="center_vertical|start"
+                                android:text="@string/card_select" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -411,10 +409,10 @@
                                     android:id="@+id/textViewCard"
                                     android:layout_width="40dp"
                                     android:layout_height="@dimen/uniformTextViewHeight"
+                                    android:gravity="end|center_vertical"
                                     app:autoSizeMaxTextSize="16sp"
                                     app:autoSizeMinTextSize="10sp"
-                                    app:autoSizeTextType="uniform"
-                                    android:gravity="end|center_vertical"/>
+                                    app:autoSizeTextType="uniform" />
 
                                 <ImageView
                                     android:id="@+id/imageViewCard"
@@ -444,13 +442,13 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_clear"
+                android:drawablePadding="8dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
-                android:drawablePadding="8dp"
                 android:singleLine="true"
                 android:text="@string/view_expense_button_cancel"
                 android:textColor="@android:color/white"
@@ -463,13 +461,13 @@
                 android:id="@+id/btnSave"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="8dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
-                android:drawablePadding="8dp"
                 android:singleLine="true"
                 android:text="@string/view_expense_button_save"
                 android:textColor="@android:color/white"

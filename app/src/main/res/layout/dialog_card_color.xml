@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
@@ -27,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:padding="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="72dp"
+            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -53,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/yellow"
                 android:gravity="center_vertical|start"
+                android:text="@string/yellow"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewYellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewYellow"
@@ -90,8 +89,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/purple"
                 android:gravity="center_vertical|start"
+                android:text="@string/purple"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewPurple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewPurple"
@@ -127,8 +126,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/green"
                 android:gravity="center_vertical|start"
+                android:text="@string/green"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewGreen"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewGreen"
@@ -164,8 +163,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/grey"
                 android:gravity="center_vertical|start"
+                android:text="@string/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewGrey"
@@ -201,11 +200,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
+                android:gravity="center_vertical|start"
                 android:text="@string/red"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
-                android:gravity="center_vertical|start"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewRed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewRed"
@@ -241,11 +240,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
+                android:gravity="center_vertical|start"
                 android:text="@string/blue"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
-                android:gravity="center_vertical|start"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewBlue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewBlue"
@@ -253,19 +252,19 @@
 
         </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
-        android:background="@null"
-        android:text="@string/view_expense_button_cancel"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutBlue" />
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:background="@null"
+            android:text="@string/view_expense_button_cancel"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutBlue" />
 
     </android.support.constraint.ConstraintLayout>
 

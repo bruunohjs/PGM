@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,8 +10,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineLeftParent"
@@ -77,8 +76,8 @@
                         android:drawableStart="@drawable/ic_person"
                         android:drawablePadding="4dp"
                         android:hint="@string/name"
-                        android:inputType="textPersonName"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textPersonName"
                         android:maxLength="50"
                         android:textSize="18sp" />
 
@@ -103,10 +102,10 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_email"
                         android:drawablePadding="4dp"
-                        android:hint="@string/email"
                         android:enabled="false"
-                        android:inputType="textEmailAddress"
+                        android:hint="@string/email"
                         android:imeOptions="flagNoExtractUi"
+                        android:inputType="textEmailAddress"
                         android:maxLength="50"
                         android:textSize="18sp" />
 
@@ -116,9 +115,9 @@
                     android:id="@+id/btnPhoto"
                     android:layout_width="64dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:background="@null"
                     android:drawableStart="@drawable/ic_attach"
-                    android:layout_marginTop="8dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +137,7 @@
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardView"/>
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
 
         <Button
             android:id="@+id/btnSave"
@@ -146,16 +145,16 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_accent"
             android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="22dp"
-            android:drawablePadding="8dp"
             android:singleLine="true"
             android:text="@string/save"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@+id/cardView"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     </android.support.constraint.ConstraintLayout>
 

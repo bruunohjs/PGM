@@ -16,16 +16,15 @@
         android:contentDescription="@string/user_image"
         android:src="@drawable/default_user"
         app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="2dp"
-        />
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/textViewUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="4dp"
-        android:textSize="16sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewUserEmail"

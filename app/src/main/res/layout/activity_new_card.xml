@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,21 +18,23 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint_Layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <android.support.constraint.Guideline
                 android:id="@+id/guidelineLeftParent"
@@ -61,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="56dp"
                 app:cardCornerRadius="@dimen/cardview_radius"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,9 +73,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="56dp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true">
+                    android:layout_marginBottom="56dp">
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guidelineLeftCardView"
@@ -462,9 +461,9 @@
                     android:id="@+id/imageViewChip"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
-                    android:contentDescription="@string/chip_image"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/chip_image"
                     app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenterCard"
                     app:layout_constraintStart_toStartOf="@+id/guidelineLeftCard"
                     app:srcCompat="@drawable/chip_gold" />
@@ -473,13 +472,13 @@
                     android:id="@+id/textViewCardNumber"
                     android:layout_width="0dp"
                     android:layout_height="26dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/white"
                     app:autoSizeMaxTextSize="18sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
@@ -496,9 +495,9 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:textAlignment="textStart"
-                    android:textColor="@color/white"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/white"
                     app:autoSizeMaxTextSize="18sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
@@ -511,10 +510,10 @@
                     android:id="@+id/imageViewSelectedFlag"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/flag_image"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/flag_image"
                     app:layout_constraintBottom_toTopOf="@+id/guidelineBottomCard"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineRightCard"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCardNumber"
@@ -526,13 +525,13 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_clear"
+                android:drawablePadding="8dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
-                android:drawablePadding="8dp"
                 android:singleLine="true"
                 android:text="@string/view_expense_button_cancel"
                 android:textColor="@android:color/white"
@@ -545,13 +544,13 @@
                 android:id="@+id/btnSave"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="8dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
-                android:drawablePadding="8dp"
                 android:singleLine="true"
                 android:text="@string/view_expense_button_save"
                 android:textColor="@android:color/white"
@@ -572,9 +571,9 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
                 android:singleLine="true"
-                android:visibility="gone"
                 android:text="@string/save_changes"
                 android:textColor="@android:color/white"
+                android:visibility="gone"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
