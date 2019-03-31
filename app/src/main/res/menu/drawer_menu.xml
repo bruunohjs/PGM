@@ -18,4 +18,13 @@
             android:title="@string/profile" />
     </group>
 
+    <item android:title="@string/about">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_email"
+                android:title="@string/contact" />
+        </menu>
+    </item>
+
 </menu>

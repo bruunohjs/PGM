@@ -178,11 +178,19 @@
     <string name="profile_update_success">Profile updated successful !</string>
     <string name="profile_update_failure">Oops! Something went wrong. Try again !</string>
 
+    <!-- Contact -->
+    <string name="subject">Subject:</string>
+    <string name="your_email">Your e-mail</string>
+    <string name="message">Message</string>
+    <string name="send_message">Send message</string>
+
     <!-- Menu -->
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="cards">Cards</string>
     <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="contact">Contact</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -196,6 +204,8 @@
     <string name="empty_title">Fill with title.</string>
     <string name="empty_description">Fill with description.</string>
     <string name="empty_price">Fill with price.</string>
+    <string name="invalid_subject">Select one subject to send the message.</string>
+    <string name="empty_message">Fill the message field.</string>
 
     <!-- Tags -->
     <string name="parcelable_expense">expense</string>
@@ -224,6 +234,14 @@
         <item>10x</item>
         <item>11x</item>
         <item>12x</item>
+    </string-array>
+
+    <string-array name="subjects">
+        <item>Select</item>
+        <item>Information</item>
+        <item>Problem or error</item>
+        <item>Suggestion</item>
+        <item>Others</item>
     </string-array>
 
     <!-- Characters allowed in Name EditText -->

@@ -178,11 +178,19 @@
     <string name="profile_update_success">Perfil alterado com sucesso !</string>
     <string name="profile_update_failure">Oops! Algo deu errado. Tente novamente !</string>
 
+    <!-- Contact -->
+    <string name="subject">Assunto:</string>
+    <string name="your_email">Seu e-mail</string>
+    <string name="message">Mensagem</string>
+    <string name="send_message">Enviar mensagem</string>
+
     <!-- Menu -->
     <string name="logout">Sair</string>
     <string name="home">Principal</string>
     <string name="cards">Cartões</string>
     <string name="profile">Perfil</string>
+    <string name="about">Sobre</string>
+    <string name="contact">Contato</string>
     <string name="navigation_drawer_open">Abrir o menu de navegação</string>
     <string name="navigation_drawer_close">Fechar o menu de navegação</string>
 
@@ -196,6 +204,8 @@
     <string name="empty_title">Preencha com o título.</string>
     <string name="empty_description">Preencha com a descrição.</string>
     <string name="empty_price">Preencha o preço.</string>
+    <string name="invalid_subject">Selecione um assunto para continuar.</string>
+    <string name="empty_message">Preencha a mensagem.</string>
 
     <!-- Tags -->
     <string name="parcelable_expense">expense</string>
@@ -224,6 +234,14 @@
         <item>10x</item>
         <item>11x</item>
         <item>12x</item>
+    </string-array>
+
+    <string-array name="subjects">
+        <item>Selecione</item>
+        <item>Informação</item>
+        <item>Problema ou erro</item>
+        <item>Sugestão</item>
+        <item>Outros</item>
     </string-array>
 
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>

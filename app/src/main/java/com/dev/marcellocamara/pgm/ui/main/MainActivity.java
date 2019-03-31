@@ -14,10 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.ui.cards.CardsFragment;
+import com.dev.marcellocamara.pgm.ui.contact.ContactActivity;
 import com.dev.marcellocamara.pgm.ui.home.HomeFragment;
 import com.dev.marcellocamara.pgm.ui.login.LoginActivity;
 import com.dev.marcellocamara.pgm.ui.profile.ProfileFragment;
@@ -126,6 +128,10 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.frameLayout, new ProfileFragment()).commit();
+                break;
+            }
+            case R.id.nav_contact : {
+                startActivity(new Intent(this, ContactActivity.class));
                 break;
             }
         }
