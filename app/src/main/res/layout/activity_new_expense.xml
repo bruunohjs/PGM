@@ -95,41 +95,30 @@
                         app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
                     <LinearLayout
-                        android:id="@+id/layoutDate"
+                        android:id="@+id/layoutSelectDate"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="32dp"
-                        android:background="#f1f1f1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <LinearLayout
-                            android:id="@+id/layoutSelectDate"
+                        <TextView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textViewDate"
+                            android:layout_width="90dp"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_margin="8dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/date"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:id="@+id/textViewDate"
-                                android:layout_width="86dp"
-                                android:layout_height="@dimen/uniformTextViewHeight"
-                                android:layout_marginStart="8dp"
-                                android:gravity="center_vertical"
-                                app:autoSizeMaxTextSize="16sp"
-                                app:autoSizeMinTextSize="10sp"
-                                app:autoSizeTextType="uniform" />
-
-                        </LinearLayout>
+                            android:gravity="center_vertical|center_horizontal"
+                            android:textColor="@color/black"
+                            app:autoSizeMaxTextSize="16sp"
+                            app:autoSizeMinTextSize="10sp"
+                            app:autoSizeTextType="uniform" />
 
                         <android.support.v4.view.ViewPager
                             android:layout_width="match_parent"
@@ -145,51 +134,40 @@
                         android:layout_marginStart="16dp"
                         android:contentDescription="@string/icon_info_date"
                         android:src="@drawable/ic_info"
-                        app:layout_constraintBottom_toBottomOf="@+id/layoutDate"
-                        app:layout_constraintStart_toEndOf="@+id/layoutDate"
-                        app:layout_constraintTop_toTopOf="@+id/layoutDate" />
+                        app:layout_constraintBottom_toBottomOf="@+id/layoutSelectDate"
+                        app:layout_constraintStart_toEndOf="@+id/layoutSelectDate"
+                        app:layout_constraintTop_toTopOf="@+id/layoutSelectDate" />
 
                     <LinearLayout
                         android:id="@+id/layoutTitle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:background="#f1f1f1"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/layoutDate">
+                        app:layout_constraintTop_toBottomOf="@+id/layoutSelectDate">
 
-                        <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title"
+                            android:textAlignment="textStart"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/editTextTitle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_margin="8dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/title"
-                                android:textAlignment="textStart"
-                                android:textSize="14sp" />
-
-                            <EditText
-                                android:id="@+id/editTextTitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/uniformTextViewHeight"
-                                android:layout_marginStart="8dp"
-                                android:background="@null"
-                                android:gravity="center_vertical"
-                                android:imeOptions="flagNoExtractUi"
-                                android:inputType="textPersonName"
-                                android:maxLength="30"
-                                android:textSize="16sp"
-                                tools:ignore="Autofill,LabelFor" />
-
-                        </LinearLayout>
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:imeOptions="flagNoExtractUi"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:textSize="16sp"
+                            tools:ignore="Autofill,LabelFor" />
 
                         <android.support.v4.view.ViewPager
                             android:layout_width="match_parent"
@@ -202,43 +180,32 @@
                         android:id="@+id/layoutDescription"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="16dp"
-                        android:background="#f1f1f1"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutTitle">
 
-                        <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:textAlignment="textStart"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/editTextDescription"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_margin="8dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/description"
-                                android:textAlignment="textStart"
-                                android:textSize="14sp" />
-
-                            <EditText
-                                android:id="@+id/editTextDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/uniformTextViewHeight"
-                                android:layout_marginStart="8dp"
-                                android:background="@null"
-                                android:gravity="center_vertical"
-                                android:imeOptions="flagNoExtractUi"
-                                android:inputType="text"
-                                android:maxLength="30"
-                                android:textSize="16sp"
-                                tools:ignore="Autofill,LabelFor" />
-
-                        </LinearLayout>
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:imeOptions="flagNoExtractUi"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:textSize="16sp"
+                            tools:ignore="Autofill,LabelFor" />
 
                         <android.support.v4.view.ViewPager
                             android:layout_width="match_parent"
@@ -251,42 +218,40 @@
                         android:id="@+id/layoutPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
-                        android:background="#f1f1f1"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutDescription">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
+                            android:gravity="center"
+                            android:text="@string/price"
+                            android:textSize="14sp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_margin="8dp"
+                            android:layout_marginBottom="2dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/uniformTextViewHeight"
-                                android:gravity="center"
-                                android:text="@string/price"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
                                 android:text="@string/coin_type"
                                 android:textAlignment="textStart"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                             <EditText
                                 android:id="@+id/editTextPrice"
-                                android:layout_width="81dp"
+                                android:layout_width="86dp"
                                 android:layout_height="@dimen/uniformTextViewHeight"
-                                android:layout_marginStart="4dp"
+                                android:layout_marginStart="2dp"
                                 android:background="@null"
                                 android:gravity="center_vertical"
                                 android:imeOptions="flagNoExtractUi"
@@ -319,10 +284,9 @@
                         android:id="@+id/layoutInstallment"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="#f1f1f1"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineCenterCardView"
@@ -333,10 +297,8 @@
                             android:id="@+id/layoutSelectInstallment"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="6dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -355,8 +317,9 @@
                                 android:layout_height="@dimen/uniformTextViewHeight"
                                 android:layout_marginStart="4dp"
                                 android:background="@null"
-                                android:gravity="center"
+                                android:gravity="center_vertical|center_horizontal"
                                 android:text="@string/installment"
+                                android:textColor="@color/black"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -372,9 +335,8 @@
                         android:id="@+id/layoutCard"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="#f1f1f1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="@+id/layoutInstallment"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
@@ -385,10 +347,8 @@
                             android:id="@+id/layoutSelectCard"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/uniformTextViewHeight"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="6dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -396,7 +356,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/uniformTextViewHeight"
                                 android:gravity="center_vertical|start"
-                                android:text="@string/card_select" />
+                                android:text="@string/card_select"
+                                android:textSize="14sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -410,6 +371,7 @@
                                     android:layout_width="40dp"
                                     android:layout_height="@dimen/uniformTextViewHeight"
                                     android:gravity="end|center_vertical"
+                                    android:textColor="@color/black"
                                     app:autoSizeMaxTextSize="16sp"
                                     app:autoSizeMinTextSize="10sp"
                                     app:autoSizeTextType="uniform" />

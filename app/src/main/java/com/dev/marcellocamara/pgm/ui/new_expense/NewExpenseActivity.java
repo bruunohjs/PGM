@@ -175,6 +175,9 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @OnClick(R.id.btnSave)
     public void OnSaveClick(){
+        editTextTitle.clearFocus();
+        editTextDescription.clearFocus();
+        editTextPrice.clearFocus();
         expensePresenter.OnAddExpense(
                 textViewDate.getText().toString().trim(),
                 editTextTitle.getText().toString().trim(),
