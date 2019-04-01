@@ -107,7 +107,10 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
                     view.OnFinalNumbersAlreadyExists();
                 }else {
                     view.ShowProgress();
-                    model.DoUpdateCard(card.getUniqueId(), title, numbers, date, cardColor, cardFlag);
+                    CardModel newCard = new CardModel(title, numbers, date, cardColor, cardFlag);
+                    newCard.setPoints(card.getPoints());
+                    newCard.setUniqueId(card.getUniqueId());
+                    model.DoUpdateCard(newCard);
                 }
             }
         }

@@ -36,7 +36,7 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
             }else {
                 view.ShowProgress();
                 card.setPoints(result);
-                model.DoUpdateCardPoints(card);
+                model.DoUpdateCard(card);
             }
         }
     }
@@ -52,7 +52,7 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
             }else {
                 card.setPoints(result);
                 view.ShowProgress();
-                model.DoUpdateCardPoints(card);
+                model.DoUpdateCard(card);
             }
         }
     }

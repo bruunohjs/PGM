@@ -68,7 +68,7 @@ public interface INewCard {
 
         void DoAddCard(String title, String numbers, String date, int cardColor, int cardFlag);
 
-        void DoUpdateCard(String uniqueId, String title, String numbers, String date, int cardColor, int cardFlag);
+        void DoUpdateCard(CardModel card);
 
     }
 

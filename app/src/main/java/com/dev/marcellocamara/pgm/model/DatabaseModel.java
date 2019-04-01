@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.dev.marcellocamara.pgm.ui.card_expenses.ICardExpenses;
 import com.dev.marcellocamara.pgm.ui.card_overview.ICardOverview;
@@ -62,18 +61,18 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     //Singleton FirebaseAuth
-    private FirebaseAuth getFirebaseAuthInstance(){
-        if (firebaseAuth == null){
+    private FirebaseAuth getFirebaseAuthInstance() {
+        if (firebaseAuth == null) {
             firebaseAuth = FirebaseAuth.getInstance();
         }
         return firebaseAuth;
     }
 
     //Singleton FirebaseDatabase
-    private FirebaseDatabase getFirebaseDatabaseInstance(){
-        if (firebaseDatabase == null){
+    private FirebaseDatabase getFirebaseDatabaseInstance() {
+        if (firebaseDatabase == null) {
             firebaseDatabase = FirebaseDatabase.getInstance();
-            if (!isPersistenceEnabled){
+            if (!isPersistenceEnabled) {
                 firebaseDatabase.setPersistenceEnabled(true);
                 isPersistenceEnabled = true;
             }
@@ -82,8 +81,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     //Singleton DatabaseReference
-    private DatabaseReference getDatabaseReference(){
-        if (databaseReference == null){
+    private DatabaseReference getDatabaseReference() {
+        if (databaseReference == null) {
             databaseReference = getFirebaseDatabaseInstance().getReference();
             databaseReference.keepSynced(true);
         }
@@ -91,8 +90,8 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     //Singleton StorageReference
-    private StorageReference getStorageReference(){
-        if (storageReference == null){
+    private StorageReference getStorageReference() {
+        if (storageReference == null) {
             storageReference = FirebaseStorage.getInstance().getReference();
         }
         return storageReference;
@@ -103,17 +102,17 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         getFirebaseAuthInstance()
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    taskListener.OnSuccess();
-                }else {
-                    if (task.getException() != null){
-                        taskListener.OnError(task.getException().getMessage());
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            taskListener.OnSuccess();
+                        } else {
+                            if (task.getException() != null) {
+                                taskListener.OnError(task.getException().getMessage());
+                            }
+                        }
                     }
-                }
-            }
-        });
+                });
     }
 
     @Override
@@ -122,61 +121,47 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         getFirebaseAuthInstance()
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    getDatabaseReference()
-                            .child("Users")
-                            .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                            .setValue(user)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
-                                getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            taskListener.OnSuccess();
-                                        }else {
-                                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            getDatabaseReference()
+                                    .child("Users")
+                                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                                    .setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
+                                                getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            taskListener.OnSuccess();
+                                                        } else {
+                                                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                if (task.getException() != null) {
+                                                    taskListener.OnError(task.getException().getMessage());
+                                                }
+                                            }
                                         }
-                                    }
-                                });
-                            }else{
-                                if (task.getException() != null){
-                                    taskListener.OnError(task.getException().getMessage());
-                                }
+                                    });
+                        } else {
+                            if (task.getException() != null) {
+                                taskListener.OnError(task.getException().getMessage());
                             }
                         }
-                    });
-                }else {
-                    if (task.getException() != null){
-                        taskListener.OnError(task.getException().getMessage());
                     }
-                }
-            }
-        });
+                });
     }
 
     @Override
     public boolean CheckLoggedIn() {
         return getFirebaseAuthInstance().getCurrentUser() != null;
-    }
-
-    @Override
-    public void DoRecoverPassword(String email) {
-        getFirebaseAuthInstance().sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    taskListener.OnSuccess();
-                }else {
-                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                }
-            }
-        });
     }
 
     @Override
@@ -188,6 +173,45 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     @Override
     public String GetUserDisplayName() {
         return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getDisplayName();
+    }
+
+    @Override
+    public String GetUserEmail() {
+        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getEmail();
+    }
+
+    @Override
+    public Uri GetUserPhotoUri() {
+        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getPhotoUrl();
+    }
+
+    @Override
+    public void DoUpdateUserName(final String name) {
+        UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
+        Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    getDatabaseReference()
+                            .child("Users")
+                            .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                            .child("name")
+                            .setValue(name)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        taskListener.OnSuccess();
+                                    } else {
+                                        taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                                    }
+                                }
+                            });
+                } else {
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                }
+            }
+        });
     }
 
     @Override
@@ -203,74 +227,38 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 .push()
                 .setValue(card)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    taskListener.OnSuccess();
-                }else {
-                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                }
-            }
-        });
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            taskListener.OnSuccess();
+                        } else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
     }
 
     @Override
-    public void DoUpdateCard(String uniqueId, String title, String numbers, String date, int cardColor, int cardFlag) {
-
-        CardModel card = new CardModel(title, numbers, date, cardColor, cardFlag);
+    public void DoUpdateCard(CardModel card) {
 
         final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
         getDatabaseReference()
                 .child("Cards")
                 .child(userID)
-                .child(uniqueId)
+                .child(card.getUniqueId())
                 .setValue(card)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             taskListener.OnSuccess();
-                        }else {
+                        } else {
                             taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                         }
                     }
                 });
 
-    }
-
-    @Override
-    public Uri GetUserPhotoUri() {
-        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getPhotoUrl();
-    }
-
-    @Override
-    public void DoUpdateUserName(final String name) {
-        UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
-        Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    getDatabaseReference()
-                            .child("Users")
-                            .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                            .child("name")
-                            .setValue(name)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                taskListener.OnSuccess();
-                            }else {
-                                taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                            }
-                        }
-                    });
-                }else {
-                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                }
-            }
-        });
     }
 
     @Override
@@ -291,67 +279,23 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setPhotoUri(task.getResult()).build();
                     getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 taskListener.OnError("response");
-                            }else {
+                            } else {
                                 taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                             }
                         }
                     });
-                }else {
+                } else {
                     taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                 }
             }
         });
-    }
-
-    @Override
-    public String GetUserEmail() {
-        return Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getEmail();
-    }
-
-    @Override
-    public List<ExpenseModel> DoRecoverExpenses(String monthYear) {
-
-        expensesValueEventListener = getDatabaseReference()
-                .child("Expenses")
-                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                .child(monthYear)
-                .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                expensesList.clear();
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
-                    //Retrieves UniqueKey from each item of month
-                    Objects.requireNonNull(expenseModel).setUniqueId(data.getKey());
-                    expensesList.add(expenseModel);
-                }
-                taskListener.OnSuccess();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                taskListener.OnError(databaseError.getMessage());
-            }
-        });
-
-        return expensesList;
-    }
-
-    @Override
-    public void RemoveExpensesEventListener() {
-        getDatabaseReference().removeEventListener(this.expensesValueEventListener);
-    }
-
-    @Override
-    public void RemoveCardsEventListener() {
-        getDatabaseReference().removeEventListener(this.cardsValueEventListener);
     }
 
     @Override
@@ -370,11 +314,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         String month = dateSplit[1];
         String year = dateSplit[2];
 
-        if ( (Integer.parseInt(day)) >= (Integer.parseInt(betterDayCard)) ){
+        if ((Integer.parseInt(day)) >= (Integer.parseInt(betterDayCard))) {
             month = NumberFormat.getMonth((Integer.parseInt(month)) + 1);
-            if ( (Integer.parseInt(month)) > 12 ){
+            if ((Integer.parseInt(month)) > 12) {
                 month = NumberFormat.getMonth(1);
-                year = String.valueOf( (Integer.parseInt(year)) + 1 );
+                year = String.valueOf((Integer.parseInt(year)) + 1);
             }
             expense.setClosedInvoice(true);
         }
@@ -388,15 +332,15 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
     }
 
-    private void DoAddExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year, final ExpenseModel expense){
+    private void DoAddExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year, final ExpenseModel expense) {
 
         final String monthAux;
         final String yearAux;
 
-        if ( (Integer.parseInt(month)) > 12 ){
+        if ((Integer.parseInt(month)) > 12) {
             monthAux = NumberFormat.getMonth(1);
-            yearAux = String.valueOf( (Integer.parseInt(year)) + 1 );
-        }else {
+            yearAux = String.valueOf((Integer.parseInt(year)) + 1);
+        } else {
             monthAux = month;
             yearAux = year;
         }
@@ -410,7 +354,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         expenseAux.setCreditCard(expense.getCreditCard());
         expenseAux.setClosedInvoice(expense.getClosedInvoice());
 
-        expenseAux.setCurrentInstallment( (NumberFormat.getMonth(n)) + "/" + expense.getInstallments());
+        expenseAux.setCurrentInstallment((NumberFormat.getMonth(n)) + "/" + expense.getInstallments());
 
         getDatabaseReference()
                 .child("Expenses")
@@ -421,21 +365,21 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            if (n.equals(countStop)){
+                        if (task.isSuccessful()) {
+                            if (n.equals(countStop)) {
                                 taskListener.OnSuccess();
-                            }else {
+                            } else {
                                 DoAddExpenseRecursion(
-                                        (n+1),
+                                        (n + 1),
                                         countStop,
                                         userId,
                                         uniqueId,
-                                        (NumberFormat.getMonth( (Integer.parseInt(monthAux)) + 1)),
+                                        (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
                                         yearAux,
                                         expense
                                 );
                             }
-                        }else {
+                        } else {
                             taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
                         }
                     }
@@ -449,11 +393,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         String month = dateSplit[1];
         String year = dateSplit[2];
 
-        if (expense.getClosedInvoice()){
-            month = NumberFormat.getMonth( (Integer.parseInt(month) + 1) );
-            if ( (Integer.parseInt(month)) > 12 ) {
+        if (expense.getClosedInvoice()) {
+            month = NumberFormat.getMonth((Integer.parseInt(month) + 1));
+            if ((Integer.parseInt(month)) > 12) {
                 month = NumberFormat.getMonth(1);
-                year = String.valueOf( (Integer.parseInt(year)) + 1 );
+                year = String.valueOf((Integer.parseInt(year)) + 1);
             }
         }
 
@@ -506,6 +450,20 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
+    public void DoRecoverPassword(String email) {
+        getFirebaseAuthInstance().sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    taskListener.OnSuccess();
+                } else {
+                    taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                }
+            }
+        });
+    }
+
+    @Override
     public ArrayList<CardModel> DoRecoverCards() {
 
         cardsValueEventListener = getDatabaseReference()
@@ -534,28 +492,42 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoUpdateCardPoints(CardModel card) {
+    public List<ExpenseModel> DoRecoverExpenses(String monthYear) {
 
-        //TODO : this method can be the same as DoUpdateCard - just need to pass a cardModel param instead of attributes
-
-        final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
-
-        getDatabaseReference()
-                .child("Cards")
-                .child(userID)
-                .child(card.getUniqueId())
-                .setValue(card)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        expensesValueEventListener = getDatabaseReference()
+                .child("Expenses")
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                .child(monthYear)
+                .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            taskListener.OnSuccess();
-                        }else {
-                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        expensesList.clear();
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            ExpenseModel expenseModel = data.getValue(ExpenseModel.class);
+                            //Retrieves UniqueKey from each item of month
+                            Objects.requireNonNull(expenseModel).setUniqueId(data.getKey());
+                            expensesList.add(expenseModel);
                         }
+                        taskListener.OnSuccess();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        taskListener.OnError(databaseError.getMessage());
                     }
                 });
 
+        return expensesList;
+    }
+
+    @Override
+    public void RemoveExpensesEventListener() {
+        getDatabaseReference().removeEventListener(this.expensesValueEventListener);
+    }
+
+    @Override
+    public void RemoveCardsEventListener() {
+        getDatabaseReference().removeEventListener(this.cardsValueEventListener);
     }
 
 }

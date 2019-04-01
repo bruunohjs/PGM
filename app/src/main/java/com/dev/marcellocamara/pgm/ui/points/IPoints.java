@@ -36,7 +36,7 @@ public interface IPoints {
 
     interface Model {
 
-        void DoUpdateCardPoints(CardModel card);
+        void DoUpdateCard(CardModel card);
 
     }
 
