@@ -183,6 +183,9 @@
     <string name="your_email">Seu e-mail</string>
     <string name="message">Mensagem</string>
     <string name="send_message">Enviar mensagem</string>
+    <string name="email_to">cellopcamara@gmail.com</string>
+    <string name="email_client">Selecione seu cliente de e-mail</string>
+    <string name="sent_email_message">Sua mensagem foi enviada pelo seu cliente de e-mail ? Dizendo SIM, esta tela será fechada e retornará ao aplicativo.</string>
 
     <!-- Menu -->
     <string name="logout">Sair</string>

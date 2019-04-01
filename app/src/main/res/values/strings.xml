@@ -183,6 +183,9 @@
     <string name="your_email">Your e-mail</string>
     <string name="message">Message</string>
     <string name="send_message">Send message</string>
+    <string name="email_to">cellopcamara@gmail.com</string>
+    <string name="email_client">Choose an email client</string>
+    <string name="sent_email_message">Your message was sent by your email client ? Saying YES, this screen will close and it will return to the application.</string>
 
     <!-- Menu -->
     <string name="logout">Logout</string>

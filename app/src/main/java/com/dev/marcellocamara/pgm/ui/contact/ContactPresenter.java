@@ -20,17 +20,17 @@ public class ContactPresenter implements IContact.Presenter, ITaskListener {
 
     @Override
     public void OnRequestUserData() {
-        view.OnRequestUserDataSuccessful(model.GetUserDisplayName(),model.GetUserEmail());
+        view.OnRequestUserDataSuccessful(model.GetUserDisplayName());
     }
 
     @Override
-    public void OnSendMessage(String name, String email, String defaultSubject, String subject, String message) {
+    public void OnSendMessage(String defaultSubject, String subject, String message) {
         if (defaultSubject.equals(subject)){
             view.OnInvalidSubject();
         }else if (message.isEmpty()){
             view.OnEmptyMessage();
         }else {
-            view.DoSendMessage();
+            view.DoSendMessage(subject, message);
         }
     }
 

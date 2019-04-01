@@ -1,5 +1,7 @@
 package com.dev.marcellocamara.pgm.ui.contact;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.dev.marcellocamara.pgm.R;
+
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import java.util.Objects;
 
@@ -28,13 +32,17 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
 
-    @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
     @BindView(R.id.editTextMessage) protected TextInputEditText editTextMessage;
 
     @BindView(R.id.spinnerSubject) protected Spinner spinner;
 
     @BindString(R.string.contact) protected String contact;
     @BindString(R.string.close) protected String close;
+    @BindString(R.string.email_client) protected String email_client;
+    @BindString(R.string.email_to) protected String email_to;
+    @BindString(R.string.yes) protected String yes;
+    @BindString(R.string.no) protected String no;
+    @BindString(R.string.sent_email_message) protected String sent_email_message;
 
     private IContact.Presenter presenter;
     private String defaultSubject, subject, userName;
@@ -76,18 +84,16 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
     @OnClick(R.id.btnSendMessage)
     public void OnButtonSendMessageClick(){
         presenter.OnSendMessage(
-                userName,
-                editTextEmail.getText().toString(),
                 defaultSubject,
                 subject,
                 editTextMessage.getText().toString().trim()
         );
+        UIUtil.hideKeyboard(this);
     }
 
     @Override
-    public void OnRequestUserDataSuccessful(String name, String email) {
+    public void OnRequestUserDataSuccessful(String name) {
         userName = name;
-        editTextEmail.setText(email);
     }
 
     @Override
@@ -105,8 +111,14 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
     }
 
     @Override
-    public void DoSendMessage() {
-        //TODO : Send email allowed
+    public void DoSendMessage(String subject, String text) {
+        String[] recipient = {email_to};
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, email_client));
     }
 
     @Override
@@ -116,6 +128,20 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) { }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        builder.setMessage(sent_email_message);
+        builder.setPositiveButton(yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton(no, null);
+        builder.show();
+    }
 
     @Override
     protected void onStart() {

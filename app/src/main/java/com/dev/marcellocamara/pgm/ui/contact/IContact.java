@@ -11,7 +11,7 @@ public interface IContact {
 
         void OnRequestUserData();
 
-        void OnSendMessage(String name, String email, String defaultSubject, String subject, String message);
+        void OnSendMessage(String defaultSubject, String subject, String message);
 
         void OnDestroy();
 
@@ -19,21 +19,19 @@ public interface IContact {
 
     interface View {
 
-        void OnRequestUserDataSuccessful(String name, String email);
+        void OnRequestUserDataSuccessful(String name);
 
         void OnInvalidSubject();
 
         void OnEmptyMessage();
 
-        void DoSendMessage();
+        void DoSendMessage(String subject, String text);
 
     }
 
     interface Model {
 
         String GetUserDisplayName();
-
-        String GetUserEmail();
 
     }
 
