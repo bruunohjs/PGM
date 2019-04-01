@@ -85,9 +85,9 @@
     <string name="card_number_1">XXX</string>
     <string name="card_number_2">XX</string>
     <string name="card_number_3">X</string>
-    <string name="card_title">Título do cartão:</string>
-    <string name="final_numbers">Final número:</string>
-    <string name="best_buy_date">Melhor data de compra:</string>
+    <string name="card_title">Título do cartão</string>
+    <string name="final_numbers">Final número</string>
+    <string name="best_buy_date">Melhor data de compra</string>
     <string name="optional_info">Informações opcionais</string>
     <string name="card_select">Cartão:</string>
     <string name="card_flag">Bandeira:</string>

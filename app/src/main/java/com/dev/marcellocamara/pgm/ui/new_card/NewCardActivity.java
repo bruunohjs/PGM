@@ -50,7 +50,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.editTextCardTitle) protected EditText editTextCardTitle;
     @BindView(R.id.editTextFinalNumber) protected EditText editTextFinalNumber;
-    @BindView(R.id.editTextPaymentDate) protected EditText editTextPaymentDate;
+    @BindView(R.id.editTextBestBuyDate) protected EditText editTextBestBuyDate;
 
     @BindView(R.id.imageViewCardColor) protected ImageView imageViewCardColor;
     @BindView(R.id.imageViewCardFlag) protected ImageView imageViewCardFlag;
@@ -145,11 +145,11 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @OnClick(R.id.btnSave)
     public void OnButtonSaveClick(){
         editTextFinalNumber.clearFocus();
-        editTextPaymentDate.clearFocus();
+        editTextBestBuyDate.clearFocus();
         presenter.OnAddCard(
                 editTextCardTitle.getText().toString().trim(),
                 editTextFinalNumber.getText().toString().trim(),
-                editTextPaymentDate.getText().toString().trim(),
+                editTextBestBuyDate.getText().toString().trim(),
                 cardColor,
                 cardFlag
         );
@@ -159,12 +159,12 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @OnClick(R.id.btnEdit)
     public void OnButtonEditClick(){
         editTextFinalNumber.clearFocus();
-        editTextPaymentDate.clearFocus();
+        editTextBestBuyDate.clearFocus();
         presenter.OnUpdateCard(
                 card,
                 editTextCardTitle.getText().toString().trim(),
                 editTextFinalNumber.getText().toString().trim(),
-                editTextPaymentDate.getText().toString().trim(),
+                editTextBestBuyDate.getText().toString().trim(),
                 cardColor,
                 cardFlag
         );
@@ -222,7 +222,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         card_success = update_success;
         editTextCardTitle.setText(card.getCardTitle());
         editTextFinalNumber.setText(card.getFinalDigits());
-        editTextPaymentDate.setText(card.getBetterDayToBuy());
+        editTextBestBuyDate.setText(card.getBetterDayToBuy());
         getSelectedColor(card.getCardColor());
         getFlag(card.getCardFlag());
         btnCancel.setVisibility(View.GONE);

@@ -96,215 +96,174 @@
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
-                    <android.support.constraint.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/layoutCardTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="110dp"
                         android:layout_marginEnd="8dp"
-                        android:background="#f1f1f1"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/textViewTitle"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/textViewCardTitle"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
+                            android:gravity="start"
                             android:text="@string/card_title"
-                            android:textAlignment="textStart"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="14sp" />
 
                         <EditText
                             android:id="@+id/editTextCardTitle"
-                            android:layout_width="0dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:background="@null"
                             android:imeOptions="flagNoExtractUi"
                             android:inputType="text"
                             android:maxLength="30"
-                            android:singleLine="true"
-                            android:textAlignment="textStart"
                             android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textViewTitle"
-                            app:layout_constraintTop_toTopOf="@+id/textViewTitle"
                             tools:ignore="Autofill,LabelFor" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/colorAccent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextCardTitle" />
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorAccent" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
-                    <android.support.constraint.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/layoutFinalNumber"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:background="#f1f1f1"
+                        android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutCardTitle">
 
                         <TextView
-                            android:id="@+id/textViewFinalDigits"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/TextViewFinalNumber"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
+                            android:gravity="start"
                             android:text="@string/final_numbers"
-                            android:textAlignment="textStart"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="14sp" />
 
                         <EditText
                             android:id="@+id/editTextFinalNumber"
-                            android:layout_width="48dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:background="@null"
                             android:imeOptions="flagNoExtractUi"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:textAlignment="textStart"
                             android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/textViewFinalDigits"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textViewFinalDigits"
-                            app:layout_constraintTop_toTopOf="@+id/textViewFinalDigits"
                             tools:ignore="Autofill,LabelFor" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/colorAccent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextFinalNumber" />
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorAccent" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageViewInfoFinalDigits"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:contentDescription="@string/icon_info_final_digits"
                         android:src="@drawable/ic_info"
                         app:layout_constraintBottom_toBottomOf="@+id/layoutFinalNumber"
                         app:layout_constraintStart_toEndOf="@+id/layoutFinalNumber"
                         app:layout_constraintTop_toTopOf="@+id/layoutFinalNumber" />
 
-                    <android.support.constraint.ConstraintLayout
-                        android:id="@+id/layoutBetterDay"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/layoutBestBuyDate"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:background="#f1f1f1"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutFinalNumber">
 
                         <TextView
-                            android:id="@+id/textViewBetterDay"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/textViewBestBuyDate"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
+                            android:gravity="start"
                             android:text="@string/best_buy_date"
-                            android:textAlignment="textStart"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="14sp" />
 
                         <EditText
-                            android:id="@+id/editTextPaymentDate"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:id="@+id/editTextBestBuyDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:background="@null"
                             android:imeOptions="flagNoExtractUi"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:textAlignment="textStart"
                             android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/textViewBetterDay"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textViewBetterDay"
-                            app:layout_constraintTop_toTopOf="@+id/textViewBetterDay"
                             tools:ignore="Autofill,LabelFor,TextFields" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/colorAccent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextPaymentDate" />
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorAccent" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageViewInfoBetterDay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:contentDescription="@string/icon_info_better_day"
                         android:src="@drawable/ic_info"
-                        app:layout_constraintBottom_toBottomOf="@+id/layoutBetterDay"
-                        app:layout_constraintStart_toEndOf="@+id/layoutBetterDay"
-                        app:layout_constraintTop_toTopOf="@+id/layoutBetterDay" />
+                        app:layout_constraintBottom_toBottomOf="@+id/layoutBestBuyDate"
+                        app:layout_constraintStart_toEndOf="@+id/layoutBestBuyDate"
+                        app:layout_constraintTop_toTopOf="@+id/layoutBestBuyDate" />
 
                     <TextView
                         android:id="@+id/textViewOptionalInfo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/optional_info"
                         android:textAlignment="center"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintHorizontal_bias="0.503"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/layoutBetterDay" />
+                        app:layout_constraintTop_toBottomOf="@+id/layoutBestBuyDate" />
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/layoutCardColor"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:background="#f1f1f1"
-                        app:layout_constraintEnd_toStartOf="@+id/layoutFlag"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/guidelineCenterCardView"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/textViewOptionalInfo">
 
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:text="@string/card_color"
                             android:textAlignment="textStart"
@@ -314,7 +273,7 @@
 
                         <ImageView
                             android:id="@+id/imageViewCardColor"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
@@ -341,21 +300,21 @@
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/layoutFlag"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
-                        android:background="#f1f1f1"
+                        android:layout_marginEnd="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/layoutCardColor"
+                        app:layout_constraintStart_toStartOf="@+id/guidelineCenterCardView"
                         app:layout_constraintTop_toBottomOf="@+id/textViewOptionalInfo">
 
                         <TextView
                             android:id="@+id/textViewCardFlag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:text="@string/card_flag"
                             android:textAlignment="textStart"
@@ -365,7 +324,7 @@
 
                         <ImageView
                             android:id="@+id/imageViewCardFlag"
-                            android:layout_width="40dp"
+                            android:layout_width="0dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
@@ -388,6 +347,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/imageViewCardFlag" />
 
                     </android.support.constraint.ConstraintLayout>
+
 
                 </android.support.constraint.ConstraintLayout>
 
