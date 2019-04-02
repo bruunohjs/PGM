@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -138,12 +139,12 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     @OnClick(R.id.imageViewInfoPoints)
     public void OnInfoBetterDayClick(){
-        Tooltip.show(imageViewInfoPoints, info_points, colorAccent);
+        Tooltip.show(imageViewInfoPoints, Gravity.TOP, info_points, colorAccent);
     }
 
     @OnClick(R.id.imageViewInfoAnnuityNotification)
     public void OnInfoAnnuityNotificationsClick(){
-        Tooltip.show(imageViewInfoAnnuityNotification, info_annuity_notification, colorAccent);
+        Tooltip.show(imageViewInfoAnnuityNotification, Gravity.TOP, info_annuity_notification, colorAccent);
     }
 
     @OnClick(R.id.btnExpenses)

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -101,7 +102,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
 
     @OnClick(R.id.imageViewInfoPoints)
     public void OnInfoPointsClick(){
-        Tooltip.show(imageViewInfoPoints, info_points, colorAccent);
+        Tooltip.show(imageViewInfoPoints, Gravity.TOP, info_points, colorAccent);
     }
 
     @Override

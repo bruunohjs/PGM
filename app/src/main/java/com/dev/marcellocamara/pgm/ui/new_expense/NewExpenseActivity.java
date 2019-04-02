@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -165,12 +166,12 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @OnClick(R.id.imageViewInfoDate)
     public void OnInfoDateClick(){
-        Tooltip.show(imageViewInfoDate, info_date, colorAccent);
+        Tooltip.show(imageViewInfoDate, Gravity.BOTTOM, info_date, colorAccent);
     }
 
     @OnClick(R.id.imageViewInfoPrice)
     public void OnInfoPriceClick(){
-        Tooltip.show(imageViewInfoPrice, max_price, colorAccent);
+        Tooltip.show(imageViewInfoPrice, Gravity.TOP, max_price, colorAccent);
     }
 
     @OnClick(R.id.btnSave)

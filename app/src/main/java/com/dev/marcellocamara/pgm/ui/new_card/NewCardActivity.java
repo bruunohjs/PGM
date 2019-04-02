@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -178,12 +179,12 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @OnClick(R.id.imageViewInfoFinalDigits)
     public void OnInfoFinalDigitsClick(){
-        Tooltip.show(imageViewInfoFinalDigits, info_digits, colorAccent);
+        Tooltip.show(imageViewInfoFinalDigits, Gravity.TOP, info_digits, colorAccent);
     }
 
     @OnClick(R.id.imageViewInfoBetterDay)
     public void OnInfoBetterDayClick(){
-        Tooltip.show(imageViewInfoBetterDay, info_best_day, colorAccent);
+        Tooltip.show(imageViewInfoBetterDay, Gravity.TOP, info_best_day, colorAccent);
     }
 
     @Override
