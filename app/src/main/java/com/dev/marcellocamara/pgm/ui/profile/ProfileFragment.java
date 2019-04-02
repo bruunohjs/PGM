@@ -1,8 +1,10 @@
 package com.dev.marcellocamara.pgm.ui.profile;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,12 +17,11 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
-import com.dev.marcellocamara.pgm.ui.dialogs.IDialog;
-import com.dev.marcellocamara.pgm.ui.dialogs.PhotoDialog;
 import com.dev.marcellocamara.pgm.R;
 
 import com.bumptech.glide.Glide;
 
+import com.dev.marcellocamara.pgm.utils.Permissions;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -40,7 +41,7 @@ import butterknife.BindString;
             2019
 ***/
 
-public class ProfileFragment extends Fragment implements IProfile.View, IDialog.Photo {
+public class ProfileFragment extends Fragment implements IProfile.View {
 
     @BindView(R.id.circularImageViewProfile) protected CircularImageView circularImageViewProfile;
 
@@ -57,7 +58,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
     @BindString(R.string.profile_updating) protected String updating_profile;
     @BindString(R.string.profile_update_success) protected String update_success;
 
-    private IProfile.Presenter profilePresenter;
+    private IProfile.Presenter presenter;
     private CircularImageView navHeaderImageView;
     private TextView navHeaderUserName;
     private AlertDialog.Builder builder;
@@ -74,7 +75,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
 
         unbinder = ButterKnife.bind(this, view);
 
-        profilePresenter = new ProfilePresenter(this);
+        presenter = new ProfilePresenter(this);
 
         NavigationView navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
@@ -99,7 +100,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
     public void OnButtonClick(){
         layoutName.clearFocus();
         layoutName.setErrorEnabled(false);
-        profilePresenter.OnUpdateUserName(
+        presenter.OnUpdateUserName(
                 editTextName.getText().toString().trim(),
                 navHeaderUserName.getText().toString().trim()
         );
@@ -109,7 +110,7 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
     @OnClick(R.id.btnPhoto)
     public void OnButtonPhotoClick(){
         layoutName.clearFocus();
-        profilePresenter.OnCheckPermissions(getActivity());
+        presenter.OnCheckPermissions(getActivity());
         UIUtil.hideKeyboard(Objects.requireNonNull(getActivity()));
     }
 
@@ -148,22 +149,28 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
 
     @Override
     public void OnCheckPermissionsSuccessful() {
-        PhotoDialog dialog = new PhotoDialog();
-        dialog.show(Objects.requireNonNull(getFragmentManager()), "ChangePhoto");
-        dialog.setTargetFragment(ProfileFragment.this, 0);
+        startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT)
+                .setType("image/*"), Permissions.GALLERY_REQUEST
+        );
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Permissions.GALLERY_REQUEST) {
+                Uri selectedImage = data.getData();
+                ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
+                String format = dot + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(Objects.requireNonNull(selectedImage)));
+                presenter.OnCheckUri(selectedImage, format);
+            }
+        }
     }
 
     @Override
     public void OnBlankField() {
         layoutName.setError(empty_name);
         layoutName.setErrorEnabled(true);
-    }
-
-    @Override
-    public void getUri(Uri uri) {
-        ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
-        String format = dot + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri));
-        profilePresenter.OnCheckUri(uri, format);
     }
 
     @Override
@@ -185,13 +192,14 @@ public class ProfileFragment extends Fragment implements IProfile.View, IDialog.
     @Override
     public void onStart() {
         super.onStart();
-        profilePresenter.OnRequestUserData();
+        presenter.OnRequestUserData();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        profilePresenter.OnDestroy();
+        presenter.OnDestroy();
         unbinder.unbind();
     }
+
 }

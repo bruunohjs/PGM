@@ -18,11 +18,10 @@ import java.util.List;
 public class Permissions {
 
     public static final String[] PHOTO_PERMISSIONS = {
-            Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-    public static final int CAMERA_REQUEST = 5, GALLERY_REQUEST = 10;
+    public static final int GALLERY_REQUEST = 10;
 
     public static boolean verify(Activity activity, String[] strings, int requestCode){
         if(Build.VERSION.SDK_INT >= 23){

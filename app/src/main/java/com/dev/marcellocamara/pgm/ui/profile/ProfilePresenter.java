@@ -48,6 +48,7 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
             view.OnCheckPermissionsSuccessful();
         }
     }
+
     @Override
     public void OnCheckUri(Uri uri, String format) {
         view.ShowProgress();
@@ -82,4 +83,5 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
             }
         }
     }
+
 }
