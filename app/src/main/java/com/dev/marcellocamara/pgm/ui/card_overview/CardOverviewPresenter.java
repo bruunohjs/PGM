@@ -54,24 +54,14 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnTotalCalculate(List<ExpenseModel> list) {
-        String result = "0.00";
-        double total = 0.0;
-
-        if ( !(list.isEmpty()) ){
-            for (ExpenseModel expenseModel : list){
-                total += ( (expenseModel.getPrice()) / (Double.parseDouble(expenseModel.getInstallments())) );
-            }
-
-            result = NumberFormat.getDecimal(total);
-        }
-
+        String result = NumberFormat.getTotalExpenses(list);
         view.OnRequestTotalCalculateResult(result);
     }
 
     @Override
     public void OnCheckExpenses(String price) {
         double value = Double.parseDouble(price.replace(",","."));
-        if (value!=0){
+        if (value != 0){
             view.OnAllowViewExpenses();
         }else {
             view.OnDenyViewExpenses();
@@ -115,4 +105,5 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
             view.OnRequestCardExpensesFailure(message);
         }
     }
+
 }

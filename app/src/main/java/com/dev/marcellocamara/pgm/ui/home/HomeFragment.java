@@ -55,11 +55,10 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     @BindString(R.string.expenses_loading) protected String loading_expenses;
     @BindString(R.string.parcelable_expense) protected String parcelable_expense;
     @BindString(R.string.parcelable_card) protected String parcelable_card;
-    @BindString(R.string.zero) protected String zero;
     @BindString(R.string.fab_no_card) protected String fab_no_card;
     @BindString(R.string.close) protected String close;
 
-    private IHome.Presenter homePresenter;
+    private IHome.Presenter presenter;
     private List<ExpenseModel> expensesList;
     private ArrayList<CardModel> cardsList;
     private String calendarMonth, calendarYear;
@@ -76,7 +75,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
         unbinder = ButterKnife.bind(this, view);
 
-        homePresenter = new HomePresenter(this);
+        presenter = new HomePresenter(this);
 
         Calendar calendar = Calendar.getInstance();
         calendarMonth = NumberFormat.getMonth( (calendar.get(Calendar.MONTH)) + 1 );
@@ -100,7 +99,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @OnClick(R.id.mutativeFAB)
     public void OnFloatingActionButtonClick(){
-        homePresenter.OnCheckUserCards(cardsList);
+        presenter.OnCheckUserCards(cardsList);
     }
 
     @Override
@@ -138,8 +137,8 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
         calendarMonth = NumberFormat.getMonth(date.getMonth());
         calendarYear = String.valueOf(date.getYear());
-        homePresenter.OnStop();
-        homePresenter.OnRequestExpenses( calendarMonth + calendarYear );
+        presenter.OnStop();
+        presenter.OnRequestExpenses( calendarMonth + calendarYear );
     }
 
     @Override
@@ -148,7 +147,7 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
         this.cardsList = cardsList;
         ExpensesAdapter adapter = new ExpensesAdapter(getContext(), this.expensesList, this.cardsList, this);
         recyclerView.setAdapter(adapter);
-        homePresenter.OnTotalCalculate(this.expensesList, zero);
+        presenter.OnTotalCalculate(this.expensesList);
     }
 
     @Override
@@ -169,19 +168,20 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
     @Override
     public void onStart() {
         super.onStart();
-        homePresenter.OnRequestExpenses(calendarMonth + calendarYear);
+        presenter.OnRequestExpenses(calendarMonth + calendarYear);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        homePresenter.OnStop();
+        presenter.OnStop();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        homePresenter.OnDestroy();
+        presenter.OnDestroy();
         unbinder.unbind();
     }
+
 }

@@ -15,6 +15,8 @@ public interface ICardExpenses {
 
         void OnRequestExpenses(String monthYear, String cardUniqueId);
 
+        void OnTotalCalculate(List<ExpenseModel> list);
+
         void OnStop();
 
         void OnDestroy();
@@ -26,6 +28,8 @@ public interface ICardExpenses {
         void OnRequestExpensesResult(List<ExpenseModel> expensesList);
 
         void OnRequestExpensesFailure(String message);
+
+        void OnRequestTotalCalculateResult(String value);
 
     }
 

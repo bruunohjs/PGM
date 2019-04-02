@@ -36,6 +36,7 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
 
     @BindView(R.id.recyclerView) protected RecyclerView recyclerView;
 
+    @BindView(R.id.textViewPrice) protected TextView textViewPrice;
     @BindView(R.id.textViewExpenses) protected TextView textViewExpenses;
 
     @BindString(R.string.parcelable_card) protected String parcelable_card;
@@ -79,6 +80,7 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
         this.expensesList = expensesList;
         ExpensesAdapter adapter = new ExpensesAdapter(this, this.expensesList, this.cardArray, this);
         recyclerView.setAdapter(adapter);
+        presenter.OnTotalCalculate(this.expensesList);
     }
 
     @Override
@@ -97,6 +99,11 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
         builder.setMessage(message);
         builder.setPositiveButton(close, null);
         builder.show();
+    }
+
+    @Override
+    public void OnRequestTotalCalculateResult(String value) {
+        textViewPrice.setText(value);
     }
 
     @Override

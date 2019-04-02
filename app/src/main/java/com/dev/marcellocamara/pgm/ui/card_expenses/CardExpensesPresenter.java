@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.ui.card_expenses;
 
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
+import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.SpecificExpenseCard;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
@@ -28,6 +29,12 @@ public class CardExpensesPresenter implements ICardExpenses.Presenter, ITaskList
     public void OnRequestExpenses(String monthYear, String cardUniqueId) {
         this.cardUniqueId = cardUniqueId;
         this.list = model.DoRecoverExpenses(monthYear);
+    }
+
+    @Override
+    public void OnTotalCalculate(List<ExpenseModel> list) {
+        String result = NumberFormat.getTotalExpenses(list);
+        view.OnRequestTotalCalculateResult(result);
     }
 
     @Override

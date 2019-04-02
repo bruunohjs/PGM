@@ -18,7 +18,7 @@ public interface IHome {
 
         void OnRequestExpenses(String monthYear);
 
-        void OnTotalCalculate(List<ExpenseModel> list, String sum);
+        void OnTotalCalculate(List<ExpenseModel> list);
 
         void OnCheckUserCards(ArrayList<CardModel> cards);
 

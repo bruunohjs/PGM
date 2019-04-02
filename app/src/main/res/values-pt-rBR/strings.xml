@@ -71,7 +71,6 @@
     <string name="welcome">Bem-vindo,</string>
     <string name="total">TOTAL</string>
     <string name="coin_type">R$</string>
-    <string name="zero">0.00</string>
     <string name="all_expenses">Despesas para o mês selecionado</string>
     <string name="expenses_loading">Carregando despesas…</string>
     <string name="fabExpense">Nova despesa</string>
