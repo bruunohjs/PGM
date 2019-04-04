@@ -29,8 +29,8 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
     @Override
     public void OnRequestExpenses(String monthYear) {
         view.ShowProgress();
-        this.expensesList = model.DoRecoverExpenses(monthYear);
         this.cardsList = model.DoRecoverCards();
+        this.expensesList = model.DoRecoverExpenses(monthYear);
     }
 
     @Override
