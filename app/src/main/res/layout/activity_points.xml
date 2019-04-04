@@ -107,8 +107,8 @@
                         android:layout_marginTop="16dp"
                         android:gravity="start|center_vertical"
                         android:text="@string/total"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
                         app:layout_constraintTop_toBottomOf="@+id/textViewPoints" />
@@ -121,7 +121,7 @@
                         android:layout_marginEnd="8dp"
                         android:gravity="end|center_vertical"
                         android:text="@string/zero_int"
-                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         app:autoSizeMaxTextSize="16sp"
                         app:autoSizeMinTextSize="12sp"
                         app:autoSizeTextType="uniform"
