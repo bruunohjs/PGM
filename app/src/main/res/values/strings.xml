@@ -148,6 +148,7 @@
     <string name="view_expenses_denied">There\'s no expenses at selected date.</string>
     <string name="expenses_for">Expenses for</string>
     <string name="card_expenses">Card expenses</string>
+    <string name="confirm_delete_card">Are you sure to delete this card and all his expenses ?</string>
 
     <!-- Points -->
     <string name="add">Add</string>

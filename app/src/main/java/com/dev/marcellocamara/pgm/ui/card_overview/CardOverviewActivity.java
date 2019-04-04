@@ -1,9 +1,10 @@
 package com.dev.marcellocamara.pgm.ui.card_overview;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -33,6 +34,7 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 
 /***
     marcellocamara@id.uff.br
@@ -63,6 +65,9 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.info_points) protected String info_points;
     @BindString(R.string.info_annuity_notification) protected String info_annuity_notification;
+    @BindString(R.string.confirm_delete_card) protected String confirm_delete_card;
+    @BindString(R.string.yes) protected String yes;
+    @BindString(R.string.no) protected String no;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.view_expenses_denied) protected String view_expenses_denied;
@@ -72,6 +77,8 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     private ICardOverview.Presenter presenter;
     private ArrayList<CardModel> cardArray;
     private String cardId, calendarMonth, calendarYear;
+    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +96,21 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Calendar calendar = Calendar.getInstance();
-        calendarMonth = NumberFormat.getMonth( (calendar.get(Calendar.MONTH)) + 1 );
-        calendarYear = String.valueOf( calendar.get(Calendar.YEAR) );
+        calendarMonth = NumberFormat.getMonth((calendar.get(Calendar.MONTH)) + 1);
+        calendarYear = String.valueOf(calendar.get(Calendar.YEAR));
 
         materialCalendarView.setOnMonthChangedListener(this);
+
+        alertDialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setTheme(R.style.CustomAlertDialog)
+                .setMessage("Deleting card...")
+                .setCancelable(false)
+                .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(card_overview);
+        builder.setCancelable(false);
     }
 
     @Override
@@ -104,8 +122,8 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @Override
     public void OnRequestCardSuccessful(ArrayList<CardModel> card) {
         this.cardArray = card;
-        layoutCard.setBackground( CardUtils.getBackground(this, card.get(0).getCardColor() ) );
-        imageViewSelectedFlag.setImageDrawable( CardUtils.getFlag(this, card.get(0).getCardFlag()) );
+        layoutCard.setBackground(CardUtils.getBackground(this, card.get(0).getCardColor()));
+        imageViewSelectedFlag.setImageDrawable(CardUtils.getFlag(this, card.get(0).getCardFlag()));
         textViewTitleCard.setText(card.get(0).getCardTitle());
         String number = (card_number) + (card.get(0).getFinalDigits());
         textViewCardNumber.setText(number);
@@ -120,7 +138,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @Override
     public void OnAllowViewExpenses() {
         startActivity(new Intent(this, CardExpensesActivity.class)
-                .putExtra(parcelable_expense, calendarMonth+calendarYear)
+                .putExtra(parcelable_expense, calendarMonth + calendarYear)
                 .putParcelableArrayListExtra(parcelable_card, cardArray));
     }
 
@@ -134,47 +152,75 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         calendarMonth = NumberFormat.getMonth(date.getMonth());
         calendarYear = String.valueOf(date.getYear());
         presenter.OnStop();
-        presenter.OnRequestCardExpenses( cardId, calendarMonth + calendarYear );
+        presenter.OnRequestCardExpenses(cardId, calendarMonth + calendarYear);
     }
 
     @OnClick(R.id.imageViewInfoPoints)
-    public void OnInfoBetterDayClick(){
+    public void OnInfoBetterDayClick() {
         Tooltip.show(imageViewInfoPoints, Gravity.TOP, info_points, colorAccent);
     }
 
     @OnClick(R.id.imageViewInfoAnnuityNotification)
-    public void OnInfoAnnuityNotificationsClick(){
+    public void OnInfoAnnuityNotificationsClick() {
         Tooltip.show(imageViewInfoAnnuityNotification, Gravity.TOP, info_annuity_notification, colorAccent);
     }
 
     @OnClick(R.id.btnExpenses)
-    public void OnButtonExpensesClick(){
+    public void OnButtonExpensesClick() {
         presenter.OnCheckExpenses(textViewPrice.getText().toString().trim());
     }
 
     @OnClick(R.id.btnEditPoints)
-    public void OnButtonPointsClick(){
+    public void OnButtonPointsClick() {
         startActivity(new Intent(this, PointsActivity.class)
                 .putExtra(parcelable_card, cardArray.get(0))
         );
     }
 
     @OnClick(R.id.btnEditCard)
-    public void OnButtonEditCardClick(){
+    public void OnButtonEditCardClick() {
         startActivity(new Intent(this, NewCardActivity.class)
                 .putExtra(parcelable_card, cardArray.get(0))
                 .putStringArrayListExtra(cards_numbers, presenter.GetCardsNumbers())
         );
     }
 
+    @OnClick(R.id.btnDeleteCard)
+    public void OnButtonDeleteCardClick() {
+        builder.setMessage(confirm_delete_card);
+        builder.setPositiveButton(yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.OnRequestDeleteCard();
+            }
+        });
+        builder.setNegativeButton(no, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnRequestDeleteCardSuccessful() {
+        finish();
+    }
+
     @Override
     public void OnRequestCardExpensesFailure(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(this);
         builder.setTitle(card_overview);
         builder.setCancelable(false);
         builder.setMessage(message);
         builder.setPositiveButton(close, null);
         builder.show();
+    }
+
+    @Override
+    public void ShowProgress() {
+        alertDialog.show();
+    }
+
+    @Override
+    public void HideProgress() {
+        alertDialog.dismiss();
     }
 
     @Override
@@ -201,4 +247,5 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         super.onDestroy();
         presenter.OnDestroy();
     }
+
 }

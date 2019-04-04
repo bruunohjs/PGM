@@ -30,7 +30,7 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     }
 
     @Override
-    public void OnRequestUserData(){
+    public void OnRequestUserData() {
         view.OnRequestUserDataSuccessful(model.GetUserDisplayName());
     }
 
@@ -44,8 +44,8 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     @Override
     public ArrayList<String> GetCardsNumbers() {
         ArrayList<String> cardsNumbers = new ArrayList<>();
-        for (CardModel card : cardList){
-            if (!(card.getFinalDigits().equals(specificCard.getFinalDigits()))){
+        for (CardModel card : cardList) {
+            if (!(card.getFinalDigits().equals(specificCard.getFinalDigits()))) {
                 cardsNumbers.add(card.getFinalDigits());
             }
         }
@@ -60,10 +60,10 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnCheckExpenses(String price) {
-        double value = Double.parseDouble(price.replace(",","."));
-        if (value != 0){
+        double value = Double.parseDouble(price.replace(",", "."));
+        if (value != 0) {
             view.OnAllowViewExpenses();
-        }else {
+        } else {
             view.OnDenyViewExpenses();
         }
     }
@@ -77,14 +77,23 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
         ArrayList<CardModel> arrayList = new ArrayList<>(1);
         arrayList.add(SpecificExpenseCard.getCard(uniqueId, cardList));
         this.specificCard = arrayList.get(0);
-        view.OnRequestCardSuccessful(arrayList);
+        if (specificCard != null){
+            view.OnRequestCardSuccessful(arrayList);
+        }
+    }
+
+    @Override
+    public void OnRequestDeleteCard() {
+        view.ShowProgress();
+        model.DoDeleteCard(uniqueId);
     }
 
     @Override
     public void OnSuccess() {
-        if (view != null){
+        if (view != null) {
             checkCardUpdate();
             GetSpecificCardExpenses();
+            view.HideProgress();
         }
     }
 
@@ -101,8 +110,13 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnError(String message) {
-        if (view != null){
-            view.OnRequestCardExpensesFailure(message);
+        if (view != null) {
+            view.HideProgress();
+            if (message.equals("response")){
+                view.OnRequestDeleteCardSuccessful();
+            }else {
+                view.OnRequestCardExpensesFailure(message);
+            }
         }
     }
 

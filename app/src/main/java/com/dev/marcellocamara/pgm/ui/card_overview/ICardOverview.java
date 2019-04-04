@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.ui.card_overview;
 
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
+import com.dev.marcellocamara.pgm.ui.IProgressLoading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +26,15 @@ public interface ICardOverview {
 
         ArrayList<String> GetCardsNumbers();
 
+        void OnRequestDeleteCard();
+
         void OnStop();
 
         void OnDestroy();
 
     }
 
-    interface View {
+    interface View extends IProgressLoading {
 
         void OnRequestUserDataSuccessful(String name);
 
@@ -42,6 +45,8 @@ public interface ICardOverview {
         void OnAllowViewExpenses();
 
         void OnDenyViewExpenses();
+
+        void OnRequestDeleteCardSuccessful();
 
         void OnRequestCardExpensesFailure(String message);
 
@@ -54,6 +59,8 @@ public interface ICardOverview {
         ArrayList<CardModel> DoRecoverCards();
 
         List<ExpenseModel> DoRecoverExpenses(String monthYear);
+
+        void DoDeleteCard(String uniqueId);
 
         void RemoveCardsEventListener();
 

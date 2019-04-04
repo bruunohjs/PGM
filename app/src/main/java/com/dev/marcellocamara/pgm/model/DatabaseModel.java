@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dev.marcellocamara.pgm.ui.card_expenses.ICardExpenses;
 import com.dev.marcellocamara.pgm.ui.card_overview.ICardOverview;
@@ -236,6 +237,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                         }
                     }
                 });
+
     }
 
     @Override
@@ -447,6 +449,84 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                         }
                     }
                 });
+    }
+
+    @Override
+    public void DoDeleteCard(final String uniqueId) {
+
+        //Searches for all card uniqueId expenses
+        getDatabaseReference()
+                .child("Expenses")
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        List<String> dates = new ArrayList<>();
+                        List<String> keys = new ArrayList<>();
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            for (DataSnapshot dataAux : data.getChildren()){
+                                ExpenseModel expenseModel = dataAux.getValue(ExpenseModel.class);
+                                if (Objects.requireNonNull(expenseModel).getCreditCard().equals(uniqueId)){
+                                    dates.add(data.getKey());
+                                    keys.add(dataAux.getKey());
+                                }
+                            }
+                        }
+                        DoSafeDeleteExpenses(dates, keys, uniqueId);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        taskListener.OnError(databaseError.getMessage());
+                    }
+                });
+
+    }
+
+    private void DoSafeDeleteExpenses(List<String> dates, List<String> keys, String cardUniqueId){
+
+        if (dates.size() != keys.size()){
+
+            Log.d("DELETE-EXPENSE", "DoSafeDeleteExpenses: ERROR different lists sizes");
+            taskListener.OnError("Wrong tuple of data. Try again or contact support.");
+
+        }else {
+            if (keys.size() > 0){
+                final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
+                StringBuilder result = new StringBuilder("Deleted: ");
+
+                for (int i = 0 ; i < dates.size() ; i++){
+                    getDatabaseReference()
+                            .child("Expenses")
+                            .child(userId)
+                            .child(dates.get(i))
+                            .child(keys.get(i))
+                            .removeValue();
+                    result.append("MonthYear: ").append(dates.get(i)).append(" Key: ").append(keys.get(i)).append(" ; ");
+                }
+                Log.d("DELETE-EXPENSE", "DoSafeDeleteExpenses: " + result);
+            }
+            DoSafeDeleteCard(cardUniqueId);
+        }
+
+    }
+
+    private void DoSafeDeleteCard(String uniqueId){
+
+        final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
+        StringBuilder result = new StringBuilder("Deleted: ");
+
+        getDatabaseReference()
+                .child("Cards")
+                .child(userId)
+                .child(uniqueId)
+                .removeValue();
+
+        result.append("Card UniqueId: ").append(uniqueId);
+        Log.d("DELETE-CARD", "DoSafeDeleteCard: " + result);
+
+        taskListener.OnError("response");
+
     }
 
     @Override
