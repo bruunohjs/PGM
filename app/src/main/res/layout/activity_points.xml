@@ -93,6 +93,7 @@
                         android:layout_marginTop="16dp"
                         android:text="@string/points"
                         android:textAllCaps="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightPoints"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
@@ -108,6 +109,7 @@
                         android:text="@string/total"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
                         app:layout_constraintTop_toBottomOf="@+id/textViewPoints" />
 
@@ -185,19 +187,20 @@
                         android:layout_marginEnd="8dp"
                         android:text="@string/edit_points"
                         android:textAllCaps="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <android.support.constraint.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/layoutFinalNumber"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
-                        android:background="#f1f1f1"
+                        android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
                         app:layout_constraintTop_toBottomOf="@+id/textViewEditPoints">
@@ -206,8 +209,6 @@
                             android:id="@+id/textViewValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
                             android:text="@string/value"
                             android:textAlignment="textStart"
                             android:textSize="14sp"
@@ -216,32 +217,23 @@
 
                         <EditText
                             android:id="@+id/editTextValue"
-                            android:layout_width="0dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:background="@null"
-                            android:gravity="center_vertical|start"
                             android:imeOptions="flagNoExtractUi"
                             android:inputType="number"
                             android:maxLength="9"
                             android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/textViewValue"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textViewValue"
-                            app:layout_constraintTop_toTopOf="@+id/textViewValue"
                             tools:ignore="Autofill,LabelFor" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/colorAccent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextValue" />
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorAccent" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
                 </android.support.constraint.ConstraintLayout>
 
