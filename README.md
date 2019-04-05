@@ -18,7 +18,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 
 ## Sobre
 
-O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o padrão arquitetural MVP (Model View Presenter) e o Firebase Realtime Database.
+O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o Firebase Realtime Database e o padrão arquitetural MVP (Model View Presenter).
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">
@@ -32,17 +32,18 @@ A tabela abaixo mostra cada nome de tela desenvolvida e seu respectivo link para
 
 Nome da tela | Idioma
 :---  | :---: 
-Login | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/login.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/login.png)
-Cadastrar | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/register.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/register.png)
-Recuperar Senha | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/recover.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/recover.png)
-Home | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/home.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/home.png)
-Nova despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/new_expense.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/new_expense.png)
-Despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/expense_overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/expense_overview.png)
-Menu | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/menu.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/menu.png)
-Cartões | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/cards.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/cards.png)
-Novo cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/new_card.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/new_card.png)
-Cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/card_overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/card_overview.png)
-Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/portuguese/profile.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/english/profile.png)
+Login | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/login.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/en-US/login.png)
+Cadastrar | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/register.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/register.png)
+Recuperar Senha | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/recover.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/recover.png)
+Home | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/home.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/home.png)
+Menu | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/menu.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/menu.png)
+Nova despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/new_expense.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/new_expense.png)
+Despesa | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/expense_overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/expense_overview.png)
+Cartões | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/cards.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/cards.png)
+Novo cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/new_card.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/new_card.png)
+Cartão | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/card_overview.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/card_overview.png)
+Pontos | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/points.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/points.png)
+Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/pt-BR/profile.png) - [en-US](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/images/screenshots/US/profile.png)
 
 ## Ferramentas utilizadas
 

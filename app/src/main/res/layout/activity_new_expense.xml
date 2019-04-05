@@ -401,41 +401,20 @@
             </android.support.v7.widget.CardView>
 
             <Button
-                android:id="@+id/btnCancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/button_background_accent"
-                android:drawableStart="@drawable/ic_clear"
-                android:drawablePadding="8dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="22dp"
-                android:singleLine="true"
-                android:text="@string/view_expense_button_cancel"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineCenterParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-            <Button
                 android:id="@+id/btnSave"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="24dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_check"
                 android:drawablePadding="8dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
                 android:singleLine="true"
-                android:text="@string/view_expense_button_save"
+                android:text="@string/save"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineCenterParent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         </android.support.constraint.ConstraintLayout>

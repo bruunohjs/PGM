@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -243,13 +242,11 @@
                 android:id="@+id/btnSubtract"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/button_background_accent"
-                android:drawableStart="@drawable/ic_subtract"
                 android:paddingStart="@dimen/button_padding"
                 android:paddingEnd="@dimen/button_padding"
-                android:singleLine="true"
                 android:text="@string/subtract"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
@@ -262,9 +259,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/button_background_accent"
-                android:drawableStart="@drawable/ic_add"
                 android:paddingStart="@dimen/button_padding"
                 android:paddingEnd="@dimen/button_padding"
                 android:singleLine="true"

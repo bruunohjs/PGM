@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -62,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="64dp"
                 app:cardCornerRadius="@dimen/cardview_radius"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -363,27 +362,8 @@
                 app:layout_constraintTop_toTopOf="@+id/cardView" />
 
             <Button
-                android:id="@+id/btnCancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/button_background_accent"
-                android:drawableStart="@drawable/ic_clear"
-                android:drawablePadding="8dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="22dp"
-                android:singleLine="true"
-                android:text="@string/view_expense_button_cancel"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineCenterParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-            <Button
                 android:id="@+id/btnSave"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
@@ -397,14 +377,14 @@
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineCenterParent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/button_background_accent"
                 android:drawableStart="@drawable/ic_check"
@@ -415,9 +395,6 @@
                 android:text="@string/save_changes"
                 android:textColor="@android:color/white"
                 android:visibility="gone"
-                app:autoSizeMaxTextSize="14sp"
-                app:autoSizeMinTextSize="10sp"
-                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"

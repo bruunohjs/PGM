@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -74,8 +73,8 @@
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="56dp">
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="48dp">
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guidelineLeftCardView"
@@ -128,6 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:text="@string/coin_type"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
                         app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
                         app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -159,13 +159,15 @@
                             android:id="@+id/textViewInstallment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="2dp" />
+                            android:layout_marginEnd="2dp"
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/textViewX"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/view_overview_installments" />
+                            android:text="@string/view_overview_installments"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -173,9 +175,9 @@
                         android:id="@+id/viewPager2"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginEnd="16dp"
                         android:background="@android:color/darker_gray"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
@@ -188,6 +190,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/purchased_date"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
 
@@ -210,6 +213,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:text="@string/card_select"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
@@ -218,8 +222,8 @@
                         android:layout_width="0dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="6dp"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="start|center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="end|center_vertical"
                         app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
                         app:autoSizeMinTextSize="@dimen/minTextSize"
                         app:autoSizeTextType="uniform"
@@ -279,6 +283,7 @@
                             android:layout_marginEnd="8dp"
                             android:gravity="start|center_vertical"
                             android:text="@string/each_installment_price"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
                             app:autoSizeMaxTextSize="14sp"
                             app:autoSizeMinTextSize="10sp"
                             app:autoSizeTextType="uniform"
@@ -303,6 +308,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="4dp"
                                 android:text="@string/coin_type"
+                                android:textSize="14sp"
                                 app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
                                 app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
                                 app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />

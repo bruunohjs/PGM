@@ -175,7 +175,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     }
 
     @OnClick(R.id.btnSave)
-    public void OnSaveClick(){
+    public void OnButtonSaveClick(){
         editTextTitle.clearFocus();
         editTextDescription.clearFocus();
         editTextPrice.clearFocus();
@@ -189,11 +189,6 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
                 cardsList.get(card).getBetterDayToBuy()
         );
         UIUtil.hideKeyboard(this);
-    }
-
-    @OnClick(R.id.btnCancel)
-    public void OnCancelClick(){
-        finish();
     }
 
     @Override

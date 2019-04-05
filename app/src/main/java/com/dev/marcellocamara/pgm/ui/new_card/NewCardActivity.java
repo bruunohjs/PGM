@@ -61,7 +61,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.layoutCard) protected ConstraintLayout layoutCard;
 
-    @BindView(R.id.btnCancel) protected Button btnCancel;
     @BindView(R.id.btnSave) protected Button btnSave;
     @BindView(R.id.btnEdit) protected Button btnEdit;
 
@@ -172,11 +171,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         UIUtil.hideKeyboard(this);
     }
 
-    @OnClick(R.id.btnCancel)
-    public void OnButtonCancelClick(){
-        finish();
-    }
-
     @OnClick(R.id.imageViewInfoFinalDigits)
     public void OnInfoFinalDigitsClick(){
         Tooltip.show(imageViewInfoFinalDigits, Gravity.TOP, info_digits, colorAccent);
@@ -226,7 +220,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         editTextBestBuyDate.setText(card.getBetterDayToBuy());
         getSelectedColor(card.getCardColor());
         getFlag(card.getCardFlag());
-        btnCancel.setVisibility(View.GONE);
         btnSave.setVisibility(View.GONE);
         btnEdit.setVisibility(View.VISIBLE);
     }
@@ -349,4 +342,5 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
         super.onDestroy();
         presenter.OnDestroy();
     }
+
 }
