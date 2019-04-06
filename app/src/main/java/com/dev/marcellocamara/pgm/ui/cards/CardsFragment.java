@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,6 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     private ICards.Presenter cardsPresenter;
     private ArrayList<CardModel> cards;
-    private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
     private String userName;
 
@@ -81,6 +81,10 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     public void OnRequestCardsResult(ArrayList<CardModel> cards) {
         this.cards = cards;
         CardsAdapter adapter = new CardsAdapter(cards, userName, getContext(), this);
+        int margin = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()
+        );
+        viewPager.setPadding(margin, 0, margin, 0);
         viewPager.setAdapter(adapter);
     }
 
@@ -93,7 +97,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     @Override
     public void DenyAddNewCard() {
-        builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(new_card);
         builder.setMessage(cards_limit_reached);
         builder.setCancelable(false);
@@ -135,4 +139,5 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
         super.onDestroy();
         cardsPresenter.OnDestroy();
     }
+
 }
