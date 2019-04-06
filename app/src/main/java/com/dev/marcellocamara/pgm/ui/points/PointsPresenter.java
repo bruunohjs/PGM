@@ -5,8 +5,7 @@ import android.annotation.SuppressLint;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
-
-import java.util.Objects;
+import com.dev.marcellocamara.pgm.utils.NumberFormat;
 
 /***
     marcellocamara@id.uff.br
@@ -30,8 +29,8 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
         if ( value.isEmpty() || (Double.parseDouble(value) == 0) ){
             view.OnValueEmpty();
         }else {
-            double result = card.getPoints() + Double.parseDouble(value);
-            if (result > 999999999){
+            int result = card.getPoints() + Integer.parseInt(value);
+            if (result > NumberFormat.MAX_POINTS){
                 view.OnAddPointsFailure();
             }else {
                 view.ShowProgress();
@@ -46,7 +45,7 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
         if ( value.isEmpty() || (Double.parseDouble(value) == 0) ){
             view.OnValueEmpty();
         }else {
-            double result = card.getPoints() - Double.parseDouble(value);
+            int result = card.getPoints() - Integer.parseInt(value);
             if (result < 0){
                 view.OnSubtractPointsFailure();
             }else {
@@ -62,8 +61,7 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
     public void OnSuccess() {
         if (view != null){
             view.HideProgress();
-            view.OnUpdatePointsSuccessful(
-                    String.format("%.0f", Objects.requireNonNull(card).getPoints()));
+            view.OnUpdatePointsSuccessful( NumberFormat.getIntSeparated(card.getPoints()) );
         }
     }
 

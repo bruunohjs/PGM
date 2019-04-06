@@ -127,7 +127,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         textViewTitleCard.setText(card.get(0).getCardTitle());
         String number = (card_number) + (card.get(0).getFinalDigits());
         textViewCardNumber.setText(number);
-        textViewPointsTotal.setText(String.format("%.0f", cardArray.get(0).getPoints()));
+        textViewPointsTotal.setText( NumberFormat.getIntSeparated(cardArray.get(0).getPoints()) );
     }
 
     @Override

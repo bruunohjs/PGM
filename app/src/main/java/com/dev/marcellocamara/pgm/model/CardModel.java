@@ -14,7 +14,7 @@ public class CardModel implements Parcelable {
 
     private String cardTitle, finalDigits, betterDayToBuy, uniqueId;
     private int cardColor, cardFlag;
-    private double points;
+    private int points;
 
     public CardModel (){}
 
@@ -33,7 +33,7 @@ public class CardModel implements Parcelable {
         uniqueId = in.readString();
         cardColor = in.readInt();
         cardFlag = in.readInt();
-        points = in.readDouble();
+        points = in.readInt();
     }
 
     public static final Creator<CardModel> CREATOR = new Creator<CardModel>() {
@@ -98,11 +98,11 @@ public class CardModel implements Parcelable {
         this.cardFlag = cardFlag;
     }
 
-    public double getPoints() {
+    public int getPoints() {
         return points;
     }
 
-    public void setPoints(double points) {
+    public void setPoints(int points) {
         this.points = points;
     }
 
@@ -119,7 +119,7 @@ public class CardModel implements Parcelable {
         dest.writeString(uniqueId);
         dest.writeInt(cardColor);
         dest.writeInt(cardFlag);
-        dest.writeDouble(points);
+        dest.writeInt(points);
     }
 
 }

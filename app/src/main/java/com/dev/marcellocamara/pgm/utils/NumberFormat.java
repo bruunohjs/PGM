@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
 
 import java.util.List;
+import java.util.Locale;
 
 /***
     marcellocamara@id.uff.br
@@ -12,6 +13,8 @@ import java.util.List;
 ***/
 
 public class NumberFormat {
+
+    public static final int MAX_POINTS = 999999999;
 
     @SuppressLint("DefaultLocale")
     public static String getDecimal(double value){
@@ -45,6 +48,17 @@ public class NumberFormat {
         }
 
         return NumberFormat.getDecimal(total);
+
+    }
+
+    public static String getIntSeparated(int value){
+
+        return String.format(
+                Locale.getDefault(),
+                "%,d",
+                value
+        );
+
     }
 
 }

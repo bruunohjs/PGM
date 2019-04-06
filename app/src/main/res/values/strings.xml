@@ -155,7 +155,8 @@
     <string name="subtract">Subtract</string>
     <string name="value">Value</string>
     <string name="value_invalid">Fill with a valid value.</string>
-    <string name="add_failure">The value added to the total exceeds the limit of 999.999.999 points.</string>
+    <string name="add_failure">The value added to the total exceeds the limit of\u0020</string>
+    <string name="add_failure_points">\u0020points.</string>
     <string name="subtract_failure">The subtracted value can\'t be greater than total.</string>
     <string name="loading_points">Loading points…</string>
     <string name="points_updated">Points updated successful.</string>
@@ -164,11 +165,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="close">Close</string>
-
-    <!-- Photo -->
-    <string name="choose_photo">Choose photo from</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
 
     <!-- Profile -->
     <string name="dot">.</string>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.model.CardModel;
+import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -47,6 +48,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @BindString(R.string.value_invalid) protected String value_invalid;
     @BindString(R.string.subtract_failure) protected String subtract_failure;
     @BindString(R.string.add_failure) protected String add_failure;
+    @BindString(R.string.add_failure_points) protected String add_failure_points;
     @BindString(R.string.info_points) protected String info_points;
     @BindString(R.string.points_updated) protected String points_updated;
     @BindString(R.string.close) protected String close;
@@ -66,7 +68,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
         ButterKnife.bind(this);
 
         CardModel card = getIntent().getParcelableExtra(parcelable_card);
-        textViewPointsTotal.setText(String.format("%.0f", Objects.requireNonNull(card).getPoints()));
+        textViewPointsTotal.setText( NumberFormat.getIntSeparated(card.getPoints()) );
 
         presenter = new PointsPresenter(this, card);
 
@@ -130,7 +132,11 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
 
     @Override
     public void OnAddPointsFailure() {
-        builder.setMessage(add_failure);
+        builder.setMessage(
+                add_failure +
+                NumberFormat.getIntSeparated(NumberFormat.MAX_POINTS) +
+                add_failure_points
+        );
         builder.setPositiveButton(close, null);
         builder.show();
     }
