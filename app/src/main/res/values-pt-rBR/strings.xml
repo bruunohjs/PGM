@@ -8,9 +8,12 @@
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="log_in">Logar</string>
+    <string name="or">ou</string>
     <string name="login_in">Logando…</string>
     <string name="sing_up">Não tem uma conta ? Clique aqui e registre-se</string>
     <string name="forgot_password">Esqueceu sua senha ?</string>
+    <string name="sign_in_with_google">Faça login com Google</string>
+    <string name="sign_in_google_failure">Falha ao tentar fazer login com uma conta Google.</string>
 
     <!-- Register -->
     <string name="register">Registrar</string>
@@ -66,6 +69,7 @@
     <string name="icon_info_final_digits">Ícone de informação dos dígitos finais</string>
     <string name="icon_info_better_day">Ícone de informação da melhor data de pagamento</string>
     <string name="icon_info_annuity">Ícone de informação de notificação da anuidade</string>
+    <string name="icon_google">Ícone do login com Google</string>
 
     <!-- Home -->
     <string name="welcome">Bem-vindo,</string>

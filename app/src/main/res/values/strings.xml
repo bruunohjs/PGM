@@ -8,9 +8,12 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="log_in">Log in</string>
+    <string name="or">or</string>
     <string name="login_in">Login in…</string>
     <string name="sing_up">Don\'t have an account ? Click here to register</string>
     <string name="forgot_password">Forgot your password ?</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_google_failure">Failed to sign in with Google.</string>
 
     <!-- Register -->
     <string name="register">Register</string>
@@ -66,6 +69,7 @@
     <string name="icon_info_price">Price Info Icon</string>
     <string name="icon_info_better_day">Better Day Info Icon</string>
     <string name="icon_info_annuity">Annuity Info Notification Icon</string>
+    <string name="icon_google">Icon login with Google</string>
 
     <!-- Home -->
     <string name="welcome">Welcome,</string>

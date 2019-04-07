@@ -1,6 +1,8 @@
 package com.dev.marcellocamara.pgm.ui.login;
 
 import com.dev.marcellocamara.pgm.ui.IProgressLoading;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 
 /***
     marcellocamara@id.uff.br
@@ -12,6 +14,8 @@ public interface ILogin {
     interface Presenter{
 
         void OnLogin(String email, String password);
+
+        void OnLogin(GoogleSignInResult result);
 
         void OnDestroy();
 
@@ -33,11 +37,15 @@ public interface ILogin {
 
         void OnLoginFailure(String message);
 
+        void OnLoginWithGoogleFailure();
+
     }
 
     interface Model{
 
         void DoLogin(String email, String password);
+
+        void DoLogin(GoogleSignInAccount account);
 
         boolean CheckLoggedIn();
 

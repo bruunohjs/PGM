@@ -21,11 +21,15 @@ import com.dev.marcellocamara.pgm.ui.register.IRegister;
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,9 +45,9 @@ import java.util.List;
 import java.util.Objects;
 
 /***
-    marcellocamara@id.uff.br
-            2019
-***/
+ marcellocamara@id.uff.br
+ 2019
+ ***/
 
 public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model, ICards.Model, ICardOverview.Model, ICardExpenses.Model, IPoints.Model, IContact.Model {
 
@@ -117,6 +121,26 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
+    public void DoLogin(GoogleSignInAccount account) {
+
+        AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        getFirebaseAuthInstance().signInWithCredential(authCredential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = task.getResult().getUser();
+                            UserModel user = new UserModel(firebaseUser.getDisplayName(), firebaseUser.getEmail());
+                            DoInsertUser(user);
+                        } else {
+                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                        }
+                    }
+                });
+
+    }
+
+    @Override
     public void DoRegister(String name, String email, String password) {
         final UserModel user = new UserModel(name, email);
         getFirebaseAuthInstance()
@@ -125,32 +149,36 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            getDatabaseReference()
-                                    .child("Users")
-                                    .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                                    .setValue(user)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
-                                                getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()) {
-                                                            taskListener.OnSuccess();
-                                                        } else {
-                                                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                                                        }
-                                                    }
-                                                });
-                                            } else {
-                                                if (task.getException() != null) {
-                                                    taskListener.OnError(task.getException().getMessage());
-                                                }
-                                            }
-                                        }
-                                    });
+                            DoInsertUser(user);
+                        } else {
+                            if (task.getException() != null) {
+                                taskListener.OnError(task.getException().getMessage());
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void DoInsertUser(final UserModel user) {
+        getDatabaseReference()
+                .child("Users")
+                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                .setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
+                            getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        taskListener.OnSuccess();
+                                    } else {
+                                        taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                                    }
+                                }
+                            });
                         } else {
                             if (task.getException() != null) {
                                 taskListener.OnError(task.getException().getMessage());
@@ -464,9 +492,9 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                         List<String> dates = new ArrayList<>();
                         List<String> keys = new ArrayList<>();
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            for (DataSnapshot dataAux : data.getChildren()){
+                            for (DataSnapshot dataAux : data.getChildren()) {
                                 ExpenseModel expenseModel = dataAux.getValue(ExpenseModel.class);
-                                if (Objects.requireNonNull(expenseModel).getCreditCard().equals(uniqueId)){
+                                if (Objects.requireNonNull(expenseModel).getCreditCard().equals(uniqueId)) {
                                     dates.add(data.getKey());
                                     keys.add(dataAux.getKey());
                                 }
@@ -483,19 +511,19 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
     }
 
-    private void DoSafeDeleteExpenses(List<String> dates, List<String> keys, String cardUniqueId){
+    private void DoSafeDeleteExpenses(List<String> dates, List<String> keys, String cardUniqueId) {
 
-        if (dates.size() != keys.size()){
+        if (dates.size() != keys.size()) {
 
             Log.d("DELETE-EXPENSE", "DoSafeDeleteExpenses: ERROR different lists sizes");
             taskListener.OnError("Wrong tuple of data. Try again or contact support.");
 
-        }else {
-            if (keys.size() > 0){
+        } else {
+            if (keys.size() > 0) {
                 final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
                 StringBuilder result = new StringBuilder("Deleted: ");
 
-                for (int i = 0 ; i < dates.size() ; i++){
+                for (int i = 0; i < dates.size(); i++) {
                     getDatabaseReference()
                             .child("Expenses")
                             .child(userId)
@@ -511,7 +539,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
     }
 
-    private void DoSafeDeleteCard(String uniqueId){
+    private void DoSafeDeleteCard(String uniqueId) {
 
         final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
         StringBuilder result = new StringBuilder("Deleted: ");

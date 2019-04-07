@@ -2,6 +2,7 @@ package com.dev.marcellocamara.pgm.ui.login;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,10 @@ import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.ui.main.MainActivity;
 import com.dev.marcellocamara.pgm.ui.recover_password.RecoverPasswordActivity;
 import com.dev.marcellocamara.pgm.ui.register.RegisterActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -41,9 +46,14 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @BindString(R.string.invalid_password) protected String invalid_password;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.login_in) protected String login_in;
+    @BindString(R.string.sign_in_google_failure) protected String sign_in_google_failure;
 
-    private ILogin.Presenter loginPresenter;
+    private ILogin.Presenter presenter;
     private AlertDialog alertDialog;
+    private AlertDialog.Builder builder;
+    private GoogleApiClient googleApiClient;
+    private final String idToken = "685027719384-lhf4b33dmhv2f23u3n0hgts9j12f9g0m.apps.googleusercontent.com";
+    private final int RC_SIGN_IN = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +62,21 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
         ButterKnife.bind(this);
 
-        loginPresenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(idToken)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, null)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(login);
+        builder.setCancelable(false);
 
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
@@ -66,11 +90,16 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     public void OnButtonLoginClick(){
         layoutEmail.setErrorEnabled(false);
         layoutPassword.setErrorEnabled(false);
-        loginPresenter.OnLogin(
+        presenter.OnLogin(
                 editTextEmail.getText().toString().trim(),
                 editTextPassword.getText().toString().trim()
         );
         UIUtil.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btnGoogle)
+    public void OnButtonGoogleClick(){
+        startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), RC_SIGN_IN);
     }
 
     @OnClick(R.id.btnRegister)
@@ -115,12 +144,25 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     @Override
     public void OnLoginFailure(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(login);
-        builder.setCancelable(false);
         builder.setMessage(message);
         builder.setPositiveButton(close, null);
         builder.show();
+    }
+
+    @Override
+    public void OnLoginWithGoogleFailure() {
+        builder.setMessage(sign_in_google_failure);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            presenter.OnLogin(result);
+        }
     }
 
     @Override
@@ -136,12 +178,13 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     protected void onStart() {
         super.onStart();
-        loginPresenter.OnAlreadyLogged();
+        presenter.OnAlreadyLogged();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        loginPresenter.OnDestroy();
+        presenter.OnDestroy();
     }
+
 }

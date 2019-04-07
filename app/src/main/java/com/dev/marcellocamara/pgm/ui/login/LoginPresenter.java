@@ -4,7 +4,8 @@ import android.util.Patterns;
 
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
-
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 
 /***
     marcellocamara@id.uff.br
@@ -48,6 +49,17 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
     }
 
     @Override
+    public void OnLogin(GoogleSignInResult result) {
+        if (result.isSuccess()){
+            view.ShowProgress();
+            GoogleSignInAccount account = result.getSignInAccount();
+            model.DoLogin(account);
+        }else {
+            view.OnLoginWithGoogleFailure();
+        }
+    }
+
+    @Override
     public void OnAlreadyLogged() {
         if (model.CheckLoggedIn()){
             view.OnLoginSuccessful();
@@ -74,4 +86,5 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
             view.OnLoginFailure(message);
         }
     }
+
 }
