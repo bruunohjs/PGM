@@ -1,7 +1,5 @@
 package com.dev.marcellocamara.pgm.utils;
 
-import android.annotation.SuppressLint;
-
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
 
 import java.util.List;
@@ -16,10 +14,9 @@ public class NumberFormat {
 
     public static final int MAX_POINTS = 999999999;
 
-    @SuppressLint("DefaultLocale")
     public static String getDecimal(double value){
 
-        return String.format("%.2f", value);
+        return String.format(Locale.getDefault(), "%1$,.2f", value);
 
     }
 
