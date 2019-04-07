@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
+import com.dev.marcellocamara.pgm.utils.Constants;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 
 /***
@@ -30,7 +31,7 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
             view.OnValueEmpty();
         }else {
             int result = card.getPoints() + Integer.parseInt(value);
-            if (result > NumberFormat.MAX_POINTS){
+            if (result > Constants.MAX_CARD_POINTS){
                 view.OnAddPointsFailure();
             }else {
                 view.ShowProgress();

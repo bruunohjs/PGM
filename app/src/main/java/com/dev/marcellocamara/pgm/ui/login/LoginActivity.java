@@ -12,6 +12,7 @@ import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.ui.main.MainActivity;
 import com.dev.marcellocamara.pgm.ui.recover_password.RecoverPasswordActivity;
 import com.dev.marcellocamara.pgm.ui.register.RegisterActivity;
+import com.dev.marcellocamara.pgm.utils.Constants;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -52,8 +53,6 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
     private GoogleApiClient googleApiClient;
-    private final String idToken = "685027719384-lhf4b33dmhv2f23u3n0hgts9j12f9g0m.apps.googleusercontent.com";
-    private final int RC_SIGN_IN = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         presenter = new LoginPresenter(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(idToken)
+                .requestIdToken(Constants.idGoogleSignInToken)
                 .requestEmail()
                 .build();
 
@@ -99,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     @OnClick(R.id.btnGoogle)
     public void OnButtonGoogleClick(){
-        startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), RC_SIGN_IN);
+        startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), Constants.RC_GOOGLE_SIGN_IN);
     }
 
     @OnClick(R.id.btnRegister)
@@ -159,7 +158,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == Constants.RC_GOOGLE_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             presenter.OnLogin(result);
         }

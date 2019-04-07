@@ -21,8 +21,6 @@ public class Permissions {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-    public static final int GALLERY_REQUEST = 10;
-
     public static boolean verify(Activity activity, String[] strings, int requestCode){
         if(Build.VERSION.SDK_INT >= 23){
             List<String> permissionsDenied = new ArrayList<>();

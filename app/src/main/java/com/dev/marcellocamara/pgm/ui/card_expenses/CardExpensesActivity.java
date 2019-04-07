@@ -65,7 +65,9 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
         cardArray = getIntent().getParcelableArrayListExtra(parcelable_card);
         monthYear = getIntent().getStringExtra(parcelable_expense);
 
-        textViewExpenses.setText(expenses_for + " " + monthYear.substring(0, 2) + "/" + monthYear.substring(2,6));
+        textViewExpenses.setText(
+                expenses_for + " " + monthYear.substring(0, 2) + "/" + monthYear.substring(2,6)
+        );
 
         presenter = new CardExpensesPresenter(this);
 
@@ -129,4 +131,5 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
         super.onDestroy();
         presenter.OnDestroy();
     }
+
 }

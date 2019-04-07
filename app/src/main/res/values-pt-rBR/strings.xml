@@ -153,6 +153,7 @@
     <string name="card_expenses">Despesas do cartão</string>
     <string name="view_expenses_denied">Não há despesas para o mês selecionado.</string>
     <string name="confirm_delete_card">Você deseja excluir este cartão e todas as suas despesas ?</string>
+    <string name="deleting_card">Deletando cartão…</string>
 
     <!-- Points -->
     <string name="add">Somar</string>

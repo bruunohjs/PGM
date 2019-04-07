@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.model.CardModel;
+import com.dev.marcellocamara.pgm.utils.Constants;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
 
@@ -134,7 +135,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     public void OnAddPointsFailure() {
         builder.setMessage(
                 add_failure +
-                NumberFormat.getIntSeparated(NumberFormat.MAX_POINTS) +
+                NumberFormat.getIntSeparated(Constants.MAX_CARD_POINTS) +
                 add_failure_points
         );
         builder.setPositiveButton(close, null);

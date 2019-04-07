@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dev.marcellocamara.pgm.R;
@@ -110,7 +109,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        //TODO : Replace switch into methods
         switch (item.getItemId()){
             case R.id.nav_home : {
                 getSupportFragmentManager()
@@ -159,4 +157,5 @@ public class MainActivity extends AppCompatActivity
         super.onStart();
         mainPresenter.OnRequestUserData();
     }
+
 }

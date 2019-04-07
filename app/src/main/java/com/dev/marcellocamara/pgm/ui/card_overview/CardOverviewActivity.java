@@ -1,6 +1,5 @@
 package com.dev.marcellocamara.pgm.ui.card_overview;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
@@ -104,7 +103,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setTheme(R.style.CustomAlertDialog)
-                .setMessage("Deleting card...")
+                .setMessage(R.string.deleting_card)
                 .setCancelable(false)
                 .build();
 
@@ -118,7 +117,6 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         textViewUserName.setText(name);
     }
 
-    @SuppressLint("DefaultLocale")
     @Override
     public void OnRequestCardSuccessful(ArrayList<CardModel> card) {
         this.cardArray = card;

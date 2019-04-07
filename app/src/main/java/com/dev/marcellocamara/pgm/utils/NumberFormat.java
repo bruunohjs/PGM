@@ -12,8 +12,6 @@ import java.util.Locale;
 
 public class NumberFormat {
 
-    public static final int MAX_POINTS = 999999999;
-
     public static String getDecimal(double value){
 
         return String.format(Locale.getDefault(), "%1$,.2f", value);
