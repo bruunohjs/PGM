@@ -63,6 +63,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindString(R.string.parcelable_expense) protected String parcelable_expense;
     @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.info_points) protected String info_points;
+    @BindString(R.string.notification_feature) protected String notification_feature;
     @BindString(R.string.info_annuity_notification) protected String info_annuity_notification;
     @BindString(R.string.confirm_delete_card) protected String confirm_delete_card;
     @BindString(R.string.yes) protected String yes;
@@ -165,7 +166,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     @OnClick(R.id.btnExpenses)
     public void OnButtonExpensesClick() {
-        presenter.OnCheckExpenses(textViewPrice.getText().toString().trim());
+        presenter.OnCheckExpenses();
     }
 
     @OnClick(R.id.btnEditPoints)
@@ -173,6 +174,11 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         startActivity(new Intent(this, PointsActivity.class)
                 .putExtra(parcelable_card, cardArray.get(0))
         );
+    }
+    
+    @OnClick(R.id.btnEditNotifications)
+    public void OnButtonNotificationsClick(){
+        Toast.makeText(this, notification_feature, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.btnEditCard)

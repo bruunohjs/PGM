@@ -36,12 +36,13 @@
     <string name="price">Preço:</string>
     <string name="installments">Parcelas:</string>
     <string name="installments_number">Número de parcelas</string>
-    <string name="max_price">O preço máximo é de R$ 99999.99\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
     <string name="installment">1x</string>
     <string name="view_expense_button_cancel">Cancelar</string>
     <string name="view_expense_button_save">Salvar</string>
     <string name="adding_expense">Adicionando despesa…</string>
     <string name="adding_expense_success">Despesa criada com sucesso.</string>
+    <string name="max_price">O preço máximo é de\u0020</string>
+    <string name="max_price_unity">\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
 
     <!-- Icon/Image Description -->
     <string name="icon_date">Ícone data</string>
@@ -154,6 +155,7 @@
     <string name="view_expenses_denied">Não há despesas para o mês selecionado.</string>
     <string name="confirm_delete_card">Você deseja excluir este cartão e todas as suas despesas ?</string>
     <string name="deleting_card">Deletando cartão…</string>
+    <string name="notification_feature">Esta funcionalidade estará disponível em algumas semanas. Atualize seu aplicativo!</string>
 
     <!-- Points -->
     <string name="add">Somar</string>

@@ -33,8 +33,8 @@ public class CardExpensesPresenter implements ICardExpenses.Presenter, ITaskList
 
     @Override
     public void OnTotalCalculate(List<ExpenseModel> list) {
-        String result = NumberFormat.getTotalExpenses(list);
-        view.OnRequestTotalCalculateResult(result);
+        double result = NumberFormat.getTotalExpenses(list);
+        view.OnRequestTotalCalculateResult(NumberFormat.getDecimal(result));
     }
 
     @Override

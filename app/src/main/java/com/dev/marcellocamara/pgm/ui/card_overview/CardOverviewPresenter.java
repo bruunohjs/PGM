@@ -23,6 +23,7 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
     private CardModel specificCard;
     private List<ExpenseModel> expenseList;
     private String uniqueId;
+    private double sumList = 0;
 
     public CardOverviewPresenter(ICardOverview.View view) {
         this.view = view;
@@ -54,14 +55,13 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnTotalCalculate(List<ExpenseModel> list) {
-        String result = NumberFormat.getTotalExpenses(list);
-        view.OnRequestTotalCalculateResult(result);
+        this.sumList = NumberFormat.getTotalExpenses(list);
+        view.OnRequestTotalCalculateResult(NumberFormat.getDecimal(this.sumList));
     }
 
     @Override
-    public void OnCheckExpenses(String price) {
-        double value = Double.parseDouble(price.replace(",", "."));
-        if (value != 0) {
+    public void OnCheckExpenses() {
+        if (sumList != 0) {
             view.OnAllowViewExpenses();
         } else {
             view.OnDenyViewExpenses();

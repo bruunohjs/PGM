@@ -39,7 +39,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
 
             view.OnEmptyPrice();
 
-        }else if (Double.parseDouble(price) > 99999){
+        }else if (Double.parseDouble(price) > 99999.99){
             view.OnMaxPrice();
         }else{
             view.ShowProgress();

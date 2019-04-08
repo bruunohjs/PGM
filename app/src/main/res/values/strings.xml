@@ -41,7 +41,8 @@
     <string name="view_expense_button_save">Save</string>
     <string name="adding_expense">Adding new expense…</string>
     <string name="adding_expense_success">Your expense is successful created.</string>
-    <string name="max_price">Maximum price is $ 99999.99\nUse a dot \".\" to indicate cents unity.</string>
+    <string name="max_price">Maximum price is\u0020</string>
+    <string name="max_price_unity">\nUse a dot \".\" to indicate cents unity.</string>
 
     <!-- Icon/Image Description -->
     <string name="icon_date">Date Icon</string>
@@ -121,7 +122,7 @@
 
     <!-- Tooltips -->
     <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
-    <string name="info_best_day">The day your invoice is closed.\n From that day, purchases made on the credit card will only come in the following month.</string>
+    <string name="info_best_day">One day after your invoice is closed.\n From that day, purchases made on the credit card will only come in the following month.</string>
     <string name="info_date">Expense will appear in the open invoice month. If this month invoice is already closed, the expense will appear next month.</string>
     <string name="info_points">Total sum of your exchange/miles program points earned on each credit card bill.</string>
     <string name="info_annuity_notification">Notification to remind you to ask your bank to negotiate the price/installment of the annuity of your credit card.</string>
@@ -154,6 +155,7 @@
     <string name="card_expenses">Card expenses</string>
     <string name="confirm_delete_card">Are you sure to delete this card and all his expenses ?</string>
     <string name="deleting_card">Deleting card…</string>
+    <string name="notification_feature">This feature will be available in a few weeks. Update your app !</string>
 
     <!-- Points -->
     <string name="add">Add</string>

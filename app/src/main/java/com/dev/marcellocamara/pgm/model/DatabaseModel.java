@@ -2,7 +2,6 @@ package com.dev.marcellocamara.pgm.model;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.dev.marcellocamara.pgm.ui.card_expenses.ICardExpenses;
 import com.dev.marcellocamara.pgm.ui.card_overview.ICardOverview;
@@ -515,13 +514,12 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
         if (dates.size() != keys.size()) {
 
-            Log.d("DELETE-EXPENSE", "DoSafeDeleteExpenses: ERROR different lists sizes");
             taskListener.OnError("Wrong tuple of data. Try again or contact support.");
 
         } else {
             if (keys.size() > 0) {
+
                 final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
-                StringBuilder result = new StringBuilder("Deleted: ");
 
                 for (int i = 0; i < dates.size(); i++) {
                     getDatabaseReference()
@@ -530,9 +528,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                             .child(dates.get(i))
                             .child(keys.get(i))
                             .removeValue();
-                    result.append("MonthYear: ").append(dates.get(i)).append(" Key: ").append(keys.get(i)).append(" ; ");
                 }
-                Log.d("DELETE-EXPENSE", "DoSafeDeleteExpenses: " + result);
             }
             DoSafeDeleteCard(cardUniqueId);
         }
@@ -542,16 +538,12 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     private void DoSafeDeleteCard(String uniqueId) {
 
         final String userId = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
-        StringBuilder result = new StringBuilder("Deleted: ");
 
         getDatabaseReference()
                 .child("Cards")
                 .child(userId)
                 .child(uniqueId)
                 .removeValue();
-
-        result.append("Card UniqueId: ").append(uniqueId);
-        Log.d("DELETE-CARD", "DoSafeDeleteCard: " + result);
 
         taskListener.OnError("response");
 

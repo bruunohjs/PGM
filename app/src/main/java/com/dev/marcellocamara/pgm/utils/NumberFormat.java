@@ -32,7 +32,7 @@ public class NumberFormat {
 
     }
 
-    public static String getTotalExpenses(List<ExpenseModel> list){
+    public static double getTotalExpenses(List<ExpenseModel> list){
 
         double total = 0.00;
 
@@ -42,7 +42,7 @@ public class NumberFormat {
             }
         }
 
-        return NumberFormat.getDecimal(total);
+        return total;
 
     }
 

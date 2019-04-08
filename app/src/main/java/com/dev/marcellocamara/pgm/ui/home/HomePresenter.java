@@ -35,8 +35,8 @@ public class HomePresenter implements IHome.Presenter, ITaskListener {
 
     @Override
     public void OnTotalCalculate(List<ExpenseModel> list) {
-        String result = NumberFormat.getTotalExpenses(list);
-        view.OnRequestTotalCalculateResult(result);
+        double result = NumberFormat.getTotalExpenses(list);
+        view.OnRequestTotalCalculateResult(NumberFormat.getDecimal(result));
     }
 
     @Override

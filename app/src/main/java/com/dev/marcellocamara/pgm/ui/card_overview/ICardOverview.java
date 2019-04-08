@@ -22,7 +22,7 @@ public interface ICardOverview {
 
         void OnTotalCalculate(List<ExpenseModel> list);
 
-        void OnCheckExpenses(String price);
+        void OnCheckExpenses();
 
         ArrayList<String> GetCardsNumbers();
 

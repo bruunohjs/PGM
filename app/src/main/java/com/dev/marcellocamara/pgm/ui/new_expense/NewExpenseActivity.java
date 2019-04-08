@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.utils.CardUtils;
+import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.R;
@@ -66,6 +67,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.empty_price) protected String empty_price;
     @BindString(R.string.info_date) protected String info_date;
     @BindString(R.string.max_price) protected String max_price;
+    @BindString(R.string.coin_type) protected String coin_type;
+    @BindString(R.string.max_price_unity) protected String max_price_unity;
     @BindString(R.string.view_overview_installments) protected String installmentsX;
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
@@ -214,7 +217,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @Override
     public void OnMaxPrice() {
-        builder.setMessage(max_price);
+        builder.setMessage(max_price + coin_type + NumberFormat.getDecimal(99999.99) + max_price_unity);
         builder.setPositiveButton(close, null);
         builder.show();
     }
