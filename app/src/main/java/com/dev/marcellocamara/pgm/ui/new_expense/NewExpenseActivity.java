@@ -68,6 +68,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.info_date) protected String info_date;
     @BindString(R.string.max_price) protected String max_price;
     @BindString(R.string.coin_type) protected String coin_type;
+    @BindString(R.string.coin_sub_unity) protected String coin_sub_unity;
     @BindString(R.string.max_price_unity) protected String max_price_unity;
     @BindString(R.string.view_overview_installments) protected String installmentsX;
     @BindString(R.string.close) protected String close;
@@ -217,7 +218,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @Override
     public void OnMaxPrice() {
-        builder.setMessage(max_price + coin_type + NumberFormat.getDecimal(99999.99) + max_price_unity);
+        builder.setMessage(max_price + coin_type + NumberFormat.getDecimal(99999.99) + max_price_unity + coin_sub_unity);
         builder.setPositiveButton(close, null);
         builder.show();
     }

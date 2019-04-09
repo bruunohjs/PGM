@@ -359,7 +359,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="22dp"
                 android:singleLine="true"
-                android:text="@string/view_expense_button_save"
+                android:text="@string/save"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"

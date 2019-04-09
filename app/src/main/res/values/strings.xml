@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Language: en-default / EUA -->
+
     <!-- App name -->
     <string name="app_name">PGM</string>
 
@@ -37,12 +39,10 @@
     <string name="installments">Installments:</string>
     <string name="installments_number">Installments number</string>
     <string name="installment">1x</string>
-    <string name="view_expense_button_cancel">Cancel</string>
-    <string name="view_expense_button_save">Save</string>
     <string name="adding_expense">Adding new expense…</string>
     <string name="adding_expense_success">Your expense is successful created.</string>
     <string name="max_price">Maximum price is\u0020</string>
-    <string name="max_price_unity">\nUse a dot \".\" to indicate cents unity.</string>
+    <string name="max_price_unity">\nUse a dot \".\" to indicate unity of\u0020</string>
 
     <!-- Icon/Image Description -->
     <string name="icon_date">Date Icon</string>
@@ -76,6 +76,7 @@
     <string name="welcome">Welcome,</string>
     <string name="total">TOTAL</string>
     <string name="coin_type">$</string>
+    <string name="coin_sub_unity">cents.</string>
     <string name="all_expenses">Expenses for selected month</string>
     <string name="expenses_loading">Loading expenses…</string>
     <string name="fabExpense">Add expense</string>
@@ -171,6 +172,7 @@
     <!-- AlertDialog Buttons -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="cancel">Cancel</string>
     <string name="close">Close</string>
 
     <!-- Profile -->

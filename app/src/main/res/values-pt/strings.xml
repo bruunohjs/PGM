@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Language: pt-default / Brazil -->
+
     <!-- App name -->
     <string name="app_name">PGM</string>
 
@@ -37,12 +40,10 @@
     <string name="installments">Parcelas:</string>
     <string name="installments_number">Número de parcelas</string>
     <string name="installment">1x</string>
-    <string name="view_expense_button_cancel">Cancelar</string>
-    <string name="view_expense_button_save">Salvar</string>
     <string name="adding_expense">Adicionando despesa…</string>
     <string name="adding_expense_success">Despesa criada com sucesso.</string>
     <string name="max_price">O preço máximo é de\u0020</string>
-    <string name="max_price_unity">\nUse um ponto \".\" para indicar a unidade dos centavos.</string>
+    <string name="max_price_unity">\nUse um ponto \".\" para indicar a unidade dos\u0020</string>
 
     <!-- Icon/Image Description -->
     <string name="icon_date">Ícone data</string>
@@ -76,6 +77,7 @@
     <string name="welcome">Bem-vindo,</string>
     <string name="total">TOTAL</string>
     <string name="coin_type">R$</string>
+    <string name="coin_sub_unity">centavos.</string>
     <string name="all_expenses">Despesas para o mês selecionado</string>
     <string name="expenses_loading">Carregando despesas…</string>
     <string name="fabExpense">Nova despesa</string>
@@ -171,6 +173,7 @@
     <!-- AlertDialog Buttons -->
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="cancel">Cancelar</string>
     <string name="close">Fechar</string>
 
     <!-- Profile -->

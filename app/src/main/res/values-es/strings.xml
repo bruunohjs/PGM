@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Language: es / Spanish -->
+
+    <!-- App name -->
+    <string name="app_name">PGM</string>
+
+    <!-- Login -->
+    <string name="login">Iniciar sesión</string>
+    <string name="email">E-mail</string>
+    <string name="password">Contraseña</string>
+    <string name="log_in">Acceder</string>
+    <string name="or">o</string>
+    <string name="login_in">Iniciando sesión…</string>
+    <string name="sing_up">¿No tienes una cuenta? Pulse aquí para registrarse</string>
+    <string name="forgot_password">Olvidaste tu contraseña ?</string>
+    <string name="sign_in_with_google">Inicia sesión con Google</string>
+    <string name="sign_in_google_failure">Error al iniciar sesión con Google.</string>
+
+    <!-- Register -->
+    <string name="register">Registro</string>
+    <string name="name">Nombre</string>
+    <string name="confirm_password">Confirme la contraseña</string>
+    <string name="registering">Registrando…</string>
+    <string name="register_success">Registro exitoso.</string>
+
+    <!-- Recover Password -->
+    <string name="recover_password">Recuperar contraseña</string>
+    <string name="recovering_password">Recuperando contraseña…</string>
+    <string name="recover_message1">Un correo electrónico fue enviado a\u0020</string>
+    <string name="recover_message2">\nRevise su buzón, en unos minutos, y siga las instrucciones para establecer una nueva contraseña.</string>
+
+    <!-- Expenses -->
+    <string name="new_expense">Nuevo gasto</string>
+    <string name="date">Fecha:</string>
+    <string name="title">Título:</string>
+    <string name="description">Descripción:</string>
+    <string name="price">Precio:</string>
+    <string name="installments">Cuotas:</string>
+    <string name="installments_number">Numero de cuotas</string>
+    <string name="installment">1x</string>
+    <string name="adding_expense">Agregando gasto…</string>
+    <string name="adding_expense_success">Gasto creado con éxito.</string>
+    <string name="max_price">El precio máximo es\u0020</string>
+    <string name="max_price_unity">\nUtilice un punto \".\" para indicar la unidad de\u0020</string>
+
+    <!-- Icon/Image Description -->
+    <string name="icon_date">Icono de fecha</string>
+    <string name="icon_title">Icono de título</string>
+    <string name="icon_description">Icono de descripción</string>
+    <string name="icon_price">Icono de precio</string>
+    <string name="icon_installments">Icono de tarjeta</string>
+    <string name="user_image">Imagen de perfil de usuario</string>
+    <string name="icon_mastercard">Icon MasterCard</string>
+    <string name="icon_visa">Icon Visa</string>
+    <string name="icon_elo">Icono elo</string>
+    <string name="icon_american_express">Icono de American Express</string>
+    <string name="icon_dinnersclub">Icono de Dinners Club</string>
+    <string name="icon_hipercard">Icono de Hipercard</string>
+    <string name="icon_yellow_card">Icono de tarjeta amarilla</string>
+    <string name="icon_purple_card">Icono de tarjeta púrpura</string>
+    <string name="icon_green_card">Icono de tarjeta verde</string>
+    <string name="icon_grey_card">Icono de tarjeta gris</string>
+    <string name="icon_red_card">Icono de tarjeta roja</string>
+    <string name="icon_blue_card">Icono de tarjeta azul</string>
+    <string name="chip_image">Imagen de chip</string>
+    <string name="flag_image">Imagen de la bandera</string>
+    <string name="icon_info_final_digits">Icono de información de los dígitos finales</string>
+    <string name="icon_info_date">Icono de información de la fecha de compra</string>
+    <string name="icon_info_price">Icono de información del precio</string>
+    <string name="icon_info_better_day">Ícono de información de la mejor flecha de compra</string>
+    <string name="icon_info_annuity">Icono de información de notificación de la anualidad</string>
+    <string name="icon_google">Icono de inicio de sesión con Google</string>
+
+    <!-- Home -->
+    <string name="welcome">Bienvenido,</string>
+    <string name="total">TOTAL</string>
+    <string name="coin_type">€</string>
+    <string name="coin_sub_unity">cêntimos.</string>
+    <string name="all_expenses">Gastos para el mes seleccionado</string>
+    <string name="expenses_loading">Cargando gastos…</string>
+    <string name="fabExpense">Nuevo gasto</string>
+    <string name="fab_no_card">No es posible agregar gastos sin agregar primero una tarjeta.</string>
+
+    <!-- Card/Cards -->
+    <string name="fabCard">Nueva tarjeta</string>
+    <string name="adding_new_card">Añadiendo tarjeta…</string>
+    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="card_number_0">XXXX</string>
+    <string name="card_number_1">XXX</string>
+    <string name="card_number_2">XX</string>
+    <string name="card_number_3">X</string>
+    <string name="card_title">Título de la tarjeta</string>
+    <string name="final_numbers">Dígitos finales</string>
+    <string name="best_buy_date">Mejor fecha de compra</string>
+    <string name="optional_info">Información opcional</string>
+    <string name="card_select">Tarjeta:</string>
+    <string name="card_flag">Bandera:</string>
+    <string name="card_color">Color de la tarjeta:</string>
+    <string name="new_card">Nueva tarjeta</string>
+    <string name="update_card">Editar tarjeta</string>
+    <string name="select_flag">Seleccione una bandera</string>
+    <string name="select_card_color">Seleccione un color</string>
+    <string name="visa">Visa</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="elo">Elo</string>
+    <string name="american_express">American\nExpress</string>
+    <string name="dinners_club">Dinners Club</string>
+    <string name="hipercard">Hipercard</string>
+    <string name="card_title_empty">Llene el título de la tarjeta para ayudar a identificar su tarjeta.</string>
+    <string name="card_number_empty">Llene los cuatro dígitos finales de su tarjeta para ayudar a identificar su tarjeta.</string>
+    <string name="date_empty">Llene la mejor fecha de compra con dos dígitos. Por ejemplo: 02</string>
+    <string name="date_invalid">Formato de fecha de compra no válido. Llene el día en el rango de 01 a 31.</string>
+    <string name="new_card_success">Tarjeta añadida con éxito.</string>
+    <string name="update_success">Tarjeta actualizada con éxito.</string>
+    <string name="cards_limit_reached">Número máximo de tarjetas alcanzadas. Sólo es posible tener 10 tarjetas de crédito.</string>
+    <string name="save_changes">Guardar cambios</string>
+    <string name="card_already_exists">No se pueden agregar dos tarjetas de crédito con los mismos números finales.</string>
+
+    <!-- dialogs -->
+    <string name="select_card">Seleccione una tarjeta</string>
+    <string name="loading_cards">Cargando tarjetas…</string>
+
+    <!-- Tooltips -->
+    <string name="info_digits">Los últimos cuatro dígitos de su tarjeta de crédito lo ayudarán a identificar sus gastos.</string>
+    <string name="info_best_day">Un día después de que se cierre su factura. \ N A partir de ese día, las compras realizadas con la tarjeta de crédito solo se realizarán el mes siguiente.</string>
+    <string name="info_date">Los gastos aparecerán en el mes de la factura abierta. Si la factura de este mes ya está cerrada, el gasto aparecerá el próximo mes.</string>
+    <string name="info_points">La suma total de los puntos del programa de cambio / millas obtenidos en cada factura de tarjeta de crédito.</string>
+    <string name="info_annuity_notification">Notificación para recordarle que solicite a su banco que negocie el precio / abono de la anualidad de su tarjeta de crédito.</string>
+
+    <!-- Overview -->
+    <string name="expense_overview">Gasto</string>
+    <string name="purchased_date">Fecha de compra:</string>
+    <string name="each_installment_price">Precio aproximado de cada cuota:</string>
+    <string name="deleting_expense">Eliminando gastos…</string>
+    <string name="view_overview_installments">x</string>
+    <string name="delete_expense">Eliminar gasto</string>
+    <string name="delete_card">Eliminar tarjeta</string>
+    <string name="confirm_delete">¿Está seguro de eliminar este gasto y todas sus cuotas?</string>
+    <string name="delete_success">Gasto borrado con éxito.</string>
+    <string name="card_overview">Tarjeta</string>
+    <string name="zero_int">0</string>
+    <string name="edit_notifications">Editar notificación</string>
+    <string name="edit_card">Editar tarjeta</string>
+    <string name="negotiation_notification">Notificación de negociación:</string>
+    <string name="not_activated">No activada</string>
+    <string name="points">Puntos</string>
+    <string name="annuity">Anualidad</string>
+    <string name="expense">Gastos</string>
+    <string name="edit_points">Editar puntos</string>
+    <string name="view_expenses">Ver gastos</string>
+    <string name="negotiation_month">Mes de negociación:</string>
+    <string name="not_specified">No especificado</string>
+    <string name="view_expenses_denied">No hay gastos en la fecha seleccionada.</string>
+    <string name="expenses_for">Gastos para</string>
+    <string name="card_expenses">Gastos de la tarjeta</string>
+    <string name="confirm_delete_card">¿Está seguro de eliminar esta tarjeta y todos sus gastos?</string>
+    <string name="deleting_card">Borrando tarjeta…</string>
+    <string name="notification_feature">Esta funcionalidad estará disponible en pocas semanas. Actualiza tu aplicación!</string>
+
+    <!-- Points -->
+    <string name="add">Añadir</string>
+    <string name="subtract">Sustraer</string>
+    <string name="value">Valor</string>
+    <string name="value_invalid">Llene con un valor válido.</string>
+    <string name="add_failure">El valor agregado supera el límite de\u0020</string>
+    <string name="add_failure_points">\u0020puntos.</string>
+    <string name="subtract_failure">El valor restado no puede ser mayor que el total.</string>
+    <string name="loading_points">Cargando puntos…</string>
+    <string name="points_updated">Puntos actualizados con éxito.</string>
+
+    <!-- AlertDialog Buttons -->
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Cerrar</string>
+
+    <!-- Profile -->
+    <string name="dot">.</string>
+    <string name="save">Guardar</string>
+    <string name="no_changes">Ninguna modificación realizada.</string>
+    <string name="profile_updating">Actualizando perfil…</string>
+    <string name="profile_update_success">¡Perfil actualizado con éxito!</string>
+    <string name="profile_update_failure">¡Uy! Algo salió mal. Inténtalo de nuevo !</string>
+
+    <!-- Contact -->
+    <string name="subject">Asunto:</string>
+    <string name="your_email">Su e-mail</string>
+    <string name="message">Mensaje</string>
+    <string name="send_message">Enviar mensaje</string>
+    <string name="email_to">cellopcamara@gmail.com</string>
+    <string name="email_client">Seleccione su cliente de correo electrónico</string>
+    <string name="sent_email_message">¿Su mensaje fue enviado por su cliente de correo electrónico? Diciendo SÍ, esta pantalla se cerrará y volverá a la aplicación.</string>
+
+    <!-- Menu -->
+    <string name="logout">Cerrar sesión</string>
+    <string name="home">Principal</string>
+    <string name="cards">Tarjetas</string>
+    <string name="profile">Perfil</string>
+    <string name="about">Acerca</string>
+    <string name="contact">Contacto</string>
+    <string name="navigation_drawer_open">Abrir el menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
+
+    <!-- Forms -->
+    <string name="empty_name">Llene con su nombre.</string>
+    <string name="empty_email">Llene el correo electrónico.</string>
+    <string name="empty_password">Rellene la contraseña.</string>
+    <string name="invalid_email">Rellene con un correo electrónico válido.</string>
+    <string name="invalid_password">La contraseña debe tener al menos 6 dígitos.</string>
+    <string name="match_password">Las contraseñas no coinciden.</string>
+    <string name="empty_title">Llene con el título.</string>
+    <string name="empty_description">Llene la descripción.</string>
+    <string name="empty_price">Llene el precio.</string>
+    <string name="invalid_subject">Seleccione un asunto para continuar.</string>
+    <string name="empty_message">Llene el mensaje.</string>
+
+    <!-- Tags -->
+    <string name="parcelable_expense">expense</string>
+    <string name="parcelable_card">card</string>
+    <string name="cards_numbers">cards_numbers</string>
+
+    <!-- Colors -->
+    <string name="yellow">Amarillo</string>
+    <string name="purple">Púrpura</string>
+    <string name="green">Verde</string>
+    <string name="grey">Gris</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+
+    <!-- Arrays -->
+    <string-array name="installments">
+        <item>1x</item>
+        <item>2x</item>
+        <item>3x</item>
+        <item>4x</item>
+        <item>5x</item>
+        <item>6x</item>
+        <item>7x</item>
+        <item>8x</item>
+        <item>9x</item>
+        <item>10x</item>
+        <item>11x</item>
+        <item>12x</item>
+    </string-array>
+
+    <string-array name="subjects">
+        <item>Seleccione</item>
+        <item>Información</item>
+        <item>Problema o error</item>
+        <item>Sugerencia</item>
+        <item>Otros</item>
+    </string-array>
+
+    <!-- Characters allowed in Name EditText -->
+    <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyzzÁáÂâàãàÇçÉééêíííóóóôÕõúú "</string>
+
+</resources>

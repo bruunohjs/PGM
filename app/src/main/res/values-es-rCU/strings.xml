@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Language: es-CU / Cuba -->
+
+    <string name="coin_type">$</string>
+    <string name="coin_sub_unity">centavos.</string>
+
+</resources>
