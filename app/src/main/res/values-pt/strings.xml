@@ -96,8 +96,8 @@
     <string name="best_buy_date">Melhor data de compra</string>
     <string name="optional_info">Informações opcionais</string>
     <string name="card_select">Cartão:</string>
-    <string name="card_flag">Bandeira:</string>
-    <string name="card_color">Cor do cartão:</string>
+    <string name="card_flag">Bandeira</string>
+    <string name="card_color">Cor do cartão</string>
     <string name="new_card">Novo cartão</string>
     <string name="update_card">Editar cartão</string>
     <string name="select_flag">Selecione uma bandeira</string>

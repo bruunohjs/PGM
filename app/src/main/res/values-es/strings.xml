@@ -96,8 +96,8 @@
     <string name="best_buy_date">Mejor fecha de compra</string>
     <string name="optional_info">Información opcional</string>
     <string name="card_select">Tarjeta:</string>
-    <string name="card_flag">Bandera:</string>
-    <string name="card_color">Color de la tarjeta:</string>
+    <string name="card_flag">Bandera</string>
+    <string name="card_color">Color de la tarjeta</string>
     <string name="new_card">Nueva tarjeta</string>
     <string name="update_card">Editar tarjeta</string>
     <string name="select_flag">Seleccione una bandera</string>
@@ -124,7 +124,7 @@
 
     <!-- Tooltips -->
     <string name="info_digits">Los últimos cuatro dígitos de su tarjeta de crédito lo ayudarán a identificar sus gastos.</string>
-    <string name="info_best_day">Un día después de que se cierre su factura. \ N A partir de ese día, las compras realizadas con la tarjeta de crédito solo se realizarán el mes siguiente.</string>
+    <string name="info_best_day">Un día después de que se cierre su factura.\nA partir de ese día, las compras realizadas con la tarjeta de crédito solo se realizarán el mes siguiente.</string>
     <string name="info_date">Los gastos aparecerán en el mes de la factura abierta. Si la factura de este mes ya está cerrada, el gasto aparecerá el próximo mes.</string>
     <string name="info_points">La suma total de los puntos del programa de cambio / millas obtenidos en cada factura de tarjeta de crédito.</string>
     <string name="info_annuity_notification">Notificación para recordarle que solicite a su banco que negocie el precio / abono de la anualidad de su tarjeta de crédito.</string>

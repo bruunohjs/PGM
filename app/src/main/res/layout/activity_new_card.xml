@@ -233,13 +233,14 @@
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                         app:layout_constraintTop_toBottomOf="@+id/layoutBestBuyDate" />
 
-                    <android.support.constraint.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/layoutCardColor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
+                        android:orientation="vertical"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineCenterCardView"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
@@ -247,9 +248,8 @@
 
                         <TextView
                             android:id="@+id/textView6"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:text="@string/card_color"
                             android:textAlignment="textStart"
                             android:textSize="14sp"
@@ -258,13 +258,10 @@
 
                         <ImageView
                             android:id="@+id/imageViewCardColor"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
                             android:contentDescription="@string/icon_installments"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
                             android:src="@drawable/ic_credit_card"
                             android:tint="@color/cardPurple"
                             app:layout_constraintBottom_toBottomOf="@+id/textView6"
@@ -273,23 +270,24 @@
                             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="2dp"
                             android:background="@color/colorAccent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageViewCardColor" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
-                    <android.support.constraint.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/layoutFlag"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -300,7 +298,6 @@
                             android:id="@+id/textViewCardFlag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:text="@string/card_flag"
                             android:textAlignment="textStart"
                             android:textSize="14sp"
@@ -309,13 +306,10 @@
 
                         <ImageView
                             android:id="@+id/imageViewCardFlag"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
                             android:contentDescription="@string/icon_installments"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
                             android:src="@drawable/flag_mastercard"
                             app:layout_constraintBottom_toBottomOf="@+id/textViewCardFlag"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -323,15 +317,15 @@
                             app:layout_constraintTop_toTopOf="@+id/textViewCardFlag" />
 
                         <android.support.v4.view.ViewPager
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="1.5dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="2dp"
                             android:background="@color/colorAccent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageViewCardFlag" />
 
-                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
 
 
                 </android.support.constraint.ConstraintLayout>
