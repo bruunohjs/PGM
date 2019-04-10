@@ -1,5 +1,7 @@
 package com.dev.marcellocamara.pgm.ui.new_expense;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.MAX_PRICE_EXPENSE;
+
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.model.CardModel;
@@ -39,7 +41,7 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
 
             view.OnEmptyPrice();
 
-        }else if (Double.parseDouble(price) > 99999.99){
+        }else if (Double.parseDouble(price) > MAX_PRICE_EXPENSE){
             view.OnMaxPrice();
         }else{
             view.ShowProgress();

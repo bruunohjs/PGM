@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_expense;
+
 import com.dev.marcellocamara.pgm.utils.CardUtils;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.model.CardModel;
@@ -53,8 +56,6 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindString(R.string.yes) protected String yes;
     @BindString(R.string.no) protected String no;
     @BindString(R.string.close) protected String close;
-    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
 
     private IExpenseOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;

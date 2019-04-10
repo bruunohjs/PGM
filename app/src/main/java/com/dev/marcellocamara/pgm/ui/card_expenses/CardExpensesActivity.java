@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_expense;
+
 import com.dev.marcellocamara.pgm.adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.adapter.IAdapter;
 import com.dev.marcellocamara.pgm.model.CardModel;
@@ -39,8 +42,6 @@ public class CardExpensesActivity extends AppCompatActivity implements ICardExpe
     @BindView(R.id.textViewPrice) protected TextView textViewPrice;
     @BindView(R.id.textViewExpenses) protected TextView textViewExpenses;
 
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
-    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
     @BindString(R.string.card_expenses) protected String  card_expenses;
     @BindString(R.string.expenses_for) protected String expenses_for;
     @BindString(R.string.close) protected String close;

@@ -8,6 +8,8 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.RC_GOOGLE_SIGN_IN;
+
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.ui.main.MainActivity;
 import com.dev.marcellocamara.pgm.ui.recover_password.RecoverPasswordActivity;
@@ -98,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     @OnClick(R.id.btnGoogle)
     public void OnButtonGoogleClick(){
-        startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), Constants.RC_GOOGLE_SIGN_IN);
+        startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), RC_GOOGLE_SIGN_IN);
     }
 
     @OnClick(R.id.btnRegister)
@@ -158,7 +160,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.RC_GOOGLE_SIGN_IN) {
+        if (requestCode == RC_GOOGLE_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             presenter.OnLogin(result);
         }

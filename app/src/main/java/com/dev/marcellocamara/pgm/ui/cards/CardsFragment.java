@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.MAX_NUMBER_OF_CARDS;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.cards_numbers;
+
 import com.dev.marcellocamara.pgm.adapter.CardsAdapter;
 import com.dev.marcellocamara.pgm.adapter.IAdapter;
 import com.dev.marcellocamara.pgm.model.CardModel;
@@ -36,9 +40,8 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
 
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.close) protected String close;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
-    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.cards_limit_reached) protected String cards_limit_reached;
+    @BindString(R.string.cards_limit_reached_final) protected String cards_limit_reached_final;
 
     private ICards.Presenter cardsPresenter;
     private ArrayList<CardModel> cards;
@@ -99,7 +102,7 @@ public class CardsFragment extends Fragment implements ICards.View, IAdapter {
     public void DenyAddNewCard() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(new_card);
-        builder.setMessage(cards_limit_reached);
+        builder.setMessage(cards_limit_reached + MAX_NUMBER_OF_CARDS + cards_limit_reached_final);
         builder.setCancelable(false);
         builder.setPositiveButton(close, null);
         builder.show();

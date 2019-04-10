@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.model.CardModel;
-import com.dev.marcellocamara.pgm.utils.Constants;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
+
+import static com.dev.marcellocamara.pgm.utils.Constants.MAX_CARD_POINTS;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -44,7 +46,6 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @BindView(R.id.imageViewInfoPoints) protected ImageView imageViewInfoPoints;
 
     @BindString(R.string.points) protected String points;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.loading_points) protected String loading_points;
     @BindString(R.string.value_invalid) protected String value_invalid;
     @BindString(R.string.subtract_failure) protected String subtract_failure;
@@ -135,7 +136,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     public void OnAddPointsFailure() {
         builder.setMessage(
                 add_failure +
-                NumberFormat.getIntSeparated(Constants.MAX_CARD_POINTS) +
+                NumberFormat.getIntSeparated(MAX_CARD_POINTS) +
                 add_failure_points
         );
         builder.setPositiveButton(close, null);

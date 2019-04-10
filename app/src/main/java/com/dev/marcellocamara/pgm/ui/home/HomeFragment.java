@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_expense;
+
 import com.dev.marcellocamara.pgm.adapter.ExpensesAdapter;
 import com.dev.marcellocamara.pgm.adapter.IAdapter;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
@@ -53,8 +56,6 @@ public class HomeFragment extends Fragment implements IHome.View, IAdapter, OnMo
 
     @BindString(R.string.new_expense) protected String new_expense;
     @BindString(R.string.expenses_loading) protected String loading_expenses;
-    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
     @BindString(R.string.fab_no_card) protected String fab_no_card;
     @BindString(R.string.close) protected String close;
 

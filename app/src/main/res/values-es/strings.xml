@@ -114,7 +114,8 @@
     <string name="date_invalid">Formato de fecha de compra no válido. Llene el día en el rango de 01 a 31.</string>
     <string name="new_card_success">Tarjeta añadida con éxito.</string>
     <string name="update_success">Tarjeta actualizada con éxito.</string>
-    <string name="cards_limit_reached">Número máximo de tarjetas alcanzadas. Sólo es posible tener 10 tarjetas de crédito.</string>
+    <string name="cards_limit_reached">Número máximo de tarjetas alcanzadas. Sólo es posible tener\u0020</string>
+    <string name="cards_limit_reached_final">\u0020tarjetas de crédito.</string>
     <string name="save_changes">Guardar cambios</string>
     <string name="card_already_exists">No se pueden agregar dos tarjetas de crédito con los mismos números finales.</string>
 
@@ -215,11 +216,6 @@
     <string name="empty_price">Llene el precio.</string>
     <string name="invalid_subject">Seleccione un asunto para continuar.</string>
     <string name="empty_message">Llene el mensaje.</string>
-
-    <!-- Tags -->
-    <string name="parcelable_expense">expense</string>
-    <string name="parcelable_card">card</string>
-    <string name="cards_numbers">cards_numbers</string>
 
     <!-- Colors -->
     <string name="yellow">Amarillo</string>

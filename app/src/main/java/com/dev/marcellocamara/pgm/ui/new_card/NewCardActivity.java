@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.cards_numbers;
+
 import com.dev.marcellocamara.pgm.ui.dialogs.IDialog;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
 import com.dev.marcellocamara.pgm.model.CardModel;
@@ -66,8 +69,6 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.update_card) protected String update_card;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
-    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.card_number_0) protected String card_number_0;
     @BindString(R.string.card_number_1) protected String card_number_1;

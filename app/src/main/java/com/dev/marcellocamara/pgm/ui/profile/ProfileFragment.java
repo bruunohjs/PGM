@@ -17,11 +17,12 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.RC_PHOTO_GALLERY;
+
 import com.dev.marcellocamara.pgm.R;
 
 import com.bumptech.glide.Glide;
 
-import com.dev.marcellocamara.pgm.utils.Constants;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -150,7 +151,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     @Override
     public void OnCheckPermissionsSuccessful() {
         startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT)
-                .setType("image/*"), Constants.RC_PHOTO_GALLERY
+                .setType("image/*"), RC_PHOTO_GALLERY
         );
     }
 
@@ -158,7 +159,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == Constants.RC_PHOTO_GALLERY) {
+            if (requestCode == RC_PHOTO_GALLERY) {
                 Uri selectedImage = data.getData();
                 ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
                 String format = dot + MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(Objects.requireNonNull(selectedImage)));

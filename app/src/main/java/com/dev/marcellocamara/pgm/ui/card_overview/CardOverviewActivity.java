@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_expense;
+import static com.dev.marcellocamara.pgm.utils.Constants.cards_numbers;
+
 import com.dev.marcellocamara.pgm.ui.card_expenses.CardExpensesActivity;
 import com.dev.marcellocamara.pgm.ui.new_card.NewCardActivity;
 import com.dev.marcellocamara.pgm.ui.points.PointsActivity;
@@ -59,9 +63,6 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindView(R.id.materialCalendarView) protected MaterialCalendarView materialCalendarView;
 
     @BindString(R.string.card_overview) protected String card_overview;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
-    @BindString(R.string.parcelable_expense) protected String parcelable_expense;
-    @BindString(R.string.cards_numbers) protected String cards_numbers;
     @BindString(R.string.info_points) protected String info_points;
     @BindString(R.string.notification_feature) protected String notification_feature;
     @BindString(R.string.info_annuity_notification) protected String info_annuity_notification;

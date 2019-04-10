@@ -20,6 +20,9 @@ import com.dev.marcellocamara.pgm.utils.Tooltip;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.R;
 
+import static com.dev.marcellocamara.pgm.utils.Constants.MAX_PRICE_EXPENSE;
+import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
+
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import dmax.dialog.SpotsDialog;
@@ -74,7 +77,6 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
     @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
-    @BindString(R.string.parcelable_card) protected String parcelable_card;
 
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
@@ -218,7 +220,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @Override
     public void OnMaxPrice() {
-        builder.setMessage(max_price + coin_type + NumberFormat.getDecimal(99999.99) + max_price_unity + coin_sub_unity);
+        builder.setMessage(max_price + coin_type + NumberFormat.getDecimal(MAX_PRICE_EXPENSE) + max_price_unity + coin_sub_unity);
         builder.setPositiveButton(close, null);
         builder.show();
     }

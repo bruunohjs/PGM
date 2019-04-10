@@ -115,7 +115,8 @@
     <string name="save_changes">Salvar mudanças</string>
     <string name="update_success">Cartão alterado com sucesso.</string>
     <string name="new_card_success">Cartão adicionado com sucesso.</string>
-    <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter 10 cartões de crédito.</string>
+    <string name="cards_limit_reached">Número máximo de cartões alcançado. Só é possível ter\u0020</string>
+    <string name="cards_limit_reached_final">\u0020cartões de crédito.</string>
     <string name="card_already_exists">Não é possível adicionar dois cartões de crédito com o mesmos números.</string>
 
     <!-- dialogs -->
@@ -215,11 +216,6 @@
     <string name="empty_price">Preencha o preço.</string>
     <string name="invalid_subject">Selecione um assunto para continuar.</string>
     <string name="empty_message">Preencha a mensagem.</string>
-
-    <!-- Tags -->
-    <string name="parcelable_expense">expense</string>
-    <string name="parcelable_card">card</string>
-    <string name="cards_numbers">cards_numbers</string>
 
     <!-- Colors -->
     <string name="yellow">Amarelo</string>

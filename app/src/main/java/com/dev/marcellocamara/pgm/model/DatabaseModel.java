@@ -44,9 +44,9 @@ import java.util.List;
 import java.util.Objects;
 
 /***
- marcellocamara@id.uff.br
- 2019
- ***/
+    marcellocamara@id.uff.br
+            2019
+***/
 
 public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPassword.Model, IMain.Model, IHome.Model, INewExpense.Model, IExpenseOverview.Model, IProfile.Model, INewCard.Model, ICards.Model, ICardOverview.Model, ICardExpenses.Model, IPoints.Model, IContact.Model {
 

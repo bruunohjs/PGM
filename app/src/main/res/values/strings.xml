@@ -113,7 +113,8 @@
     <string name="date_invalid">Invalid best buy date format. Fill the day in the range 01 to 31.</string>
     <string name="new_card_success">Card added successfully.</string>
     <string name="update_success">Card updated successfully.</string>
-    <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have 10 credit cards.</string>
+    <string name="cards_limit_reached">Maximum number of cards reached. It\'s only possible to have\u0020</string>
+    <string name="cards_limit_reached_final">\u0020credit cards.</string>
     <string name="save_changes">Save changes</string>
     <string name="card_already_exists">Can\'t add two credit cards with the same final numbers.</string>
 
@@ -214,11 +215,6 @@
     <string name="empty_price">Fill with price.</string>
     <string name="invalid_subject">Select one subject to send the message.</string>
     <string name="empty_message">Fill the message field.</string>
-
-    <!-- Tags -->
-    <string name="parcelable_expense">expense</string>
-    <string name="parcelable_card">card</string>
-    <string name="cards_numbers">cards_numbers</string>
 
     <!-- Colors -->
     <string name="yellow">Yellow</string>
