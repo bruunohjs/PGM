@@ -251,4 +251,6 @@
     <!-- Characters allowed in Name EditText -->
     <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
 
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
 </resources>

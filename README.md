@@ -50,6 +50,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
 - [CircularImageView](https://github.com/lopspower/CircularImageView)
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database/)
 - [Glide](https://github.com/bumptech/glide)
 - [KeyboardVisibilityEvent](https://github.com/yshrsmz/KeyboardVisibilityEvent)
