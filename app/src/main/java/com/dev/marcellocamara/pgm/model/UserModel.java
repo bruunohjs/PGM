@@ -7,7 +7,7 @@ package com.dev.marcellocamara.pgm.model;
 
 public class UserModel {
 
-    private String name, email;
+    private String name, email, token;
 
     public UserModel(String name, String email) {
         this.name = name;
@@ -29,4 +29,13 @@ public class UserModel {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
 }

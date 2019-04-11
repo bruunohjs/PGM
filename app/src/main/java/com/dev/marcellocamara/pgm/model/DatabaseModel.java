@@ -35,6 +35,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -102,14 +104,16 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     @Override
-    public void DoLogin(String email, String password) {
+    public void DoLogin(final String email, final String password) {
         getFirebaseAuthInstance()
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            taskListener.OnSuccess();
+                            //Forces token to be updated in database - overwriting old one
+                            UserModel user = new UserModel(GetUserDisplayName(), email);
+                            DoInsertUser(user);
                         } else {
                             if (task.getException() != null) {
                                 taskListener.OnError(task.getException().getMessage());
@@ -159,30 +163,47 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
     }
 
     private void DoInsertUser(final UserModel user) {
-        getDatabaseReference()
-                .child("Users")
-                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
-                .setValue(user)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        // Get instance id token
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        // Get token
+                        String token;
                         if (task.isSuccessful()) {
-                            UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
-                            getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        taskListener.OnSuccess();
-                                    } else {
-                                        taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                                    }
-                                }
-                            });
-                        } else {
-                            if (task.getException() != null) {
-                                taskListener.OnError(task.getException().getMessage());
-                            }
+                            token = task.getResult().getToken();
+                        }else {
+                            token = Objects.requireNonNull(task.getException()).getMessage();
                         }
+                        //Insert user with refreshed token
+                        UserModel aux = new UserModel(user.getName(), user.getEmail());
+                        aux.setToken(token);
+                        getDatabaseReference()
+                                .child("Users")
+                                .child(Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid())
+                                .setValue(aux)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            UserProfileChangeRequest profileName = new UserProfileChangeRequest.Builder().setDisplayName(user.getName()).build();
+                                            getFirebaseAuthInstance().getCurrentUser().updateProfile(profileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        taskListener.OnSuccess();
+                                                    } else {
+                                                        taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            if (task.getException() != null) {
+                                                taskListener.OnError(task.getException().getMessage());
+                                            }
+                                        }
+                                    }
+                                });
                     }
                 });
     }

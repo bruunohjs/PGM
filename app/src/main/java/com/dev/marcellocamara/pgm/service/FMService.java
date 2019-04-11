@@ -65,7 +65,6 @@ public class FMService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
 
-        //TODO : Store the token
         Log.d(getClass().getSimpleName(), "Refreshed token: " + token);
 
     }
