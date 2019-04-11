@@ -58,7 +58,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
 
     @BindView(R.id.imageViewSelectedFlag) protected ImageView imageViewSelectedFlag;
     @BindView(R.id.imageViewInfoPoints) protected ImageView imageViewInfoPoints;
-    @BindView(R.id.imageViewInfoAnnuityNotification) protected ImageView imageViewInfoAnnuityNotification;
+    //@BindView(R.id.imageViewInfoAnnuityNotification) protected ImageView imageViewInfoAnnuityNotification;
 
     @BindView(R.id.materialCalendarView) protected MaterialCalendarView materialCalendarView;
 
@@ -160,10 +160,12 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         Tooltip.show(imageViewInfoPoints, Gravity.TOP, info_points, colorAccent);
     }
 
+    /*  Info Annuity Notification
     @OnClick(R.id.imageViewInfoAnnuityNotification)
     public void OnInfoAnnuityNotificationsClick() {
         Tooltip.show(imageViewInfoAnnuityNotification, Gravity.TOP, info_annuity_notification, colorAccent);
     }
+    */
 
     @OnClick(R.id.btnExpenses)
     public void OnButtonExpensesClick() {
@@ -176,11 +178,13 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
                 .putExtra(parcelable_card, cardArray.get(0))
         );
     }
-    
+
+    /* Button Edit Notifications
     @OnClick(R.id.btnEditNotifications)
     public void OnButtonNotificationsClick(){
         Toast.makeText(this, notification_feature, Toast.LENGTH_SHORT).show();
     }
+    */
 
     @OnClick(R.id.btnEditCard)
     public void OnButtonEditCardClick() {
