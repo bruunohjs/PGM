@@ -11,321 +11,344 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineLeftParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineCenterParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineLeftParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineRightParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineCenterParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="56dp"
-                app:cardCornerRadius="@dimen/cardview_radius"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toTopOf="parent">
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineRightParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="48dp">
+                    android:layout_marginBottom="32dp"
+                    app:cardCornerRadius="@dimen/cardview_radius"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineLeftCardView"
-                        android:layout_width="wrap_content"
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineCenterCardView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineRightCardView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
-
-                    <TextView
-                        android:id="@+id/textViewTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/textViewCoinType"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewDescription"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintEnd_toStartOf="@+id/layoutInstallment"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-
-                    <TextView
-                        android:id="@+id/textViewCoinType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:text="@string/coin_type"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
-                        app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
-                        app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
-
-                    <TextView
-                        android:id="@+id/textViewPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
-
-                    <LinearLayout
-                        android:id="@+id/layoutInstallment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintTop_toTopOf="@+id/textViewDescription">
-
-                        <TextView
-                            android:id="@+id/textViewInstallment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="2dp"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/textViewX"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/view_overview_installments"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/viewPager2"
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/darker_gray"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
-
-                    <TextView
-                        android:id="@+id/tvDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/purchased_date"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
-
-                    <TextView
-                        android:id="@+id/textViewDate"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:textAlignment="textEnd"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvDate"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintStart_toEndOf="@+id/tvDate"
-                        app:layout_constraintTop_toTopOf="@+id/tvDate" />
-
-                    <TextView
-                        android:id="@+id/tvCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="@string/card_select"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+                        android:layout_marginBottom="48dp">
 
-                    <TextView
-                        android:id="@+id/textViewCard"
-                        android:layout_width="0dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="end|center_vertical"
-                        app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
-                        app:autoSizeMinTextSize="@dimen/minTextSize"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvCard"
-                        app:layout_constraintEnd_toStartOf="@+id/layoutCard"
-                        app:layout_constraintStart_toEndOf="@+id/tvCard"
-                        app:layout_constraintTop_toTopOf="@+id/tvCard" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineLeftCardView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
 
-                    <LinearLayout
-                        android:id="@+id/layoutCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="6dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewCard"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintTop_toTopOf="@+id/textViewCard"
-                        tools:ignore="UseCompoundDrawables">
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineCenterCardView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineRightCardView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
                         <TextView
-                            android:id="@+id/textViewFinalDigits"
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/textViewCoinType"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textViewDescription"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toStartOf="@+id/layoutInstallment"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+                        <TextView
+                            android:id="@+id/textViewCoinType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
-                            android:textSize="@dimen/cardInfoTextSize" />
-
-                        <ImageView
-                            android:id="@+id/imageViewCreditCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/icon_installments"
-                            app:srcCompat="@drawable/ic_credit_card"
-                            tools:ignore="VectorDrawableCompat" />
-
-                    </LinearLayout>
-
-                    <android.support.constraint.ConstraintLayout
-                        android:id="@+id/layoutEachInstallment"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:textAlignment="center"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCard">
+                            android:text="@string/coin_type"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+                            app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
+                            app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
 
                         <TextView
-                            android:id="@+id/tvEach"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/uniformTextViewHeight"
+                            android:id="@+id/textViewPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:gravity="start|center_vertical"
-                            android:text="@string/each_installment_price"
-                            android:textAppearance="@style/TextAppearance.AppCompat"
-                            app:autoSizeMaxTextSize="14sp"
-                            app:autoSizeMinTextSize="10sp"
-                            app:autoSizeTextType="uniform"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
 
                         <LinearLayout
-                            android:id="@+id/linearLayout"
+                            android:id="@+id/layoutInstallment"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center"
                             android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintTop_toTopOf="@+id/textViewDescription">
 
                             <TextView
-                                android:id="@+id/tvSameCoinType"
+                                android:id="@+id/textViewInstallment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="2dp"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/textViewX"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/view_overview_installments"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewPager2"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/purchased_date"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+
+                        <TextView
+                            android:id="@+id/textViewDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="8dp"
+                            android:textAlignment="textEnd"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvDate"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintStart_toEndOf="@+id/tvDate"
+                            app:layout_constraintTop_toTopOf="@+id/tvDate" />
+
+                        <TextView
+                            android:id="@+id/tvCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/card_select"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+                        <TextView
+                            android:id="@+id/textViewCard"
+                            android:layout_width="0dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="end|center_vertical"
+                            app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
+                            app:autoSizeMinTextSize="@dimen/minTextSize"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvCard"
+                            app:layout_constraintEnd_toStartOf="@+id/layoutCard"
+                            app:layout_constraintStart_toEndOf="@+id/tvCard"
+                            app:layout_constraintTop_toTopOf="@+id/tvCard" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewCard"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintTop_toTopOf="@+id/textViewCard"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <TextView
+                                android:id="@+id/textViewFinalDigits"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="4dp"
-                                android:text="@string/coin_type"
-                                android:textSize="14sp"
-                                app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
-                                app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
-                                app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
+                                android:textSize="@dimen/cardInfoTextSize" />
 
-                            <TextView
-                                android:id="@+id/textViewEachInstallment"
+                            <ImageView
+                                android:id="@+id/imageViewCreditCard"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="14sp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:contentDescription="@string/icon_installments"
+                                app:srcCompat="@drawable/ic_credit_card"
+                                tools:ignore="VectorDrawableCompat" />
+
                         </LinearLayout>
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/layoutEachInstallment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:textAlignment="center"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
+                            app:layout_constraintTop_toBottomOf="@+id/tvCard">
+
+                            <TextView
+                                android:id="@+id/tvEach"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/uniformTextViewHeight"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="start|center_vertical"
+                                android:text="@string/each_installment_price"
+                                android:textAppearance="@style/TextAppearance.AppCompat"
+                                app:autoSizeMaxTextSize="14sp"
+                                app:autoSizeMinTextSize="10sp"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvSameCoinType"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="4dp"
+                                    android:text="@string/coin_type"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
+                                    app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
+                                    app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
+
+                                <TextView
+                                    android:id="@+id/textViewEachInstallment"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="14sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </LinearLayout>
+
+                        </android.support.constraint.ConstraintLayout>
 
                     </android.support.constraint.ConstraintLayout>
 
-                </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background_accent"
+                    android:paddingStart="@dimen/button_padding"
+                    android:paddingEnd="@dimen/button_padding"
+                    android:text="@string/delete_expense"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background_accent"
-                android:paddingStart="@dimen/button_padding"
-                android:paddingEnd="@dimen/button_padding"
-                android:text="@string/delete_expense"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            </android.support.constraint.ConstraintLayout>
 
-        </android.support.constraint.ConstraintLayout>
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/adMobBannerId" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

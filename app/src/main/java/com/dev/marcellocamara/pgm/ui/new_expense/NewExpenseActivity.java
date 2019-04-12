@@ -19,6 +19,8 @@ import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import static com.dev.marcellocamara.pgm.utils.Constants.MAX_PRICE_EXPENSE;
 import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
@@ -61,6 +63,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindView(R.id.imageViewCard) protected ImageView imageViewCard;
     @BindView(R.id.imageViewInfoDate) protected ImageView imageViewInfoDate;
     @BindView(R.id.imageViewInfoPrice) protected ImageView imageViewInfoPrice;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.new_expense) protected String title;
     @BindString(R.string.installments_number) protected String installments_number;
@@ -122,6 +126,8 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setCancelable(false);
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.layoutSelectDate)

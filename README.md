@@ -18,7 +18,7 @@ Até lá, ele encontra-se disponível para avalição [clicando aqui](https://ra
 
 ## Sobre
 
-O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o Firebase Realtime Database e o padrão arquitetural MVP (Model View Presenter).
+O incentivo para o desenvolvimento deste projeto foi a necessidade do autor em estudar e praticar o Firebase Realtime Database, o padrão de arquitetura MVP (Model View Presenter) e a curiosidade de saber como funciona todo o processo de monetização do AdMob.
 
 <p align="center">
   <img src="https://github.com/marcellocamara/PGM/blob/master/extras/images/others/MVP.png" height="350" title="Model-View-Presenter">
@@ -47,6 +47,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 
 ## Ferramentas utilizadas
 
+- [AdMob](https://apps.admob.com/)
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
 - [CircularImageView](https://github.com/lopspower/CircularImageView)

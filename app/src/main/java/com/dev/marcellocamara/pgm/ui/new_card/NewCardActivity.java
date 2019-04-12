@@ -24,6 +24,8 @@ import com.dev.marcellocamara.pgm.ui.dialogs.CardColorDialog;
 import com.dev.marcellocamara.pgm.utils.CardUtils;
 import com.dev.marcellocamara.pgm.ui.dialogs.CardFlagDialog;
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -66,6 +68,8 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
 
     @BindView(R.id.btnSave) protected Button btnSave;
     @BindView(R.id.btnEdit) protected Button btnEdit;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.new_card) protected String new_card;
     @BindString(R.string.update_card) protected String update_card;
@@ -129,6 +133,8 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
                 .setMessage(adding_new_card)
                 .setCancelable(false)
                 .build();
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.imageViewCardColor)

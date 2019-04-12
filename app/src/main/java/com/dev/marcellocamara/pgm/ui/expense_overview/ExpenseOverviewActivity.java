@@ -18,6 +18,8 @@ import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Objects;
 
@@ -49,6 +51,8 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindView(R.id.imageViewCreditCard) protected ImageView imageViewCreditCard;
 
     @BindView(R.id.layoutEachInstallment) protected ConstraintLayout layoutEachInstallment;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.expense_overview) protected String overview_title;
     @BindString(R.string.deleting_expense) protected String deleting;
@@ -86,6 +90,8 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
                 .setMessage(deleting)
                 .setCancelable(false)
                 .build();
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     private void SetCreditCard(CardModel cardModel) {
@@ -157,4 +163,5 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
         super.onDestroy();
         overviewPresenter.OnDestroy();
     }
+
 }

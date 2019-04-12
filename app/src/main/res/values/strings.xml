@@ -38,7 +38,7 @@
     <string name="price">Price:</string>
     <string name="installments">Installments:</string>
     <string name="installments_number">Installments number</string>
-    <string name="installment">1x</string>
+    <string name="installment" translatable="false">1x</string>
     <string name="adding_expense">Adding new expense…</string>
     <string name="adding_expense_success">Your expense is successful created.</string>
     <string name="max_price">Maximum price is\u0020</string>
@@ -85,11 +85,11 @@
     <!-- Card/Cards -->
     <string name="fabCard">Add Card</string>
     <string name="adding_new_card">Adding new card…</string>
-    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
-    <string name="card_number_0">XXXX</string>
-    <string name="card_number_1">XXX</string>
-    <string name="card_number_2">XX</string>
-    <string name="card_number_3">X</string>
+    <string name="card_number" translatable="false">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="card_number_0" translatable="false">XXXX</string>
+    <string name="card_number_1" translatable="false">XXX</string>
+    <string name="card_number_2" translatable="false">XX</string>
+    <string name="card_number_3" translatable="false">X</string>
     <string name="card_title">Card title</string>
     <string name="final_numbers">Final digits</string>
     <string name="best_buy_date">Best buy date</string>
@@ -101,12 +101,12 @@
     <string name="update_card">Update card</string>
     <string name="select_flag">Select one flag</string>
     <string name="select_card_color">Select card color</string>
-    <string name="visa">Visa</string>
-    <string name="mastercard">MasterCard</string>
-    <string name="elo">Elo</string>
-    <string name="american_express">American\nExpress</string>
-    <string name="dinners_club">Dinners Club</string>
-    <string name="hipercard">Hipercard</string>
+    <string name="visa" translatable="false">Visa</string>
+    <string name="mastercard" translatable="false">MasterCard</string>
+    <string name="elo" translatable="false">Elo</string>
+    <string name="american_express" translatable="false">American\nExpress</string>
+    <string name="dinners_club" translatable="false">Dinners Club</string>
+    <string name="hipercard" translatable="false">Hipercard</string>
     <string name="card_title_empty">Fill card title to help identify your card.</string>
     <string name="card_number_empty">Fill the four final digits of your card to help identify your card.</string>
     <string name="date_empty">Fill best buy date with two digits. E.g.: 02</string>
@@ -134,13 +134,13 @@
     <string name="purchased_date">Purchased date:</string>
     <string name="each_installment_price">Approximate price of each installment:</string>
     <string name="deleting_expense">Deleting expense…</string>
-    <string name="view_overview_installments">x</string>
+    <string name="view_overview_installments" translatable="false">x</string>
     <string name="delete_expense">Delete Expense</string>
     <string name="delete_card">Delete Card</string>
     <string name="confirm_delete">Are you sure to delete this item and all installments ?</string>
     <string name="delete_success">Expense successfully deleted.</string>
     <string name="card_overview">Card Overview</string>
-    <string name="zero_int">0</string>
+    <string name="zero_int" translatable="false">0</string>
     <string name="edit_notifications">Edit notification</string>
     <string name="edit_card">Edit card</string>
     <string name="negotiation_notification">Negotiation notification:</string>
@@ -177,7 +177,7 @@
     <string name="close">Close</string>
 
     <!-- Profile -->
-    <string name="dot">.</string>
+    <string name="dot" translatable="false">.</string>
     <string name="save">Save</string>
     <string name="no_changes">No changes to save.</string>
     <string name="profile_updating">Updating profile…</string>
@@ -189,7 +189,7 @@
     <string name="your_email">Your e-mail</string>
     <string name="message">Message</string>
     <string name="send_message">Send message</string>
-    <string name="email_to">cellopcamara@gmail.com</string>
+    <string name="email_to" translatable="false">cellopcamara@gmail.com</string>
     <string name="email_client">Choose an email client</string>
     <string name="sent_email_message">Your message was sent by your email client ? Saying YES, this screen will close and it will return to the application.</string>
 
@@ -249,8 +249,19 @@
     </string-array>
 
     <!-- Characters allowed in Name EditText -->
-    <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
+    <string name="allowed_characters" translatable="false">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
 
+    <!-- Notification -->
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <!-- AdMob -->
+    <string name="adMobAppId" translatable="false">
+        <!-- ca-app-pub-7679891987672110~1252448010 -->
+        <!-- TEST --> ca-app-pub-3940256099942544~3347511713
+    </string>
+    <string name="adMobBannerId" translatable="false">
+        <!-- ca-app-pub-7679891987672110/6446254313 -->
+        <!-- TEST --> ca-app-pub-3940256099942544/6300978111
+    </string>
 
 </resources>

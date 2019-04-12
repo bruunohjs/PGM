@@ -39,7 +39,6 @@
     <string name="price">Preço:</string>
     <string name="installments">Parcelas:</string>
     <string name="installments_number">Número de parcelas</string>
-    <string name="installment">1x</string>
     <string name="adding_expense">Adicionando despesa…</string>
     <string name="adding_expense_success">Despesa criada com sucesso.</string>
     <string name="max_price">O preço máximo é de\u0020</string>
@@ -86,11 +85,6 @@
     <!-- Card/Cards -->
     <string name="fabCard">Novo cartão</string>
     <string name="adding_new_card">Adicionando cartão…</string>
-    <string name="card_number">XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020XXXX\u0020\u0020\u0020\u0020\u0020</string>
-    <string name="card_number_0">XXXX</string>
-    <string name="card_number_1">XXX</string>
-    <string name="card_number_2">XX</string>
-    <string name="card_number_3">X</string>
     <string name="card_title">Título do cartão</string>
     <string name="final_numbers">Final número</string>
     <string name="best_buy_date">Melhor data de compra</string>
@@ -102,12 +96,6 @@
     <string name="update_card">Editar cartão</string>
     <string name="select_flag">Selecione uma bandeira</string>
     <string name="select_card_color">Selecione uma cor</string>
-    <string name="visa">Visa</string>
-    <string name="mastercard">MasterCard</string>
-    <string name="elo">Elo</string>
-    <string name="american_express">American\nExpress</string>
-    <string name="dinners_club">Dinners Club</string>
-    <string name="hipercard">Hipercard</string>
     <string name="card_title_empty">Preencha o título do cartão para ajudar a identificar seu cartão.</string>
     <string name="card_number_empty">Preencha os quatro últimos dígitos do cartão para ajudar a identificar seu cartão.</string>
     <string name="date_empty">Preencha melhor data (dia) de compra com dois dígitos.\nEx.: 02</string>
@@ -133,7 +121,6 @@
     <!-- Overview -->
     <string name="expense_overview">Despesa</string>
     <string name="deleting_expense">Deletando despesas…</string>
-    <string name="view_overview_installments">x</string>
     <string name="purchased_date">Data da compra:</string>
     <string name="each_installment_price">Preço aproximado de cada parcela:</string>
     <string name="delete_expense">Excluir Despesa</string>
@@ -141,7 +128,6 @@
     <string name="confirm_delete">Você deseja excluir esta despesa e todas as suas outras parcelas ?</string>
     <string name="delete_success">Despesa deletada com sucesso.</string>
     <string name="card_overview">Cartão</string>
-    <string name="zero_int">0</string>
     <string name="edit_card">Editar cartão</string>
     <string name="edit_notifications">Editar notificação</string>
     <string name="negotiation_notification">Notificação de negociação:</string>
@@ -178,7 +164,6 @@
     <string name="close">Fechar</string>
 
     <!-- Profile -->
-    <string name="dot">.</string>
     <string name="save">Salvar</string>
     <string name="no_changes">Nenhuma alteração realizada.</string>
     <string name="profile_updating">Alterando perfil…</string>
@@ -190,7 +175,6 @@
     <string name="your_email">Seu e-mail</string>
     <string name="message">Mensagem</string>
     <string name="send_message">Enviar mensagem</string>
-    <string name="email_to">cellopcamara@gmail.com</string>
     <string name="email_client">Selecione seu cliente de e-mail</string>
     <string name="sent_email_message">Sua mensagem foi enviada pelo seu cliente de e-mail ? Dizendo SIM, esta tela será fechada e retornará ao aplicativo.</string>
 
@@ -248,7 +232,5 @@
         <item>Sugestão</item>
         <item>Outros</item>
     </string-array>
-
-    <string name="allowed_characters">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "</string>
 
 </resources>

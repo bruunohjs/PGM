@@ -15,6 +15,7 @@ import com.dev.marcellocamara.pgm.ui.main.MainActivity;
 import com.dev.marcellocamara.pgm.ui.recover_password.RecoverPasswordActivity;
 import com.dev.marcellocamara.pgm.ui.register.RegisterActivity;
 import com.dev.marcellocamara.pgm.utils.Constants;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -62,6 +63,9 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+
+        //Initializes AdMob
+        MobileAds.initialize(this, getString(R.string.adMobAppId));
 
         presenter = new LoginPresenter(this);
 

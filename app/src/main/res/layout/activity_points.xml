@@ -11,253 +11,273 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineLeftParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineCenterParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guidelineRightParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardViewPoints"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="@dimen/cardview_radius"
-                app:cardElevation="0dp"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineLeftParent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="44dp">
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
 
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineLeftPoints"
-                        android:layout_width="wrap_content"
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineCenterParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/centerGuideLine" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guidelineRightParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardViewPoints"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="@dimen/cardview_radius"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+                        android:layout_marginBottom="44dp">
 
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineRightPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
-
-                    <TextView
-                        android:id="@+id/textViewPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/points"
-                        android:textAllCaps="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightPoints"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewTotalPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/uniformTextViewHeight"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:gravity="start|center_vertical"
-                        android:text="@string/total"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewPoints" />
-
-                    <TextView
-                        android:id="@+id/textViewPointsTotal"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/uniformTextViewHeight"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="end|center_vertical"
-                        android:text="@string/zero_int"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        app:autoSizeMaxTextSize="16sp"
-                        app:autoSizeMinTextSize="12sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalPoints"
-                        app:layout_constraintEnd_toStartOf="@+id/imageViewInfoPoints"
-                        app:layout_constraintStart_toEndOf="@+id/textViewTotalPoints"
-                        app:layout_constraintTop_toTopOf="@+id/textViewTotalPoints" />
-
-                    <ImageView
-                        android:id="@+id/imageViewInfoPoints"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:contentDescription="@string/icon_info_annuity"
-                        android:src="@drawable/ic_info"
-                        app:layout_constraintBottom_toBottomOf="@+id/textViewPointsTotal"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightPoints"
-                        app:layout_constraintTop_toTopOf="@+id/textViewPointsTotal" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardViewEditPoints"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="56dp"
-                app:cardCornerRadius="@dimen/cardview_radius"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewPoints">
-
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginBottom="48dp">
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineLeftEditPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guidelineRightEditPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
-
-                    <TextView
-                        android:id="@+id/textViewEditPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/edit_points"
-                        android:textAllCaps="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/layoutFinalNumber"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
-                        app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewEditPoints">
-
-                        <TextView
-                            android:id="@+id/textViewValue"
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineLeftPoints"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/value"
-                            android:textAlignment="textStart"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineRightPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
+
+                        <TextView
+                            android:id="@+id/textViewPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/points"
+                            android:textAllCaps="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/titleTextSize"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightPoints"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <EditText
-                            android:id="@+id/editTextValue"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/textViewTotalPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/uniformTextViewHeight"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="start|center_vertical"
+                            android:text="@string/total"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/titleTextSize"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftPoints"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewPoints" />
+
+                        <TextView
+                            android:id="@+id/textViewPointsTotal"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/uniformTextViewHeight"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="end|center_vertical"
+                            android:text="@string/zero_int"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            app:autoSizeMaxTextSize="@dimen/titleTextSize"
+                            app:autoSizeMinTextSize="@dimen/minTextSize"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewTotalPoints"
+                            app:layout_constraintEnd_toStartOf="@+id/imageViewInfoPoints"
+                            app:layout_constraintStart_toEndOf="@+id/textViewTotalPoints"
+                            app:layout_constraintTop_toTopOf="@+id/textViewTotalPoints" />
+
+                        <ImageView
+                            android:id="@+id/imageViewInfoPoints"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:background="@null"
-                            android:imeOptions="flagNoExtractUi"
-                            android:inputType="number"
-                            android:maxLength="9"
-                            android:textSize="16sp"
-                            tools:ignore="Autofill,LabelFor" />
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="@string/icon_info_annuity"
+                            android:src="@drawable/ic_info"
+                            app:layout_constraintBottom_toBottomOf="@+id/textViewPointsTotal"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightPoints"
+                            app:layout_constraintTop_toTopOf="@+id/textViewPointsTotal" />
 
-                        <android.support.v4.view.ViewPager
-                            android:layout_width="match_parent"
-                            android:layout_height="1.5dp"
-                            android:layout_marginTop="2dp"
-                            android:background="@color/colorAccent" />
+                    </android.support.constraint.ConstraintLayout>
 
-                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                </android.support.constraint.ConstraintLayout>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardViewEditPoints"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="32dp"
+                    app:cardCornerRadius="@dimen/cardview_radius"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewPoints">
 
-            </android.support.v7.widget.CardView>
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="48dp">
 
-            <Button
-                android:id="@+id/btnSubtract"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/button_background_accent"
-                android:paddingStart="@dimen/button_padding"
-                android:paddingEnd="@dimen/button_padding"
-                android:text="@string/subtract"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineCenterParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineLeftEditPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/leftGuideLine" />
 
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/button_background_accent"
-                android:paddingStart="@dimen/button_padding"
-                android:paddingEnd="@dimen/button_padding"
-                android:singleLine="true"
-                android:text="@string/add"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineCenterParent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guidelineRightEditPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="@dimen/rightGuideLine" />
 
-        </android.support.constraint.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/textViewEditPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/edit_points"
+                            android:textAllCaps="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/titleTextSize"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutFinalNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineRightEditPoints"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineLeftEditPoints"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewEditPoints">
+
+                            <TextView
+                                android:id="@+id/textViewValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/value"
+                                android:textAlignment="textStart"
+                                android:textSize="@dimen/cardInfoTextSize"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/editTextValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:background="@null"
+                                android:imeOptions="flagNoExtractUi"
+                                android:inputType="number"
+                                android:maxLength="9"
+                                android:textSize="@dimen/titleTextSize"
+                                tools:ignore="Autofill,LabelFor" />
+
+                            <android.support.v4.view.ViewPager
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:layout_marginTop="2dp"
+                                android:background="@color/colorAccent" />
+
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnSubtract"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/button_background_accent"
+                    android:paddingStart="@dimen/button_padding"
+                    android:paddingEnd="@dimen/button_padding"
+                    android:text="@string/subtract"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineCenterParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeftParent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_background_accent"
+                    android:paddingStart="@dimen/button_padding"
+                    android:paddingEnd="@dimen/button_padding"
+                    android:singleLine="true"
+                    android:text="@string/add"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardViewEditPoints"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRightParent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineCenterParent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewEditPoints" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/adMobBannerId" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

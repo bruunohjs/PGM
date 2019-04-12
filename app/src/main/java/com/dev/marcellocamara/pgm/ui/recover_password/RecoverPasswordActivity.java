@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 
 import com.dev.marcellocamara.pgm.ui.IProgressLoading;
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -33,6 +35,8 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
 
     @BindView(R.id.layoutEmail) protected TextInputLayout layoutEmail;
     @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.recover_password) protected String recover_password;
     @BindString(R.string.recovering_password) protected String recovering;
@@ -69,6 +73,8 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
         builder = new AlertDialog.Builder(this);
         builder.setTitle(recover_password);
         builder.setCancelable(false);
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.btnRecoverPassword)

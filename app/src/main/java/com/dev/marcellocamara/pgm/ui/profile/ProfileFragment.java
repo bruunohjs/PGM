@@ -23,6 +23,8 @@ import com.dev.marcellocamara.pgm.R;
 
 import com.bumptech.glide.Glide;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -50,6 +52,8 @@ public class ProfileFragment extends Fragment implements IProfile.View {
 
     @BindView(R.id.editTextName) protected TextInputEditText editTextName;
     @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.profile) protected String profile;
     @BindString(R.string.dot) protected String dot;
@@ -93,6 +97,8 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                 .setMessage(updating_profile)
                 .setCancelable(false)
                 .build();
+
+        adView.loadAd(new AdRequest.Builder().build());
 
         return view;
     }

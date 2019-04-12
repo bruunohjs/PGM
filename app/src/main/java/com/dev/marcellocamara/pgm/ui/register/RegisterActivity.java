@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -39,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     @BindView(R.id.editTextEmail) protected TextInputEditText editTextEmail;
     @BindView(R.id.editTextPassword1) protected TextInputEditText editTextPassword1;
     @BindView(R.id.editTextPassword2) protected TextInputEditText editTextPassword2;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.register) protected String register;
     @BindString(R.string.empty_name) protected String empty_name;
@@ -78,6 +82,8 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         builder = new AlertDialog.Builder(this);
         builder.setTitle(register);
         builder.setCancelable(false);
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.btnRegister)

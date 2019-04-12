@@ -14,6 +14,8 @@ import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.model.CardModel;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.utils.Tooltip;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import static com.dev.marcellocamara.pgm.utils.Constants.MAX_CARD_POINTS;
 import static com.dev.marcellocamara.pgm.utils.Constants.parcelable_card;
@@ -44,6 +46,8 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @BindView(R.id.editTextValue) protected EditText editTextValue;
 
     @BindView(R.id.imageViewInfoPoints) protected ImageView imageViewInfoPoints;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.points) protected String points;
     @BindString(R.string.loading_points) protected String loading_points;
@@ -88,6 +92,8 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
         builder = new AlertDialog.Builder(this);
         builder.setTitle(points);
         builder.setCancelable(false);
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.btnSubtract)

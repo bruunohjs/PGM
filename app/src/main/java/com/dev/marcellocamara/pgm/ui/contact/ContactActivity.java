@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.dev.marcellocamara.pgm.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -35,6 +37,8 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
     @BindView(R.id.editTextMessage) protected TextInputEditText editTextMessage;
 
     @BindView(R.id.spinnerSubject) protected Spinner spinner;
+
+    @BindView(R.id.adView) protected AdView adView;
 
     @BindString(R.string.contact) protected String contact;
     @BindString(R.string.close) protected String close;
@@ -73,6 +77,8 @@ public class ContactActivity extends AppCompatActivity implements IContact.View,
         builder = new AlertDialog.Builder(this);
         builder.setTitle(contact);
         builder.setCancelable(false);
+
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @Override
