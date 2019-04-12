@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import static com.dev.marcellocamara.pgm.utils.Constants.RC_GOOGLE_SIGN_IN;
 
+import com.crashlytics.android.Crashlytics;
 import com.dev.marcellocamara.pgm.R;
 import com.dev.marcellocamara.pgm.ui.main.MainActivity;
 import com.dev.marcellocamara.pgm.ui.recover_password.RecoverPasswordActivity;
@@ -21,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import io.fabric.sdk.android.Fabric;
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import dmax.dialog.SpotsDialog;
@@ -60,6 +62,8 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Initializes Fabric
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
