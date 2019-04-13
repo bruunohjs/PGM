@@ -93,8 +93,8 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/titleTextSize"
                             app:layout_constraintEnd_toStartOf="@+id/textViewCoinType"
                             app:layout_constraintStart_toStartOf="@+id/guidelineLeftCardView"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -116,7 +116,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
                             android:text="@string/coin_type"
-                            android:textSize="14sp"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/descriptionTextSize"
                             app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
                             app:layout_constraintEnd_toStartOf="@+id/textViewPrice"
                             app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
@@ -126,8 +127,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="@dimen/descriptionTextSize"
                             app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
                             app:layout_constraintEnd_toStartOf="@+id/guidelineRightCardView"
                             app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
@@ -273,8 +274,8 @@
                                 android:gravity="start|center_vertical"
                                 android:text="@string/each_installment_price"
                                 android:textAppearance="@style/TextAppearance.AppCompat"
-                                app:autoSizeMaxTextSize="14sp"
-                                app:autoSizeMinTextSize="10sp"
+                                app:autoSizeMaxTextSize="@dimen/descriptionTextSize"
+                                app:autoSizeMinTextSize="@dimen/minTextSize"
                                 app:autoSizeTextType="uniform"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/linearLayout"
@@ -297,7 +298,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="4dp"
                                     android:text="@string/coin_type"
-                                    android:textSize="14sp"
+                                    android:textSize="@dimen/descriptionTextSize"
                                     app:layout_constraintBottom_toBottomOf="@+id/textViewEachInstallment"
                                     app:layout_constraintEnd_toStartOf="@+id/textViewEachInstallment"
                                     app:layout_constraintTop_toTopOf="@+id/textViewEachInstallment" />
@@ -306,7 +307,7 @@
                                     android:id="@+id/textViewEachInstallment"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="14sp"
+                                    android:textSize="@dimen/descriptionTextSize"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
                             </LinearLayout>
