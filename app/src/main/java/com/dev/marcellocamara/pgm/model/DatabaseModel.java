@@ -374,15 +374,15 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
         }
 
         //This guarantee same ID for all "n" installments
-        final String UniqueID = getDatabaseReference().child("Expenses").push().getKey();
+        final String uniqueID = getDatabaseReference().child("Expenses").push().getKey();
 
         final String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-        DoAddExpenseRecursion(1, installments, userID, UniqueID, month, year, expense);
+        DoSafeAddExpenseRecursion(1, installments, userID, uniqueID, month, year, expense);
 
     }
 
-    private void DoAddExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year, final ExpenseModel expense) {
+    private void DoSafeAddExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year, final ExpenseModel expense) {
 
         final String monthAux;
         final String yearAux;
@@ -411,29 +411,22 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 .child(userId)
                 .child(monthAux + yearAux)
                 .child(uniqueId)
-                .setValue(expenseAux)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            if (n.equals(countStop)) {
-                                taskListener.OnSuccess();
-                            } else {
-                                DoAddExpenseRecursion(
-                                        (n + 1),
-                                        countStop,
-                                        userId,
-                                        uniqueId,
-                                        (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
-                                        yearAux,
-                                        expense
-                                );
-                            }
-                        } else {
-                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                        }
-                    }
-                });
+                .setValue(expenseAux);
+
+        if (n.equals(countStop)) {
+            taskListener.OnSuccess();
+        } else {
+            DoSafeAddExpenseRecursion(
+                    (n + 1),
+                    countStop,
+                    userId,
+                    uniqueId,
+                    (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
+                    yearAux,
+                    expense
+            );
+        }
+
     }
 
     @Override
@@ -453,11 +446,11 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
         String userID = Objects.requireNonNull(getFirebaseAuthInstance().getCurrentUser()).getUid();
 
-        DoDeleteExpenseRecursion(1, Integer.parseInt(expense.getInstallments()), userID, expense.getUniqueId(), month, year);
+        DoSafeDeleteExpenseRecursion(1, Integer.parseInt(expense.getInstallments()), userID, expense.getUniqueId(), month, year);
 
     }
 
-    private void DoDeleteExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year) {
+    private void DoSafeDeleteExpenseRecursion(final Integer n, final Integer countStop, final String userId, final String uniqueId, final String month, final String year) {
 
         final String monthAux;
         final String yearAux;
@@ -475,28 +468,21 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                 .child(userId)
                 .child(monthAux + yearAux)
                 .child(uniqueId)
-                .removeValue()
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            if (n.equals(countStop)) {
-                                taskListener.OnSuccess();
-                            } else {
-                                DoDeleteExpenseRecursion(
-                                        (n + 1),
-                                        countStop,
-                                        userId,
-                                        uniqueId,
-                                        (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
-                                        yearAux
-                                );
-                            }
-                        } else {
-                            taskListener.OnError(Objects.requireNonNull(task.getException()).getMessage());
-                        }
-                    }
-                });
+                .removeValue();
+
+        if (n.equals(countStop)) {
+            taskListener.OnSuccess();
+        } else {
+            DoSafeDeleteExpenseRecursion(
+                    (n + 1),
+                    countStop,
+                    userId,
+                    uniqueId,
+                    (NumberFormat.getMonth((Integer.parseInt(monthAux)) + 1)),
+                    yearAux
+            );
+        }
+
     }
 
     @Override
@@ -520,7 +506,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
                                 }
                             }
                         }
-                        DoSafeDeleteExpenses(dates, keys, uniqueId);
+                        DoSafeDeleteCardExpenses(dates, keys, uniqueId);
                     }
 
                     @Override
@@ -531,7 +517,7 @@ public class DatabaseModel implements ILogin.Model, IRegister.Model, IRecoverPas
 
     }
 
-    private void DoSafeDeleteExpenses(List<String> dates, List<String> keys, String cardUniqueId) {
+    private void DoSafeDeleteCardExpenses(List<String> dates, List<String> keys, String cardUniqueId) {
 
         if (dates.size() != keys.size()) {
 
