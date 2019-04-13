@@ -179,12 +179,22 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
 
     @OnClick(R.id.imageViewInfoDate)
     public void OnInfoDateClick(){
-        Tooltip.show(imageViewInfoDate, Gravity.BOTTOM, info_date, colorAccent);
+        Tooltip.show(
+                imageViewInfoDate,
+                Gravity.BOTTOM,
+                info_date,
+                colorAccent
+        );
     }
 
     @OnClick(R.id.imageViewInfoPrice)
     public void OnInfoPriceClick(){
-        Tooltip.show(imageViewInfoPrice, Gravity.TOP, max_price, colorAccent);
+        Tooltip.show(
+                imageViewInfoPrice,
+                Gravity.TOP,
+                (max_price + coin_type + NumberFormat.getDecimal(MAX_PRICE_EXPENSE) + max_price_unity + coin_sub_unity),
+                colorAccent
+        );
     }
 
     @OnClick(R.id.btnSave)
