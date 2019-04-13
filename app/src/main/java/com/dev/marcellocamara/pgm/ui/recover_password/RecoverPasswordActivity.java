@@ -45,6 +45,7 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
     @BindString(R.string.close) protected String close;
     @BindString(R.string.recover_message1) protected String message1;
     @BindString(R.string.recover_message2) protected String message2;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     private IRecoverPassword.Presenter presenter;
     private AlertDialog alertDialog;
@@ -81,7 +82,7 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
     public void OnButtonClick(){
         layoutEmail.setErrorEnabled(false);
         layoutEmail.clearFocus();
-        presenter.OnRecoverPassword(editTextEmail.getText().toString().trim());
+        presenter.OnRecoverPasswordRequest(editTextEmail.getText().toString().trim());
         UIUtil.hideKeyboard(this);
     }
 
@@ -118,6 +119,13 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
     }
 
     @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     public void ShowProgress() {
         alertDialog.show();
     }
@@ -138,4 +146,5 @@ public class RecoverPasswordActivity extends AppCompatActivity implements IRecov
         super.onDestroy();
         presenter.OnDestroy();
     }
+
 }

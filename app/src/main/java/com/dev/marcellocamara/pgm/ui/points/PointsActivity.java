@@ -58,6 +58,7 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @BindString(R.string.info_points) protected String info_points;
     @BindString(R.string.points_updated) protected String points_updated;
     @BindString(R.string.close) protected String close;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
@@ -152,6 +153,13 @@ public class PointsActivity extends AppCompatActivity implements IPoints.View {
     @Override
     public void OnSubtractPointsFailure() {
         builder.setMessage(subtract_failure);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
         builder.setPositiveButton(close, null);
         builder.show();
     }

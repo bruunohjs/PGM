@@ -7,6 +7,8 @@ import com.dev.marcellocamara.pgm.model.DatabaseModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -23,7 +25,7 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnLogin(String email, String password) {
+    public void OnLoginRequest(String email, String password) {
 
         if (email.isEmpty() || password.isEmpty()){
 
@@ -42,20 +44,27 @@ public class LoginPresenter implements ILogin.Presenter, ITaskListener {
             view.OnInvalidPassword();
 
         }else {
-            view.ShowProgress();
-            model.DoLogin(email, password);
+            if (hasInternet()){
+                view.ShowProgress();
+                model.DoLogin(email, password);
+            }else {
+                view.OnInternetFailure();
+            }
         }
-
     }
 
     @Override
-    public void OnLogin(GoogleSignInResult result) {
-        if (result.isSuccess()){
-            view.ShowProgress();
-            GoogleSignInAccount account = result.getSignInAccount();
-            model.DoLogin(account);
+    public void OnLoginRequest(GoogleSignInResult result) {
+        if (hasInternet()){
+            if (result.isSuccess()){
+                view.ShowProgress();
+                GoogleSignInAccount account = result.getSignInAccount();
+                model.DoLogin(account);
+            }else {
+                view.OnLoginWithGoogleFailure();
+            }
         }else {
-            view.OnLoginWithGoogleFailure();
+            view.OnInternetFailure();
         }
     }
 

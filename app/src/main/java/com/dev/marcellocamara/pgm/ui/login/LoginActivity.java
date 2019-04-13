@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @BindString(R.string.close) protected String close;
     @BindString(R.string.login_in) protected String login_in;
     @BindString(R.string.sign_in_google_failure) protected String sign_in_google_failure;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     private ILogin.Presenter presenter;
     private AlertDialog alertDialog;
@@ -99,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     public void OnButtonLoginClick(){
         layoutEmail.setErrorEnabled(false);
         layoutPassword.setErrorEnabled(false);
-        presenter.OnLogin(
+        presenter.OnLoginRequest(
                 editTextEmail.getText().toString().trim(),
                 editTextPassword.getText().toString().trim()
         );
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     @OnClick(R.id.btnGoogle)
     public void OnButtonGoogleClick(){
+        ShowProgress();
         startActivityForResult(Auth.GoogleSignInApi.getSignInIntent(googleApiClient), RC_GOOGLE_SIGN_IN);
     }
 
@@ -166,11 +168,19 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     }
 
     @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        HideProgress();
         if (requestCode == RC_GOOGLE_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            presenter.OnLogin(result);
+            presenter.OnLoginRequest(result);
         }
     }
 

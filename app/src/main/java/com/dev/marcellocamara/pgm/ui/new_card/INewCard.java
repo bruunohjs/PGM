@@ -60,6 +60,8 @@ public interface INewCard {
 
         void OnUpdateCardFailure();
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

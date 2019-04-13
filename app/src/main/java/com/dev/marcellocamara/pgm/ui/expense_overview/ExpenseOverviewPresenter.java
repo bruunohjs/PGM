@@ -5,6 +5,8 @@ import com.dev.marcellocamara.pgm.utils.NumberFormat;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 import com.dev.marcellocamara.pgm.model.ExpenseModel;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -30,8 +32,12 @@ public class ExpenseOverviewPresenter implements IExpenseOverview.Presenter, ITa
 
     @Override
     public void OnDeleteExpense(ExpenseModel expenseModel) {
-        view.ShowProgress();
-        model.DoDeleteExpense(expenseModel);
+        if (hasInternet()){
+            view.ShowProgress();
+            model.DoDeleteExpense(expenseModel);
+        }else {
+            view.OnInternetFailure();
+        }
     }
 
     @Override
@@ -52,4 +58,5 @@ public class ExpenseOverviewPresenter implements IExpenseOverview.Presenter, ITa
 
     @Override
     public void OnDestroy() { view = null; }
+
 }

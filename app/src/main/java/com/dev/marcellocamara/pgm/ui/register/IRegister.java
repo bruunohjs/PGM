@@ -11,7 +11,7 @@ public interface IRegister {
 
     interface Presenter{
 
-        void OnRegister(String name, String email, String password1, String password2);
+        void OnRegisterRequest(String name, String email, String password1, String password2);
 
         void OnDestroy();
 
@@ -38,6 +38,8 @@ public interface IRegister {
         void OnRegistrationSuccessful();
 
         void OnRegistrationFailure(String message);
+
+        void OnInternetFailure();
 
     }
 

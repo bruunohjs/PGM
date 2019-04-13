@@ -28,6 +28,8 @@ public interface IExpenseOverview {
 
         void OnDeleteExpenseFailure(String message);
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

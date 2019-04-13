@@ -90,6 +90,7 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @BindString(R.string.card_already_exists) protected String card_already_exists;
     @BindString(R.string.info_digits) protected String info_digits;
     @BindString(R.string.info_best_day) protected String info_best_day;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
@@ -318,6 +319,13 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @Override
     public void OnUpdateCardFailure() {
         builder.setMessage(no_changes);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
         builder.setPositiveButton(close, null);
         builder.show();
     }

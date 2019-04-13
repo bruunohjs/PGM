@@ -7,6 +7,8 @@ import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.utils.Permissions;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -37,15 +39,23 @@ public class ProfilePresenter implements IProfile.Presenter, ITaskListener {
         } else if (newName.equals(nameSaved)){
             view.OnNoChangesUpdate();
         } else {
-            view.ShowProgress();
-            model.DoUpdateUserName(newName);
+            if (hasInternet()){
+                view.ShowProgress();
+                model.DoUpdateUserName(newName);
+            }else {
+                view.OnInternetFailure();
+            }
         }
     }
 
     @Override
     public void OnCheckPermissions(Activity activity) {
         if (Permissions.verify(activity, Permissions.PHOTO_PERMISSIONS, 1)) {
-            view.OnCheckPermissionsSuccessful();
+            if (hasInternet()){
+                view.OnCheckPermissionsSuccessful();
+            }else {
+                view.OnInternetFailure();
+            }
         }
     }
 

@@ -6,6 +6,8 @@ import com.dev.marcellocamara.pgm.model.DatabaseModel;
 
 import java.util.ArrayList;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -87,8 +89,12 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
             if (checkExistingCard(numbers)){
                 view.OnFinalNumbersAlreadyExists();
             }else {
-                view.ShowProgress();
-                model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+                if (hasInternet()){
+                    view.ShowProgress();
+                    model.DoAddCard(title, numbers, date, cardColor, cardFlag);
+                }else {
+                    view.OnInternetFailure();
+                }
             }
         }
     }
@@ -106,11 +112,15 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
                 if (checkExistingCard(numbers)){
                     view.OnFinalNumbersAlreadyExists();
                 }else {
-                    view.ShowProgress();
-                    CardModel newCard = new CardModel(title, numbers, date, cardColor, cardFlag);
-                    newCard.setPoints(card.getPoints());
-                    newCard.setUniqueId(card.getUniqueId());
-                    model.DoUpdateCard(newCard);
+                    if (hasInternet()){
+                        view.ShowProgress();
+                        CardModel newCard = new CardModel(title, numbers, date, cardColor, cardFlag);
+                        newCard.setPoints(card.getPoints());
+                        newCard.setUniqueId(card.getUniqueId());
+                        model.DoUpdateCard(newCard);
+                    }else {
+                        view.OnInternetFailure();
+                    }
                 }
             }
         }
@@ -157,4 +167,5 @@ public class NewCardPresenter implements INewCard.Presenter, ITaskListener {
             view.OnAddCardFailure(message);
         }
     }
+
 }

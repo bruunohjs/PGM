@@ -8,6 +8,7 @@ import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
 
 import static com.dev.marcellocamara.pgm.utils.Constants.MAX_CARD_POINTS;
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
 
 /***
     marcellocamara@id.uff.br
@@ -35,9 +36,13 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
             if (result > MAX_CARD_POINTS){
                 view.OnAddPointsFailure();
             }else {
-                view.ShowProgress();
-                card.setPoints(result);
-                model.DoUpdateCard(card);
+                if (hasInternet()){
+                    view.ShowProgress();
+                    card.setPoints(result);
+                    model.DoUpdateCard(card);
+                }else {
+                    view.OnInternetFailure();
+                }
             }
         }
     }
@@ -51,9 +56,13 @@ public class PointsPresenter implements IPoints.Presenter, ITaskListener {
             if (result < 0){
                 view.OnSubtractPointsFailure();
             }else {
-                card.setPoints(result);
-                view.ShowProgress();
-                model.DoUpdateCard(card);
+                if (hasInternet()){
+                    card.setPoints(result);
+                    view.ShowProgress();
+                    model.DoUpdateCard(card);
+                }else {
+                    view.OnInternetFailure();
+                }
             }
         }
     }

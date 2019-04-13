@@ -110,6 +110,7 @@
     <!-- dialogs -->
     <string name="select_card">Seleccione una tarjeta</string>
     <string name="loading_cards">Cargando tarjetas…</string>
+    <string name="no_internet">No hay internet disponible.\nPor favor, compruebe su conexión !</string>
 
     <!-- Tooltips -->
     <string name="info_digits">Los últimos cuatro dígitos de su tarjeta de crédito lo ayudarán a identificar sus gastos.</string>

@@ -11,7 +11,7 @@ public interface IRecoverPassword {
 
     interface Presenter {
 
-        void OnRecoverPassword(String email);
+        void OnRecoverPasswordRequest(String email);
 
         void OnDestroy();
 
@@ -26,6 +26,8 @@ public interface IRecoverPassword {
         void OnRecoverPasswordSuccessful();
 
         void OnRecoverPasswordFailure(String message);
+
+        void OnInternetFailure();
 
     }
 

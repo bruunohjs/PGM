@@ -62,6 +62,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     @BindString(R.string.close) protected String close;
     @BindString(R.string.profile_updating) protected String updating_profile;
     @BindString(R.string.profile_update_success) protected String update_success;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     private IProfile.Presenter presenter;
     private CircularImageView navHeaderImageView;
@@ -156,6 +157,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
 
     @Override
     public void OnCheckPermissionsSuccessful() {
+        ShowProgress();
         startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT)
                 .setType("image/*"), RC_PHOTO_GALLERY
         );
@@ -164,6 +166,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        HideProgress();
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == RC_PHOTO_GALLERY) {
                 Uri selectedImage = data.getData();
@@ -178,6 +181,13 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     public void OnBlankField() {
         layoutName.setError(empty_name);
         layoutName.setErrorEnabled(true);
+    }
+
+    @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
+        builder.setPositiveButton(close, null);
+        builder.show();
     }
 
     @Override

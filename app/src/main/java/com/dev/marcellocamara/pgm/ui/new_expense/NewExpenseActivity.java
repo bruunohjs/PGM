@@ -81,6 +81,7 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     @BindString(R.string.close) protected String close;
     @BindString(R.string.adding_expense) protected String alertDialogMessage;
     @BindString(R.string.adding_expense_success) protected String alertDialogSuccess;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
@@ -262,6 +263,13 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
     }
 
     @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     public void ShowProgress() {
         alertDialog.show();
     }
@@ -282,4 +290,5 @@ public class NewExpenseActivity extends AppCompatActivity implements INewExpense
         super.onDestroy();
         expensePresenter.OnDestroy();
     }
+
 }

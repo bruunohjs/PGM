@@ -10,6 +10,8 @@ import com.dev.marcellocamara.pgm.model.ExpenseModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -84,8 +86,12 @@ public class CardOverviewPresenter implements ICardOverview.Presenter, ITaskList
 
     @Override
     public void OnRequestDeleteCard() {
-        view.ShowProgress();
-        model.DoDeleteCard(uniqueId);
+        if (hasInternet()){
+            view.ShowProgress();
+            model.DoDeleteCard(uniqueId);
+        }else {
+            view.OnInternetFailure();
+        }
     }
 
     @Override

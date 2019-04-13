@@ -42,6 +42,8 @@ public interface INewExpense {
 
         void OnAddExpenseFailure(String message);
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

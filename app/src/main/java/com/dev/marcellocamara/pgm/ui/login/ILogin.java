@@ -13,9 +13,9 @@ public interface ILogin {
 
     interface Presenter{
 
-        void OnLogin(String email, String password);
+        void OnLoginRequest(String email, String password);
 
-        void OnLogin(GoogleSignInResult result);
+        void OnLoginRequest(GoogleSignInResult result);
 
         void OnDestroy();
 
@@ -38,6 +38,8 @@ public interface ILogin {
         void OnLoginFailure(String message);
 
         void OnLoginWithGoogleFailure();
+
+        void OnInternetFailure();
 
     }
 

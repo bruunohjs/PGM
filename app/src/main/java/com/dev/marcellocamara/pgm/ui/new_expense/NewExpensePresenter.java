@@ -1,6 +1,7 @@
 package com.dev.marcellocamara.pgm.ui.new_expense;
 
 import static com.dev.marcellocamara.pgm.utils.Constants.MAX_PRICE_EXPENSE;
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
 
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.utils.NumberFormat;
@@ -44,8 +45,12 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
         }else if (Double.parseDouble(price) > MAX_PRICE_EXPENSE){
             view.OnMaxPrice();
         }else{
-            view.ShowProgress();
-            model.DoAddExpense(date, title, description, Double.parseDouble(price), installments, creditCard, betterDayCard);
+            if (hasInternet()){
+                view.ShowProgress();
+                model.DoAddExpense(date, title, description, Double.parseDouble(price), installments, creditCard, betterDayCard);
+            }else {
+                view.OnInternetFailure();
+            }
         }
 
     }
@@ -85,4 +90,5 @@ public class NewExpensePresenter implements INewExpense.Presenter, ITaskListener
             view.OnAddExpenseFailure(message);
         }
     }
+
 }

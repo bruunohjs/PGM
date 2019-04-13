@@ -50,6 +50,8 @@ public interface ICardOverview {
 
         void OnRequestCardExpensesFailure(String message);
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

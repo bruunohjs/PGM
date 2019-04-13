@@ -5,6 +5,8 @@ import android.util.Patterns;
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -21,7 +23,7 @@ public class RegisterPresenter implements IRegister.Presenter, ITaskListener {
     }
 
     @Override
-    public void OnRegister(String name, String email, String password1, String password2) {
+    public void OnRegisterRequest(String name, String email, String password1, String password2) {
 
         if (name.isEmpty() || email.isEmpty() || password1.isEmpty() || password2.isEmpty()){
 
@@ -52,8 +54,12 @@ public class RegisterPresenter implements IRegister.Presenter, ITaskListener {
             view.OnMatchPasswords();
 
         }else {
-            view.ShowProgress();
-            model.DoRegister(name, email, password1);
+            if (hasInternet()){
+                view.ShowProgress();
+                model.DoRegister(name, email, password1);
+            }else {
+                view.OnInternetFailure();
+            }
         }
 
     }
@@ -78,4 +84,5 @@ public class RegisterPresenter implements IRegister.Presenter, ITaskListener {
             view.OnRegistrationFailure(message);
         }
     }
+
 }

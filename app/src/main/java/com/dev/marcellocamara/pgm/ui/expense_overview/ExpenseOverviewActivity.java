@@ -60,6 +60,7 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
     @BindString(R.string.yes) protected String yes;
     @BindString(R.string.no) protected String no;
     @BindString(R.string.close) protected String close;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     private IExpenseOverview.Presenter overviewPresenter;
     private ExpenseModel expenseModel;
@@ -138,6 +139,16 @@ public class ExpenseOverviewActivity extends AppCompatActivity implements IExpen
         builder.setTitle(overview_title);
         builder.setCancelable(false);
         builder.setMessage(message);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnInternetFailure() {
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(overview_title);
+        builder.setCancelable(false);
+        builder.setMessage(no_internet);
         builder.setPositiveButton(close, null);
         builder.show();
     }

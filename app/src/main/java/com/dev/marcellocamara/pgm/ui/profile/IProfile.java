@@ -42,6 +42,8 @@ public interface IProfile {
 
         void OnBlankField();
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

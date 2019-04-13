@@ -54,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     @BindString(R.string.close) protected String close;
     @BindString(R.string.registering) protected String registering;
     @BindString(R.string.register_success) protected String register_success;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     private IRegister.Presenter registerPresenter;
     private AlertDialog alertDialog;
@@ -92,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         layoutEmail.setErrorEnabled(false);
         layoutPassword1.setErrorEnabled(false);
         layoutPassword2.setErrorEnabled(false);
-        registerPresenter.OnRegister(
+        registerPresenter.OnRegisterRequest(
                 editTextName.getText().toString().trim(),
                 editTextEmail.getText().toString().trim(),
                 editTextPassword1.getText().toString().trim(),
@@ -179,6 +180,13 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
     }
 
     @Override
+    public void OnInternetFailure() {
+        builder.setMessage(no_internet);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
@@ -189,4 +197,5 @@ public class RegisterActivity extends AppCompatActivity implements IRegister.Vie
         registerPresenter.OnDestroy();
         super.onDestroy();
     }
+
 }

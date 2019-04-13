@@ -5,6 +5,8 @@ import android.util.Patterns;
 import com.dev.marcellocamara.pgm.ui.ITaskListener;
 import com.dev.marcellocamara.pgm.model.DatabaseModel;
 
+import static com.dev.marcellocamara.pgm.utils.InternetConnection.hasInternet;
+
 /***
     marcellocamara@id.uff.br
             2019
@@ -21,7 +23,7 @@ public class RecoverPasswordPresenter implements IRecoverPassword.Presenter, ITa
     }
 
     @Override
-    public void OnRecoverPassword(String email) {
+    public void OnRecoverPasswordRequest(String email) {
 
         if (email.isEmpty()){
 
@@ -32,10 +34,12 @@ public class RecoverPasswordPresenter implements IRecoverPassword.Presenter, ITa
             view.OnInvalidEmail();
 
         }else {
-
-            view.ShowProgress();
-            model.DoRecoverPassword(email);
-
+            if (hasInternet()){
+                view.ShowProgress();
+                model.DoRecoverPassword(email);
+            }else {
+                view.OnInternetFailure();
+            }
         }
     }
 
@@ -59,4 +63,5 @@ public class RecoverPasswordPresenter implements IRecoverPassword.Presenter, ITa
     public void OnDestroy() {
         this.view = null;
     }
+
 }

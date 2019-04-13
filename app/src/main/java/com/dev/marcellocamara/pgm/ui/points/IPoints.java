@@ -32,6 +32,8 @@ public interface IPoints {
 
         void OnSubtractPointsFailure();
 
+        void OnInternetFailure();
+
     }
 
     interface Model {

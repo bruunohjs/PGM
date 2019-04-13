@@ -72,6 +72,7 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
     @BindString(R.string.close) protected String close;
     @BindString(R.string.card_number) protected String card_number;
     @BindString(R.string.view_expenses_denied) protected String view_expenses_denied;
+    @BindString(R.string.no_internet) protected String no_internet;
 
     @BindColor(R.color.colorAccent) protected int colorAccent;
 
@@ -218,6 +219,16 @@ public class CardOverviewActivity extends AppCompatActivity implements ICardOver
         builder.setTitle(card_overview);
         builder.setCancelable(false);
         builder.setMessage(message);
+        builder.setPositiveButton(close, null);
+        builder.show();
+    }
+
+    @Override
+    public void OnInternetFailure() {
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(card_overview);
+        builder.setCancelable(false);
+        builder.setMessage(no_internet);
         builder.setPositiveButton(close, null);
         builder.show();
     }

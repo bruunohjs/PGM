@@ -121,6 +121,7 @@
     <!-- dialogs -->
     <string name="select_card">Select one card</string>
     <string name="loading_cards">Loading cards…</string>
+    <string name="no_internet">No internet available.\nPlease, check your connection !</string>
 
     <!-- Tooltips -->
     <string name="info_digits">The last four digits of your credit card will help identify your expenses.</string>
