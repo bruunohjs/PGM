@@ -78,6 +78,38 @@ public class CardUtils {
     }
 
     /**
+     * finds the respective drawable of the int small flag
+     * @param context - environment data
+     * @param flag - int that refers to a specific resource drawable
+     * @return resource drawable or null if it does not find
+     */
+    public static Drawable getSmallFlag(Context context, int flag) {
+        switch (flag){
+            case 1 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_visa);
+            }
+            case 2 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_mastercard);
+            }
+            case 3 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_elo);
+            }
+            case 4 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_american_express);
+            }
+            case 5 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_dinners_club);
+            }
+            case 6 : {
+                return ContextCompat.getDrawable(context, R.drawable.small_flag_hipercard);
+            }
+            default : {
+                return null;
+            }
+        }
+    }
+
+    /**
      * finds the respective color of the int color
      * @param context - environment data
      * @param color - int that refers to a specific resource color

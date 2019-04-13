@@ -199,8 +199,8 @@ public class NewCardActivity extends AppCompatActivity implements INewCard.View,
     @Override
     public void getFlag(int flag) {
         cardFlag = flag;
-        imageViewCardFlag.setImageDrawable( CardUtils.getFlag(this, cardFlag));
         imageViewSelectedFlag.setImageDrawable( CardUtils.getFlag(this, cardFlag) );
+        imageViewCardFlag.setImageDrawable( CardUtils.getSmallFlag(this, cardFlag));
     }
 
     @OnTextChanged(R.id.editTextCardTitle)

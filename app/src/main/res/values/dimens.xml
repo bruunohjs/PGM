@@ -13,6 +13,10 @@
     <dimen name="creditCardWidth">281dp</dimen>
     <dimen name="creditCardHeight">186dp</dimen>
 
+    <dimen name="creditCardFlagWidth">50dp</dimen>
+    <dimen name="creditCardFlagHeight">40dp</dimen>
+    <dimen name="creditCardSmallFlagHeight">30dp</dimen>
+
     <dimen name="button_padding">22dp</dimen>
 
     <dimen name="uniformTextViewHeight">24dp</dimen>

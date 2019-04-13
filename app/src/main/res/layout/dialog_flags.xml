@@ -21,19 +21,20 @@
         android:id="@+id/layoutMasterCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/layoutElo"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutVisa"
         app:layout_constraintTop_toTopOf="@+id/layoutVisa">
 
         <ImageView
             android:id="@+id/imageViewMasterCard"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_mastercard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_mastercard" />
+            app:srcCompat="@drawable/small_flag_mastercard" />
 
         <TextView
             android:id="@+id/textViewMasterCard"
@@ -53,20 +54,22 @@
         android:id="@+id/layoutVisa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/layoutMasterCard"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <ImageView
             android:id="@+id/imageViewVisa"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_visa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_visa"
+            app:srcCompat="@drawable/small_flag_visa"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -87,19 +90,21 @@
         android:id="@+id/layoutElo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutMasterCard"
         app:layout_constraintTop_toTopOf="@+id/layoutMasterCard">
 
         <ImageView
             android:id="@+id/imageViewElo"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_elo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_elo"
+            app:srcCompat="@drawable/small_flag_elo"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -126,13 +131,13 @@
 
         <ImageView
             android:id="@+id/imageViewDinnersClub"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_dinnersclub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_dinners_club" />
+            app:srcCompat="@drawable/small_flag_dinners_club" />
 
         <TextView
             android:id="@+id/textViewDinnersClub"
@@ -157,13 +162,13 @@
 
         <ImageView
             android:id="@+id/imageViewHipercard"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_hipercard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_hipercard" />
+            app:srcCompat="@drawable/small_flag_hipercard" />
 
         <TextView
             android:id="@+id/textViewHipercard"
@@ -189,13 +194,13 @@
 
         <ImageView
             android:id="@+id/imageViewAmericanExpress"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/creditCardFlagWidth"
+            android:layout_height="@dimen/creditCardSmallFlagHeight"
             android:contentDescription="@string/icon_american_express"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flag_american_express" />
+            app:srcCompat="@drawable/small_flag_american_express" />
 
         <TextView
             android:id="@+id/textViewAmericanExpress"

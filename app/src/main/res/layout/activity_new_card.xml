@@ -316,7 +316,7 @@
                                 android:layout_height="20dp"
                                 android:layout_marginTop="2dp"
                                 android:contentDescription="@string/icon_installments"
-                                android:src="@drawable/flag_mastercard"
+                                android:src="@drawable/small_flag_mastercard"
                                 app:layout_constraintBottom_toBottomOf="@+id/textViewCardFlag"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/textViewCardFlag"
