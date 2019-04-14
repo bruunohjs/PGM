@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(this, ContactActivity.class));
                 break;
             }
+            case R.id.nav_evaluate : {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                break;
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
