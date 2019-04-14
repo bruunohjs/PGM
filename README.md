@@ -48,6 +48,7 @@ Perfil | [pt-BR](https://raw.githubusercontent.com/marcellocamara/PGM/master/ext
 ## Ferramentas utilizadas
 
 - [AdMob](https://apps.admob.com/)
+- [App Privacy Policy Generator](https://github.com/nisrulz/app-privacy-policy-generator)
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
 - [CardView](https://developer.android.com/guide/topics/ui/layout/cardview)
 - [CircularImageView](https://github.com/lopspower/CircularImageView)
