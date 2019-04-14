@@ -227,7 +227,15 @@
     <string name="blue">Blue</string>
 
     <!-- Arrays -->
-    <string-array name="installments">
+    <string-array name="subjects">
+        <item>Select</item>
+        <item>Information</item>
+        <item>Problem or error</item>
+        <item>Suggestion</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="installments" translatable="false">
         <item>1x</item>
         <item>2x</item>
         <item>3x</item>
@@ -240,14 +248,18 @@
         <item>10x</item>
         <item>11x</item>
         <item>12x</item>
-    </string-array>
-
-    <string-array name="subjects">
-        <item>Select</item>
-        <item>Information</item>
-        <item>Problem or error</item>
-        <item>Suggestion</item>
-        <item>Others</item>
+        <item>13x</item>
+        <item>14x</item>
+        <item>15x</item>
+        <item>16x</item>
+        <item>17x</item>
+        <item>18x</item>
+        <item>19x</item>
+        <item>20x</item>
+        <item>21x</item>
+        <item>22x</item>
+        <item>23x</item>
+        <item>24x</item>
     </string-array>
 
     <!-- Characters allowed in Name EditText -->
