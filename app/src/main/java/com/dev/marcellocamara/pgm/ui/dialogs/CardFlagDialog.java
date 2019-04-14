@@ -1,14 +1,14 @@
 package com.dev.marcellocamara.pgm.ui.dialogs;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.dev.marcellocamara.pgm.R;
 
@@ -34,14 +34,20 @@ public class CardFlagDialog extends DialogFragment {
     private IDialog.Flag flagListener;
     private Unbinder unbinder;
 
-    @Nullable
+    @NonNull
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View itemView = inflater.inflate(R.layout.dialog_flags, container, false);
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.select_flag)
+                .setPositiveButton(R.string.cancel, null);
 
-        unbinder = ButterKnife.bind(this, itemView);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_flags, null);
 
-        return itemView;
+        unbinder = ButterKnife.bind(this, view);
+
+        builder.setView(view);
+
+        return builder.create();
     }
 
     @OnClick(R.id.layoutVisa)
@@ -80,11 +86,6 @@ public class CardFlagDialog extends DialogFragment {
         getDialog().dismiss();
     }
 
-    @OnClick(R.id.btnCancel)
-    public void OnButtonClick(){
-        getDialog().dismiss();
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -100,4 +101,5 @@ public class CardFlagDialog extends DialogFragment {
         super.onDestroy();
         unbinder.unbind();
     }
+
 }
