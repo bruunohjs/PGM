@@ -12,9 +12,7 @@ Caso a fatura do mês já esteja fechada, a despesa adicionada irá entrar autom
 
 ## Análise / Avaliação
 
-O aplicativo será lançado na `Google Play Store` em breve.
-
-Até lá, ele encontra-se disponível para avalição [clicando aqui](https://raw.githubusercontent.com/marcellocamara/PGM/master/extras/APK/PGM.apk).
+O aplicativo está na `Google Play Store` , você pode acessá-lo [clicando aqui](https://play.google.com/store/apps/details?id=com.dev.marcellocamara.pgm).
 
 ## Sobre
 
